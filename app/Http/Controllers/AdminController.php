@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Admin;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
+use Symfony\Component\HttpFoundation\Response;
 
 class AdminController extends Controller
 {
@@ -13,6 +15,7 @@ class AdminController extends Controller
     public function index()
     {
         //
+        return response()->view('backend.admins.index');
     }
 
     /**
@@ -21,11 +24,7 @@ class AdminController extends Controller
     public function create()
     {
         //
-        $admin = new Admin();
-        return response()->view('backend.admins.store', [
-            'admin' => $admin,
-            'position' => 'create',
-        ]);
+        return response()->view('backend.admins.store');
     }
 
     /**
@@ -47,9 +46,12 @@ class AdminController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Admin $admin)
+    public function edit($id)
     {
         //
+        return response()->view('backend.admins.edit', [
+            'admin' => Admin::findOrFail(Crypt::decrypt($id)),
+        ]);
     }
 
     /**
@@ -63,8 +65,26 @@ class AdminController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Admin $admin)
+    public function destroy($id)
     {
+        $admin = Admin::findOrFail(Crypt::decrypt($id));
         //
+        if ($admin->delete()) {
+            return response()->json([
+                'header' => __('Success'),
+                'body' => __('Admin deleted successfully'),
+                'icon' => 'success',
+                'title' => __('Success'),
+                'text' => __('Admin deleted successfully'),
+            ], Response::HTTP_OK);
+        } else {
+            return response()->json([
+                'header' => __('Failed!'),
+                'body' => __('Failed to delete the admin!'),
+                'icon' => 'error',
+                'title' =>  __('Failed!'),
+                'text' =>  __('Failed to delete the admin!'),
+            ], Response::HTTP_BAD_REQUEST);
+        }
     }
 }

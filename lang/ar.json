@@ -6,5 +6,16 @@
     "Human Resources": "",
     "Admins": "",
     "List": "",
-    "Add": ""
+    "Add": "",
+    "Success": "",
+    "Admin created successfully": "",
+    "Admin deleted successfully": "",
+    "Failed!": "",
+    "Failed to delete the admin!": "",
+    "No admins found yet ... !": "",
+    "Search": "",
+    "Show": "",
+    "entries": "",
+    "Add New Admin": "",
+    "Searching about admins ...": ""
 }

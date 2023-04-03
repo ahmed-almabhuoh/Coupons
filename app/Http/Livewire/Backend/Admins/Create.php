@@ -50,9 +50,12 @@ class Create extends Component
         $admin->phone = $data['phone'];
         $admin->status = $data['status'];
         if ($data['image']) {
-            $path = $data['image']->store('public', 'local');
-            $filename = Str::afterLast($path, '/');
-            $admin->image = asset('storage/' . $filename);
+            $path = $data['image']->store('admins', [
+                'disk' => 'human_resources',
+            ]);
+            // $filename = Str::afterLast($path, '/');
+            // $admin->image = asset('storage/' . $filename);
+            $admin->image = $path;
         }
         $this->showSuccess = $admin->save();
 

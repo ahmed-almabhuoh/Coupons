@@ -38,6 +38,12 @@
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="{{ asset('panel/assets/css/style.css') }}">
     <!-- END: Custom CSS-->
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('panel/app-assets/vendors/css/extensions/toastr.min.css') }}">
+
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('panel/app-assets/css/plugins/extensions/ext-component-toastr.css') }}">
+
 
     @yield('styles')
     @livewireStyles
@@ -620,6 +626,10 @@
             }
         })
     </script>
+    <script src="{{ asset('panel/app-assets/vendors/js/extensions/toastr.min.js') }}"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="{{ asset('panel/app-assets/js/scripts/extensions/ext-component-toastr.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     @yield('scripts')
     @livewireScripts

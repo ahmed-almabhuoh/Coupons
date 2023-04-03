@@ -44,6 +44,14 @@ return [
             'throw' => false,
         ],
 
+        'human_resources' => [
+            'driver' => 'local',
+            'root' => public_path('human'),
+            'url' => env('APP_URL').'/public',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),

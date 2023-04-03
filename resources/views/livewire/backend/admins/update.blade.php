@@ -3,10 +3,14 @@
         <div class="alert alert-success" role="alert">
             <h4 class="alert-heading">{{ __('Success') }}</h4>
             <div class="alert-body">
-                {{__('Admin created successfully')}}
+                {{ __('Admin updated successfully') }}
             </div>
         </div>
     @endif
+
+    <div class="card-body text-center">
+        <img src="{{ env('APP_URL') . 'human/' . $this->admin->image }}" class="img-thumbnail mb-3" alt="User image" width="250px" height="250px">
+    </div>
 
     <x-form.input name="fname" type="text" label="First name" placeholder="Enter the admin first name here ...." />
 
@@ -25,5 +29,7 @@
 
     <x-form.select name="status" label="Account status" :options="['active', 'disabled']" />
 
-    <x-form.submit text="Store" action="store()" type="button" />
+
+
+    <x-form.submit text="Update" action="update()" type="button" />
 </div>
