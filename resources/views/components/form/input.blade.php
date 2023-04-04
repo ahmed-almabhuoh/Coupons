@@ -4,14 +4,12 @@
         class="form-control @error($name)
     is-invalid
     @enderror" name="{{ $name }}" id="{{ $id ?? $name }}"
-        value="{{ $value }}" placeholder="{{ __($placeholder) ?? __('Enter the ' . $name) }}"
-        @if ($isRequired) required="" @endif @if ($readOnly) readonly @endif />
+        placeholder="{{ __($placeholder) ?? __('Enter the ' . $name) }}"
+        {{-- @if ($isRequired) required="" @endif --}}
+        {{-- @if ($readOnly) readonly @endif --}}
+        />
     @error($name)
         <div class="invalid-feedback">{{ __($message) }}
         </div>
     @enderror
-    {{-- @error( && !is_null($name))
-        <div class="invalid-feedback">{{ __('Validation success') }}
-        </div>
-    @enderror --}}
 </div>

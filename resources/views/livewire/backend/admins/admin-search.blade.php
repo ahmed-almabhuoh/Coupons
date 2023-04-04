@@ -65,7 +65,11 @@
                             @if ($admin->image)
                                 <span class="avatar"><img class="round"
                                         src="{{ env('APP_URL') . 'human/' . $admin->image }}" alt="avatar"
-                                        height="40" width="40"><span class="avatar-status-online"></span></span>
+                                        height="40" width="40">
+                                    @if ($admin->is_active)
+                                        <span class="avatar-status-online"></span>
+                                    @endif
+                                </span>
                             @else
                                 {{ __('No image') }}
                             @endif

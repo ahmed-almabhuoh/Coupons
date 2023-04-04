@@ -152,32 +152,6 @@
                                         {{ __('Sign in') }}
                                     </button>
                                 </form>
-
-                                {{-- <p class="text-center mt-2">
-                                    <span>New on our platform?</span>
-                                    <a href="page-auth-register-v1.html">
-                                        <span>Create an account</span>
-                                    </a>
-                                </p>
-
-                                <div class="divider my-2">
-                                    <div class="divider-text">or</div>
-                                </div>
-
-                                <div class="auth-footer-btn d-flex justify-content-center">
-                                    <a href="#" class="btn btn-facebook">
-                                        <i data-feather="facebook"></i>
-                                    </a>
-                                    <a href="#" class="btn btn-twitter white">
-                                        <i data-feather="twitter"></i>
-                                    </a>
-                                    <a href="#" class="btn btn-google">
-                                        <i data-feather="mail"></i>
-                                    </a>
-                                    <a href="#" class="btn btn-github">
-                                        <i data-feather="github"></i>
-                                    </a>
-                                </div> --}}
                             </div>
                         </div>
                         <!-- /Login v1 -->
@@ -223,7 +197,7 @@
 
     <script>
         function login() {
-            axios.post('/cpanel/login/', {
+            axios.post('/cpanel/login', {
                     username: document.getElementById('username').value,
                     password: document.getElementById('password').value,
                     remember_me: document.getElementById('remember_me').checked,

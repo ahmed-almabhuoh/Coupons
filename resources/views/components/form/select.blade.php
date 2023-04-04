@@ -3,7 +3,7 @@
       <select class="form-select @error('status')
       is-invalid
       @enderror" wire:model="{{ $model ?? $name }}"
-          name="{{ $name }}" @if (!$isActive) disabled="disabled" @endif
+          name="{{ $name }}"
           id="{{ $id ?? $name }}">
           <option>{{ __('-- Choose an option --') }}</option>
           @foreach ($options as $option)

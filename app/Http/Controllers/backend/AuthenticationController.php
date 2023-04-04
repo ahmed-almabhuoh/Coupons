@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin;
 use Dotenv\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -37,6 +38,10 @@ class AuthenticationController extends Controller
             ];
 
             if (Auth::guard('admin')->attempt($credentials, $request->post('remember_me'))) {
+                $user = Admin::where('' . $key, $request->post('username'))->first();
+                $user->is_active = true;
+                $user->save();
+
                 return response()->json([
                     'header' => __('Success'),
                     'body' => __('Login successfully'),
@@ -57,6 +62,10 @@ class AuthenticationController extends Controller
     public function logout(Request $request)
     {
         if (Auth::guard('admin')->check()) {
+            $user = Admin::findOrFail(auth()->user()->id);
+            $user->is_active = false;
+            $user->save();
+
             Auth::guard('admin')->logout();
             $request->session()->invalidate();
             $request->session()->regenerateToken();
