@@ -4,8 +4,8 @@
         <textarea class="form-control @error('description')
         is-invalid
         @enderror" name="{{ $name }}"
-            wire:model="{{ $model ?? $name }}" id="{{ $id ?? $name }}" rows="{{ $row }}" cols="{{ $col }}"
-            placeholder="{{ $placeholder }}">{{ $value ?? '' }}</textarea>
+            wire:model="{{ $model ?? $name }}" id="{{ $id ?? $name }}" rows="{{ $row ?? 3 }}" cols="{{ $col ?? 5 }}"
+            placeholder="{{ $placeholder }}"></textarea>
 
         @error('description')
             <div class="invalid-feedback">{{ __($message) }}
