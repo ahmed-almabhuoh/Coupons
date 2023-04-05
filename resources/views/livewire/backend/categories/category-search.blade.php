@@ -40,6 +40,9 @@
                         style="width: 101.266px;" aria-label="Category: activate to sort column ascending">
                         {{ __('Category') }}</th>
                     <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
+                        style="width: 101.266px;" aria-label="Category: activate to sort column ascending">
+                        {{ __('Coupons') }}</th>
+                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
                         style="width: 125.906px;" aria-label="Status: activate to sort column ascending">
                         {{ __('Status') }} </th>
                     <th class="sorting_disabled" rowspan="1" colspan="1" style="width: 135.891px;"
@@ -53,6 +56,7 @@
                             {{ __('No categories found yet ... !') }} </td>
                     </tr>
                 @endif
+                {{-- {{dd($categories)}} --}}
                 @foreach ($categories as $category)
                     <tr>
                         <td>
@@ -66,7 +70,19 @@
                             @endif
                         </td>
                         <td>{{ $category->name }}</td>
-                        <td>{{ $category->status }}</td>
+                        <td>
+                            @if ($category->coupons_count != 0)
+                                <a href="#">
+                                    {{ $category->coupons_count . 'CPs' }}
+                                </a>
+                            @else
+                                No coupons
+                            @endif
+                        </td>
+                        {{-- <td>{{ $category->status }}</td> --}}
+                        <td>
+                            <span class="{{ $category->status_class }}">{{ ucfirst($category->status) }}</span>
+                        </td>
                         <td>
 
                             <a href="{{ route('categories.edit', Crypt::encrypt($category->id)) }}"

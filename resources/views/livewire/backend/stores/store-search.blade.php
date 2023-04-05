@@ -41,6 +41,9 @@
                         {{ __('Store') }}</th>
                     <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
                         style="width: 101.266px;" aria-label="Store: activate to sort column ascending">
+                        {{ __('Coupons') }}</th>
+                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
+                        style="width: 101.266px;" aria-label="Store: activate to sort column ascending">
                         {{ __('Action') }}</th>
                     <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
                         style="width: 125.906px;" aria-label="Status: activate to sort column ascending">
@@ -70,9 +73,21 @@
                         </td>
                         <td>{{ $store->name }}</td>
                         <td>
+                            @if ($store->coupons_count != 0)
+                                <a href="#">
+                                    {{ $store->coupons_count . 'CPs' }}
+                                </a>
+                            @else
+                                No coupons
+                            @endif
+                        </td>
+                        <td>
                             <a href="{{ $store->action }}">{{ $store->name }}</a>
                         </td>
-                        <td>{{ $store->status }}</td>
+                        {{-- <td>{{ $store->status }}</td> --}}
+                        <td>
+                            <span class="{{ $store->status_class }}">{{ ucfirst($store->status) }}</span>
+                        </td>
                         <td>
 
                             <a href="{{ route('stores.edit', Crypt::encrypt($store->id)) }}"

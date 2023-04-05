@@ -77,7 +77,10 @@
                         <td>{{ $admin->full_name }}</td>
                         <td>{{ $admin->email }}</td>
                         <td>{{ $admin->phone }}</td>
-                        <td>{{ $admin->status }}</td>
+                        {{-- <td>{{ $admin->status }}</td> --}}
+                        <td>
+                            <span class="{{ $admin->status_class }}">{{ ucfirst($admin->status) }}</span>
+                        </td>
                         <td>
 
                             <a href="{{ route('admins.edit', Crypt::encrypt($admin->id)) }}"

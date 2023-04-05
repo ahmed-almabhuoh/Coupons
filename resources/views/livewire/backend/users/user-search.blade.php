@@ -77,7 +77,10 @@
                         <td>{{ $user->full_name }}</td>
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->phone }}</td>
-                        <td>{{ $user->status }}</td>
+                        {{-- <td>{{ $user->status }}</td> --}}
+                        <td>
+                            <span class="{{ $user->status_class }}">{{ ucfirst($user->status) }}</span>
+                        </td>
                         <td>
 
                             <a href="{{ route('users.edit', Crypt::encrypt($user->id)) }}"

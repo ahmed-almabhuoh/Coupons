@@ -69,7 +69,10 @@
                                 <div class="avatar-content">{{ $coupon->discount . '%' }}</div>
                             </div>
                         </td>
-                        <td>{{ $coupon->status }}</td>
+                        {{-- <td>{{ $coupon->status }}</td> --}}
+                        <td>
+                            <span class="{{ $coupon->status_class }}">{{ ucfirst($coupon->status) }}</span>
+                        </td>
                         <td>
                             {{ $coupon->code }}
                         </td>
