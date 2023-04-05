@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\backend\AuthenticationController;
 use App\Http\Controllers\backend\DashboardController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CouponController;
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -37,6 +38,7 @@ Route::prefix('cpanel')->middleware('auth:admin')->group(function () {
 
     Route::resource('categories', CategoryController::class);
     Route::resource('stores', StoreController::class);
+    Route::resource('coupons', CouponController::class);
 
     Route::get('logout', [AuthenticationController::class, 'logout'])->name('logout');
 });

@@ -72,15 +72,29 @@
 </li>
 
 <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="shopping-bag"></i><span
-    class="menu-title text-truncate" data-i18n="Invoice">{{ __('Stores') }}</span></a>
-<ul class="menu-content">
-<li><a class="d-flex align-items-center" href="{{ route('stores.index') }}"><i
-            data-feather="circle"></i><span class="menu-item text-truncate"
-            data-i18n="List">{{ __('List') }}</span></a>
+            class="menu-title text-truncate" data-i18n="Invoice">{{ __('Stores') }}</span></a>
+    <ul class="menu-content">
+        <li><a class="d-flex align-items-center" href="{{ route('stores.index') }}"><i
+                    data-feather="circle"></i><span class="menu-item text-truncate"
+                    data-i18n="List">{{ __('List') }}</span></a>
+        </li>
+        <li><a class="d-flex align-items-center" href="{{ route('stores.create') }}"><i
+                    data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Add">
+                    {{ __('Add') }} </span></a>
+        </li>
+    </ul>
 </li>
-<li><a class="d-flex align-items-center" href="{{ route('stores.create') }}"><i
-            data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Add">
-            {{ __('Add') }} </span></a>
-</li>
-</ul>
+
+<li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="tag"></i><span
+            class="menu-title text-truncate" data-i18n="Invoice">{{ __('Coupons') }}</span></a>
+    <ul class="menu-content">
+        <li><a class="d-flex align-items-center" href="{{ route('coupons.index') }}"><i
+                    data-feather="circle"></i><span class="menu-item text-truncate"
+                    data-i18n="List">{{ __('List') }}</span></a>
+        </li>
+        <li><a class="d-flex align-items-center" href="{{ route('coupons.create') }}"><i
+                    data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Add">
+                    {{ __('Add') }} </span></a>
+        </li>
+    </ul>
 </li>
