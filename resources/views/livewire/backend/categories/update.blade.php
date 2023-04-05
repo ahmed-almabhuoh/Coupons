@@ -8,10 +8,12 @@
         </div>
     @endif
 
-    <div class="card-body text-center">
-        <img src="{{ env('APP_URL') . 'content/' . $this->category->image }}" class="img-thumbnail mb-3" alt="Category image"
-            width="250px" height="250px">
-    </div>
+    @if ($category->image)
+        <div class="card-body text-center">
+            <img src="{{ env('APP_URL') . 'content/' . $this->category->image }}" class="img-thumbnail mb-3"
+                alt="Category image" width="250px" height="250px">
+        </div>
+    @endif
 
     <x-form.input name="name" type="text" label="Category name" placeholder="Enter the category name here ...." />
 

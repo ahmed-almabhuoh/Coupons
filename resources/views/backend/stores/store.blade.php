@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Create a category')
-@section('page-index', 'Categories')
+@section('title', 'Create a store')
+@section('page-index', 'Stores')
 @section('root', 'Create')
 @section('sub-root', 'CM')
 
@@ -16,10 +16,10 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">{{ __('Create an category') }}</h4>
+                        <h4 class="card-title">{{ __('Create an store') }}</h4>
                     </div>
                     <div class="card-body">
-                        <livewire:backend.categories.create />
+                        <livewire:backend.stores.create />
                     </div>
                 </div>
             </div>
@@ -30,7 +30,7 @@
 @section('scripts')
     <script>
         document.addEventListener('livewire:load', function() {
-            Livewire.on('category-created', function(data) {
+            Livewire.on('store-created', function(data) {
                 // alert(data.message);
                 console.log('Here');
             });

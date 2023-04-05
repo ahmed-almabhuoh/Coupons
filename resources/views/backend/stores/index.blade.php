@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Categories')
-@section('page-index', 'Categories')
+@section('title', 'Stores')
+@section('page-index', 'Stores')
 @section('root', 'List')
 @section('sub-root', 'CM')
 
@@ -25,21 +25,21 @@
 @section('content')
 
     <div class="content-body">
-        <!-- categories list start -->
+        <!-- stores list start -->
         <section class="app-user-list">
             <div class="card">
-                <livewire:backend.categories.category-search />
+                <livewire:backend.stores.store-search />
             </div>
             <!-- list section end -->
         </section>
-        <!-- categories list ends -->
+        <!-- stores list ends -->
 
     </div>
 @endsection
 
 @section('scripts')
     <!-- BEGIN: Page JS-->
-    <script src="{{ asset('panel/app-assets/js/scripts/pages/app-category-list.js') }}"></script>
+    <script src="{{ asset('panel/app-assets/js/scripts/pages/app-store-list.js') }}"></script>
     <!-- END: Page JS-->
 
     <script>
@@ -60,7 +60,7 @@
         }
 
         function deleteAdmin(id, refrance) {
-            axios.delete('/cpanel/categories/' + id)
+            axios.delete('/cpanel/stores/' + id)
                 .then((response) => {
                     // console.log('Response:', response.data);
                     toastr.success(response.data.body, response.data.header);

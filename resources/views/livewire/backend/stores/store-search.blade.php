@@ -20,14 +20,14 @@
                                     aria-controls="DataTables_Table_0"></label></div>
                     </div>
                     <div class="dt-buttons btn-group flex-wrap">
-                        <a href="{{ route('categories.create') }}" class="btn add-new btn-primary mt-50">
-                            <span>{{ __('Add New Category') }}</span>
+                        <a href="{{ route('stores.create') }}" class="btn add-new btn-primary mt-50">
+                            <span>{{ __('Add New Store') }}</span>
                         </a>
                     </div>
                 </div>
             </div>
         </div>
-        <table class="category-list-table table dataTable no-footer dtr-column" id="DataTables_Table_0" role="grid"
+        <table class="store-list-table table dataTable no-footer dtr-column" id="DataTables_Table_0" role="grid"
             aria-describedby="DataTables_Table_0_info">
             <thead class="table-light">
                 <tr role="row">
@@ -35,10 +35,13 @@
                         style="width: 31.6562px; display: none;" aria-label=""></th>
                     <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
                         style="width: 101.734px;" aria-label="Role: activate to sort column ascending">
-                        {{ __('Image') }}</th>
+                        {{ __('Icon') }}</th>
                     <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
-                        style="width: 101.266px;" aria-label="Category: activate to sort column ascending">
-                        {{ __('Category') }}</th>
+                        style="width: 101.266px;" aria-label="Store: activate to sort column ascending">
+                        {{ __('Store') }}</th>
+                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
+                        style="width: 101.266px;" aria-label="Store: activate to sort column ascending">
+                        {{ __('Action') }}</th>
                     <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
                         style="width: 125.906px;" aria-label="Status: activate to sort column ascending">
                         {{ __('Status') }} </th>
@@ -47,29 +50,32 @@
                 </tr>
             </thead>
             <tbody>
-                @if (!count($categories))
+                @if (!count($stores))
                     <tr class="odd">
                         <td valign="top" colspan="6" class="dataTables_empty">
-                            {{ __('No categories found yet ... !') }} </td>
+                            {{ __('No stores found yet ... !') }} </td>
                     </tr>
                 @endif
-                @foreach ($categories as $category)
+                @foreach ($stores as $store)
                     <tr>
                         <td>
-                            @if ($category->image)
+                            @if ($store->icon)
                                 <span class="avatar"><img class="round"
-                                        src="{{ env('APP_URL') . 'content/' . $category->image }}" alt="avatar"
+                                        src="{{ env('APP_URL') . 'content/' . $store->icon }}" alt="avatar"
                                         height="40" width="40">
                                 </span>
                             @else
                                 {{ __('No image') }}
                             @endif
                         </td>
-                        <td>{{ $category->name }}</td>
-                        <td>{{ $category->status }}</td>
+                        <td>{{ $store->name }}</td>
+                        <td>
+                            <a href="{{ $store->action }}">{{ $store->name }}</a>
+                        </td>
+                        <td>{{ $store->status }}</td>
                         <td>
 
-                            <a href="{{ route('categories.edit', Crypt::encrypt($category->id)) }}"
+                            <a href="{{ route('stores.edit', Crypt::encrypt($store->id)) }}"
                                 class="btn btn-icon btn-info waves-effect waves-float waves-light">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -82,7 +88,7 @@
                             </a>
 
                             <button type="button"
-                                onclick="confirmationDelete('{{ Crypt::encrypt($category->id) }}', this)"
+                                onclick="confirmationDelete('{{ Crypt::encrypt($store->id) }}', this)"
                                 class="btn btn-icon btn-danger waves-effect waves-float waves-light">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -99,13 +105,13 @@
                 @endforeach
                 <tr class="odd" wire:loading>
                     <td valign="top" colspan="6" class="dataTables_empty">
-                        {{ __('Searching about categories ...') }}
+                        {{ __('Searching about stores ...') }}
                     </td>
                 </tr>
             </tbody>
         </table>
         <div class="d-flex justify-content-between mx-2 row mb-1">
-            {{ $categories->links() }}
+            {{ $stores->links() }}
         </div>
     </div>
 </div>
