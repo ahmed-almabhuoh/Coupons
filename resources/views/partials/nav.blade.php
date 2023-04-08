@@ -127,11 +127,18 @@
         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
             class="feather feather-message-square">
-            {{-- <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z">
-            </path> --}}
+            <path fill="none" d="M0 0h24v24H0z" />
             <path
-                d="M20 22C20 20.8954 19.1046 20 18 20H6C4.89543 20 4 20.8954 4 22V19C4 17.9391 4.42143 16.9217 5.17157 16.1716C5.92172 15.4214 6.93913 15 8 15H16C17.0609 15 18.0783 15.4214 18.8284 16.1716C19.5786 16.9217 20 17.9391 20 19V22Z" />
-            <path
-                d="M12 11C14.2091 11 16 9.20914 16 7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7C8 9.20914 9.79086 11 12 11Z" />
+                d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
         </svg><span class="menu-title text-truncate" data-i18n="Chat">Update account</span></a>
+</li>
+
+<li class=" nav-item"><a class="d-flex align-items-center" href="{{ route('manage.admins.password') }}">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="feather feather-message-square">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2">
+            </rect>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+        </svg><span class="menu-title text-truncate" data-i18n="Chat">Change password</span></a>
 </li>

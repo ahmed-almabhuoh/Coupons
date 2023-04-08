@@ -13,4 +13,12 @@ class AccountManagementController extends Controller
             'user' => auth()->user(),
         ]);
     }
+
+    // Change password
+    public function changePassword()
+    {
+        return response()->view('backend.account.change-password', [
+            'user' => auth()->user(),
+        ]);
+    }
 }
