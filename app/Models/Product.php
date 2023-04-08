@@ -5,10 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Coupon extends Model
+class Product extends Model
 {
     use HasFactory;
-    const STATUS = ['active', 'draft'];
 
     // Get attributes
     public function getStatusClassAttribute()
@@ -16,25 +15,19 @@ class Coupon extends Model
         return $this->status === 'active' ? 'badge rounded-pill badge-light-success me-1' : 'badge rounded-pill badge-light-danger me-1';
     }
 
-    // Scopes
-    public function scopeActive($query)
-    {
-        return $query->where('status', 'active');
-    }
-
     // Relations
     public function category()
     {
-        return $this->belongsTo(Category::class, 'category_id', 'id');
+        return $this->belongsTo(Category::class);
     }
 
     public function store()
     {
-        return $this->belongsTo(Store::class, 'store_id', 'id');
+        return $this->belongsTo(Store::class);
     }
 
-    public function products()
+    public function coupon()
     {
-        return $this->hasMany(Product::class);
+        return $this->belongsTo(Coupon::class);
     }
 }

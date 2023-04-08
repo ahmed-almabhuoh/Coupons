@@ -98,3 +98,17 @@
         </li>
     </ul>
 </li>
+
+<li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="package"></i><span
+    class="menu-title text-truncate" data-i18n="Invoice">{{ __('Products') }}</span></a>
+<ul class="menu-content">
+<li><a class="d-flex align-items-center" href="{{ route('products.index') }}"><i
+            data-feather="circle"></i><span class="menu-item text-truncate"
+            data-i18n="List">{{ __('List') }}</span></a>
+</li>
+<li><a class="d-flex align-items-center" href="{{ route('products.create') }}"><i
+            data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Add">
+            {{ __('Add') }} </span></a>
+</li>
+</ul>
+</li>

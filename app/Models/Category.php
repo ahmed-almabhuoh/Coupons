@@ -11,9 +11,14 @@ class Category extends Model
 
     const STATUS = ['active', 'draft'];
 
+    // Relations
     public function coupons()
     {
         return $this->hasMany(Coupon::class, 'category_id', 'id');
+    }
+
+    public function products () {
+        return $this->hasMany(Product::class);
     }
 
     // Scopes

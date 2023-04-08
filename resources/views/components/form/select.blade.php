@@ -7,7 +7,7 @@
           <option>{{ __('-- Choose an option --') }}</option>
           @foreach ($options as $option)
               <option value="{{ is_string($option) ? $option : $option->id }}">
-                  {{ is_string($option) ? __(ucfirst($option)) : $option->name }}</option>
+                  {{ is_string($option) ? __(ucfirst($option)) : $option->name ?? $option->code ?? $option->id}}</option>
           @endforeach
       </select>
       @error($model ?? $name)

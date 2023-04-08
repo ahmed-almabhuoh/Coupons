@@ -3,7 +3,7 @@
         <div class="alert alert-success" role="alert">
             <h4 class="alert-heading">{{ __('Success') }}</h4>
             <div class="alert-body">
-                {{ __('Store created successfully') }}
+                {{ __('Coupon created successfully') }}
             </div>
         </div>
     @endif
