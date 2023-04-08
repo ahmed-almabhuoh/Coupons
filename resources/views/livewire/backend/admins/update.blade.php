@@ -8,9 +8,12 @@
         </div>
     @endif
 
-    <div class="card-body text-center">
-        <img src="{{ env('APP_URL') . 'human/' . $this->admin->image }}" class="img-thumbnail mb-3" alt="User image" width="250px" height="250px">
-    </div>
+    @if ($admin->image)
+        <div class="card-body text-center">
+            <img src="{{ env('APP_URL') . 'human/' . $this->admin->image }}" class="img-thumbnail mb-3" alt="User image"
+                width="250px" height="250px">
+        </div>
+    @endif
 
     <x-form.input name="fname" type="text" label="First name" placeholder="Enter the admin first name here ...." />
 

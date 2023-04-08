@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AccountManagementController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\backend\AuthenticationController;
 use App\Http\Controllers\backend\DashboardController;
@@ -32,15 +33,18 @@ Route::prefix('cpanel')->middleware('guest:admin')->group(function () {
 });
 
 Route::prefix('cpanel')->middleware('auth:admin')->group(function () {
-    Route::get('/', [DashboardController::class, 'getPanel'])->name('control.panel');
-
     Route::resource('admins', AdminController::class);
     Route::resource('users', UserController::class);
-
     Route::resource('categories', CategoryController::class);
     Route::resource('stores', StoreController::class);
     Route::resource('coupons', CouponController::class);
     Route::resource('products', ProductController::class);
+});
+
+Route::prefix('cpanel')->middleware('auth:admin')->group(function () {
+    Route::get('/', [DashboardController::class, 'getPanel'])->name('control.panel');
+
+    Route::get('update-account', [AccountManagementController::class, 'getAccountManagementView'])->name('manage.admins.accounts');
 
     Route::get('logout', [AuthenticationController::class, 'logout'])->name('logout');
 });
