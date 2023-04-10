@@ -77,8 +77,10 @@
                             {{ $coupon->code }}
                         </td>
                         <td>
-                            <a
-                                href="{{ route('categories.edit', Crypt::encrypt($coupon->category->id)) }}">{{ $coupon->category->name }}</a>
+                            @if ($coupon->category)
+                                <a
+                                    href="{{ route('categories.edit', Crypt::encrypt($coupon->category->id)) }}">{{ $coupon->category->name }}</a>
+                            @endif
                         </td>
                         <td>
                             <a

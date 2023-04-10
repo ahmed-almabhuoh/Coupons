@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Backend\Products;
 
 use App\Models\Product;
+use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -15,7 +16,7 @@ class Create extends Component
     public $category_id;
     public $store_id;
     public $coupon_id;
-    public $image;
+    public $images = [];
     public $showSuccess = false;
     public $categories;
     public $stores;
@@ -34,7 +35,7 @@ class Create extends Component
             'category_id' => 'required|integer|exists:categories,id',
             'store_id' => 'required|integer|exists:stores,id',
             'coupon_id' => 'nullable|integer|exists:coupons,id',
-            'image' => 'nullable',
+            'images' => 'nullable',
         ]);
 
         // $product = $this->product;
@@ -44,16 +45,18 @@ class Create extends Component
         $product->category_id = $data['category_id'];
         $product->store_id = $data['store_id'];
         $product->coupon_id = $data['coupon_id'];
-        if ($data['image']) {
-            $path = $data['image']->store('products', [
+        $this->showSuccess = $product->save();
+
+        foreach ($data['images'] as $image) {
+            $path = $image->store('products', [
                 'disk' => 'content_managment',
             ]);
-            $product->image = $path;
-        } else {
-            $product->image = 'products/default.png';
-        }
 
-        $this->showSuccess = $product->save();
+            DB::table('product_images')->insert([
+                'image' => $path,
+                'product_id' => $product->id,
+            ]);
+        }
 
         if ($this->showSuccess) {
             $this->resetModels();

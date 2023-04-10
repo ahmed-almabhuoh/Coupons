@@ -19,7 +19,7 @@
 
     <x-form.select name="coupon" model="coupon_id" label="Product Coupon (Optional)" :options="$coupons" />
 
-    <x-form.single-image name="image" label="Product image" />
+    <x-form.multi-image name="images" label="Product image" />
 
     <div>
         <x-form.submit text="Store" action="store()" type="button" />

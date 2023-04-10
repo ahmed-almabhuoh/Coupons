@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\Store;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpFoundation\Response;
 
 class ProductController extends Controller
@@ -60,6 +61,7 @@ class ProductController extends Controller
             'categories' => Category::active()->get(),
             'stores' => Store::active()->get(),
             'product' => Product::findOrFail(Crypt::decrypt($id)),
+            'images' => DB::table('product_images')->where('product_id', Crypt::decrypt($id))->get(),
         ]);
     }
 

@@ -8,13 +8,6 @@
         </div>
     @endif
 
-    @if ($product->image)
-        <div class="card-body text-center">
-            <img src="{{ env('APP_URL') . 'content/' . $this->product->image }}" class="img-thumbnail mb-3"
-                alt="Category image" width="250px" height="250px">
-        </div>
-    @endif
-
     <x-form.input name="name" type="text" label="Product Name" placeholder="Enter the product name here ...." />
 
     <x-form.input name="price" model="price" type="number" label="Product Price"
@@ -26,7 +19,7 @@
 
     <x-form.select name="coupon" model="coupon_id" label="Product Store" :options="$stores" />
 
-    <x-form.single-image name="image" label="Product image" />
+    <x-form.multi-image name="images" label="Product images" />
 
     <div>
         <x-form.submit text="Update" action="update()" type="button" />
