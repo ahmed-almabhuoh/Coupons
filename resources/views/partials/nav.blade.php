@@ -129,7 +129,21 @@
         <li><a class="d-flex align-items-center" href="{{ route('aqs.index') }}"><i data-feather="circle"></i><span
                     class="menu-item text-truncate" data-i18n="List">{{ __('List') }}</span></a>
         </li>
-        <li><a class="d-flex align-items-center" href="{{ route('aqs.create') }}"><i
+        <li><a class="d-flex align-items-center" href="{{ route('aqs.create') }}"><i data-feather="circle"></i><span
+                    class="menu-item text-truncate" data-i18n="Add">
+                    {{ __('Add') }} </span></a>
+        </li>
+    </ul>
+</li>
+
+<li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="play-circle"></i><span
+            class="menu-title text-truncate" data-i18n="Invoice">{{ __('Offers') }}</span></a>
+    <ul class="menu-content">
+        <li><a class="d-flex align-items-center" href="{{ route('offers.index') }}"><i
+                    data-feather="circle"></i><span class="menu-item text-truncate"
+                    data-i18n="List">{{ __('List') }}</span></a>
+        </li>
+        <li><a class="d-flex align-items-center" href="{{ route('offers.create') }}"><i
                     data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Add">
                     {{ __('Add') }} </span></a>
         </li>
