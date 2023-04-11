@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AqsController;
 use App\Http\Controllers\backend\AuthenticationController;
 use App\Http\Controllers\backend\DashboardController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CouponController;
 use App\Http\Controllers\OfferController;
@@ -43,6 +44,7 @@ Route::prefix('cpanel')->middleware('auth:admin')->group(function () {
     Route::resource('products', ProductController::class);
     Route::resource('aqs', AqsController::class);
     Route::resource('offers', OfferController::class);
+    Route::resource('blogs', BlogController::class);
 });
 
 Route::prefix('cpanel')->middleware('auth:admin')->group(function () {
