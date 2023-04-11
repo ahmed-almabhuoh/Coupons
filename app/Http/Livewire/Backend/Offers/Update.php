@@ -18,7 +18,8 @@ class Update extends Component
     public $status;
     public $offer;
 
-    public function mount ($offer) {
+    public function mount($offer)
+    {
         $this->offer = $offer;
         $this->title = $this->offer->title;
         $this->btn_txt = $this->offer->btn_txt;
@@ -52,7 +53,7 @@ class Update extends Component
                 'disk' => 'content_managment',
             ]);
         }
-        $this->offer->image = $path;
+        $this->offer->image = $path ?? $this->offer->image;
 
         $this->showSuccess = $this->offer->save();
     }
