@@ -29,8 +29,8 @@ class Register extends Component
 
         $names = explode(" ", $data['fullname']);
         $user = new User();
-        $user->fname = $names[0];
-        $user->lname = $names[1];
+        $user->fname = $names[0] ?? '';
+        $user->lname = $names[1] ?? '';
         $user->email = $data['email'];
         $user->password = Hash::make($data['password']);
         $isCreated = $user->save();
