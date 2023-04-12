@@ -71,6 +71,16 @@ class AuthenticationController extends Controller
             $request->session()->regenerateToken();
 
             return redirect()->route('login');
+        } else {
+            $user = Admin::findOrFail(auth()->user()->id);
+            $user->is_active = false;
+            $user->save();
+
+            Auth::guard('web')->logout();
+            $request->session()->invalidate();
+            $request->session()->regenerateToken();
+
+            return redirect()->route('users.login');
         }
     }
 }

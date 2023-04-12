@@ -8,7 +8,13 @@ use Illuminate\Http\Request;
 class AuthenticationController extends Controller
 {
     //
-    public function getRegisterView () {
+    public function getRegisterView()
+    {
         return response()->view('frontend.auth.register');
+    }
+
+    public function getLogin()
+    {
+        return response()->view('frontend.auth.login');
     }
 }

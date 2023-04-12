@@ -39,6 +39,6 @@ class Register extends Component
             $this->showMessage = 'User registered successfully';
 
         sleep(1);
-        return redirect()->route('login');
+        return redirect()->route('users.login');
     }
 }

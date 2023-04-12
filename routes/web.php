@@ -10,6 +10,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CouponController;
 use App\Http\Controllers\front\AuthenticationController as FrontAuthenticationController;
+use App\Http\Controllers\front\PagesController;
 use App\Http\Controllers\OfferController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\StoreController;
@@ -67,4 +68,11 @@ Route::prefix('cpanel')->group(function () {
 
 Route::prefix('/')->group(function () {
     Route::get('register', [FrontAuthenticationController::class, 'getRegisterView'])->name('users.register');
+
+    Route::get('login', [FrontAuthenticationController::class, 'getLogin'])->name('users.login');
+});
+
+Route::prefix('/')->middleware(['auth:web'])->group(function () {
+    // Route::get('register', [FrontAuthenticationController::class, 'getRegisterView'])->name('users.register');
+    Route::get('favorite', [PagesController::class, 'getFavorite'])->name('users.favorite');
 });
