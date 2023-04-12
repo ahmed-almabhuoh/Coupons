@@ -11,7 +11,7 @@
     <meta name="keywords"
         content="admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="PIXINVENT">
-    <title>Login Page - Vuexy - Bootstrap HTML admin template</title>
+    <title>{{ __('Forgot password') }}</title>
     <link rel="apple-touch-icon" href="{{ asset('panel/app-assets/images/ico/apple-icon-120.png') }}">
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('panel/app-assets/images/ico/favicon.ico') }}">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600"
@@ -42,12 +42,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('panel/assets/css/style.css') }}">
     <!-- END: Custom CSS-->
 
-    <link rel="stylesheet" type="text/css"
-        href="{{ asset('panel/app-assets/vendors/css/extensions/toastr.min.css') }}">
-
-    <link rel="stylesheet" type="text/css"
-        href="{{ asset('panel/app-assets/css/plugins/extensions/ext-component-toastr.css') }}">
-
+    @livewireStyles
 </head>
 <!-- END: Head-->
 
@@ -65,7 +60,7 @@
             <div class="content-body">
                 <div class="auth-wrapper auth-v1 px-2">
                     <div class="auth-inner py-2">
-                        <!-- Login v1 -->
+                        <!-- Forgot Password v1 -->
                         <div class="card mb-0">
                             <div class="card-body">
                                 <a href="#" class="brand-logo">
@@ -107,58 +102,33 @@
                                             </g>
                                         </g>
                                     </svg>
-                                    <h2 class="brand-text text-primary ms-1">{{ __(env('APP_NAME')) }}</h2>
+                                    <h2 class="brand-text text-primary ms-1">Vuexy</h2>
                                 </a>
 
-                                <h4 class="card-title mb-1">{{ __('Welcome to Dashboard') }}! 👋</h4>
-                                <p class="card-text mb-2">
-                                    {{ __('Please sign-in to your account and start the adventure') }}</p>
+                                <h4 class="card-title mb-1">Forgot Password? 🔒</h4>
+                                <p class="card-text mb-2">Enter your email and we'll send you instructions to reset
+                                    your password</p>
 
-                                @if (Session::has('message'))
-                                    <p class="card-text mb-2">{{ Session::get('message') }}</p>
-                                @endif
+                                {{-- <form class="auth-forgot-password-form mt-2" action="page-auth-reset-password-v1.html"
+                                    method="POST">
+                                    <div class="mb-1">
+                                        <label for="forgot-password-email" class="form-label">Email</label>
+                                        <input type="text" class="form-control" id="forgot-password-email"
+                                            name="forgot-password-email" placeholder="john@example.com"
+                                            aria-describedby="forgot-password-email" tabindex="1" autofocus />
+                                    </div>
+                                    <button class="btn btn-primary w-100" tabindex="2">Send reset link</button>
+                                </form> --}}
 
-                                <form class="auth-login-form mt-2">
-                                    <div class="mb-1">
-                                        <label for="username" class="form-label">{{ __('Username') }}</label>
-                                        <input type="text" id="username" class="form-control" id="login-email"
-                                            name="username" placeholder="john@example.com"
-                                            aria-describedby="login-email" tabindex="1" autofocus />
-                                    </div>
+                                <livewire:backend.auth.reset-password />
 
-                                    <div class="mb-1">
-                                        <div class="d-flex justify-content-between">
-                                            <label class="form-label" for="login-password"> {{ __('Password') }}
-                                            </label>
-                                            <a href="{{ route('manage.admins.forgot.password') }}">
-                                                <small>Forgot Password?</small>
-                                            </a>
-                                        </div>
-                                        <div class="input-group input-group-merge form-password-toggle">
-                                            <input type="password" class="form-control form-control-merge"
-                                                id="password" id="login-password" name="login-password"
-                                                tabindex="2"
-                                                placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
-                                                aria-describedby="login-password" />
-                                            <span class="input-group-text cursor-pointer"><i
-                                                    data-feather="eye"></i></span>
-                                        </div>
-                                    </div>
-                                    <div class="mb-1">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="remember_me"
-                                                tabindex="3" />
-                                            <label class="form-check-label" for="remember-me">{{ __('Remember Me') }}
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <button class="btn btn-primary w-100" type="button" onclick="login()">
-                                        {{ __('Sign in') }}
-                                    </button>
-                                </form>
+                                <p class="text-center mt-2">
+                                    <a href="{{route('login')}}"> <i data-feather="chevron-left"></i> Back to
+                                        login </a>
+                                </p>
                             </div>
                         </div>
-                        <!-- /Login v1 -->
+                        <!-- /Forgot Password v1 -->
                     </div>
                 </div>
 
@@ -182,7 +152,7 @@
     <!-- END: Theme JS-->
 
     <!-- BEGIN: Page JS-->
-    <script src="{{ asset('panel/app-assets/js/scripts/pages/page-auth-login.js') }}"></script>
+    <script src="{{ asset('panel/app-assets/js/scripts/pages/page-auth-forgot-password.js') }}"></script>
     <!-- END: Page JS-->
 
     <script>
@@ -195,28 +165,7 @@
             }
         })
     </script>
-    <script src="{{ asset('panel/app-assets/vendors/js/extensions/toastr.min.js') }}"></script>
-    <script src="{{ asset('panel/app-assets/js/scripts/extensions/ext-component-toastr.js') }}"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-
-    <script>
-        function login() {
-            axios.post('/cpanel/login', {
-                    username: document.getElementById('username').value,
-                    password: document.getElementById('password').value,
-                    remember_me: document.getElementById('remember_me').checked,
-                })
-                .then((response) => {
-                    // console.log('Response:', response.data);
-                    toastr.success(response.data.body, response.data.header);
-                    window.location.href = '/cpanel';
-                })
-                .catch((error) => {
-                    // console.error('Error:', error);
-                    toastr.error(error.response.data.body, error.response.data.header);
-                });
-        }
-    </script>
+    @livewireScripts
 </body>
 <!-- END: Body-->
 

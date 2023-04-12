@@ -57,3 +57,8 @@ Route::prefix('cpanel')->middleware('auth:admin')->group(function () {
 
     Route::get('logout', [AuthenticationController::class, 'logout'])->name('logout');
 });
+
+Route::prefix('cpanel')->group(function () {
+    Route::get('forgot-password', [AccountManagementController::class, 'getForgotPasswordView'])->name('manage.admins.forgot.password');
+    // Route::get('reset-password', [AccountManagementController::class, 'resetPassword'])->name('manage.admins.reset.password');
+});

@@ -21,4 +21,10 @@ class AccountManagementController extends Controller
             'user' => auth()->user(),
         ]);
     }
+
+    // Forgot password view
+    public function getForgotPasswordView()
+    {
+        return response()->view('backend.auth.forgot-password');
+    }
 }
