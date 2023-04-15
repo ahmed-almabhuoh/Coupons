@@ -42,9 +42,9 @@
                     <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
                         style="width: 101.266px;" aria-label="Coupon: activate to sort column ascending">
                         {{ __('Discount') }}</th>
-                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
+                    {{-- <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
                         style="width: 101.266px;" aria-label="Coupon: activate to sort column ascending">
-                        {{ __('Due price') }}</th>
+                        {{ __('Due price') }}</th> --}}
                     <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
                         style="width: 101.266px;" aria-label="Coupon: activate to sort column ascending">
                         {{ __('Offer') }}</th>
@@ -82,10 +82,10 @@
                         <td>
                             {{ round($product->original_price) . ' SR' }}
                         </td>
-                        <td>
-                            {{-- Discount --}}
+                        {{-- <td>
+                            // Due Price
                             {{ round($product->original_price - $product->price) . ' SR' }}
-                        </td>
+                        </td> --}}
                         <td>
                             {{-- Due Price --}}
                             {{ round($product->price) . ' SR' }}
