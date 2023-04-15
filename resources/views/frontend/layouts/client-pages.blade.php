@@ -95,13 +95,15 @@
                         </a>
                     </li>
                     <li class="pb-2">
-                        <a href="./favorite.html" class="nav-link link-dark text-black-50 active">
+                        <a href="{{ route('users.favorite') }}"
+                            class="nav-link link-dark text-black-50  @if (Route::currentRouteName() == 'users.favorite') active @endif">
                             <i class="fa-solid fa-bag-shopping"></i>
                             Favorite
                         </a>
                     </li>
                     <li>
-                        <a href="./change-password.html" class="nav-link link-dark text-black-50">
+                        <a href="{{ route('users.change.password') }}"
+                            class="nav-link link-dark text-black-50 @if (Route::currentRouteName() == 'users.change.password') active @endif">
                             <i class="fa-solid fa-gear"></i>
                             Change Password
                         </a>
