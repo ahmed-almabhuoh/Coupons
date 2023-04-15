@@ -8,7 +8,13 @@ use Illuminate\Http\Request;
 class PagesController extends Controller
 {
     //
-    public function getFavorite () {
+    public function getFavorite()
+    {
         return response()->view('frontend.pages.favorite');
+    }
+
+    public function getChangePassword()
+    {
+        return response()->view('frontend.auth.change-password');
     }
 }
