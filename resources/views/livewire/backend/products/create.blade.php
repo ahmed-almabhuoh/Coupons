@@ -21,6 +21,9 @@
 
     <x-form.multi-image name="images" label="Product image" />
 
+    <x-form.textarea name="description" label="Product Description"
+        placeholder="Enter the product description here ...." />
+
     <div>
         <x-form.submit text="Store" action="store()" type="button" />
     </div>

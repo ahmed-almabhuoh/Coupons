@@ -16,6 +16,7 @@ class Create extends Component
     public $category_id;
     public $store_id;
     public $coupon_id;
+    public $description;
     public $images = [];
     public $showSuccess = false;
     public $categories;
@@ -36,6 +37,7 @@ class Create extends Component
             'store_id' => 'required|integer|exists:stores,id',
             'coupon_id' => 'nullable|integer|exists:coupons,id',
             'images' => 'nullable',
+            'description' => 'nullable|min:10|max:150',
         ]);
 
         // $product = $this->product;
@@ -45,6 +47,7 @@ class Create extends Component
         $product->category_id = $data['category_id'];
         $product->store_id = $data['store_id'];
         $product->coupon_id = $data['coupon_id'];
+        $product->description = $data['description'];
         $this->showSuccess = $product->save();
 
         foreach ($data['images'] as $image) {
@@ -72,5 +75,6 @@ class Create extends Component
         $this->coupon_id = '';
         $this->category_id = '';
         $this->store_id = '';
+        $this->description = '';
     }
 }
