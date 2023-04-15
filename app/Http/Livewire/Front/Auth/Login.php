@@ -20,7 +20,7 @@ class Login extends Component
     public function login()
     {
         $data = $this->validate([
-            'email' => 'required|email|exists:users,email',
+            'email' => 'required|email',
             'password' => 'required|string',
         ]);
 
@@ -28,14 +28,13 @@ class Login extends Component
             'email' => $data['email'],
             'password' => $data['password'],
         ];
-        if (Auth::guard('web')->attempt($credentials)) {
+        if (Auth::guard('client')->attempt($credentials)) {
             $this->messageStatus = 'success';
             $this->showMessage = 'Login successfully';
-            sleep(2);
             return redirect()->route('users.favorite');
         } else {
-            $this->messageStatus = 'success';
-            $this->showMessage = 'Login successfully';
+            $this->messageStatus = 'error';
+            $this->showMessage = 'Failed to login, please try again!';
         }
     }
 }

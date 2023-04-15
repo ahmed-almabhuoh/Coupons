@@ -4,6 +4,7 @@ namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin;
+use App\Models\User;
 use Dotenv\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -72,11 +73,11 @@ class AuthenticationController extends Controller
 
             return redirect()->route('login');
         } else {
-            $user = Admin::findOrFail(auth()->user()->id);
+            $user = User::findOrFail(auth()->user()->id);
             $user->is_active = false;
             $user->save();
 
-            Auth::guard('web')->logout();
+            Auth::guard('client')->logout();
             $request->session()->invalidate();
             $request->session()->regenerateToken();
 

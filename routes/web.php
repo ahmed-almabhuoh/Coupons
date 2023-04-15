@@ -56,7 +56,9 @@ Route::prefix('cpanel')->middleware('auth:admin')->group(function () {
 
     Route::get('update-account', [AccountManagementController::class, 'getAccountManagementView'])->name('manage.admins.accounts');
     Route::get('change-password', [AccountManagementController::class, 'changePassword'])->name('manage.admins.password');
+});
 
+Route::prefix('cpanel')->middleware(['auth:client,admin'])->group(function () {
     Route::get('logout', [AuthenticationController::class, 'logout'])->name('logout');
 });
 
@@ -66,13 +68,12 @@ Route::prefix('cpanel')->group(function () {
 });
 
 
-Route::prefix('/')->group(function () {
+Route::prefix('/')->middleware(['guest:client'])->group(function () {
     Route::get('register', [FrontAuthenticationController::class, 'getRegisterView'])->name('users.register');
 
     Route::get('login', [FrontAuthenticationController::class, 'getLogin'])->name('users.login');
 });
 
-Route::prefix('/')->middleware(['auth:web'])->group(function () {
-    // Route::get('register', [FrontAuthenticationController::class, 'getRegisterView'])->name('users.register');
+Route::prefix('/')->middleware(['auth:client'])->group(function () {
     Route::get('favorite', [PagesController::class, 'getFavorite'])->name('users.favorite');
 });
