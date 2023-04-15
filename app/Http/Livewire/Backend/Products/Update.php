@@ -67,7 +67,7 @@ class Update extends Component
         $this->product->store_id = $data['store_id'];
 
         // Add the offer by hand
-        if ($data['offer'] != 0) {
+        if ($data['offer'] >= 0) {
             $this->product->offer = $data['offer'];
             $this->product->price = (($data['offer'] / 100) * $data['price']);
             $this->product->coupon_id = null;
