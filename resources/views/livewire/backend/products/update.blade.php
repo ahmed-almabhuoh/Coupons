@@ -17,9 +17,11 @@
 
     <x-form.select name="store" model="store_id" label="Product Store" :options="$stores" />
 
-    <x-form.select name="coupon" model="coupon_id" label="Product Store" :options="$stores" />
+    <x-form.select name="coupon" model="coupon_id" label="Product Coupon" :options="$coupons" />
 
     <x-form.multi-image name="images" label="Product images" />
+
+    <x-form.input name="offer" type="number" label="Product Offer" placeholder="Enter the product offer here ...." min="0" max="100" />
 
     <x-form.textarea name="description" label="Product Description"
         placeholder="Enter the product description here ...." />

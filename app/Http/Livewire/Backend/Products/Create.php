@@ -43,8 +43,6 @@ class Create extends Component
             'offer' => 'required|integer|min:0|max:100',
         ]);
 
-        // dd($data);
-
         // $product = $this->product;
         $product = new Product();
         $product->name = $data['name'];

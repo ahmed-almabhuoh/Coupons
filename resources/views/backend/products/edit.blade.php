@@ -67,7 +67,7 @@
                         <h4 class="card-title">{{ __('Update ') . $product->name }}</h4>
                     </div>
                     <div class="card-body">
-                        <livewire:backend.products.update :product="$product" :categories="$categories" :stores="$stores" />
+                        <livewire:backend.products.update :product="$product" :categories="$categories" :stores="$stores" :coupons="$coupons" />
                     </div>
                 </div>
             </div>
