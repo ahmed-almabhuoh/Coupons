@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Backend\Products;
 
 use App\Models\Coupon;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -25,6 +26,8 @@ class Update extends Component
     public $coupons;
     public $product;
     public $description;
+    public $cusDate;
+    public $duration = 0;
 
     public function mount($product)
     {
@@ -38,6 +41,8 @@ class Update extends Component
         $this->coupon_id = $this->product->coupon_id;
         $this->description = $this->product->description;
         $this->description = $this->product->description;
+        $this->cusDate = $this->product->from_date;
+        $this->duration = $this->product->duration;
     }
 
     public function render()
@@ -58,6 +63,8 @@ class Update extends Component
             'images' => 'nullable',
             'description' => 'nullable|min:10|max:150',
             'offer' => 'required|integer|min:0|max:100',
+            'duration' => 'required|min:0',
+            'cusDate' => 'nullable|date',
         ]);
 
         // $product = $this->product;
@@ -65,6 +72,8 @@ class Update extends Component
         $this->product->original_price = $data['price'];
         $this->product->category_id = $data['category_id'];
         $this->product->store_id = $data['store_id'];
+        $this->product->duration = $data['duration'] ?? 0;
+        $this->product->from_date = $data['cusDate'] ?? Carbon::now();
 
         // Add the offer by hand
         if ($data['offer'] >= 0) {

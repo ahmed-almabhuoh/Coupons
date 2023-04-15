@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Backend\Products;
 
 use App\Models\Coupon;
 use App\Models\Product;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -24,6 +25,8 @@ class Create extends Component
     public $stores;
     public $coupons;
     public $offer = 0;
+    public $duration = 0;
+    public $cusDate;
 
     public function render()
     {
@@ -41,6 +44,8 @@ class Create extends Component
             'images' => 'nullable',
             'description' => 'nullable|min:10|max:150',
             'offer' => 'required|integer|min:0|max:100',
+            'duration' => 'required|min:0',
+            'cusDate' => 'nullable|date',
         ]);
 
         // $product = $this->product;
@@ -49,6 +54,8 @@ class Create extends Component
         $product->original_price = $data['price'];
         $product->category_id = $data['category_id'];
         $product->store_id = $data['store_id'];
+        $product->duration = $data['duration'] ?? 0;
+        $product->from_date = $data['cusDate'] ?? Carbon::now();
 
         // Add the offer by hand
         if ($data['offer'] != 0) {

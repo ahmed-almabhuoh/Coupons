@@ -21,7 +21,18 @@
 
     <x-form.multi-image name="images" label="Product image" />
 
-    <x-form.input name="offer" type="number" label="Product Offer" placeholder="Enter the product offer here ...." min="0" max="100" />
+    <x-form.input name="offer" type="number" label="Product Offer" placeholder="Enter the product offer here ...."
+        min="0" max="100" />
+
+    <x-form.input name="duration" model="duration" type="number" label="Product Days"
+        placeholder="Enter the product duration days here ...."
+        desc="Let the input value 0, if you need to make this coupon available always" />
+
+    <div class="col-sm-12 col-12  py-1">
+        <label class="form-label" for="fp-default">Customize Product Date</label>
+        <input type="text" id="fp-default" wire:model="cusDate" class="form-control flatpickr-basic flatpickr-input"
+            placeholder="YYYY-MM-DD" readonly="readonly">
+    </div>
 
     <x-form.textarea name="description" label="Product Description"
         placeholder="Enter the product description here ...." />
