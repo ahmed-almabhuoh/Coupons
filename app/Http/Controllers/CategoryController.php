@@ -68,6 +68,16 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         $category = Category::findOrFail(Crypt::decrypt($id));
+
+        if (count($category->coupons) || count($category->products)) {
+            return response()->json([
+                'header' => __('Failed!'),
+                'body' => __('Failed to delete the category!'),
+                'icon' => 'error',
+                'title' =>  __('Failed!'),
+                'text' =>  __('Category cannot delete with contains some data!'),
+            ], Response::HTTP_BAD_REQUEST);
+        }
         //
         if ($category->delete()) {
             return response()->json([

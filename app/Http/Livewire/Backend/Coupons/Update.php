@@ -19,6 +19,7 @@ class Update extends Component
     public $coupon;
     public $stores;
     public $categories;
+    public $description;
 
     public function mount($coupon)
     {
@@ -28,6 +29,7 @@ class Update extends Component
         $this->category_id = $this->coupon->category_id;
         $this->store_id = $this->coupon->store_id;
         $this->status = $this->coupon->status;
+        $this->description = $this->coupon->description;
     }
 
     public function render()
@@ -45,6 +47,7 @@ class Update extends Component
             'discount' => 'required|numeric|min:1|max:100',
             'category_id' => 'required|integer|exists:categories,id',
             'store_id' => 'required|integer|exists:stores,id',
+            'description' => 'nullable|min:10|max:150',
         ]);
 
         $this->coupon->code = $data['code'];
@@ -52,6 +55,7 @@ class Update extends Component
         $this->coupon->status = $data['status'];
         $this->coupon->category_id = $data['category_id'];
         $this->coupon->store_id = $data['store_id'];
+        $this->coupon->description = $data['description'];
         $this->showSuccess = $this->coupon->save();
     }
 }

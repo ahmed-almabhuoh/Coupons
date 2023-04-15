@@ -74,6 +74,10 @@ navbar.logo {
   padding-left: 5px;
   font-size: 14px;
 }
+.link ul.dropdown-menu li:hover,
+.link ul.dropdown-menu a:hover {
+  color: var(--primary-color);
+}
 .link ul.dropdown-menu ul:hover li {
   background-color: var(--link-color);
 }
@@ -132,9 +136,9 @@ navbar.logo {
   height: 80vh;
 }
 
-sidebar > div {
+sidebar.sidebar > div {
   width: 34vh;
-  height: 75vh;
+  height: 80vh;
   margin-left: -10px;
 }
 
@@ -181,14 +185,11 @@ sidebar a.nav-link i {
 .card-wrapper {
   justify-content: center;
   display: flex;
-  /* Edite */
-  /* flex-direction: column; */
-  /* align-items: center; */
+
   padding-top: 60px;
-  /* padding-left: 90px; */
   position: absolute;
   left: 35%;
-  top: 19%;
+  top: 15%;
 }
 .card-wrapper .form-control {
   border-width: 2.3px;

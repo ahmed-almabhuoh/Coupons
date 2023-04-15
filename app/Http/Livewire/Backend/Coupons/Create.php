@@ -18,6 +18,7 @@ class Create extends Component
     public $showSuccess = false;
     public $categories;
     public $stores;
+    public $description;
 
     public function render()
     {
@@ -32,6 +33,7 @@ class Create extends Component
             'discount' => 'required|numeric|min:1|max:100',
             'category_id' => 'required|integer|exists:categories,id',
             'store_id' => 'required|integer|exists:stores,id',
+            'description' => 'nullable|min:10|max:150',
         ]);
 
         $coupon = new Coupon();
@@ -39,6 +41,7 @@ class Create extends Component
         $coupon->discount = $data['discount'];
         $coupon->status = $data['status'];
         $coupon->category_id = $data['category_id'];
+        $coupon->description = $data['description'];
         $coupon->store_id = $data['store_id'];
         $this->showSuccess = $coupon->save();
 
@@ -56,5 +59,6 @@ class Create extends Component
         $this->discount = '';
         $this->category_id = '';
         $this->store_id = '';
+        $this->description = '';
     }
 }

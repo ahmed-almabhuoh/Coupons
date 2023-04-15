@@ -10,13 +10,17 @@
 
     <x-form.input name="code" type="text" label="Coupon Code" placeholder="Enter the coupon code here ...." />
 
-    <x-form.input name="coupon" model="discount" type="number" label="Coupon Discount" placeholder="Enter the coupon value here ...." />
+    <x-form.input name="coupon" model="discount" type="number" label="Coupon Discount"
+        placeholder="Enter the coupon value here ...." />
 
     <x-form.select name="status" model="status" label="Coupon status" :options="App\Models\Coupon::STATUS" />
 
     <x-form.select name="category" model="category_id" label="Coupon Category" :options="$categories" />
 
     <x-form.select name="store" model="store_id" label="Coupon Store" :options="$stores" />
+
+    <x-form.textarea name="description" label="Coupons Description"
+        placeholder="Enter the coupon description here ...." />
 
     <div>
         <x-form.submit text="Store" action="store()" type="button" />
