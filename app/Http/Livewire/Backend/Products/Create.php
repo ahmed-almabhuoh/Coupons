@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Backend\Products;
 
+use App\Models\Coupon;
 use App\Models\Product;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
@@ -22,6 +23,7 @@ class Create extends Component
     public $categories;
     public $stores;
     public $coupons;
+    public $offer = 0;
 
     public function render()
     {
@@ -35,18 +37,36 @@ class Create extends Component
             'price' => 'required|numeric|min:1',
             'category_id' => 'required|integer|exists:categories,id',
             'store_id' => 'required|integer|exists:stores,id',
-            'coupon_id' => 'nullable|integer|exists:coupons,id',
+            'coupon_id' => 'nullable',
             'images' => 'nullable',
             'description' => 'nullable|min:10|max:150',
+            'offer' => 'required|integer|min:0|max:100',
         ]);
+
+        // dd($data);
 
         // $product = $this->product;
         $product = new Product();
         $product->name = $data['name'];
-        $product->price = $data['price'];
+        $product->original_price = $data['price'];
         $product->category_id = $data['category_id'];
         $product->store_id = $data['store_id'];
-        $product->coupon_id = $data['coupon_id'];
+
+        // Add the offer by hand
+        if ($data['offer'] != 0) {
+            $product->offer = $data['offer'];
+            $product->price = (($data['offer'] / 100) * $data['price']);
+        }
+
+        // If you need to connect the price with coupon discount
+        if (is_numeric($data['coupon_id']) && is_numeric($data['coupon_id']) > 0) {
+            $coupon = Coupon::findOrFail($data['coupon_id']);
+            $product->coupon_id = $data['coupon_id'];
+            $product->price = $data['price'] - (($coupon->discount / 100) * $data['price']);
+            $product->offer = $coupon->discount;
+            $product->code = $coupon->code;
+        }
+
         $product->description = $data['description'];
         $this->showSuccess = $product->save();
 
@@ -76,5 +96,6 @@ class Create extends Component
         $this->category_id = '';
         $this->store_id = '';
         $this->description = '';
+        $this->offer = '';
     }
 }

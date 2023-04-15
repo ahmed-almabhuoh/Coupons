@@ -80,13 +80,15 @@
                             {{ $product->name }}
                         </td>
                         <td>
-                            {{ $product->price . ' SR' }}
+                            {{ round($product->original_price) . ' SR' }}
                         </td>
                         <td>
-                            {{ $product->price * ($product->offer / 100) . ' SR' }}
+                            {{-- Discount --}}
+                            {{ round($product->original_price - $product->price) . ' SR' }}
                         </td>
                         <td>
-                            {{ $product->price - $product->price * ($product->offer / 100) . ' SR' }}
+                            {{-- Due Price --}}
+                            {{ round($product->price) . ' SR' }}
                         </td>
                         <td>
                             {{ $product->offer . ' %' }}
@@ -103,8 +105,10 @@
                                 href="{{ route('stores.edit', Crypt::encrypt($product->store->id)) }}">{{ $product->store->name }}</a>
                         </td>
                         <td>
-                            <a
-                                href="{{ route('products.edit', Crypt::encrypt($product->coupon->id)) }}">{{ $product->coupon->discount . '%' }}</a>
+                            @if ($product->coupon)
+                                <a
+                                    href="{{ route('coupons.edit', Crypt::encrypt($product->coupon->id)) }}">{{ $product->coupon->discount . '%' }}</a>
+                            @endif
                         </td>
                         <td>
 

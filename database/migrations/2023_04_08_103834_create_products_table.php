@@ -17,9 +17,9 @@ return new class extends Migration
             $table->float('price')->unsigned();
             $table->float('offer')->unsigned()->default(0);
             $table->string('code')->nullable();
-            $table->foreignId('store_id')->constrained('stores', 'id')->nullOnDelete();
-            $table->foreignId('category_id')->constrained('categories', 'id')->nullOnDelete();
-            $table->foreignId('coupon_id')->constrained('coupons', 'id')->nullOnDelete();
+            $table->foreignId('store_id')->constrained('stores', 'id')->restrictOnDelete();
+            $table->foreignId('category_id')->constrained('categories', 'id')->restrictOnDelete();
+            $table->foreignId('coupon_id')->nullable()->constrained('coupons', 'id')->restrictOnDelete();
             $table->string('image');
             $table->timestamps();
         });

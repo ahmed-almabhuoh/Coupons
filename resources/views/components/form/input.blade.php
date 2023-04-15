@@ -1,6 +1,6 @@
 <div class="col-sm-6 col-12  py-1">
     <label class="form-label" for="{{ $id ?? $name }}">{{ __($label) }}</label>
-    <input type="{{ $type }}" wire:model="{{ $model ?? $name }}"
+    <input type="{{ $type }}" wire:model="{{ $model ?? $name }}" min="{{$type == 'number' ? $min : ''}}" max="{{$type == 'number' ? $max : ''}}"
         class="form-control @error($model ?? $name)
     is-invalid
     @enderror" name="{{ $name }}"

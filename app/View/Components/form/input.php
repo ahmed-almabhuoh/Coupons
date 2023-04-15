@@ -19,11 +19,13 @@ class input extends Component
     public $isRequired;
     public $model;
     public $desc;
+    public $min;
+    public $max;
 
     /**
      * Create a new component instance.
      */
-    public function __construct($label, $name, $type = "text",  $value = null, $id = null, $validation = null, $placeholder = null, $isRequired = true, $readOnly = false, $model = null, $desc = null)
+    public function __construct($label, $name, $type = "text",  $value = null, $id = null, $validation = null, $placeholder = null, $isRequired = true, $readOnly = false, $model = null, $desc = null, $min = 0, $max = 1)
     {
         //
         $this->label = $label;
@@ -37,6 +39,8 @@ class input extends Component
         $this->isRequired = $isRequired;
         $this->model = $model;
         $this->desc = $desc;
+        $this->min = $min;
+        $this->max = $max;
     }
 
     /**

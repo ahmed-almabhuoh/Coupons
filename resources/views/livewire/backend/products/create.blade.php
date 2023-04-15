@@ -21,6 +21,8 @@
 
     <x-form.multi-image name="images" label="Product image" />
 
+    <x-form.input name="offer" type="number" label="Product Offer" placeholder="Enter the product offer here ...." min="0" max="100" />
+
     <x-form.textarea name="description" label="Product Description"
         placeholder="Enter the product description here ...." />
 
