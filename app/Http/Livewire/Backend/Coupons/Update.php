@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Backend\Coupons;
 
 use App\Models\Coupon;
+use Carbon\Carbon;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -20,6 +21,8 @@ class Update extends Component
     public $stores;
     public $categories;
     public $description;
+    public $duration = 0;
+    public $cusDate;
 
     public function mount($coupon)
     {
@@ -30,6 +33,8 @@ class Update extends Component
         $this->store_id = $this->coupon->store_id;
         $this->status = $this->coupon->status;
         $this->description = $this->coupon->description;
+        $this->cusDate = $this->coupon->from_date;
+        $this->duration = $this->coupon->duration;
     }
 
     public function render()
@@ -48,6 +53,8 @@ class Update extends Component
             'category_id' => 'required|integer|exists:categories,id',
             'store_id' => 'required|integer|exists:stores,id',
             'description' => 'nullable|min:10|max:150',
+            'duration' => 'required|integer|min:0',
+            'cusDate' => 'nullable|date',
         ]);
 
         $this->coupon->code = $data['code'];
@@ -56,6 +63,8 @@ class Update extends Component
         $this->coupon->category_id = $data['category_id'];
         $this->coupon->store_id = $data['store_id'];
         $this->coupon->description = $data['description'];
+        $this->coupon->duration = $data['duration'];
+        $this->coupon->from_date = $data['cusDate'] ?? $this->coupon->from_date;
         $this->showSuccess = $this->coupon->save();
     }
 }

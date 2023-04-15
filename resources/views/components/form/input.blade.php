@@ -6,6 +6,9 @@
     @enderror" name="{{ $name }}"
         id="{{ $id ?? $name }}" placeholder="{{ __($placeholder) ?? __('Enter the ' . $name) }}" {{-- @if ($isRequired) required="" @endif --}}
         {{-- @if ($readOnly) readonly @endif --}} />
+    @if ($desc)
+        <small class="text-muted">{{ $desc }}</small>
+    @endif
     @error($model ?? $name)
         <div class="invalid-feedback">{{ __($message) }}
         </div>

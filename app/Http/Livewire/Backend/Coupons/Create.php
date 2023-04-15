@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Backend\Coupons;
 
 use App\Models\Coupon;
+use Carbon\Carbon;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -19,6 +20,8 @@ class Create extends Component
     public $categories;
     public $stores;
     public $description;
+    public $duration = 0;
+    public $cusDate;
 
     public function render()
     {
@@ -34,6 +37,8 @@ class Create extends Component
             'category_id' => 'required|integer|exists:categories,id',
             'store_id' => 'required|integer|exists:stores,id',
             'description' => 'nullable|min:10|max:150',
+            'duration' => 'required|integer|min:0',
+            'cusDate' => 'nullable|date',
         ]);
 
         $coupon = new Coupon();
@@ -43,6 +48,8 @@ class Create extends Component
         $coupon->category_id = $data['category_id'];
         $coupon->description = $data['description'];
         $coupon->store_id = $data['store_id'];
+        $coupon->duration = $data['duration'];
+        $coupon->from_date = $data['cusDate'] ?? Carbon::now();
         $this->showSuccess = $coupon->save();
 
         if ($this->showSuccess) {
@@ -60,5 +67,6 @@ class Create extends Component
         $this->category_id = '';
         $this->store_id = '';
         $this->description = '';
+        $this->duration = '';
     }
 }
