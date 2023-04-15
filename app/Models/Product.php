@@ -9,10 +9,18 @@ class Product extends Model
 {
     use HasFactory;
 
+    const STATUS = ['active', 'draft'];
+
     // Get attributes
     public function getStatusClassAttribute()
     {
         return $this->status === 'active' ? 'badge rounded-pill badge-light-success me-1' : 'badge rounded-pill badge-light-danger me-1';
+    }
+
+    // Scopes
+    public function scopeActive($query)
+    {
+        return $query->where('status', 'active');
     }
 
     // Relations

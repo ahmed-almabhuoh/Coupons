@@ -47,6 +47,7 @@ class Create extends Component
             'duration' => 'required|min:0',
             'cusDate' => 'nullable|date',
         ]);
+        $date = Carbon::now();
 
         // $product = $this->product;
         $product = new Product();
@@ -55,7 +56,8 @@ class Create extends Component
         $product->category_id = $data['category_id'];
         $product->store_id = $data['store_id'];
         $product->duration = $data['duration'] ?? 0;
-        $product->from_date = $data['cusDate'] ?? Carbon::now();
+        $product->from_date = $data['cusDate'] ?? $date;
+        $product->to_date = $date->copy()->addDays($data['duration']);
 
         // Add the offer by hand
         if ($data['offer'] != 0) {

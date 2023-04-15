@@ -56,6 +56,7 @@ class Update extends Component
             'duration' => 'required|integer|min:0',
             'cusDate' => 'nullable|date',
         ]);
+        $date = Carbon::now();
 
         $this->coupon->code = $data['code'];
         $this->coupon->discount = $data['discount'];
@@ -64,7 +65,8 @@ class Update extends Component
         $this->coupon->store_id = $data['store_id'];
         $this->coupon->description = $data['description'];
         $this->coupon->duration = $data['duration'];
-        $this->coupon->from_date = $data['cusDate'] ?? $this->coupon->from_date;
+        $this->coupon->from_date = $data['cusDate'] ?? $date;
+        $this->coupon->to_date = $date->copy()->addDays($data['duration']);
         $this->showSuccess = $this->coupon->save();
     }
 }

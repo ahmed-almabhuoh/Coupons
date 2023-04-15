@@ -49,7 +49,9 @@ class Create extends Component
         $coupon->description = $data['description'];
         $coupon->store_id = $data['store_id'];
         $coupon->duration = $data['duration'];
-        $coupon->from_date = $data['cusDate'] ?? Carbon::now();
+        $date = Carbon::now();
+        $coupon->from_date = $data['cusDate'] ?? $date;
+        $coupon->to_date = $date->copy()->addDays($data['duration']);
         $this->showSuccess = $coupon->save();
 
         if ($this->showSuccess) {
