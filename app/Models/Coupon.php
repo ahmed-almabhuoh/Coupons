@@ -37,4 +37,9 @@ class Coupon extends Model
     {
         return $this->hasMany(Product::class);
     }
+
+    public function favorites()
+    {
+        return $this->hasMany(Favorite::class, 'coupon_id', 'id');
+    }
 }

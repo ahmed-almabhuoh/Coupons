@@ -77,4 +77,5 @@ Route::prefix('/')->middleware(['guest:client'])->group(function () {
 Route::prefix('/')->middleware(['auth:client'])->group(function () {
     Route::get('favorite', [PagesController::class, 'getFavorite'])->name('users.favorite');
     Route::get('change-password', [PagesController::class, 'getChangePassword'])->name('users.change.password');
+    Route::get('account', [PagesController::class, 'getAccount'])->name('users.account');
 });

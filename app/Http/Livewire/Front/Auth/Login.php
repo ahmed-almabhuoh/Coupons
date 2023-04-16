@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Front\Auth;
 
+use App\Models\Admin;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 

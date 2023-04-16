@@ -17,4 +17,9 @@ class PagesController extends Controller
     {
         return response()->view('frontend.auth.change-password');
     }
+
+    public function getAccount()
+    {
+        return response()->view('frontend.pages.account');
+    }
 }

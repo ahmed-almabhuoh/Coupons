@@ -62,6 +62,16 @@ class AuthenticationController extends Controller
 
     public function logout(Request $request)
     {
+        if (Auth::guard('admin')->check() && Auth::guard('client')->check()) {
+            $user = User::findOrFail(auth()->user()->id);
+            $user->is_active = false;
+            $user->save();
+
+            Auth::guard('client')->logout();
+            $request->session()->invalidate();
+
+            return redirect()->route('users.login');
+        }
         if (Auth::guard('admin')->check()) {
             $user = Admin::findOrFail(auth()->user()->id);
             $user->is_active = false;
@@ -69,7 +79,6 @@ class AuthenticationController extends Controller
 
             Auth::guard('admin')->logout();
             $request->session()->invalidate();
-            $request->session()->regenerateToken();
 
             return redirect()->route('login');
         } else {
@@ -79,7 +88,6 @@ class AuthenticationController extends Controller
 
             Auth::guard('client')->logout();
             $request->session()->invalidate();
-            $request->session()->regenerateToken();
 
             return redirect()->route('users.login');
         }

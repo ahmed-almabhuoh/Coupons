@@ -57,17 +57,22 @@
                 <!-- Image -->
                 <div class="link btn-group ml-3">
                     <div class="user-iamge">
-                        <img src="{{ asset('front/pages/imgs/user-image.png') }}" alt="">
+                        @if (!auth()->user()->image)
+                            <img src="{{ asset('front/pages/imgs/user-image.png') }}" alt="">
+                        @else
+                            <img src="{{ env('APP_URL') . 'human/' . auth()->user()->image }}" width="40px"
+                                height="40px" alt="">
+                        @endif
                     </div>
                     <button class="btn text-black-50  btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
-                        Mohammed Ali
+                        {{ auth()->user()->fname . ' ' . auth()->user()->lname }}
                     </button>
                     <ul class="dropdown-menu mt-2 text-start">
                         <li>
                             <i class="fa-solid fa-user"></i>
 
-                            <a href="#">My account</a>
+                            <a href="{{ route('users.account') }}">My account</a>
                         </li>
                         <li>
                             <i class="fa-solid fa-arrow-right-from-bracket"></i>
@@ -89,7 +94,9 @@
 
                 <ul class="nav pt-5 nav-pills flex-column mb-auto ">
                     <li class="nav-item pb-2 ">
-                        <a href="./my-account.html" class="nav-link text-black-50  " aria-current="page">
+                        <a href="{{ route('users.account') }}"
+                            class="nav-link text-black-50 @if (Route::currentRouteName() == 'users.account') active @endif"
+                            aria-current="page">
                             <i class="fa-solid fa-user"></i>
                             My Account
                         </a>
