@@ -10,6 +10,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CouponController;
 use App\Http\Controllers\front\AuthenticationController as FrontAuthenticationController;
+use App\Http\Controllers\front\ClientController;
 use App\Http\Controllers\front\PagesController;
 use App\Http\Controllers\OfferController;
 use App\Http\Controllers\ProductController;
@@ -65,6 +66,10 @@ Route::prefix('cpanel')->middleware(['auth:client,admin'])->group(function () {
 Route::prefix('cpanel')->group(function () {
     Route::get('forgot-password', [AccountManagementController::class, 'getForgotPasswordView'])->name('manage.admins.forgot.password');
     // Route::get('reset-password', [AccountManagementController::class, 'resetPassword'])->name('manage.admins.reset.password');
+});
+
+Route::prefix('/')->group(function () {
+    Route::get('about', [ClientController::class, 'getAboutPage'])->name('pages.about');
 });
 
 
