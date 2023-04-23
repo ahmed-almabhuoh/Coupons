@@ -5,6 +5,8 @@ namespace App\Http\Controllers\front;
 use App\Http\Controllers\Controller;
 use App\Models\Aqs;
 use App\Models\Blog;
+use App\Models\Category;
+use App\Models\Store;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -21,6 +23,8 @@ class ClientController extends Controller
     {
         return response()->view('frontend.client.blogs', [
             'blogs' => Blog::active()->get(),
+            'categories' => Category::active()->get(),
+            'stores' => Store::active()->get(),
         ]);
     }
 

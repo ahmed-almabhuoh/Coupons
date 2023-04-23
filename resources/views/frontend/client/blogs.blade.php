@@ -17,6 +17,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <!-- Page title -->
     <title>Blogs Page</title>
+
+    @livewireStyles
 </head>
 
 <body>
@@ -116,79 +118,8 @@
 
             <div class="row">
                 <section class="portfolio" id="Portfolio">
-                    <div class="container">
-                        <div class="row">
-                            <div
-                                class="main-title fw-bold fs-2 d-flex justify-content-center text-center mb-5 position-relative ">
-                                <h2 class="position-absolute "> Blog</h2>
-                            </div>
-                        </div>
-                        <div class="row">
 
-                            <div class="dropdown">
-                                <a class="btn  dropdown-toggle blog" href="#" role="button"
-                                    id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                                    All
-                                </a>
-
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                    <li><a class="dropdown-item text-black-50" href="#">Shein store</a></li>
-                                    <li><a class="dropdown-item text-black-50" href="#">Teddy bear store</a>
-                                    </li>
-                                    <li><a class="dropdown-item text-black-50" href="#">Mazaya Store</a></li>
-                                </ul>
-                            </div>
-
-                            <div class="filter-buttons">
-                                <ul id="filter-btns">
-                                    <li class="active" data-target="all">ALL</li>
-                                    <li data-target="Fashion">Fashion</li>
-                                    <li data-target="Shoes">Shoes</li>
-                                    <li data-target="Games">Games</li>
-                                    <li data-target="Flowers">Flowers</li>
-                                    <li data-target="Gifts">Gifts</li>
-                                    <li data-target="Jewelry">Jewelry</li>
-                                    <li data-target="Accessories">Accessories</li>
-                                    <li data-target="Children">Children</li>
-                                    <li data-target="Care and beauty">Care and beauty</li>
-                                    <li data-target="Accessories">Accessories</li>
-                                </ul>
-                            </div>
-
-
-                        </div>
-                        <div class="row mb-lg-3">
-                            <!-- =============Start portfolio=========== -->
-
-                            <div class="portfolio-gallery offers-product" id="portfolio-gallery">
-
-                                @foreach ($blogs as $blog)
-                                    <div class="item" data-id="Fashion">
-                                        <!-- card #1 -->
-                                        <div class="card offers-product blog">
-                                            <img src="{{ env('APP_URL') . 'content/' . $blog->image }}"
-                                                class="card-img-top" alt="...">
-                                            <div class="card-body">
-                                                <h6 class="card-title blog">{{ $blog->title }}</h6>
-                                                </p>
-                                            </div>
-                                            <div class="position-relative">
-                                                <div class="bottom-text mb-5 d-flex justify-content-around">
-                                                    <button class="button blog btn btn-primary"><span
-                                                            class="m-auto">Git it</span></button>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                @endforeach
-
-                                <!-- ============================================= -->
-                                <!-- =============Start portfolio=========== -->
-                            </div>
-
-                        </div>
-                    </div>
+                    <livewire:front.client.blogs :categories="$categories" :blogs="$blogs" :stores="$stores" />
             </div>
             </section>
         </div>
@@ -221,6 +152,7 @@
         <script src="{{ asset('front/client/js/all.min.js') }}"></script>
         <script src="{{ asset('front/client/js/script.js') }}"></script>
 
+        @livewireScripts
 </body>
 
 </html>
