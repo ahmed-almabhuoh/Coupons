@@ -27,6 +27,7 @@ class Create extends Component
     public $offer = 0;
     public $duration = 0;
     public $cusDate;
+    public $action;
 
     public function render()
     {
@@ -46,6 +47,7 @@ class Create extends Component
             'offer' => 'required|integer|min:0|max:100',
             'duration' => 'required|min:0',
             'cusDate' => 'nullable|date',
+            'action' => 'required|string',
         ]);
         $date = Carbon::now();
 
@@ -55,6 +57,7 @@ class Create extends Component
         $product->original_price = $data['price'];
         $product->category_id = $data['category_id'];
         $product->store_id = $data['store_id'];
+        $product->action = $data['action'];
         $product->duration = $data['duration'] ?? 0;
         $product->from_date = $data['cusDate'] ?? $date;
         $product->to_date = $date->copy()->addDays($data['duration']);
@@ -104,5 +107,6 @@ class Create extends Component
         $this->store_id = '';
         $this->description = '';
         $this->offer = '';
+        $this->action = '';
     }
 }

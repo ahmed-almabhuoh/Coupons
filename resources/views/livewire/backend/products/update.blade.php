@@ -13,6 +13,9 @@
     <x-form.input name="price" model="price" type="number" label="Product Price"
         placeholder="Enter the product price here ...." />
 
+    <x-form.input name="action" model="action" type="url" label="Product Link"
+        placeholder="Enter the product link here ...." />
+
     <x-form.select name="category" model="category_id" label="Product Category" :options="$categories" />
 
     <x-form.select name="store" model="store_id" label="Product Store" :options="$stores" />

@@ -47,7 +47,7 @@
                             href="{{ route('pages.fqs') }}">Common Questions</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link p-2 p-lg-3" href="#">Offers</a>
+                        <a class="nav-link p-2 p-lg-3 @if (Route::currentRouteName() == 'pages.offers') active @endif " href="{{ route('pages.offers') }}">Offers</a>
                     </li>
                     @if (auth('client')->check())
                         <li class="nav-item">

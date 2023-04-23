@@ -6,10 +6,14 @@ use App\Http\Controllers\Controller;
 use App\Models\Aqs;
 use App\Models\Blog;
 use App\Models\Category;
+use App\Models\Offer;
+use App\Models\Product;
 use App\Models\Store;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\DB;
+use Symfony\Component\HttpFoundation\Response;
 
 class ClientController extends Controller
 {
@@ -53,5 +57,35 @@ class ClientController extends Controller
             'message' => $id ? 'Thank you for your effort, you work hard to contact with you via your email " ' . $request->post('email') . '" so soon :)' : 'Failed to recieve your contact request, please try again later!',
             'code' => $id ? 200 : 401,
         ]);
+    }
+
+    // Offer
+    public function getOfferPage()
+    {
+        $products = Product::active()->with('store')->get();
+        foreach ($products as $product) {
+            $image_path = DB::table('product_images')->where('product_id', $product->id)->first();
+            if (!is_null($image_path))
+                $product->setAttribute('image', $image_path->image);
+        }
+
+        return response()->view('frontend.client.offers', [
+            'offers' => Offer::active()->get(),
+            'products' => $products,
+        ]);
+    }
+
+    // Get a specific product without middleware
+    public function getProduct($id)
+    {
+        $product = Product::with('store')->with('category')->find($id);
+        if (!$product) {
+            return response()->json([
+                'error' => 'Product not found'
+            ], Response::HTTP_NOT_FOUND);
+        }
+        return response()->json([
+            'product' => $product,
+        ], Response::HTTP_OK);
     }
 }

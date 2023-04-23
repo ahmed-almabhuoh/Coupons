@@ -16,7 +16,7 @@
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <!-- Page title -->
-    <title>Blogs Page</title>
+    <title>Offers User</title>
 
     @livewireStyles
 </head>
@@ -50,7 +50,8 @@
                             href="{{ route('pages.fqs') }}">Common Questions</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link p-2 p-lg-3 @if (Route::currentRouteName() == 'pages.offers') active @endif " href="{{ route('pages.offers') }}">Offers</a>
+                        <a class="nav-link p-2 p-lg-3 @if (Route::currentRouteName() == 'pages.offers') active @endif "
+                            href="{{ route('pages.offers') }}">Offers</a>
                     </li>
                     @if (auth('client')->check())
                         <li class="nav-item">
@@ -102,6 +103,22 @@
                             </li>
                         </ul>
                     </div>
+                @else
+                    <a class="btn rounded-pill main-btn" href="{{ route('users.register') }}" onclick="">Create
+                        account</a>
+                    <div class="country btn-group m-3">
+                        <button class="btn text-black-50  btn-sm dropdown-toggle" type="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="{{ asset('front/client/imgs/united-states.png') }}" alt="">
+                            English
+                        </button>
+                        <ul class="dropdown-menu mt-2 text-start">
+                            <li>
+                                <img src="{{ asset('front/client/imgs/saudi-arabia.png') }}" alt="">
+                                <a class="text-black-50" href="#">Saudi Arabia</a>
+                            </li>
+                        </ul>
+                    </div>
                 @endif
                 <!-- End User-Image -->
 
@@ -113,18 +130,85 @@
     </nav>
     <!-- End Nav -->
     <!-- ================ End Header ================= -->
+
+    <!-- ================Start Hero Section=========== -->
+    {{-- <div id="carouselExampleControls" class="carousel slide mb-0" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            @foreach ($offers as $offer)
+                <div class="carousel-item active">
+                    <img src="{{ asset('front/client/imgs/liner-background.png') }}" class="d-block w-100"
+                        alt="...">
+                    <img class="flowerd" src="{{ asset('front/client/imgs/flowerd.png') }}" alt="">
+                    <div class="carousel-caption  ">
+                        <h3 style="width: 50% !important;" class="pb-4">{{ $offer->title }}</h3>
+                        <h3 class="pb-4">On the occasion of the Saudi National Day</h3>
+                        <a class="dif-button btn btn-primary"
+                            href="{{ $offer->btn_action }}">{{ $offer->btn_txt }}</a>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="{{ asset('front/client/imgs/liner-background.png') }}" class="d-block w-100"
+                        alt="...">
+                    <img class="flowerd" src="{{ asset('front/client/imgs/flowerd.png') }}" alt="">
+                    <div class="carousel-caption  ">
+                        <h3>30% Discounts From the Floward store</h3>
+                        <h3 class="pb-4">On the occasion of the Saudi National Day</h3>
+                        <a class="dif-button btn btn-primary ">Get a discount coupon</a>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div> --}}
+
+    <div id="carouselExampleControls" class="carousel slide mb-0" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            @foreach ($offers as $key => $offer)
+                <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
+                    <img src="{{ asset('front/client/imgs/liner-background.png') }}" class="d-block w-100"
+                        alt="...">
+                    <img class="flowerd" src="{{ env('APP_URL') . 'content/' . $offer->image }}" alt="">
+                    <div class="carousel-caption">
+                        <h3 class="pd-6" style="width: 50%">{{ $offer->title }}</h3>
+                        <a class="dif-button btn btn-primary"
+                            href="{{ $offer->btn_action }}">{{ $offer->btn_txt }}</a>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    <!-- =============== End Hero Section ============ -->
+
+
+
     <!-- ============== Start Main Section ========== -->
 
     <div class=" pt-5 pb-5">
         <div class="container">
 
 
-            <div class="row">
-                <section class="portfolio" id="Portfolio">
 
-                    <livewire:front.client.blogs :categories="$categories" :blogs="$blogs" :stores="$stores" />
-            </div>
-            </section>
+            {{-- </section> --}}
+            <livewire:front.client.offers :products="$products" />
         </div>
 
         <!-- ============== End Main Section =========== -->
@@ -149,13 +233,15 @@
                 </div>
             </div>
         </div>
-        <!--=============== End Footer =========== -->
+    </div>
+    <!--=============== End Footer =========== -->
 
-        <script src="{{ asset('front/client/js/bootstrap.bundle.min.js') }}"></script>
-        <script src="{{ asset('front/client/js/all.min.js') }}"></script>
-        <script src="{{ asset('front/client/js/script.js') }}"></script>
-
-        @livewireScripts
+    <script src="{{ asset('front/client/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('front/client/js/all.min.js') }}"></script>
+    <script src="{{ asset('front/client/js/script.js') }}"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    @stack('scripts')
+    @livewireScripts
 </body>
 
 </html>

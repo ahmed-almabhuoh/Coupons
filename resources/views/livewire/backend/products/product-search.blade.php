@@ -52,6 +52,9 @@
                         style="width: 101.266px;" aria-label="Coupon: activate to sort column ascending">
                         {{ __('Code') }}</th>
                     <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
+                        style="width: 101.266px;" aria-label="Coupon: activate to sort column ascending">
+                        {{ __('Action') }}</th>
+                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
                         style="width: 125.906px;" aria-label="Status: activate to sort column ascending">
                         {{ __('Category') }} </th>
                     <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
@@ -95,6 +98,13 @@
                         </td>
                         <td>
                             {{ $product->code }}
+                        </td>
+                        <td>
+                            @if ($product->action)
+                                <a href="{{ $product->action }}" target="_blank">Link</a>
+                            @else
+                                No link
+                            @endif
                         </td>
                         <td>
                             <a

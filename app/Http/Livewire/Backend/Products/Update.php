@@ -27,6 +27,7 @@ class Update extends Component
     public $product;
     public $description;
     public $cusDate;
+    public $action;
     public $duration = 0;
 
     public function mount($product)
@@ -43,6 +44,7 @@ class Update extends Component
         $this->description = $this->product->description;
         $this->cusDate = $this->product->from_date;
         $this->duration = $this->product->duration;
+        $this->action = $this->product->action;
     }
 
     public function render()
@@ -65,6 +67,7 @@ class Update extends Component
             'offer' => 'required|integer|min:0|max:100',
             'duration' => 'required|min:0',
             'cusDate' => 'nullable|date',
+            'action' => 'required|string',
         ]);
         $date = Carbon::now();
 
@@ -72,6 +75,7 @@ class Update extends Component
         $this->product->name = $data['name'];
         $this->product->original_price = $data['price'];
         $this->product->category_id = $data['category_id'];
+        $this->product->action = $data['action'];
         $this->product->store_id = $data['store_id'];
         $this->product->duration = $data['duration'] ?? 0;
         $this->product->from_date = $data['cusDate'] ?? $date;

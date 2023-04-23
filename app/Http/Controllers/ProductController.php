@@ -46,9 +46,12 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Product $product)
+    public function show($id)
     {
         //
+        return response()->json([
+            'product' => Product::active()->where('id', Crypt::decrypt($id))->first(),
+        ], Response::HTTP_OK);
     }
 
     /**

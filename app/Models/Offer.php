@@ -10,4 +10,8 @@ class Offer extends Model
     use HasFactory;
 
     const STATUS = ['active', 'in-active'];
+
+    public function scopeActive ($query) {
+        return $query->where('status', 'active');
+    }
 }
