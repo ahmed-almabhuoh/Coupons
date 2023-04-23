@@ -17,8 +17,14 @@ class Category extends Model
         return $this->hasMany(Coupon::class, 'category_id', 'id');
     }
 
-    public function products () {
+    public function products()
+    {
         return $this->hasMany(Product::class);
+    }
+
+    public function blogs()
+    {
+        return $this->hasMany(Blog::class, 'category_id', 'id');
     }
 
     // Scopes
@@ -27,7 +33,8 @@ class Category extends Model
         return $query->where('status', 'active');
     }
 
-    public function getStatusClassAttribute () {
+    public function getStatusClassAttribute()
+    {
         return $this->status === 'active' ? 'badge rounded-pill badge-light-success me-1' : 'badge rounded-pill badge-light-danger me-1';
     }
 }

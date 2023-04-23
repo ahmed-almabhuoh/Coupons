@@ -19,7 +19,7 @@
                         <h4 class="card-title">{{ __('Create a new blog') }}</h4>
                     </div>
                     <div class="card-body">
-                        <livewire:backend.blogs.create />
+                        <livewire:backend.blogs.create :categories="$categories" :stores="$stores" />
                     </div>
                 </div>
             </div>

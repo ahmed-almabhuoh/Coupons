@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
+use App\Models\Category;
+use App\Models\Store;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 use Symfony\Component\HttpFoundation\Response;
@@ -24,7 +26,10 @@ class BlogController extends Controller
     public function create()
     {
         //
-        return response()->view('backend.blogs.store');
+        return response()->view('backend.blogs.store', [
+            'categories' => Category::active()->get(),
+            'stores' => Store::active()->get(),
+        ]);
     }
 
     /**
@@ -51,6 +56,8 @@ class BlogController extends Controller
         //
         return response()->view('backend.blogs.edit', [
             'blog' => Blog::findOrFail(Crypt::decrypt($id)),
+            'categories' => Category::active()->get(),
+            'stores' => Store::active()->get(),
         ]);
     }
 

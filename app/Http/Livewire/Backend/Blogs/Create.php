@@ -12,6 +12,11 @@ class Create extends Component
 
     public $title;
     public $image;
+    public $status;
+    public $category_id;
+    public $store_id;
+    public $stores;
+    public $categories;
     public $showSuccess = false;
 
     public function render()
@@ -23,11 +28,17 @@ class Create extends Component
     {
         $data = $this->validate([
             'title' => 'required|string|min:5|unique:blogs,title',
-            'image' => 'nullable|image',
+            'image' => 'nullable',
+            'status' => 'required|string|in:' . implode(",", Blog::STATUS),
+            'category_id' => 'required|integer|exists:categories,id',
+            'store_id' => 'required|integer|exists:stores,id',
         ]);
 
         $blog = new Blog();
         $blog->title = $data['title'];
+        $blog->status = $data['status'];
+        $blog->category_id = $data['category_id'];
+        $blog->store_id = $data['store_id'];
         $path = 'blogs/default.jpg';
         if ($data['image']) {
             $path = $data['image']->store('blogs', [
@@ -47,5 +58,8 @@ class Create extends Component
     {
         $this->title = '';
         $this->image = '';
+        $this->status = '';
+        $this->category_id = '';
+        $this->store_id = '';
     }
 }

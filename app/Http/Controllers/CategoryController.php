@@ -69,7 +69,7 @@ class CategoryController extends Controller
     {
         $category = Category::findOrFail(Crypt::decrypt($id));
 
-        if (count($category->coupons) || count($category->products)) {
+        if (count($category->coupons) || count($category->products) || count($category->blogs)) {
             return response()->json([
                 'header' => __('Failed!'),
                 'body' => __('Failed to delete the category!'),

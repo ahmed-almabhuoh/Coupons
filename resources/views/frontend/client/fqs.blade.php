@@ -16,11 +16,11 @@
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <!-- Page title -->
-    <title>About Page Guest</title>
+    <title>Common question User</title>
 </head>
 
 <body>
-    <!-- ================ Start Header ============ -->
+    <!-- ================Start Header============== -->
     <nav class="navbar navbar-expand-lg sticky-top">
         <div class="container">
             <div class="logo">
@@ -43,7 +43,8 @@
                             href="{{ route('pages.about') }}">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link p-2 p-lg-3 @if (Route::currentRouteName() == 'pages.fqs') active @endif" href="{{ route('pages.fqs') }}">Common Questions</a>
+                        <a class="nav-link p-2 p-lg-3 @if (Route::currentRouteName() == 'pages.fqs') active @endif"
+                            href="{{ route('pages.fqs') }}">Common Questions</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link p-2 p-lg-3" href="#">Offers</a>
@@ -56,7 +57,8 @@
                     @endif
                 </ul>
 
-                <!-- =====>>>> Start Guest<<<<===== -->
+                <!-- =====>>>> Start User <<<<===== -->
+                <!-- Start -Image -->
                 @if (auth('client')->check())
                     <div class="link btn-group ml-3">
                         <div class="user-iamge">
@@ -113,59 +115,102 @@
                         </ul>
                     </div>
                 @endif
-                <!-- =====>>>> End Guest<<<<===== -->
+                <!-- End User-Image -->
+                <!-- =====>>>> End User <<<<====== -->
 
             </div>
         </div>
+        <!-- End Container -->
     </nav>
-    <!-- ================ End Header ============== -->
+    <!-- End Nav -->
+    <!-- ================ End Header ================= -->
 
     <!-- ============== Start Main Section ======== -->
-    <div class="main-section about pt-5 pb-3 mt-5">
+    <div class="main-section pt-5 pb-3 mt-5">
         <div class="container">
+            @if (session('message'))
+                <div class="alert @if (session('code') == 200) alert-success @else alert-danger @endif"
+                    role="alert">
+                    {{ session('message') }}
+                </div>
+            @endif
             <div class="main-title fw-bold fs-2 d-flex justify-content-center text-center  mb-5 position-relative ">
-                <h2 class="position-absolute "> About Us</h2>
+                <h2 class="position-absolute "> Common Questions</h2>
             </div>
+            <div class="row">
+                <div class="col-md-6 px-4">
+                    <div class="accordion" id="accordionExample">
 
-            <div class="container-fluid">
-                <div class="row">
-
-                    <!-- text -->
-                    <div class="col-md-6">
-                        <div class="text">
-                            <div class="about-text-header">
-                                <h4>about the platform</h4>
+                        @if (!count($fqs))
+                            <h2>{{ __('No questions published yet!') }}</h2>
+                        @endif
+                        @foreach ($fqs as $fq)
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button collapsed" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false"
+                                        aria-controls="collapseOne">
+                                        {{ $fq->title }}
+                                    </button>
+                                </h2>
+                                <div id="collapseOne" class="accordion-collapse collapse"
+                                    aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        {{ $fq->answer }}
+                                    </div>
+                                </div>
                             </div>
-                            <div class="about-text-body">
-                                <p>
-                                    A mini-paragraph talking about what this site offers specifically A mini-paragraph
-                                    talking about what
-                                    this site offers specifically A mini-paragraph talking about what this site offers
-                                    specifically A
-                                    mini-paragraph talking about what this site offers specifically A mini-paragraph
-                                    talking about what
-                                    this
-                                    site offers specifically A mini-paragraph talking about what This site presents a
-                                    mini-paragraph that
-                                    talks about what exactly this site offers. A mini-paragraph that specifically talks
-                                    about what this
-                                    site
-                                    offers.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+                        @endforeach
 
-                    <!-- img -->
-                    <div class="about-img col-md-6">
-                        <img src="{{ asset('front/client/imgs/about-avatar.png') }}" alt="">
-                    </div>
 
+                    </div>
                 </div>
 
+                <div class="form col-md-6 px-4">
+                    <div class="row ">
+                        <div class="col-md-12">
+
+                            <h3>Do you have a question in your mind?!</h3>
+                            <p>Ask us and we will respond within 24 hours.</p>
+
+                            <form class="common-question" method="POST" action="{{ route('send.contact') }}">
+                                @csrf
+                                <div class="form-group ">
+                                    <!-- <label for="email">Email address</label> -->
+                                    <input type="email"
+                                        class="form-control @error('email')
+                                    is-invalid
+                                    @enderror"
+                                        id="email" name="email" placeholder="Your E-mail">
+                                    @error('email')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <!-- <label for="message">Message</label> -->
+                                    <textarea
+                                        class="form-control @error('message')
+                                    is-invalid
+                                    @enderror"
+                                        id="message" name="message" rows="5" placeholder="Your Message Here.."></textarea>
+                                    @error('message')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+
+                                <div>
+                                    <button type="submit" class="btn btn-primary col-6">Submit</button>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
             </div>
-
-
         </div>
     </div>
     <!-- ============= End Main Section ========== -->

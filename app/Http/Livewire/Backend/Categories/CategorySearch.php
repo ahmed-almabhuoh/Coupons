@@ -15,7 +15,7 @@ class CategorySearch extends Component
     {
         $this->categories = Category::where(function ($query) {
             $query->where('name', 'like', "%" . $this->searchTerm . "%");
-        })->withCount('coupons')->paginate($this->paginate);
+        })->withCount('coupons')->withCount('blogs')->withCount('products')->paginate($this->paginate);
 
         return view('livewire.backend.categories.category-search', [
             'categories' => $this->categories,

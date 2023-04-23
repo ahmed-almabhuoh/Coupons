@@ -39,6 +39,15 @@
                     <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
                         style="width: 101.734px;" aria-label="Role: activate to sort column ascending">
                         {{ __('Title') }}</th>
+                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
+                        style="width: 101.734px;" aria-label="Role: activate to sort column ascending">
+                        {{ __('Category') }}</th>
+                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
+                        style="width: 101.734px;" aria-label="Role: activate to sort column ascending">
+                        {{ __('Store') }}</th>
+                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
+                        style="width: 101.734px;" aria-label="Role: activate to sort column ascending">
+                        {{ __('Status') }}</th>
                     <th class="sorting_disabled" rowspan="1" colspan="1" style="width: 135.891px;"
                         aria-label="Actions"> {{ __('Actions') }} </th>
                 </tr>
@@ -64,6 +73,26 @@
                         </td>
                         <td>
                             {{ $blog->title }}
+                        </td>
+                        <td>
+                            @if ($blog->category)
+                                <a
+                                    href="{{ route('categories.edit', Crypt::encrypt($blog->category->id)) }}">{{ $blog->category->name }}</a>
+                            @else
+                                No category
+                            @endif
+                        </td>
+                        <td>
+                            @if ($blog->store)
+                                <a
+                                    href="{{ route('stores.edit', Crypt::encrypt($blog->store->id)) }}">{{ $blog->store->name }}</a>
+                            @else
+                                No store
+                            @endif
+                        </td>
+                        <td>
+                            {{-- {{ $artical->status }} --}}
+                            <span class="{{ $blog->status_class }}">{{ ucfirst($blog->status) }}</span>
                         </td>
                         <td>
 

@@ -41,7 +41,13 @@
                         {{ __('Category') }}</th>
                     <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
                         style="width: 101.266px;" aria-label="Category: activate to sort column ascending">
+                        {{ __('Products') }}</th>
+                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
+                        style="width: 101.266px;" aria-label="Category: activate to sort column ascending">
                         {{ __('Coupons') }}</th>
+                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
+                        style="width: 101.266px;" aria-label="Category: activate to sort column ascending">
+                        {{ __('Blogs') }}</th>
                     <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
                         style="width: 125.906px;" aria-label="Status: activate to sort column ascending">
                         {{ __('Status') }} </th>
@@ -71,12 +77,30 @@
                         </td>
                         <td>{{ $category->name }}</td>
                         <td>
+                            @if ($category->products_count != 0)
+                                <a href="#">
+                                    {{ $category->products_count . ' PRDs' }}
+                                </a>
+                            @else
+                                No products
+                            @endif
+                        </td>
+                        <td>
                             @if ($category->coupons_count != 0)
                                 <a href="#">
                                     {{ $category->coupons_count . 'CPs' }}
                                 </a>
                             @else
                                 No coupons
+                            @endif
+                        </td>
+                        <td>
+                            @if ($category->blogs_count != 0)
+                                <a href="#">
+                                    <a href="#">{{ $category->blogs_count . ' BLOGS' }}</a>
+                                </a>
+                            @else
+                                No blogs
                             @endif
                         </td>
                         {{-- <td>{{ $category->status }}</td> --}}

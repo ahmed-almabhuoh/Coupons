@@ -70,6 +70,10 @@ Route::prefix('cpanel')->group(function () {
 
 Route::prefix('/')->group(function () {
     Route::get('about', [ClientController::class, 'getAboutPage'])->name('pages.about');
+    Route::get('blogs', [ClientController::class, 'getBlogsPage'])->middleware(['auth:client'])->name('pages.blogs');
+    Route::get('fqs', [ClientController::class, 'getFqsPage'])->name('pages.fqs');
+
+    Route::post('contact', [ClientController::class, 'recieveContactRequest'])->middleware('throttle:3,60')->name('send.contact');
 });
 
 

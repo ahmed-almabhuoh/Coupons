@@ -22,6 +22,11 @@ class Store extends Model
         return $this->hasMany(Product::class);
     }
 
+    public function blogs()
+    {
+        return $this->hasMany(Blog::class, 'store_id', 'id');
+    }
+
     // Scopes
     public function scopeActive($query)
     {

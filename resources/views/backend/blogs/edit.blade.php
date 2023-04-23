@@ -24,7 +24,7 @@
                         <h4 class="card-title">{{ __('Update ') . $blog->name }}</h4>
                     </div>
                     <div class="card-body">
-                        <livewire:backend.blogs.update :blog="$blog" />
+                        <livewire:backend.blogs.update :blog="$blog" :categories="$categories" :stores="$stores" />
                     </div>
                 </div>
             </div>
