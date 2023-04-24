@@ -113,4 +113,15 @@ class ClientController extends Controller
             'coupon' => Coupon::active()->where('id', $coupon_id)->with('store')->with('category')->first(),
         ]);
     }
+
+    // Get home page
+    public function getHomePage()
+    {
+        return response()->view('frontend.client.home', [
+            'offers' => Offer::active()->get(),
+            'coupons' => Coupon::active()->get(),
+            'categories' => Category::active()->get(),
+            'stores' => Store::active()->get(),
+        ]);
+    }
 }

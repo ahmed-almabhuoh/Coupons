@@ -36,7 +36,8 @@
             <div class="collapse navbar-collapse" id="main">
                 <ul class="navbar-nav m-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link p-2 p-lg-3 " aria-current="page" href="#">Home</a>
+                        <a class="nav-link p-2 p-lg-3 @if (Route::currentRouteName() == 'pages.home') active @endif"
+                            aria-current="page" href="{{ route('pages.home') }}">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link p-2 p-lg-3  @if (Route::currentRouteName() == 'pages.coupons') active @endif"

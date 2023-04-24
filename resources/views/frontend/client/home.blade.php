@@ -16,12 +16,13 @@
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <!-- Page title -->
-    <title>Offers User</title>
+    <title>Home User</title>
 
     @livewireStyles
 </head>
 
 <body>
+
 
     <!-- ================Start Header============== -->
     <nav class="navbar navbar-expand-lg sticky-top">
@@ -64,7 +65,6 @@
                 </ul>
 
                 <!-- =====>>>> Start User <<<<===== -->
-
                 <!-- Start -Image -->
                 @if (auth('client')->check())
                     <div class="link btn-group ml-3">
@@ -123,15 +123,14 @@
                     </div>
                 @endif
                 <!-- End User-Image -->
-
                 <!-- =====>>>> End User <<<<====== -->
-
             </div>
         </div>
         <!-- End Container -->
     </nav>
     <!-- End Nav -->
     <!-- ================ End Header ================= -->
+
 
     <!-- ================Start Hero Section=========== -->
     <div id="carouselExampleControls" class="carousel slide mb-0" data-bs-ride="carousel">
@@ -162,42 +161,39 @@
     </div>
     <!-- =============== End Hero Section ============ -->
 
-
-
     <!-- ============== Start Main Section ========== -->
-
     <div class=" pt-5 pb-5">
         <div class="container">
 
+            <livewire:front.client.home :coupons="$coupons" :stores="$stores" :categories="$categories" />
 
-
-            {{-- </section> --}}
-            <livewire:front.client.offers :products="$products" />
         </div>
+        </section>
+    </div>
+    <!-- ============== End Main Section =========== -->
 
-        <!-- ============== End Main Section =========== -->
 
-        <!--=============== Start Footer =============== -->
-        <div class="footer pt-2 pb-2 text-white-50 text-center text-md-start">
-            <div class="container text-center">
-                <div class="row ">
+    <!--=============== Start Footer =============== -->
+    <div class="footer pt-2 pb-2 text-white-50 text-center text-md-start">
+        <div class="container text-center">
 
-                    <div class="col-md-12 col-lg-12">
-                        <div class="links">
-                            <h5 class="text-light">Logo <p>Here</p>
-                            </h5>
-                            <ul class="links  list-unstyled lh-lg d-flex justify-content-center gap-3 flex-wrap">
-                                <li><a class="text-light" href="">Home</a></li>
-                                <li><a class="text-white-50" href="">Coupons</a></li>
-                                <li><a class="text-white-50" href="">About</a></li>
-                                <li><a class="text-white-50" href="">Common Questions</a></li>
-                            </ul>
-                        </div>
+            <div class="row ">
+                <div class="col-md-12 col-lg-12">
+                    <div class="links">
+                        <h5 class="text-light">Logo <p>Here</p>
+                        </h5>
+                        <ul class="links  list-unstyled lh-lg d-flex justify-content-center gap-3 flex-wrap">
+                            <li><a class="text-light" href="">Home</a></li>
+                            <li><a class="text-white-50" href="">Coupons</a></li>
+                            <li><a class="text-white-50" href="">About</a></li>
+                            <li><a class="text-white-50" href="">Common Questions</a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
     <!--=============== End Footer =========== -->
 
     <script src="{{ asset('front/client/js/bootstrap.bundle.min.js') }}"></script>
