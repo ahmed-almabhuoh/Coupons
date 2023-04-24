@@ -171,6 +171,7 @@
     <script src="{{ asset('front/client/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('front/client/js/all.min.js') }}"></script>
     <script src="{{ asset('front/client/js/script.js') }}"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     @stack('scripts')
     @livewireScripts
 </body>

@@ -99,4 +99,12 @@ class ClientController extends Controller
             'categories' => Category::active()->get(),
         ]);
     }
+
+    // Get a specific coupon
+    public function getCoupon($coupon_id)
+    {
+        return response()->json([
+            'coupon' => Coupon::active()->where('id', $coupon_id)->with('store')->with('category')->first(),
+        ]);
+    }
 }

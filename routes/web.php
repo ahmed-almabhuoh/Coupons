@@ -75,6 +75,7 @@ Route::prefix('/')->group(function () {
     Route::get('/offers', [ClientController::class, 'getOfferPage'])->name('pages.offers');
     Route::get('/coupons', [ClientController::class, 'getCouponsPage'])->name('pages.coupons');
     Route::get('/get-product/{product_id}', [ClientController::class, 'getProduct'])->name('get.specific.product');
+    Route::get('/get-coupon/{coupons_id}', [ClientController::class, 'getCoupon'])->name('get.specific.coupon');
 
     Route::post('contact', [ClientController::class, 'recieveContactRequest'])->middleware('throttle:3,60')->name('send.contact');
 });

@@ -62,7 +62,8 @@
                                     <span>{{ $coupon->store->name }}</span>
                                 </div>
                                 <!-- button -->
-                                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <button class="btn btn-primary" onclick="getCoupon('{{ $coupon->id }}')"
+                                    data-bs-toggle="modal" data-bs-target="#exampleModal">
                                     <div class="left">
                                         Coupon details
                                     </div>
@@ -73,141 +74,6 @@
                             </div>
                         </div>
                     @endforeach
-
-                    {{-- <div class="item" data-id="Shoes">
-                        <div class="card inner">
-                            <!-- icon -->
-                            <div class="icon">
-                                <img src="imgs/share-icon-card.png" alt="icon">
-                                <img src="imgs/icon-card-multi.png" alt="icon">
-                            </div>
-                            <!-- img -->
-                            <div class="img">
-                                <img src="imgs/flaword-icon-card.png" alt="portfolio">
-                            </div>
-                            <!-- text -->
-                            <div class="text">
-                                <span>Floward</span>
-                            </div>
-                            <!-- button -->
-                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                <div class="left">
-                                    Coupon details
-                                </div>
-                                <div class="right">
-                                    15%
-                                </div>
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="item" data-id="Games">
-                        <div class="card inner">
-                            <!-- icon -->
-                            <div class="icon">
-                                <img src="imgs/share-icon-card.png" alt="icon">
-                                <img src="imgs/icon-card-multi.png" alt="icon">
-                            </div>
-                            <!-- img -->
-                            <div class="img">
-                                <img src="imgs/flaword-icon-card.png" alt="portfolio">
-                            </div>
-                            <!-- text -->
-                            <div class="text">
-                                <span>Floward</span>
-                            </div>
-                            <!-- button -->
-                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                <div class="left">
-                                    Coupon details
-                                </div>
-                                <div class="right">
-                                    15%
-                                </div>
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="item" data-id="Games">
-                        <div class="card inner">
-                            <!-- icon -->
-                            <div class="icon">
-                                <img src="imgs/share-icon-card.png" alt="icon">
-                                <img src="imgs/icon-card-multi.png" alt="icon">
-                            </div>
-                            <!-- img -->
-                            <div class="img">
-                                <img src="imgs/flaword-icon-card.png" alt="portfolio">
-                            </div>
-                            <!-- text -->
-                            <div class="text">
-                                <span>Floward</span>
-                            </div>
-                            <!-- button -->
-                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                <div class="left">
-                                    Coupon details
-                                </div>
-                                <div class="right">
-                                    15%
-                                </div>
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="item" data-id="Games">
-                        <div class="card inner">
-                            <!-- icon -->
-                            <div class="icon">
-                                <img src="imgs/share-icon-card.png" alt="icon">
-                                <img src="imgs/icon-card-multi.png" alt="icon">
-                            </div>
-                            <!-- img -->
-                            <div class="img">
-                                <img src="imgs/flaword-icon-card.png" alt="portfolio">
-                            </div>
-                            <!-- text -->
-                            <div class="text">
-                                <span>Floward</span>
-                            </div>
-                            <!-- button -->
-                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                <div class="left">
-                                    Coupon details
-                                </div>
-                                <div class="right">
-                                    15%
-                                </div>
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="item" data-id="Fashion">
-                        <div class="card inner">
-                            <!-- icon -->
-                            <div class="icon">
-                                <img src="imgs/share-icon-card.png" alt="icon">
-                                <img src="imgs/icon-card-multi.png" alt="icon">
-                            </div>
-                            <!-- img -->
-                            <div class="img">
-                                <img src="imgs/flaword-icon-card.png" alt="portfolio">
-                            </div>
-                            <!-- text -->
-                            <div class="text">
-                                <span>Floward</span>
-                            </div>
-                            <!-- button -->
-                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                <div class="left">
-                                    Coupon details
-                                </div>
-                                <div class="right">
-                                    15%
-                                </div>
-                            </button>
-                        </div>
-                    </div> --}}
 
                     <!-- Modal -->
                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -224,26 +90,28 @@
                                     <div class="first-sec d-flex justify-content-between">
                                         <!--Section #1 -->
                                         <div class="content d-flex align-items-center justify-content-center">
-                                            <img class="icon-model" src="imgs/flaword-icon-card.png" alt="">
+                                            <img class="icon-model" src="" style="width: 50px; height: 50px;"
+                                                id="coupon_store_image" url="{{ env('APP_URL') . 'content/' }}"
+                                                alt="">
                                             <div class="text-des ml-3">
-                                                <strong>Floward</strong>
-                                                <p>A store that specializes in rose bouquets</p>
+                                                <strong id="coupon_store_name">Floward</strong>
+                                                <p id="coupon_description">A store that specializes in rose bouquets</p>
                                             </div>
                                         </div>
                                         <div class="button">
-                                            <a href="#">visite &rarr;</a>
+                                            <a href="#" id="store_action">Visit &rarr;</a>
                                         </div>
                                     </div>
                                     <!--Section #2 -->
                                     <div class="midel-sec d-flex">
                                         <div class="first-dev">
-                                            <span>Discount: <strong>15%</strong></span>
+                                            <span>Discount: <strong id="coupon_discount"></strong></span>
                                         </div>
                                         <div class="first-dev">
                                             <span>Last use: <strong>a day ago</strong></span>
                                         </div>
                                         <div class="first-dev">
-                                            <span>Category: <strong>All products</strong></span>
+                                            <span>Category: <strong id="coupon_category_name"></strong></span>
                                         </div>
                                     </div>
                                 </div>
@@ -297,3 +165,25 @@
 
         </div>
 </div>
+
+@push('scripts')
+    <script>
+        async function getCoupon(coupon_id) {
+            axios.get('/get-coupon/' + coupon_id)
+                .then(function(response) {
+                    document.getElementById('coupon_store_name').textContent = response.data.coupon.store.name;
+                    document.getElementById('coupon_category_name').textContent = response.data.coupon.category
+                        .name;
+                    document.getElementById('coupon_description').textContent = response.data.coupon.description;
+                    document.getElementById('coupon_discount').textContent = response.data.coupon.discount + '%';
+                    var store_image = document.getElementById('coupon_store_image');
+                    var src = store_image.getAttribute("url");
+                    store_image.setAttribute("src", src + response.data.coupon.store.icon);
+
+                })
+                .catch(function(error) {
+                    console.log(error);
+                });
+        }
+    </script>
+@endpush
