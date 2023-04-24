@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Aqs;
 use App\Models\Blog;
 use App\Models\Category;
+use App\Models\Coupon;
 use App\Models\Offer;
 use App\Models\Product;
 use App\Models\Store;
@@ -87,5 +88,15 @@ class ClientController extends Controller
         return response()->json([
             'product' => $product,
         ], Response::HTTP_OK);
+    }
+
+    // Get coupons page
+    public function getCouponsPage()
+    {
+        return response()->view('frontend.client.coupons', [
+            'stores' => Store::active()->get(),
+            'coupons' => Coupon::active()->get(),
+            'categories' => Category::active()->get(),
+        ]);
     }
 }

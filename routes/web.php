@@ -73,6 +73,7 @@ Route::prefix('/')->group(function () {
     Route::get('blogs', [ClientController::class, 'getBlogsPage'])->middleware(['auth:client'])->name('pages.blogs');
     Route::get('fqs', [ClientController::class, 'getFqsPage'])->name('pages.fqs');
     Route::get('/offers', [ClientController::class, 'getOfferPage'])->name('pages.offers');
+    Route::get('/coupons', [ClientController::class, 'getCouponsPage'])->name('pages.coupons');
     Route::get('/get-product/{product_id}', [ClientController::class, 'getProduct'])->name('get.specific.product');
 
     Route::post('contact', [ClientController::class, 'recieveContactRequest'])->middleware('throttle:3,60')->name('send.contact');

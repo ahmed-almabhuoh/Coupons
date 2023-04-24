@@ -39,7 +39,8 @@
                         <a class="nav-link p-2 p-lg-3 " aria-current="page" href="#">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link p-2 p-lg-3" href="#">Coupons</a>
+                        <a class="nav-link p-2 p-lg-3  @if (Route::currentRouteName() == 'pages.coupons') active @endif"
+                            href="{{ route('pages.coupons') }}">Coupons</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link p-2 p-lg-3 @if (Route::currentRouteName() == 'pages.about') active @endif"

@@ -16,11 +16,14 @@
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <!-- Page title -->
-    <title>About Page Guest</title>
+    <title>Coupons User</title>
+
+    @livewireStyles
 </head>
 
 <body>
-    <!-- ================ Start Header ============ -->
+
+    <!-- ================Start Header============== -->
     <nav class="navbar navbar-expand-lg sticky-top">
         <div class="container">
             <div class="logo">
@@ -59,7 +62,9 @@
                     @endif
                 </ul>
 
-                <!-- =====>>>> Start Guest<<<<===== -->
+                <!-- =====>>>> Start User <<<<===== -->
+
+                <!-- Start -Image -->
                 @if (auth('client')->check())
                     <div class="link btn-group ml-3">
                         <div class="user-iamge">
@@ -116,72 +121,41 @@
                         </ul>
                     </div>
                 @endif
-                <!-- =====>>>> End Guest<<<<===== -->
+                <!-- End User-Image -->
+
+                <!-- =====>>>> End User <<<<====== -->
 
             </div>
         </div>
+        <!-- End Container -->
     </nav>
-    <!-- ================ End Header ============== -->
+    <!-- End Nav -->
+    <!-- ================ End Header ================= -->
 
-    <!-- ============== Start Main Section ======== -->
-    <div class="main-section about pt-5 pb-3 mt-5">
+
+
+    <!-- ============== Start Main Section ========== -->
+    <div class=" pt-5 pb-5">
         <div class="container">
-            <div class="main-title fw-bold fs-2 d-flex justify-content-center text-center  mb-5 position-relative ">
-                <h2 class="position-absolute "> About Us</h2>
-            </div>
 
-            <div class="container-fluid">
-                <div class="row">
-
-                    <!-- text -->
-                    <div class="col-md-6">
-                        <div class="text">
-                            <div class="about-text-header">
-                                <h4>about the platform</h4>
-                            </div>
-                            <div class="about-text-body">
-                                <p>
-                                    A mini-paragraph talking about what this site offers specifically A mini-paragraph
-                                    talking about what
-                                    this site offers specifically A mini-paragraph talking about what this site offers
-                                    specifically A
-                                    mini-paragraph talking about what this site offers specifically A mini-paragraph
-                                    talking about what
-                                    this
-                                    site offers specifically A mini-paragraph talking about what This site presents a
-                                    mini-paragraph that
-                                    talks about what exactly this site offers. A mini-paragraph that specifically talks
-                                    about what this
-                                    site
-                                    offers.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- img -->
-                    <div class="about-img col-md-6">
-                        <img src="{{ asset('front/client/imgs/about-avatar.png') }}" alt="">
-                    </div>
-
-                </div>
-
-            </div>
-
+            <livewire:front.client.coupons :categories="$categories" :stores="$stores" :coupons="$coupons" />
 
         </div>
+        </section>
     </div>
-    <!-- ============= End Main Section ========== -->
 
-    <!--=============== Start Footer ============= -->
-    <div class="footer common-question pt-2 pb-2 text-white-50 text-center text-md-start">
+    <!-- ============== End Main Section =========== -->
+
+    <!--=============== Start Footer =============== -->
+    <div class="footer pt-2 pb-2 text-white-50 text-center text-md-start">
         <div class="container text-center">
             <div class="row ">
+
                 <div class="col-md-12 col-lg-12">
                     <div class="links">
                         <h5 class="text-light">Logo <p>Here</p>
                         </h5>
-                        <ul class="links list-unstyled lh-lg d-flex justify-content-center gap-3 flex-wrap">
+                        <ul class="links  list-unstyled lh-lg d-flex justify-content-center gap-3 flex-wrap">
                             <li><a class="text-light" href="">Home</a></li>
                             <li><a class="text-white-50" href="">Coupons</a></li>
                             <li><a class="text-white-50" href="">About</a></li>
@@ -189,17 +163,16 @@
                         </ul>
                     </div>
                 </div>
-
-
-
             </div>
         </div>
     </div>
-    <!--=============== End Footer =============== -->
+    <!--=============== End Footer =========== -->
+
     <script src="{{ asset('front/client/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('front/client/js/all.min.js') }}"></script>
     <script src="{{ asset('front/client/js/script.js') }}"></script>
-
+    @stack('scripts')
+    @livewireScripts
 </body>
 
 </html>
