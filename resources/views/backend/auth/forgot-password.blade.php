@@ -102,29 +102,45 @@
                                             </g>
                                         </g>
                                     </svg>
-                                    <h2 class="brand-text text-primary ms-1">Vuexy</h2>
+                                    <h2 class="brand-text text-primary ms-1">Coupons</h2>
                                 </a>
+
+                                @if (session('message'))
+                                    <div class="alert alert-success" role="alert">
+                                        {{ session('message') }}
+                                    </div>
+                                @endif
 
                                 <h4 class="card-title mb-1">Forgot Password? 🔒</h4>
                                 <p class="card-text mb-2">Enter your email and we'll send you instructions to reset
                                     your password</p>
 
-                                {{-- <form class="auth-forgot-password-form mt-2" action="page-auth-reset-password-v1.html"
-                                    method="POST">
+                                <form method="POST" action="{{ route('forget.password') }}">
+                                    @csrf
                                     <div class="mb-1">
                                         <label for="forgot-password-email" class="form-label">Email</label>
-                                        <input type="text" class="form-control" id="forgot-password-email"
-                                            name="forgot-password-email" placeholder="john@example.com"
-                                            aria-describedby="forgot-password-email" tabindex="1" autofocus />
+                                        <input type="text"
+                                            class="form-control @error('email')
+                                        is-invalid
+                                        @enderror"
+                                            id="email" name="email" placeholder="john@example.com"
+                                            wire:model="email" aria-describedby="forgot-password-email"
+                                            tabindex="1" autofocus />
+                                        @error('email')
+                                            <div class="invalid-feedback">{{ __($message) }}
+                                            </div>
+                                        @enderror
                                     </div>
-                                    <button class="btn btn-primary w-100" tabindex="2">Send reset link</button>
-                                </form> --}}
 
-                                <livewire:backend.auth.reset-password />
+                                    <button type="submit" class="btn btn-primary w-100" tabindex="2">Send reset
+                                        link</button>
+                                </form>
 
                                 <p class="text-center mt-2">
-                                    <a href="{{route('login')}}"> <i data-feather="chevron-left"></i> Back to
-                                        login </a>
+                                    <a href="{{ route('login') }}">
+                                        <i data-feather="chevron-left"></i>
+                                        Back to login
+                                    </a>
                                 </p>
                             </div>
                         </div>

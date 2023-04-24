@@ -87,8 +87,9 @@ Route::prefix('/')->group(function () {
 
 
 Route::prefix('/')->middleware(['guest:client'])->group(function () {
+    Route::post('forget-password', [AuthenticationController::class, 'forgetPassword'])->name('forget.password');
+    Route::get('reset-password/{token}', [AuthenticationController::class, 'resetPassword'])->name('users.reset.password');
     Route::get('register', [FrontAuthenticationController::class, 'getRegisterView'])->name('users.register');
-
     Route::get('login', [FrontAuthenticationController::class, 'getLogin'])->name('users.login');
 });
 
