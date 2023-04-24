@@ -178,6 +178,12 @@
     </ul>
 </li>
 
+<li class=" nav-item"><a class="d-flex align-items-center" href="{{ route('contacts.index') }}">
+        <i data-feather="phone"></i>
+        <span class="menu-title text-truncate" data-i18n="Chat">Contact Us</span>
+    </a>
+</li>
+
 <li class=" navigation-header"><span data-i18n="Apps &amp; Pages">{{ __('Account Settings') }}</span><svg
         xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"

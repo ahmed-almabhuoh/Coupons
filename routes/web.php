@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AqsController;
 use App\Http\Controllers\ArticalController;
 use App\Http\Controllers\backend\AuthenticationController;
+use App\Http\Controllers\backend\ContactUsController;
 use App\Http\Controllers\backend\DashboardController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CategoryController;
@@ -54,6 +55,9 @@ Route::prefix('cpanel')->middleware('auth:admin')->group(function () {
 
 Route::prefix('cpanel')->middleware('auth:admin')->group(function () {
     Route::get('/', [DashboardController::class, 'getPanel'])->name('control.panel');
+    Route::get('contacts', [ContactUsController::class, 'getContacts'])->name('contacts.index');
+    Route::delete('contacts/{contact_id}', [ContactUsController::class, 'deleteContact'])->name('contacts.destroy');
+    Route::get('/add-contact-to-questions/{contact_id}', [ContactUsController::class, 'addContactToQuestions'])->name('contacts.to.questions');
 
     Route::get('update-account', [AccountManagementController::class, 'getAccountManagementView'])->name('manage.admins.accounts');
     Route::get('change-password', [AccountManagementController::class, 'changePassword'])->name('manage.admins.password');

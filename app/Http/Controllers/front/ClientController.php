@@ -44,7 +44,7 @@ class ClientController extends Controller
     {
         $request->validate([
             'email' => 'required|email',
-            'message' => 'required|string|min:10',
+            'message' => 'required|string|min:10|max:70',
         ]);
         //
         $id = DB::table('contact_us')->insertGetId([
