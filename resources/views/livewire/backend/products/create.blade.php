@@ -41,6 +41,13 @@
         placeholder="Enter the product description here ...." />
 
     <div>
+        <div class="form-check">
+            <input class="form-check-input" wire:model="specail" type="checkbox" id="specail">
+            <label class="form-check-label" for="specail">Mark as a specail offer?</label>
+        </div>
+    </div>
+
+    <div>
         <x-form.submit text="Store" action="store()" type="button" />
     </div>
 </div>

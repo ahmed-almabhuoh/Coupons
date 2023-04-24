@@ -138,6 +138,46 @@
     <div class=" pt-5 pb-5">
         <div class="container">
 
+            <div class="row">
+                <section class="portfolio special-offers" id="Portfolio">
+                    <div class="container">
+                        <!-- Head Text -->
+                        <div
+                            class="main-title fw-bold fs-2 d-flex justify-content-center text-center mb-5 position-relative ">
+                            <h2 class="position-absolute "> Special Offers</h2>
+                        </div>
+                        <!-- Cards -->
+                        <!-- Card 1 -->
+                        <div class="portfolio-gallery offers ">
+                            <!-- Card 1 -->
+                            @foreach ($products as $product)
+                                <div class="item">
+                                    <div class="card inner special-offers">
+                                        <!-- icon -->
+                                        <div class="img-top">
+                                            <img src="{{ env('APP_URL') . 'content/' . $product->image }}"
+                                                class="card-img-top" alt="...">
+                                        </div>
+                                        <!-- img -->
+                                        <div class="img icons">
+                                            <img src="{{ env('APP_URL') . 'content/' . $product->store->icon }}"
+                                                alt="portfolio" style="width: 50px; height: 50px;">
+                                        </div>
+                                        <!-- text -->
+                                        <div class="body">
+                                            <p>{{ $product->store->name }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+
+                        </div>
+                    </div>
+
+
+                </section>
+            </div>
+
             <livewire:front.client.coupons :categories="$categories" :stores="$stores" :coupons="$coupons" />
 
         </div>

@@ -93,10 +93,16 @@ class ClientController extends Controller
     // Get coupons page
     public function getCouponsPage()
     {
+        $products = Product::specail()->get();
+        foreach ($products as $product) {
+            $img = DB::table('product_images')->where('product_id', $product->id)->first();
+            $product->setAttribute('image', $img->image);
+        }
         return response()->view('frontend.client.coupons', [
             'stores' => Store::active()->get(),
             'coupons' => Coupon::active()->get(),
             'categories' => Category::active()->get(),
+            'products' => $products,
         ]);
     }
 

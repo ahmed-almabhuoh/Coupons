@@ -50,6 +50,9 @@
                         {{ __('Offer') }}</th>
                     <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
                         style="width: 101.266px;" aria-label="Coupon: activate to sort column ascending">
+                        {{ __('Is Specail') }}</th>
+                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
+                        style="width: 101.266px;" aria-label="Coupon: activate to sort column ascending">
                         {{ __('Code') }}</th>
                     <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
                         style="width: 101.266px;" aria-label="Coupon: activate to sort column ascending">
@@ -60,8 +63,9 @@
                     <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
                         style="width: 125.906px;" aria-label="Status: activate to sort column ascending">
                         {{ __('Store') }} </th>
-                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
-                        style="width: 125.906px;" aria-label="Status: activate to sort column ascending">
+                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1"
+                        colspan="1" style="width: 125.906px;"
+                        aria-label="Status: activate to sort column ascending">
                         {{ __('Coupon') }} </th>
                     {{-- <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
                         style="width: 125.906px;" aria-label="Status: activate to sort column ascending">
@@ -95,6 +99,9 @@
                         </td>
                         <td>
                             {{ $product->offer . ' %' }}
+                        </td>
+                        <td>
+                            {{ $product->specail ? 'Specail' : 'NOT' }}
                         </td>
                         <td>
                             {{ $product->code }}

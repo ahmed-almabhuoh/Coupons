@@ -23,6 +23,11 @@ class Product extends Model
         return $query->where('status', 'active');
     }
 
+    public function scopeSpecail($query)
+    {
+        return $query->where('specail', true);
+    }
+
     // Relations
     public function category()
     {
