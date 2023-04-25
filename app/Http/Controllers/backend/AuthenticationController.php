@@ -124,31 +124,20 @@ class AuthenticationController extends Controller
                 $isChanged = false;
                 if ($position == 'admin') {
                     $admin = Admin::where('email', $email)->first();
-                    // dd($admin);
-                    // $admin->fname = $admin->fname;
-                    // $admin->lname = $admin->lname;
-                    // $admin->email = $admin->email;
-                    // $admin->phone = $admin->phone;
-                    // $admin->status = $admin->status;
-                    // $admin->image = $admin->image;
                     $admin->password = Hash::make($password);
                     $isChanged = $admin->save();
 
                     if ($isChanged)
-                        NewPasswordJob::dispatch($password, $admin);
-                } else {
-                    $user = User::where('email', $email)->first();
-                    // $user->fname = $user->fname;
-                    // $user->lname = $user->lname;
-                    // $user->email = $user->email;
-                    // $user->phone = $user->phone;
-                    // $user->status = $user->status;
-                    // $user->image = $user->image;
-                    $user->password = Hash::make($password);
-                    $isChanged = $user->save();
+                        $reset = DB::table('users_reset_passwords')->where([
+                            ['position', '=', $position],
+                            ['u_id', '=', $id]
+                        ])->delete();
 
                     if ($isChanged)
-                        NewPasswordJob::dispatch($password, $user);
+                        NewPasswordJob::dispatch($password, $admin);
+                } else {
+                    // Show reset password form for clients
+                    return redirect()->route('clients.reset.password.function', $token);
                 }
 
                 return redirect()->route($position == 'admin' ? 'login' : 'users.login')->with([
@@ -178,5 +167,95 @@ class AuthenticationController extends Controller
         return redirect()->back()->with([
             'message' => 'We send you an email to reset your password, check your inbox please!',
         ]);
+    }
+
+    // Client Forgot Password
+    public function clientForgotPassword()
+    {
+        return response()->view('frontend.auth.forgot');
+    }
+
+    // Reset Client Password
+    public function resetClientPassword(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email|exists:users,email',
+        ], [
+            'email.exists' => 'Something went wrong, please try again later!',
+        ]);
+        //
+        $user = User::where('email', $request->post('email'))->first();
+
+        ResetPasswordJob::dispatch('user', $user);
+
+        return redirect()->route('users.login')->with([
+            'message' => 'We send you an email to reset your password, check your inbox please!',
+            'status' => 200,
+        ]);
+    }
+
+
+    // Reset Client Password Form
+    public function resetClientPasswordForm($token)
+    {
+        $values = explode("@", Crypt::decrypt($token));
+        // $email = $values[0] . '@' . $values[1];
+        $id = $values[2];
+        $uuid = $values[3];
+        $position = $values[4];
+
+        $reset = DB::table('users_reset_passwords')->where([
+            ['position', '=', $position],
+            ['u_id', '=', $id]
+        ])->orderBy('created_at', 'DESC')->first();
+
+
+        if (!is_null($reset)) {
+            if (Crypt::decrypt($reset->token) == $uuid && !Carbon::now()->greaterThan($reset->expired_at)) {
+                return response()->view('frontend.auth.reset', [
+                    'token' => $token,
+                ]);
+            } else {
+                return redirect()->route('users.login');
+            }
+        } else {
+            return redirect()->route('users.login');
+        }
+    }
+
+    // Submit the new password from the form to the client account
+    public function submitClientNewPassword(Request $request, $token)
+    {
+        $request->validate([
+            'password' => 'required|string|min:8|max:25|confirmed',
+        ]);
+        //
+        $values = explode("@", Crypt::decrypt($token));
+        $email = $values[0] . '@' . $values[1];
+        $id = $values[2];
+        $position = $values[3];
+
+        $user = User::where([
+            ['id', '=', $id],
+            ['email', '=', $email]
+        ])->first();
+
+        if (!is_null($user)) {
+            $user->password = Hash::make($request->post('password'));
+            $isChanged = $user->save();
+
+            if ($isChanged)
+                DB::table('users_reset_passwords')->where([
+                    ['position', '=', $position],
+                    ['u_id', '=', $id]
+                ])->delete();
+
+            return redirect()->route('users.login')->with([
+                'status' => $isChanged ? 200 : 400,
+                'message' => $isChanged ? 'Password change successfully' : 'Failed to change your password, please try again later!',
+            ]);
+        } else {
+            return redirect()->route('users.login');
+        }
     }
 }

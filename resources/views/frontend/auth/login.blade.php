@@ -44,14 +44,27 @@
             <div class="row justify-content-md-center h-100">
                 <div class="card-wrapper">
 
+
+
                     <div class="card fat login">
+
                         <div class="card-body">
+                            @if (session('status') == 200)
+                                <div class="alert alert-success" role="alert">
+                                    {{ session('message') }}
+                                </div>
+                            @elseif(session('status') == 400)
+                                <div class="alert alert-danger" role="alert">
+                                    {{ session('message') }}
+                                </div>
+                            @endif
                             <h4 class="card-title">Login</h4>
 
                             <livewire:front.auth.login />
 
                             <div class="footer">
-                                <span>Forgot your password?.. <a href="./forgot.html">Recover your
+                                <span>Forgot your password?.. <a href="{{ route('clients.forgot.password') }}">Recover
+                                        your
                                         password</a></span>
                             </div>
                         </div>
