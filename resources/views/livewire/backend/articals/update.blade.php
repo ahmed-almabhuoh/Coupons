@@ -15,7 +15,7 @@
         </div>
     @endif
 
-    <x-form.textarea name="description" label="description" placeholder="Enter the store description here ...." />
+    <x-form.textarea name="description" label="Description" placeholder="Enter the store description here ...." />
 
     <x-form.select name="blog" model="blog_id" label="Blog" :options="$blogs" />
 

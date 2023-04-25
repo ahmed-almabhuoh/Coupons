@@ -10,6 +10,7 @@
   --black-color: #000000;
 }
 body {
+  direction: rtl;
   font-family: "Cairo", sans-serif !important;
 }
 a {
@@ -74,12 +75,13 @@ navbar.logo {
   position: absolute;
 }
 .link ul.dropdown-menu li {
+  text-align: right;
   transition: 0.3s ease;
 }
 .link ul.dropdown-menu li a {
   color: black;
   text-decoration: none;
-  padding-left: 5px;
+  padding-right: 5px;
   font-size: 14px;
 }
 .link ul.dropdown-menu li:hover,
@@ -154,7 +156,7 @@ sidebar {
   position: relative;
 }
 sidebar .nav {
-  padding-left: 15px;
+  padding-right: 15px;
 }
 sidebar a.nav-link {
   align-items: center;
@@ -168,9 +170,9 @@ sidebar .active::after {
   height: 28px;
   background-color: var(--primary-color);
   position: absolute;
-  right: 0;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
+  left: -10px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 sidebar a.nav-link:hover {
   color: var(--primary-color) !important;
@@ -179,10 +181,10 @@ svg {
   font-family: "Font Awesome 6 Free";
 }
 sidebar a.nav-link svg {
-  padding-right: 10px;
+  padding-left: 10px;
 }
 sidebar a.nav-link i {
-  padding-right: 10px;
+  padding-left: 10px;
 }
 /* ===== End sidebar ===== */
 
@@ -293,7 +295,7 @@ input#Phone.form-control {
 }
 .form-check-label {
   position: absolute;
-  left: 0;
+  right: 0;
   top: 60%;
 }
 .form-check-input {
@@ -305,8 +307,8 @@ input#Phone.form-control {
   width: 2.5em !important;
   height: 20px;
   position: absolute;
-  left: 130px;
-  top: 50%;
+  right: 92px;
+  top: 55%;
 }
 .form-check-input[type="checkbox"]:checked {
   background-color: var(--primary-color);
@@ -332,6 +334,9 @@ input#Phone.form-control {
   width: 618px;
   border-radius: 16px;
 }
+.table-responsive {
+  overflow: scroll !important;
+}
 .paginator ul {
   list-style: none;
   display: flex;
@@ -339,7 +344,7 @@ input#Phone.form-control {
   align-items: center;
   position: absolute;
   bottom: 28%;
-  left: 23px;
+  right: 23px;
 }
 .paginator ul li {
   padding: 0 10px;
@@ -398,7 +403,7 @@ tr {
 
 .toggle-password {
   position: absolute;
-  right: 20px;
+  left: 20px;
   top: 43px;
   color: #5d5b5b;
   font-size: 15px;
@@ -527,7 +532,7 @@ footer .links a {
     display: flex;
     padding-top: 0px;
     position: absolute;
-    left: 50%;
+    right: 50%;
     top: 10%;
     transform: translate(-50%);
     flex-direction: column;

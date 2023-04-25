@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
-@section('title', 'Update ' . $aq->title)
-@section('page-index', 'FQs')
-@section('root', 'Update')
-@section('sub-root', 'CM')
+@section('title', __('Update') . ' ' . $aq->title)
+@section('page-index', __('FQs'))
+@section('root', __('Update'))
+@section('sub-root', __('CM'))
 
 @section('styles')
 
@@ -15,7 +15,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">{{ __('Update ') . $aq->title }}</h4>
+                        <h4 class="card-title">{{ __('Update') . ' ' . $aq->title }}</h4>
                     </div>
                     <div class="card-body">
                         <livewire:backend.aqs.update :aq="$aq" />

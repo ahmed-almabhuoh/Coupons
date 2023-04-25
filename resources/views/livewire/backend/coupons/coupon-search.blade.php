@@ -48,9 +48,6 @@
                     <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
                         style="width: 125.906px;" aria-label="Status: activate to sort column ascending">
                         {{ __('Store') }} </th>
-                    {{-- <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
-                        style="width: 125.906px;" aria-label="Status: activate to sort column ascending">
-                        {{ __('Last us') }} </th> --}}
                     <th class="sorting_disabled" rowspan="1" colspan="1" style="width: 135.891px;"
                         aria-label="Actions"> {{ __('Actions') }} </th>
                 </tr>
@@ -69,7 +66,6 @@
                                 <div class="avatar-content">{{ $coupon->discount . '%' }}</div>
                             </div>
                         </td>
-                        {{-- <td>{{ $coupon->status }}</td> --}}
                         <td>
                             <span class="{{ $coupon->status_class }}">{{ ucfirst($coupon->status) }}</span>
                         </td>

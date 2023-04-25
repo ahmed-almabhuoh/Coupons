@@ -79,7 +79,7 @@
                                 <a
                                     href="{{ route('categories.edit', Crypt::encrypt($blog->category->id)) }}">{{ $blog->category->name }}</a>
                             @else
-                                No category
+                                {{__('No category')}}
                             @endif
                         </td>
                         <td>
@@ -87,7 +87,7 @@
                                 <a
                                     href="{{ route('stores.edit', Crypt::encrypt($blog->store->id)) }}">{{ $blog->store->name }}</a>
                             @else
-                                No store
+                                {{__('No store')}}
                             @endif
                         </td>
                         <td>

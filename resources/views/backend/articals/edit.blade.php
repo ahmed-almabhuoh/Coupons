@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
-@section('title', 'Update ' . $artical->title)
-@section('page-index', 'Articals')
-@section('root', 'Update')
-@section('sub-root', 'CM')
+@section('title', __('Update') . ' ' . $artical->title)
+@section('page-index', __('Articals'))
+@section('root', __('Update'))
+@section('sub-root', __('CM'))
 
 @section('styles')
 

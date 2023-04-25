@@ -102,7 +102,7 @@
                                             </g>
                                         </g>
                                     </svg>
-                                    <h2 class="brand-text text-primary ms-1">Coupons</h2>
+                                    <h2 class="brand-text text-primary ms-1">{{ __('Coupons') }}</h2>
                                 </a>
 
                                 @if (session('message'))
@@ -111,14 +111,13 @@
                                     </div>
                                 @endif
 
-                                <h4 class="card-title mb-1">Forgot Password? 🔒</h4>
-                                <p class="card-text mb-2">Enter your email and we'll send you instructions to reset
-                                    your password</p>
+                                <h4 class="card-title mb-1">{{__('Forgot Password? 🔒')}}</h4>
+                                <p class="card-text mb-2">{{__('Enter your email and we\'ll send you instructions to reset your password')}}</p>
 
                                 <form method="POST" action="{{ route('forget.password') }}">
                                     @csrf
                                     <div class="mb-1">
-                                        <label for="forgot-password-email" class="form-label">Email</label>
+                                        <label for="forgot-password-email" class="form-label">{{__('Email')}}</label>
                                         <input type="text"
                                             class="form-control @error('email')
                                         is-invalid
@@ -132,14 +131,13 @@
                                         @enderror
                                     </div>
 
-                                    <button type="submit" class="btn btn-primary w-100" tabindex="2">Send reset
-                                        link</button>
+                                    <button type="submit" class="btn btn-primary w-100" tabindex="2">{{__('Send reset link')}}</button>
                                 </form>
 
                                 <p class="text-center mt-2">
                                     <a href="{{ route('login') }}">
                                         <i data-feather="chevron-left"></i>
-                                        Back to login
+                                        {{__('Back to login')}}
                                     </a>
                                 </p>
                             </div>

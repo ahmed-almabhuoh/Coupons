@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
-@section('title', 'Create an admin')
-@section('page-index', 'Admins')
-@section('root', 'Create')
-@section('sub-root', 'HR')
+@section('title', __('Create an admin'))
+@section('page-index', __('Admins'))
+@section('root', __('Create'))
+@section('sub-root', __('HR'))
 
 
 @section('styles')

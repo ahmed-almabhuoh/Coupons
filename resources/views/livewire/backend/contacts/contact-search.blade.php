@@ -91,7 +91,7 @@
                 @endforeach
                 <tr class="odd" wire:loading>
                     <td valign="top" colspan="6" class="dataTables_empty">
-                        {{ __('Searching about FQs ...') }}
+                        {{ __('Searching about contacts ...') }}
                     </td>
                 </tr>
             </tbody>

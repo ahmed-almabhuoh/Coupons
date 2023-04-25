@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row">
                 <div class="main-title fw-bold fs-2 d-flex justify-content-center text-center mb-5 position-relative ">
-                    <h2 class="position-absolute "> Various discount codes</h2>
+                    <h2 class="position-absolute "> {{ __('Various discount codes') }} </h2>
                 </div>
             </div>
             <div class="row">
@@ -11,7 +11,7 @@
                 <div class="dropdown">
                     <a class="btn  dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                         data-bs-toggle="dropdown" aria-expanded="false">
-                        All Stores
+                        {{ __('All Stores') }}
                     </a>
 
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -26,7 +26,7 @@
                 <div class="filter-buttons">
                     <ul id="filter-btns">
                         <li class="{{ $selected_category == 'all' ? 'active' : '' }}"
-                            wire:click="getCouponsDependOnCategory('all')" data-target="all">All</li>
+                            wire:click="getCouponsDependOnCategory('all')" data-target="all"> {{ __('All') }} </li>
                         @foreach ($categories as $category)
                             <li data-target="Fashion" class="{{ $selected_category == $category->id ? 'active' : '' }}"
                                 wire:click="getCouponsDependOnCategory('{{ $category->id }}')">
@@ -42,7 +42,7 @@
                 <div class="portfolio-gallery" id="portfolio-gallery">
 
                     @if (!count($coupons))
-                        <h3>No coupons found yet!</h3>
+                        <h3> {{ __('No coupons found yet!') }} </h3>
                     @endif
 
                     @foreach ($coupons as $coupon)
@@ -55,7 +55,8 @@
                                 </div>
                                 <!-- img -->
                                 <div class="img">
-                                    <img src="{{ env('APP_URL') . 'content/' . $coupon->store->icon }}" alt="portfolio">
+                                    <img src="{{ env('APP_URL') . 'content/' . $coupon->store->icon }}"
+                                        alt="portfolio">
                                 </div>
                                 <!-- text -->
                                 <div class="text">
@@ -65,7 +66,7 @@
                                 <button class="btn btn-primary" onclick="getCoupon('{{ $coupon->id }}')"
                                     data-bs-toggle="modal" data-bs-target="#exampleModal">
                                     <div class="left">
-                                        Coupon details
+                                        {{ __('Coupon details') }}
                                     </div>
                                     <div class="right">
                                         {{ $coupon->discount }}%
@@ -82,7 +83,8 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h2 class="modal-title m-auto text-black-50 " id="exampleModalLabel">
-                                        Coupon details</h2>
+                                        {{ __('Coupon details') }}
+                                    </h2>
                                 </div>
 
 
@@ -152,7 +154,7 @@
                                     <span><img src="imgs/share-icon-copuon.png" alt=""> Share
                                     </span>
                                     <a type="button" class="copy-button btn btn-secondary">
-                                        Copy Code <img src="imgs/copy-icon.png" alt="">
+                                        {{__('Copy Code')}} <img src="imgs/copy-icon.png" alt="">
                                     </a>
                                 </div>
                             </div>

@@ -1,15 +1,21 @@
+<style>
+    li {
+        font-family: 'Cairo', sans-serif !important;
+    }
+</style>
+
 {{-- Dashboard --}}
 <li class=" nav-item"><a class="d-flex align-items-center" href="index.html"><i data-feather="home"></i><span
-            class="menu-title text-truncate" data-i18n="Dashboards">Dashboards</span><span
+            class="menu-title text-truncate" data-i18n="Dashboards"> {{ __('Dashboards') }} </span><span
             class="badge badge-light-warning rounded-pill ms-auto me-1">2</span></a>
-    <ul class="menu-content">
+    {{-- <ul class="menu-content">
         <li><a class="d-flex align-items-center" href="dashboard-analytics.html"><i data-feather="circle"></i><span
                     class="menu-item text-truncate" data-i18n="Analytics">Analytics</span></a>
         </li>
         <li><a class="d-flex align-items-center" href="dashboard-ecommerce.html"><i data-feather="circle"></i><span
                     class="menu-item text-truncate" data-i18n="eCommerce">eCommerce</span></a>
         </li>
-    </ul>
+    </ul> --}}
 </li>
 
 
@@ -180,7 +186,7 @@
 
 <li class=" nav-item"><a class="d-flex align-items-center" href="{{ route('contacts.index') }}">
         <i data-feather="phone"></i>
-        <span class="menu-title text-truncate" data-i18n="Chat">Contact Us</span>
+        <span class="menu-title text-truncate" data-i18n="Chat">{{ __('Contact Us') }}</span>
     </a>
 </li>
 
@@ -196,7 +202,7 @@
 
 <li class=" nav-item"><a class="d-flex align-items-center" href="{{ route('manage.admins.accounts') }}">
         <i data-feather="settings"></i>
-        <span class="menu-title text-truncate" data-i18n="Chat">Update account</span></a>
+        <span class="menu-title text-truncate" data-i18n="Chat">{{ __('Update account') }}</span></a>
 </li>
 
 <li class=" nav-item"><a class="d-flex align-items-center" href="{{ route('manage.admins.password') }}">
@@ -206,11 +212,11 @@
             <rect x="3" y="11" width="18" height="11" rx="2" ry="2">
             </rect>
             <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-        </svg><span class="menu-title text-truncate" data-i18n="Chat">Change password</span></a>
+        </svg><span class="menu-title text-truncate" data-i18n="Chat">{{ __('Change password') }}</span></a>
 </li>
 
 <li class=" nav-item"><a class="d-flex align-items-center" href="{{ route('logout') }}">
         <i data-feather="log-out"></i>
-        <span class="menu-title text-truncate" data-i18n="Chat">Logout</span>
+        <span class="menu-title text-truncate" data-i18n="Chat">{{ __('Logout') }}</span>
     </a>
 </li>

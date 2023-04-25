@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row">
                 <div class="main-title fw-bold fs-2 d-flex justify-content-center text-center mb-5 position-relative ">
-                    <h2 class="position-absolute "> Offers</h2>
+                    <h2 class="position-absolute "> {{ __('Offers') }} </h2>
                 </div>
             </div>
             <div class="row">
@@ -11,7 +11,7 @@
                 <div class="dropdown">
                     <a class="btn  dropdown-toggle offers" href="#" role="button" id="dropdownMenuLink"
                         data-bs-toggle="dropdown" aria-expanded="false">
-                        All Stores
+                        {{ __('All Stores') }}
                     </a>
 
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -26,7 +26,7 @@
                 <div class="filter-buttons">
                     <ul id="filter-btns">
                         <li class="{{ $newSelectedCategory == 'all' ? 'active' : '' }}" wire:click="getCategories"
-                            data-target="all">All</li>
+                            data-target="all"> {{ __('All') }} </li>
                         @foreach ($categories as $category)
                             <li data-target="Fashion"
                                 class="{{ $newSelectedCategory == $category->id ? 'active' : '' }}"
@@ -42,7 +42,7 @@
                 <!-- =============Start portfolio=========== -->
                 <div class="portfolio-gallery offers-product" id="portfolio-gallery">
                     @if (!count($products))
-                        <h3>No products found yet!</h3>
+                        <h3>{{ __('No products found yet!') }}</h3>
                     @endif
                     @foreach ($products as $product)
                         <div class="item" data-id="Fashion">
@@ -57,10 +57,11 @@
 
                                 <div class="card-body">
                                     <h5 class="card-title">{{ $product->name }}</h5>
-                                    <p class="card-text">{{ $product->price }} Riyals <br>
+                                    <p class="card-text">{{ $product->price }} {{ __('Riyals') }} <br>
                                         @if ($product->original_price)
                                             <small class="text-muted">{{ $product->original_price }}
-                                                Riyals</small>
+                                                {{ __('Riyals') }}
+                                            </small>
                                         @endif
 
                                     </p>
@@ -75,7 +76,7 @@
                                         <button class="button btn btn-primary"
                                             onclick="getProduct('{{ $product->id }}')" data-bs-toggle="modal"
                                             data-bs-target="#exampleModal">
-                                            <span class="m-auto">Git it</span>
+                                            <span class="m-auto">{{ __('Git it') }}</span>
                                         </button>
                                     </div>
                                 </div>
@@ -92,7 +93,7 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h2 class="modal-title m-auto text-black-50 " id="exampleModalLabel">
-                                        Product details</h2>
+                                        {{ __('Product details') }}</h2>
                                 </div>
 
 
@@ -116,26 +117,30 @@
                                     <div class="midel-sec offers-card d-flex flex-wrap">
                                         <div class="first-dev">
 
-                                            <span>Discount: <strong class="product_discount"></strong></span>
+                                            <span>{{ __('Discount') }}: <strong
+                                                    class="product_discount"></strong></span>
                                         </div>
                                         <div class="first-dev">
-                                            <span>Last use: <strong>a day ago</strong></span>
+                                            <span>{{ __('Last use') }}: <strong>a day ago</strong></span>
                                         </div>
                                         <div class="first-dev">
-                                            <span>Category: <strong id="product_category_name"></strong></span>
+                                            <span>{{ __('Category') }}: <strong
+                                                    id="product_category_name"></strong></span>
                                         </div>
                                     </div>
                                     <!--Section #3 -->
                                     <div class="midel-sec offers-card d-flex  flex-wrap ">
                                         <div class="first-dev">
 
-                                            <span>Original price: <strong id="product_original_price"></strong></span>
+                                            <span>{{ __('Original price') }}: <strong
+                                                    id="product_original_price"></strong></span>
                                         </div>
                                         <div class="first-dev">
-                                            <span>Dis:<strong class="text-black-50 product_discount"></strong></span>
+                                            <span>{{ __('Discount') }}:<strong
+                                                    class="text-black-50 product_discount"></strong></span>
                                         </div>
                                         <div class="first-dev">
-                                            <span>Final price: <strong id="product_price"></strong></span>
+                                            <span>{{ __('Final price') }}: <strong id="product_price"></strong></span>
                                         </div>
                                     </div>
 
@@ -144,7 +149,7 @@
                                             <img src="{{ asset('front/client/imgs/cart.png') }}" alt=""
                                                 data-src="">
                                             <div>
-                                                <p>shopping</p>
+                                                <p>{{ __('shopping') }}</p>
                                             </div>
                                         </div>
                                         <div class="icon-box">
@@ -152,7 +157,7 @@
                                                 alt=""
                                                 data-src="{{ asset('front/client/imgs/heart-selceted.png') }}">
                                             <div>
-                                                <p>favourite</p>
+                                                <p>{{ __('favourite') }}</p>
                                             </div>
                                         </div>
                                         <div class="icon-box">
@@ -160,14 +165,14 @@
                                                 alt=""
                                                 data-src="{{ asset('front/client/imgs/lik-selceted.png') }}">
                                             <div>
-                                                <p>active</p>
+                                                <p>{{ __('active') }}</p>
                                             </div>
                                         </div>
                                         <div class="icon-box">
                                             <img src="{{ asset('front/client/imgs/dislike.png') }}" alt=""
                                                 data-src="{{ asset('front/client/imgs/dis-selceted.png') }}">
                                             <div>
-                                                <p>inactive</p>
+                                                <p>{{ __('inactive') }}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -175,11 +180,11 @@
 
                                     <div class="modal-footer d-flex">
                                         <span><img src="{{ asset('front/client/imgs/share-icon-copuon.png') }}"
-                                                alt=""> Share
+                                                alt=""> {{ __('Share') }}
                                         </span>
                                         <a type="button" class="copy-button btn btn-secondary">
-                                            Copy Code <img src="{{ asset('front/client/imgs/copy-icon.png') }}"
-                                                alt="">
+                                            {{ __('Copy Code') }} <img
+                                                src="{{ asset('front/client/imgs/copy-icon.png') }}" alt="">
                                         </a>
                                     </div>
                                 </div>

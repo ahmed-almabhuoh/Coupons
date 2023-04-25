@@ -42,9 +42,6 @@
                     <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
                         style="width: 101.266px;" aria-label="Coupon: activate to sort column ascending">
                         {{ __('Discount') }}</th>
-                    {{-- <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
-                        style="width: 101.266px;" aria-label="Coupon: activate to sort column ascending">
-                        {{ __('Due price') }}</th> --}}
                     <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
                         style="width: 101.266px;" aria-label="Coupon: activate to sort column ascending">
                         {{ __('Offer') }}</th>
@@ -67,9 +64,6 @@
                         colspan="1" style="width: 125.906px;"
                         aria-label="Status: activate to sort column ascending">
                         {{ __('Coupon') }} </th>
-                    {{-- <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
-                        style="width: 125.906px;" aria-label="Status: activate to sort column ascending">
-                        {{ __('Last us') }} </th> --}}
                     <th class="sorting_disabled" rowspan="1" colspan="1" style="width: 135.891px;"
                         aria-label="Actions"> {{ __('Actions') }} </th>
                 </tr>
@@ -89,12 +83,7 @@
                         <td>
                             {{ round($product->original_price) . ' SR' }}
                         </td>
-                        {{-- <td>
-                            // Due Price
-                            {{ round($product->original_price - $product->price) . ' SR' }}
-                        </td> --}}
                         <td>
-                            {{-- Due Price --}}
                             {{ round($product->price) . ' SR' }}
                         </td>
                         <td>
@@ -110,7 +99,7 @@
                             @if ($product->action)
                                 <a href="{{ $product->action }}" target="_blank">Link</a>
                             @else
-                                No link
+                                {{ __('No link') }}
                             @endif
                         </td>
                         <td>

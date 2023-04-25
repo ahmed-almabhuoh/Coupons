@@ -10,7 +10,13 @@
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Css File -->
-    <link rel="stylesheet" href="{{ asset('front/pages/css/master.css') }}" />
+    @if (session('lang') == 'ar')
+        <link rel="stylesheet" href="{{ asset('front/pages/css/master-rtl.css') }}" />
+        {{-- <link rel="stylesheet" href="{{ asset('front/authorization/css/master-rtl.css') }}" /> --}}
+    @else
+        <link rel="stylesheet" href="{{ asset('front/pages/css/master.css') }}" />
+        {{-- <link rel="stylesheet" href="{{ asset('front/authorization/css/master.css') }}" /> --}}
+    @endif
     <link rel="stylesheet" href="{{ asset('front/pages/css/bootstrap.min.css') }}" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500&display=swap" rel="stylesheet" />
     <!-- Title Page -->
@@ -33,53 +39,8 @@
                 <i class="fa-solid fa-bars"></i>
             </button>
             <div class="collapse navbar-collapse" id="main">
-                <ul class="navbar-nav m-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link p-2 p-lg-3 active" aria-current="page" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link p-2 p-lg-3" href="#">Coupons</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link p-2 p-lg-3" href="#">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link p-2 p-lg-3" href="#">Common Questions</a>
-                    </li>
-                    <!-- <li class="nav-item">
-            <a class="nav-link p-2 p-lg-3" href="#">Offers</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link p-2 p-lg-3" href="#">Blog</a>
-          </li> -->
-                </ul>
 
-                <!-- Image -->
-                <div class="link btn-group ml-3">
-                    <div class="user-iamge">
-                        @if (!auth()->user()->image)
-                            <img src="{{ asset('front/pages/imgs/user-image.png') }}" alt="">
-                        @else
-                            <img src="{{ env('APP_URL') . 'human/' . auth()->user()->image }}" width="40px"
-                                height="40px" alt="">
-                        @endif
-                    </div>
-                    <button class="btn text-black-50  btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        {{ auth()->user()->fname . ' ' . auth()->user()->lname }}
-                    </button>
-                    <ul class="dropdown-menu mt-2 text-start">
-                        <li>
-                            <i class="fa-solid fa-user"></i>
-
-                            <a href="{{ route('users.account') }}">My account</a>
-                        </li>
-                        <li>
-                            <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                            <a href="{{ route('logout') }}">Sign Out</a>
-                        </li>
-                    </ul>
-                </div>
+                @include('frontend.partials.header')
 
             </div>
         </div>
@@ -98,21 +59,21 @@
                             class="nav-link text-black-50 @if (Route::currentRouteName() == 'users.account') active @endif"
                             aria-current="page">
                             <i class="fa-solid fa-user"></i>
-                            My Account
+                            {{ __('My Account') }}
                         </a>
                     </li>
                     <li class="pb-2">
                         <a href="{{ route('users.favorite') }}"
                             class="nav-link link-dark text-black-50  @if (Route::currentRouteName() == 'users.favorite') active @endif">
                             <i class="fa-solid fa-bag-shopping"></i>
-                            Favorite
+                            {{ __('Favorite') }}
                         </a>
                     </li>
                     <li>
                         <a href="{{ route('users.change.password') }}"
                             class="nav-link link-dark text-black-50 @if (Route::currentRouteName() == 'users.change.password') active @endif">
                             <i class="fa-solid fa-gear"></i>
-                            Change Password
+                            {{ __('Change Password') }}
                         </a>
                     </li>
                 </ul>
@@ -128,25 +89,7 @@
 
 
     <!--=============== Start Footer =============== -->
-    <div class="footer pt-5 pb-3 text-white-50 text-center text-md-start">
-        <div class="container text-center">
-            <div class="row ">
-
-                <div class="col-md-12 col-lg-12">
-                    <div class="links">
-                        <h5 class="text-light">Logo<br> Here</h5>
-                        <ul class="list-unstyled  d-flex justify-content-center gap-3 flex-wrap">
-                            <li><a class="text-light" href="">Home</a></li>
-                            <li><a class="text-white-50" href="">Coupons</a></li>
-                            <li><a class="text-white-50" href="">About</a></li>
-                            <li><a class="text-white-50" href="">Common Questions</a></li>
-                            <!-- <li><a class="text-white-50" href="">Blog</a></li> -->
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    @include('frontend.partials.footer')
     <!--=============== End Footer =========== -->
     <script src="{{ asset('front/pages/js/script.js') }}"></script>
     <script defer src="https://use.fontawesome.com/releases/v6.4.0/js/all.js"

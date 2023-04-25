@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
-@section('title', 'Create a new FQs')
-@section('page-index', 'FQs')
-@section('root', 'Create')
-@section('sub-root', 'CM')
+@section('title', __('Create a new FQs'))
+@section('page-index', __('FQs'))
+@section('root', __('Create'))
+@section('sub-root', __('CM'))
 
 
 @section('styles')

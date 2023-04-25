@@ -37,7 +37,7 @@
 
     <div class="form-group no-margin">
         <button type="button" wire:click="updatePassword()" class="btn btn-primary btn-block">
-            Change password
+            {{__('Change password')}}
         </button>
     </div>
 

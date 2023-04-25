@@ -43,6 +43,7 @@ nav .language-switcher {
 .language-switcher .active {
   background-color: #f05555;
   color: white;
+  /* box-shadow: 0px 0px 30px rgba(99, 122, 48, 0.4); */
 }
 .language-switcher .active:hover {
   color: white;
@@ -75,8 +76,6 @@ nav .language-switcher {
 body.my-login-page {
   background-color: #f9f9f9;
   font-size: 14px;
-  /* background-image: url(../img/line-in-background.png);
-  background-repeat: no-repeat; */
   position: relative;
 }
 .my-login-page .brand {
@@ -92,14 +91,15 @@ body.my-login-page {
 input:focus {
   outline: none;
 }
-
 .my-login-page .brand img {
   width: 100%;
 }
 .my-login-page .card-wrapper {
   width: 100%;
 }
+
 .my-login-page .card {
+  direction: rtl;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -115,30 +115,26 @@ input:focus {
   border-radius: 16px;
   border: none;
 }
-
 /* ====Start Size box height==== */
 .my-login-page .card.fat.login {
   height: 450px;
 }
-
 /* =======Icon in register======= */
 .toggle-password {
   position: absolute;
-  right: 20px;
+  left: 20px;
   top: 48px;
   color: #5d5b5b;
   font-size: 15px;
   cursor: pointer;
 }
-
 .toggle-password:before {
   content: "\f06e";
 }
-
 .toggle-password.show:before {
   content: "\f070";
 }
-/* ============================ */
+/* ============================= */
 
 .forget-pas {
   height: 300px;
@@ -162,9 +158,6 @@ input:focus {
   margin-top: 30px;
 }
 
-/* .modal-backdrop.show {
-  z-index: -2;
-} */
 /* ==========Start Pop up in Forget Page========= */
 .modal-dialog {
   z-index: -1;
@@ -192,14 +185,12 @@ input:focus {
 .my-login-page .card.fat {
   padding: 10px;
 }
-
 .my-login-page .card .card-title {
   margin-bottom: 30px;
   text-align: center;
   font-weight: bold;
   font-size: 35px;
 }
-
 .my-login-page .form-control {
   border-width: 2.3px;
   background-color: #dde1cd !important;
@@ -214,6 +205,7 @@ input:focus {
   width: 40%;
 }
 .my-login-page .form-control.first {
+  /* Edite */
   width: 100%;
 }
 .my-login-page .form-group {
@@ -254,6 +246,7 @@ input:focus {
 .btn-close:focus {
   box-shadow: none !important;
 }
+
 .my-login-page .text-link {
   font-size: 16px;
   padding-top: 25px;
@@ -261,15 +254,18 @@ input:focus {
 .my-login-page .margin-top20 a {
   color: #f05555;
 }
+
 .my-login-page .no-margin {
   margin-top: 40px;
 }
 .text-link {
   padding-top: 20px;
 }
+
 /*==================== End main Section =================== */
 
 /*==================== Start Footer =================== */
+
 .footer {
   padding-top: 210px;
   text-align: center;

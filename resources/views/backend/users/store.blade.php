@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
-@section('title', 'Create a user')
-@section('page-index', 'Users')
-@section('root', 'Create')
-@section('sub-root', 'HR')
+@section('title', __('Create a new user'))
+@section('page-index', __('Users'))
+@section('root', __('Create'))
+@section('sub-root', __('HR'))
 
 
 @section('styles')
@@ -16,7 +16,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">{{ __('Create an user') }}</h4>
+                        <h4 class="card-title">{{ __('Create a new user') }}</h4>
                     </div>
                     <div class="card-body">
                         <livewire:backend.users.create />

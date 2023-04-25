@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
-@section('title', 'Update ' . $blog->title)
-@section('page-index', 'Blogs')
-@section('root', 'Update')
-@section('sub-root', 'CM')
+@section('title', __('Update') . ' ' . $blog->title)
+@section('page-index', __('Blogs'))
+@section('root', __('Update'))
+@section('sub-root', __('CM'))
 
 @section('styles')
 
@@ -21,7 +21,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">{{ __('Update ') . $blog->name }}</h4>
+                        <h4 class="card-title">{{ __('Update') . ' ' . $blog->name }}</h4>
                     </div>
                     <div class="card-body">
                         <livewire:backend.blogs.update :blog="$blog" :categories="$categories" :stores="$stores" />

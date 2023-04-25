@@ -23,14 +23,7 @@
 
     <x-form.input name="phone" type="text" label="Phone no." placeholder="Enter your Phone no. here ...." />
 
-    {{-- <x-form.input name="password" type="password" label="Password" placeholder="Enter your Password here ...." />
-
-    <x-form.input name="password_confirmation" type="password" label="Password Confirmation"
-        placeholder="Enter the admin Password Confirmation here ...." /> --}}
-
     <x-form.single-image name="image" label="Choose your image" />
-
-    {{-- <x-form.select name="status" label="Account status" :options="['active', 'disabled']" /> --}}
 
     <div>
         <x-form.submit text="Update" action="update()" type="button" />

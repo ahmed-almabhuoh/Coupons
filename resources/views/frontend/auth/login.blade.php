@@ -15,9 +15,13 @@
     <!-- FontAwsome -->
     <link rel="stylesheet" href="{{ asset('front/authorization/css/all.min.css') }}">
     <!-- Css File -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('front/authorization/css/master.css') }}">
+    @if (session('lang') == 'en')
+        <link rel="stylesheet" type="text/css" href="{{ asset('front/authorization/css/master.css') }}">
+    @else
+        <link rel="stylesheet" type="text/css" href="{{ asset('front/authorization/css/master-rtl.css') }}">
+    @endif
     <!-- page Title -->
-    <title> Login Page</title>
+    <title> {{ __('Coupons Login') }} </title>
 
 
     @livewireStyles
@@ -25,14 +29,7 @@
 
 <!-- ================================================================= -->
 <!-- Start Heaer -->
-<nav class="header">
-    <div class="language-switcher">
-        <ul>
-            <li><a href="#" class="active" onclick="switchLanguage('english')">Eng</a></li>
-            <li><a href="#" class="" onclick="switchLanguage('arabic')">عربي</a></li>
-        </ul>
-    </div>
-</nav>
+@include('frontend.partials.lang-switcher')
 <!-- End Heaer -->
 
 <body class="my-login-page ">
@@ -58,14 +55,14 @@
                                     {{ session('message') }}
                                 </div>
                             @endif
-                            <h4 class="card-title">Login</h4>
+                            <h4 class="card-title"> {{ __('Login') }} </h4>
 
                             <livewire:front.auth.login />
 
                             <div class="footer">
-                                <span>Forgot your password?.. <a href="{{ route('clients.forgot.password') }}">Recover
-                                        your
-                                        password</a></span>
+                                <span> {{ __('Forgot your password?..') }} <a
+                                        href="{{ route('clients.forgot.password') }}">
+                                        {{ __('Recover your password') }}</a></span>
                             </div>
                         </div>
                     </div>

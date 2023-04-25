@@ -11,7 +11,7 @@
     @endif
 
     <div class="form-group">
-        <label for="email">E-Mail Address</label>
+        <label for="email"> {{ __('E-Mail Address') }} </label>
         <input id="email" type="email" class="form-control" name="email" wire:model="email" value="" required
             style="@error('email')
         border-color: rgb(230, 22, 22);
@@ -21,7 +21,8 @@
         @enderror
     </div>
     <div class="form-group">
-        <label for="password">Password
+        <label for="password">
+            {{ __('Password') }}
         </label>
         <input id="password" type="password" class="form-control" name="password" required wire:model="password"
             style="@error('password')
@@ -35,11 +36,11 @@
 
     <div class="form-group no-margin">
         <button type="button" wire:click="login" class="btn btn-primary btn-block">
-            Login
+            {{ __('Login') }}
         </button>
     </div>
 
     <div class="text-link  margin-top20 text-center">
-        Don't have an account?.. <a href="{{route('users.register')}}">Create One</a>
+        {{ __('Don\'t have an account?..') }} <a href="{{ route('users.register') }}">{{ __('Create an account!') }}</a>
     </div>
 </form>

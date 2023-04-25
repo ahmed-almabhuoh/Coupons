@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
-@section('title', 'Create a product')
-@section('page-index', 'Products')
-@section('root', 'Create')
-@section('sub-root', 'CM')
+@section('title', __('Create a new product'))
+@section('page-index', __('Products'))
+@section('root', __('Create'))
+@section('sub-root', __('CM'))
 
 
 @section('styles')
@@ -33,7 +33,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">{{ __('Create a product') }}</h4>
+                        <h4 class="card-title">{{ __('Create a new product') }}</h4>
                     </div>
                     <div class="card-body">
                         <livewire:backend.products.create :categories="$categories" :stores="$stores" :coupons="$coupons" />

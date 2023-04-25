@@ -78,13 +78,12 @@
                                     {{ $store->coupons_count . 'CPs' }}
                                 </a>
                             @else
-                                No coupons
+                                {{ __('No coupons') }}
                             @endif
                         </td>
                         <td>
                             <a href="{{ $store->action }}">{{ $store->name }}</a>
                         </td>
-                        {{-- <td>{{ $store->status }}</td> --}}
                         <td>
                             <span class="{{ $store->status_class }}">{{ ucfirst($store->status) }}</span>
                         </td>

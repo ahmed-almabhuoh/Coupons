@@ -82,7 +82,7 @@
                                     {{ $category->products_count . ' PRDs' }}
                                 </a>
                             @else
-                                No products
+                                {{ __('No products') }}
                             @endif
                         </td>
                         <td>
@@ -91,7 +91,7 @@
                                     {{ $category->coupons_count . 'CPs' }}
                                 </a>
                             @else
-                                No coupons
+                                {{ __('No coupons') }}
                             @endif
                         </td>
                         <td>
@@ -100,7 +100,7 @@
                                     <a href="#">{{ $category->blogs_count . ' BLOGS' }}</a>
                                 </a>
                             @else
-                                No blogs
+                                {{ __('No blogs') }}
                             @endif
                         </td>
                         {{-- <td>{{ $category->status }}</td> --}}

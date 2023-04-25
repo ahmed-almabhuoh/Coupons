@@ -50,7 +50,7 @@
                 @if (!count($aqs))
                     <tr class="odd">
                         <td valign="top" colspan="6" class="dataTables_empty">
-                            {{ __('No coupons found yet ... !') }} </td>
+                            {{ __('No common questions found yet ... !') }} </td>
                     </tr>
                 @endif
                 @foreach ($aqs as $aq)

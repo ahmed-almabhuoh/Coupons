@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
-@section('title', 'Create a blog')
-@section('page-index', 'Blogs')
-@section('root', 'Create')
-@section('sub-root', 'CM')
+@section('title', __('Create a blog'))
+@section('page-index', __('Blogs'))
+@section('root', __('Create'))
+@section('sub-root', __('CM'))
 
 
 @section('styles')

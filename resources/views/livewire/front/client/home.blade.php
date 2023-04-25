@@ -4,7 +4,7 @@
             <div class="row">
                 <div
                     class="main-title fw-bold fs-2 d-flex justify-content-center text-center mt-5 mb-5 position-relative ">
-                    <h2 class="position-absolute "> Various discount codes</h2>
+                    <h2 class="position-absolute "> {{ __('Various discount codes') }} </h2>
                 </div>
             </div>
 
@@ -12,7 +12,7 @@
                 <div class="dropdown">
                     <a class="btn  dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                         data-bs-toggle="dropdown" aria-expanded="false">
-                        All Stores
+                        {{ __('All Stores') }}
                     </a>
 
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -43,7 +43,7 @@
                 <div class="portfolio-gallery" id="portfolio-gallery">
 
                     @if (!count($coupons))
-                        <h1>No coupons found yet!</h1>
+                        <h1>{{ __('No coupons found yet!') }}</h1>
                     @endif
 
                     @foreach ($coupons as $coupon)
@@ -67,7 +67,7 @@
                                 <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
                                     onclick="getCoupon('{{ $coupon->id }}')">
                                     <div class="left">
-                                        Coupon details
+                                        {{ __('Coupon details') }}
                                     </div>
                                     <div class="right">
                                         {{ $coupon->discount }}%
@@ -84,7 +84,8 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h2 class="modal-title m-auto text-black-50 " id="exampleModalLabel">
-                                        Coupon details</h2>
+                                        {{ __('Coupon details') }}
+                                    </h2>
                                 </div>
 
 
@@ -154,7 +155,8 @@
                                     <span><img src="imgs/share-icon-copuon.png" alt=""> Share
                                     </span>
                                     <a type="button" class="copy-button btn btn-secondary">
-                                        Copy Code <img src="imgs/copy-icon.png" alt="">
+                                        {{ __('Copy Code') }}
+                                        <img src="imgs/copy-icon.png" alt="">
                                     </a>
                                 </div>
                             </div>

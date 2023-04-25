@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
-@section('title', 'Coupons')
-@section('page-index', 'Coupons')
-@section('root', 'List')
-@section('sub-root', 'CM')
+@section('title', __('Coupons'))
+@section('page-index', __('Coupons'))
+@section('root', __('List'))
+@section('sub-root', __('CM'))
 
 
 @section('styles')

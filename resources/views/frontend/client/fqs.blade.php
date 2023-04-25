@@ -6,7 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Css File -->
-    <link rel="stylesheet" href="{{ asset('front/client/css/master.css') }}" />
+    @if (session('lang') == 'ar')
+        <link rel="stylesheet" href="{{ asset('front/client/css/master-rtl.css') }}" />
+    @else
+        <link rel="stylesheet" href="{{ asset('front/client/css/master.css') }}" />
+    @endif
     <link rel="stylesheet" href="{{ asset('front/client/css/bootstrap.min.css') }}" />
     <!-- Bootstrap File -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js"></script>
@@ -16,7 +20,7 @@
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <!-- Page title -->
-    <title>Common question User</title>
+    <title> {{ __('Common questions') }} </title>
 </head>
 
 <body>
@@ -31,95 +35,9 @@
                 <i class="fa-solid fa-bars"></i>
             </button>
             <div class="collapse navbar-collapse" id="main">
-                <ul class="navbar-nav m-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link p-2 p-lg-3 @if (Route::currentRouteName() == 'pages.home') active @endif"
-                            aria-current="page" href="{{ route('pages.home') }}">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link p-2 p-lg-3  @if (Route::currentRouteName() == 'pages.coupons') active @endif"
-                            href="{{ route('pages.coupons') }}">Coupons</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link p-2 p-lg-3 @if (Route::currentRouteName() == 'pages.about') active @endif"
-                            href="{{ route('pages.about') }}">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link p-2 p-lg-3 @if (Route::currentRouteName() == 'pages.fqs') active @endif"
-                            href="{{ route('pages.fqs') }}">Common Questions</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link p-2 p-lg-3 @if (Route::currentRouteName() == 'pages.offers') active @endif "
-                            href="{{ route('pages.offers') }}">Offers</a>
-                    </li>
-                    @if (auth('client')->check())
-                        <li class="nav-item">
-                            <a class="nav-link p-2 p-lg-3 @if (Route::currentRouteName() == 'pages.blogs') active @endif"
-                                href="{{ route('pages.blogs') }}">Blog</a>
-                        </li>
-                    @endif
-                </ul>
 
-                <!-- =====>>>> Start User <<<<===== -->
-                <!-- Start -Image -->
-                @if (auth('client')->check())
-                    <div class="link btn-group ml-3">
-                        <div class="user-iamge">
-                            @if (!auth('client')->user()->image)
-                                <img src="{{ asset('front/pages/imgs/user-image.png') }}" alt="">
-                            @else
-                                <img src="{{ env('APP_URL') . 'human/' . auth('client')->user()->image }}"
-                                    width="40px" height="40px" alt="">
-                            @endif
-                        </div>
-                        <button class="btn text-black-50 btn-sm dropdown-toggle" type="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            {{ auth('client')->user()->fname . ' ' . auth('client')->user()->lname }}
-                        </button>
-                        <ul class="dropdown-menu mt-2 text-start">
-                            <li>
-                                <svg class="svg-inline--fa fa-user" aria-hidden="true" focusable="false"
-                                    data-prefix="fas" data-icon="user" role="img" xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 448 512" data-fa-i2svg="">
-                                    <path fill="currentColor"
-                                        d="M224 256c70.7 0 128-57.31 128-128s-57.3-128-128-128C153.3 0 96 57.31 96 128S153.3 256 224 256zM274.7 304H173.3C77.61 304 0 381.6 0 477.3c0 19.14 15.52 34.67 34.66 34.67h378.7C432.5 512 448 496.5 448 477.3C448 381.6 370.4 304 274.7 304z">
-                                    </path>
-                                </svg><!-- <i class="fa-solid fa-user"></i> Font Awesome fontawesome.com -->
-                                <a href="{{ route('users.account') }}">My account</a>
-                            </li>
-                            <li>
-                                <svg class="svg-inline--fa fa-arrow-right-from-bracket" aria-hidden="true"
-                                    focusable="false" data-prefix="fas" data-icon="arrow-right-from-bracket"
-                                    role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
-                                    data-fa-i2svg="">
-                                    <path fill="currentColor"
-                                        d="M160 416H96c-17.67 0-32-14.33-32-32V128c0-17.67 14.33-32 32-32h64c17.67 0 32-14.33 32-32S177.7 32 160 32H96C42.98 32 0 74.98 0 128v256c0 53.02 42.98 96 96 96h64c17.67 0 32-14.33 32-32S177.7 416 160 416zM502.6 233.4l-128-128c-12.51-12.51-32.76-12.49-45.25 0c-12.5 12.5-12.5 32.75 0 45.25L402.8 224H192C174.3 224 160 238.3 160 256s14.31 32 32 32h210.8l-73.38 73.38c-12.5 12.5-12.5 32.75 0 45.25s32.75 12.5 45.25 0l128-128C515.1 266.1 515.1 245.9 502.6 233.4z">
-                                    </path>
-                                </svg>
-                                <!-- <i class="fa-solid fa-arrow-right-from-bracket"></i> Font Awesome fontawesome.com -->
-                                <a href="{{ route('logout') }}">Sign Out</a>
-                            </li>
-                        </ul>
-                    </div>
-                @else
-                    <a class="btn rounded-pill main-btn" href="{{ route('users.register') }}" onclick="">Create
-                        account</a>
-                    <div class="country btn-group m-3">
-                        <button class="btn text-black-50  btn-sm dropdown-toggle" type="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="{{ asset('front/client/imgs/united-states.png') }}" alt="">
-                            English
-                        </button>
-                        <ul class="dropdown-menu mt-2 text-start">
-                            <li>
-                                <img src="{{ asset('front/client/imgs/saudi-arabia.png') }}" alt="">
-                                <a class="text-black-50" href="#">Saudi Arabia</a>
-                            </li>
-                        </ul>
-                    </div>
-                @endif
-                <!-- End User-Image -->
-                <!-- =====>>>> End User <<<<====== -->
+                {{-- Header --}}
+                @include('frontend.partials.header')
 
             </div>
         </div>
@@ -138,7 +56,7 @@
                 </div>
             @endif
             <div class="main-title fw-bold fs-2 d-flex justify-content-center text-center  mb-5 position-relative ">
-                <h2 class="position-absolute "> Common Questions</h2>
+                <h2 class="position-absolute "> {{ __('Common Questions') }}</h2>
             </div>
             <div class="row">
                 <div class="col-md-6 px-4">
@@ -150,14 +68,13 @@
                         @foreach ($fqs as $fq)
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="headingOne">
-                                    <button class="accordion-button collapsed" type="button"
-                                        data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false"
-                                        aria-controls="collapseOne">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                                         {{ $fq->title }}
                                     </button>
                                 </h2>
-                                <div id="collapseOne" class="accordion-collapse collapse"
-                                    aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                                    data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
                                         {{ $fq->answer }}
                                     </div>
@@ -173,8 +90,8 @@
                     <div class="row ">
                         <div class="col-md-12">
 
-                            <h3>Do you have a question in your mind?!</h3>
-                            <p>Ask us and we will respond within 24 hours.</p>
+                            <h3> {{ __('Do you have a question in your mind?!') }} </h3>
+                            <p> {{ __('Ask us and we will respond within 24 hours.') }} </p>
 
                             <form class="common-question" method="POST" action="{{ route('send.contact') }}">
                                 @csrf
@@ -184,7 +101,7 @@
                                         class="form-control @error('email')
                                     is-invalid
                                     @enderror"
-                                        id="email" name="email" placeholder="Your E-mail">
+                                        id="email" name="email" placeholder="{{ __('Your E-mail') }}">
                                     @error('email')
                                         <div class="invalid-feedback">
                                             {{ $message }}
@@ -197,7 +114,7 @@
                                         class="form-control @error('message')
                                     is-invalid
                                     @enderror"
-                                        id="message" name="message" rows="5" placeholder="Your Message Here.."></textarea>
+                                        id="message" name="message" rows="5" placeholder="{{ __('Your Message Here..') }}"></textarea>
                                     @error('message')
                                         <div class="invalid-feedback">
                                             {{ $message }}
@@ -206,7 +123,7 @@
                                 </div>
 
                                 <div>
-                                    <button type="submit" class="btn btn-primary col-6">Submit</button>
+                                    <button type="submit" class="btn btn-primary col-6">{{ __('Submit') }}</button>
                                 </div>
                             </form>
 
@@ -219,27 +136,7 @@
     <!-- ============= End Main Section ========== -->
 
     <!--=============== Start Footer ============= -->
-    <div class="footer common-question pt-2 pb-2 text-white-50 text-center text-md-start">
-        <div class="container text-center">
-            <div class="row ">
-                <div class="col-md-12 col-lg-12">
-                    <div class="links">
-                        <h5 class="text-light">Logo <p>Here</p>
-                        </h5>
-                        <ul class="links list-unstyled lh-lg d-flex justify-content-center gap-3 flex-wrap">
-                            <li><a class="text-light" href="">Home</a></li>
-                            <li><a class="text-white-50" href="">Coupons</a></li>
-                            <li><a class="text-white-50" href="">About</a></li>
-                            <li><a class="text-white-50" href="">Common Questions</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-
-
-            </div>
-        </div>
-    </div>
+    @include('frontend.partials.footer')
     <!--=============== End Footer =============== -->
     <script src="{{ asset('front/client/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('front/client/js/all.min.js') }}"></script>

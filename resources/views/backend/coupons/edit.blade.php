@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
-@section('title', 'Update ' . $coupon->code)
-@section('page-index', 'Coupons')
-@section('root', 'Update')
-@section('sub-root', 'CM')
+@section('title', __('Update') . ' ' . $coupon->code)
+@section('page-index', __('Coupons'))
+@section('root', __('Update'))
+@section('sub-root', __('CM'))
 
 @section('styles')
     <!-- BEGIN: Vendor CSS-->
@@ -32,7 +32,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">{{ __('Update ') . $coupon->code }}</h4>
+                        <h4 class="card-title">{{ __('Update') . ' ' . $coupon->code }}</h4>
                     </div>
                     <div class="card-body">
                         <livewire:backend.coupons.update :coupon="$coupon" :categories="$categories" :stores="$stores" />

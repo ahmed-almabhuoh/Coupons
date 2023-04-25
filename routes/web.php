@@ -61,6 +61,7 @@ Route::prefix('cpanel')->middleware('auth:admin')->group(function () {
 
     Route::get('update-account', [AccountManagementController::class, 'getAccountManagementView'])->name('manage.admins.accounts');
     Route::get('change-password', [AccountManagementController::class, 'changePassword'])->name('manage.admins.password');
+    Route::get('/change-locale/{locale}', [AccountManagementController::class, 'changeLocale'])->name('admins.change.locale');
 });
 
 Route::prefix('cpanel')->middleware(['auth:client,admin'])->group(function () {

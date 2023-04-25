@@ -14,26 +14,23 @@
     <!-- FontAwsome -->
     <link rel="stylesheet" href="{{ asset('front/authorization/css/all.min.css') }}">
     <!-- Css File -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('front/authorization/css/master.css') }}">
+    @if (session('lang') == 'en')
+        <link rel="stylesheet" type="text/css" href="{{ asset('front/authorization/css/master.css') }}">
+    @else
+        <link rel="stylesheet" type="text/css" href="{{ asset('front/authorization/css/master-rtl.css') }}">
+    @endif
     <!-- page Title -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
         integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-    <title> Foreget Password Page</title>
+    <title>{{ __('Foreget Password') }}</title>
 
     <!-- ================================================================= -->
     <!-- Start Heaer -->
 </head>
-<nav class="header">
-    <div class="language-switcher">
-        <ul>
-            <li><a href="#" class="active" onclick="switchLanguage('english')">Eng</a></li>
-            <li><a href="#" class="" onclick="switchLanguage('arabic')">عربي</a></li>
-        </ul>
-    </div>
-</nav>
+@include('frontend.partials.lang-switcher')
 <!-- End Heaer -->
 
 <body class="my-login-page ">
@@ -43,11 +40,11 @@
                 <div class="card-wrapper">
                     <div class="card fat forget-pas">
                         <div class="card-body">
-                            <h4 class="card-title">Recover Password</h4>
+                            <h4 class="card-title">{{ __('Recover Password') }}</h4>
                             <form method="POST" action="{{ route('clients.reset.password') }}">
                                 @csrf
                                 <div class="form-group">
-                                    <label for="email">E-Mail Address</label>
+                                    <label for="email"> {{ __('E-Mail Address') }} </label>
                                     <input id="email" name="email" type="email"
                                         class="form-control @error('email') is-invalid @enderror" name="email"
                                         value="" required autofocus>
@@ -58,12 +55,13 @@
                                 <div class="form-group no-margin">
                                     <button data-toggle="modal" data-bs-toggle="modal" data-bs-target="#exampleModal"
                                         type="submit" class=" btn btn-primary btn-block">
-                                        Recover
+                                        {{ __('Recover') }}
                                     </button>
                                 </div>
                             </form>
                             <div class="forget-text-link  margin-top20 text-center">
-                                Don't have an account?.. <a href="{{ route('users.register') }}">Create One</a>
+                                {{ __('Don\'t have an account?.. ') }} <a href="{{ route('users.register') }}">
+                                    {{ __('Create an account!') }} </a>
                             </div>
                         </div>
                     </div>

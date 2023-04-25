@@ -12,23 +12,20 @@
     <!-- FontAwsome -->
     <link rel="stylesheet" href="{{ asset('front/authorization/css/all.min.css') }}">
     <!-- Css File -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('front/authorization/css/master.css') }}">
+    @if (session('lang') == 'en')
+        <link rel="stylesheet" type="text/css" href="{{ asset('front/authorization/css/master.css') }}">
+    @else
+        <link rel="stylesheet" type="text/css" href="{{ asset('front/authorization/css/master-rtl.css') }}">
+    @endif
     <!-- page Title -->
-    <title> Register a new account</title>
+    <title> {{ __('Register a new account') }} </title>
 
     @livewireStyles
 </head>
 
 <!-- ================================================================= -->
 <!-- Start Heaer -->
-<nav class="header">
-    <div class="language-switcher">
-        <ul>
-            <li><a href="#" class="active" onclick="switchLanguage('english')">Eng</a></li>
-            <li><a href="#" class="" onclick="switchLanguage('arabic')">عربي</a></li>
-        </ul>
-    </div>
-</nav>
+@include('frontend.partials.lang-switcher')
 <!-- End Heaer -->
 
 <body class="my-login-page">
@@ -41,7 +38,7 @@
 
                     <div class="card fat register">
                         <div class="card-body">
-                            <h4 class="card-title">Register</h4>
+                            <h4 class="card-title">{{ __('Register') }}</h4>
 
                             <livewire:front.auth.register />
 

@@ -6,7 +6,7 @@
     @endif
     <div class="form-group">
         <div class="first-last">
-            <label for="name">Full Name:</label>
+            <label for="name">{{ __('Full Name') }}</label>
             <input type="text" name="fullname" wire:model="fullname" id="fullname" class="first form-control"
                 style="@error('fullname')
             border-color: rgb(230, 22, 22);
@@ -18,7 +18,7 @@
         </div>
     </div>
     <div class="form-group">
-        <label for="email">E-Mail Address</label>
+        <label for="email"> {{ __('E-Mail Address') }} </label>
         <input wire:model="email" type="email" class="form-control" name="email"
             style="@error('email')
         border-color: rgb(230, 22, 22);
@@ -28,7 +28,7 @@
         @enderror
     </div>
     <div class="form-group">
-        <label for="password">Password</label>
+        <label for="password"> {{ __('Password') }} </label>
         <input id="password" type="password" wire:model="password" name="password" class="form-control"
             style="@error('password')
         border-color: rgb(230, 22, 22);
@@ -42,10 +42,10 @@
     </div>
     <div class="form-group no-margin">
         <button type="button" wire:click="register" class="btn btn-primary btn-block">
-            Register
+            {{ __('Register') }}
         </button>
     </div>
     <div class="text-link margin-top20 text-center">
-        Already have an account? <a href="{{ route('users.login') }}">Login</a>
+        {{ __('Already have an account?') }} <a href="{{ route('users.login') }}"> {{ __('Login') }} </a>
     </div>
 </form>

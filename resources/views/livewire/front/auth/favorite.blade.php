@@ -5,11 +5,11 @@
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
                         data-bs-toggle="dropdown" aria-expanded="false" title="Platform">
-                        Filter by Platform
+                        {{ __('Filter by Platform') }}
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        <li><a class="dropdown-item" href="#">Namshi</a></li>
-                        <li><a class="dropdown-item" href="#">Floward</a></li>
+                        <li><a class="dropdown-item" href="#">{{ __('Namshi') }}</a></li>
+                        <li><a class="dropdown-item" href="#">{{ __('Floward') }}</a></li>
                     </ul>
                 </div>
             </th>
@@ -17,7 +17,7 @@
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2"
                         data-bs-toggle="dropdown" aria-expanded="false">
-                        Filter by Status
+                        {{ __('Filter by Status') }}
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
                         <li><a class="dropdown-item" href="#">Active</a></li>
@@ -26,16 +26,16 @@
                 </div>
             </th>
             <th scope="col">
-                <label for="searchInput" class="visually-hidden">Search</label>
+                <label for="searchInput" class="visually-hidden"> {{ __('Search') }} </label>
                 <input type="text" id="searchInput" class="form-control" placeholder="Find what You want..">
             </th>
         </tr>
         <tr>
-            <th class="header-tabel" scope="col">Coupon</th>
-            <th class="header-tabel" scope="col">Platform name</th>
-            <th class="header-tabel" scope="col">Discounting</th>
-            <th class="header-tabel" scope="col">Status</th>
-            <th class="header-tabel" scope="col">commands</th>
+            <th class="header-tabel" scope="col"> {{ __('Coupon') }} </th>
+            <th class="header-tabel" scope="col"> {{ __('Platform name') }} </th>
+            <th class="header-tabel" scope="col"> {{ __('Discounting') }} </th>
+            <th class="header-tabel" scope="col"> {{ __('Status') }} </th>
+            <th class="header-tabel" scope="col"> {{ __('Commands') }} </th>
         </tr>
     </thead>
     <tbody>
@@ -51,16 +51,9 @@
                 <td>{{ $favorite->coupon->discount . '%' }} </td>
                 <td class="@if ($favorite->coupon->status == 'active') green-text @else red-text @endif">
                     {{ ucfirst($favorite->coupon->status) }}</td>
-                <td class="btn">Copy</td>
+                <td class="btn"> {{ __('Copy') }} </td>
             </tr>
         @endforeach
-        {{-- <tr>
-            <th scope="row" class="text-black fw-normal">Has236</th>
-            <td>Namshi</td>
-            <td>10% </td>
-            <td class="green-text">Active</td>
-            <td class="btn">Copy</td>
-        </tr> --}}
     </tbody>
     <div class="mt-15">
         {{ $favorites->links() }}

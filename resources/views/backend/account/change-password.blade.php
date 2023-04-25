@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
-@section('title', 'Change my password')
-@section('page-index', 'Accounts')
-@section('root', 'Update')
-@section('sub-root', 'CM')
+@section('title', __('Change my password'))
+@section('page-index', __('Accounts'))
+@section('root', __('Update'))
+@section('sub-root', __('CM'))
 
 
 @section('styles')
@@ -16,7 +16,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">{{ __('Change my password ' . $user->full_name) }}</h4>
+                        <h4 class="card-title">{{ __('Change my password') }}</h4>
                     </div>
                     <div class="card-body">
                         <livewire:backend.accounts.change-password :user="$user" />

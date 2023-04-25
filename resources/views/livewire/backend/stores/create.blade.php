@@ -16,7 +16,7 @@
 
     <x-form.single-image name="icon" label="Store icon (optional)" />
 
-    <x-form.textarea name="description" label="description" placeholder="Enter the store description here ...." />
+    <x-form.textarea name="description" label="Description" placeholder="Enter the store description here ...." />
 
     <div>
         <x-form.submit text="Store" action="store()" type="button" />

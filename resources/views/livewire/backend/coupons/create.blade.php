@@ -24,7 +24,7 @@
         desc="Let the input value 0, if you need to make this coupon available always" />
 
     <div class="col-sm-12 col-12  py-1">
-        <label class="form-label" for="fp-default">Customize Coupon Date</label>
+        <label class="form-label" for="fp-default">{{__('Customize Coupon Date')}}</label>
         <input type="text" id="fp-default" wire:model="cusDate"
             class="form-control flatpickr-basic flatpickr-input" placeholder="YYYY-MM-DD" readonly="readonly">
     </div>

@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
-@section('title', 'Update acccount info')
-@section('page-index', 'Accounts')
-@section('root', 'Update')
-@section('sub-root', 'CM')
+@section('title', __('Update acccount info'))
+@section('page-index', __('Accounts'))
+@section('root', __('Update'))
+@section('sub-root', __('HR'))
 
 
 @section('styles')
@@ -16,7 +16,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">{{ __('Update account info ' . $user->full_name) }}</h4>
+                        <h4 class="card-title">{{ __('Update account info') . ': ' . $user->full_name }}</h4>
                     </div>
                     <div class="card-body">
                         <livewire:backend.accounts.update-admin-account :user="$user" />

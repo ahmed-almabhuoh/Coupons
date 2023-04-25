@@ -65,9 +65,6 @@
                                 {{ __('No image') }}
                             @endif
                         </td>
-                        {{-- <td>
-                            {{ $artical->description }}
-                        </td> --}}
                         <td>
                             <?php
                             $description = $artical->description;
