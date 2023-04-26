@@ -27,7 +27,6 @@
     @error('new_password')
         <div style="color: rgb(230, 22, 22);">{{ __($message) }}</div>
     @enderror
-    <!-- 2 -->
 
     <div class="form-group">
         <label for="new_password_confirmation"></label>

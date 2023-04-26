@@ -57,33 +57,38 @@
     <!-- ================Start Main Section============== -->
     <div class="sections  d-flex">
         <!-- Start Sidebar -->
-        <sidebar class="sidebar ">
-            <div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 280px;">
+        <sidebar class="sidebar">
+            <div class="d-flex flex-column flex-shrink-0 p-3 bg-light">
 
                 <ul class="nav pt-5 nav-pills flex-column mb-auto ">
+
                     <li class="nav-item pb-2 ">
                         <a href="{{ route('users.account') }}"
                             class="nav-link text-black-50 @if (Route::currentRouteName() == 'users.account') active @endif"
                             aria-current="page">
                             <i class="fa-solid fa-user"></i>
-                            {{ __('My Account') }}
+                            <span>{{ __('My Account') }}</span>
                         </a>
                     </li>
+
                     <li class="pb-2">
                         <a href="{{ route('users.favorite') }}"
                             class="nav-link link-dark text-black-50  @if (Route::currentRouteName() == 'users.favorite') active @endif">
                             <i class="fa-solid fa-bag-shopping"></i>
-                            {{ __('Favorite') }}
+                            <span>{{ __('Favorite') }}</span>
                         </a>
                     </li>
+
                     <li>
                         <a href="{{ route('users.change.password') }}"
                             class="nav-link link-dark text-black-50 @if (Route::currentRouteName() == 'users.change.password') active @endif">
                             <i class="fa-solid fa-gear"></i>
-                            {{ __('Change Password') }}
+                            <span>{{ __('Change Password') }}</span>
                         </a>
                     </li>
+
                 </ul>
+
             </div>
         </sidebar>
         <!-- End Sidebar -->

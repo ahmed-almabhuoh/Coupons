@@ -23,9 +23,11 @@
                             {{ __('Filter by Status') }}
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                            <li><a class="dropdown-item" href="#" wire:click="filterByStatus('active')"> {{ __('Active') }}
+                            <li><a class="dropdown-item" href="#" wire:click="filterByStatus('active')">
+                                    {{ __('Active') }}
                                 </a></li>
-                            <li><a class="dropdown-item" href="#" wire:click="filterByStatus('draft')"> {{ __('Inactive') }} </a></li>
+                            <li><a class="dropdown-item" href="#" wire:click="filterByStatus('draft')">
+                                    {{ __('Inactive') }} </a></li>
                         </ul>
                     </div>
                 </th>
@@ -56,7 +58,7 @@
                     <td>{{ $favorite->coupon->store->name }}</td>
                     <td>{{ $favorite->coupon->discount . '%' }} </td>
                     <td class="@if ($favorite->coupon->status == 'active') green-text @else red-text @endif">
-                        {{ ucfirst($favorite->coupon->status) }}</td>
+                        {{ __(ucfirst($favorite->coupon->status)) }}</td>
                     <td class="btn"> {{ __('Copy') }} </td>
                 </tr>
             @endforeach
