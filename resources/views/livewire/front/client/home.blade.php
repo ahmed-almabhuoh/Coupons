@@ -209,6 +209,7 @@
                     var favorite_icon = document.getElementById('favorite_icon');
                     favorite_icon.setAttribute('onclick',
                         'addToFavorite(' + response.data.coupon.id + ', "coupon")');
+                    document.getElementById('store_action').setAttribute('href', response.data.coupon.store.action);
 
                     axios.get('/check-user-coupon/' + coupon_id)
                         .then(function(response) {
