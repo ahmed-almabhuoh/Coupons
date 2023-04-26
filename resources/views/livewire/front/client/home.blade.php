@@ -56,12 +56,22 @@
                                 </div>
                                 <!-- img -->
                                 <div class="img">
-                                    <img src="{{ env('APP_URL') . 'content/' . $coupon->store->icon }}" alt="portfolio"
-                                        style="width: 50px; height: 50px;">
+                                    @if (!is_null($coupon->store))
+                                        <img src="{{ env('APP_URL') . 'content/' . $coupon->store->icon }}"
+                                            alt="portfolio" style="width: 50px; height: 50px;">
+                                    @else
+                                        <img src="{{ env('APP_URL') . 'content/coupons/default.png' }}" alt="portfolio"
+                                            style="width: 50px; height: 50px;">
+                                    @endif
+
                                 </div>
                                 <!-- text -->
                                 <div class="text">
-                                    <span>{{ $coupon->store->name }}</span>
+                                    @if (!is_null($coupon->store))
+                                        <span>{{ $coupon->store->name }}</span>
+                                    @else
+                                        <span>{{ __('No Store') }}</span>
+                                    @endif
                                 </div>
                                 <!-- button -->
                                 <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
@@ -208,7 +218,7 @@
                                     "{{ asset('/front/client/imgs/heart-selceted.png') }}");
                                 favorite_icon.setAttribute("data-src",
                                     "{{ asset('/front/client/imgs/Heart, Favorite.png') }}");
-                            }else {
+                            } else {
                                 favorite_icon.setAttribute("src",
                                     "{{ asset('/front/client/imgs/Heart, Favorite.png') }}");
                                 favorite_icon.setAttribute("data-src",
