@@ -722,10 +722,9 @@ img.flowerd {
   border: 1px solid var(--primary-color);
   bottom: 0;
   position: absolute;
-  width: 40%;
-  /* Edite */
-  right: 20%;
-  transform: translateX(-100%);
+  width: 100%;
+  left: 50%;
+  transform: translateX(-50%);
   height: 58px;
   display: flex;
   justify-content: space-between;
@@ -948,6 +947,10 @@ a.dropdown-item {
   transform: translateX(-50%);
   width: 41px;
   display: block;
+}
+.portfolio .portfolio-gallery .item .img img {
+  width: 41px;
+  height: 41px;
 }
 .portfolio .portfolio-gallery .item .img::after {
   content: "";
