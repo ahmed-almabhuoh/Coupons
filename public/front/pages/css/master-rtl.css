@@ -329,13 +329,13 @@ input#Phone.form-control {
 .card-tabel table.table {
   position: absolute;
   top: 20%;
-  left: 8%;
+  right: 8%;
   background-color: #f9f9f9;
   width: 618px;
   border-radius: 16px;
 }
 .table-responsive {
-  overflow: scroll !important;
+  overflow: scroll;
 }
 .paginator ul {
   list-style: none;

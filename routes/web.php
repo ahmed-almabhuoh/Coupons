@@ -17,6 +17,7 @@ use App\Http\Controllers\OfferController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\UserController;
+use App\Http\Livewire\Front\Client\Home;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -101,6 +102,11 @@ Route::prefix('/')->middleware(['guest:client'])->group(function () {
 });
 
 Route::prefix('/')->middleware(['auth:client'])->group(function () {
+
+    // User Interactions Routes
+    Route::get('/add-to-favorite/{id}/{position}', [Home::class, 'addToFavorite'])->name('add.to.favorite');
+    Route::get('/check-user-coupon/{id}', [ClientController::class, 'checkUserCoupone'])->name('users.check.coupons');
+
     Route::get('favorite', [PagesController::class, 'getFavorite'])->name('users.favorite');
     Route::get('change-password', [PagesController::class, 'getChangePassword'])->name('users.change.password');
     Route::get('account', [PagesController::class, 'getAccount'])->name('users.account');

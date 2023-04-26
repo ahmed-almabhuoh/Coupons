@@ -102,49 +102,60 @@
                                             </div>
                                         </div>
                                         <div class="button">
-                                            <a href="#" id="store_action">Visit &rarr;</a>
+                                            <a href="#" id="store_action">{{ __('Visit') }} &rarr;</a>
                                         </div>
                                     </div>
                                     <!--Section #2 -->
                                     <div class="midel-sec d-flex">
                                         <div class="first-dev">
-                                            <span>Discount: <strong id="coupon_discount"></strong></span>
+                                            <span>{{ __('Discount') }}: <strong id="coupon_discount"></strong></span>
                                         </div>
                                         <div class="first-dev">
-                                            <span>Last use: <strong>a day ago</strong></span>
+                                            <span>{{ __('Last use') }}: <strong>a day ago</strong></span>
                                         </div>
                                         <div class="first-dev">
-                                            <span>Category: <strong id="coupon_category_name"></strong></span>
+                                            <span>{{ __('Category') }}: <strong
+                                                    id="coupon_category_name"></strong></span>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="icon-container">
                                     <div class="icon-box">
-                                        <img src="imgs/cart.png" alt="" data-src="">
+                                        <img src="{{ asset('front/client/imgs/cart.png') }}" alt=""
+                                            data-src="">
                                         <div>
-                                            <p>shopping</p>
+                                            <p> {{ __('shopping') }} </p>
                                         </div>
                                     </div>
 
                                     <div class="icon-box">
-                                        <img src="imgs/Heart, Favorite.png" alt=""
-                                            data-src="./imgs/heart-selceted.png">
+                                        {{-- @if (auth('client')->check())
+                                            <img src="{{ asset('front/client/imgs/heart-selceted.png') }}"
+                                                id="favorite_icon" alt=""
+                                                data-src="{{ asset('front/client/imgs/Heart, Favorite.png') }}">
+                                        @else --}}
+                                        <img src="{{ asset('front/client/imgs/Heart, Favorite.png') }}" alt=""
+                                            id="favorite_icon"
+                                            data-src="{{ asset('front/client/imgs/heart-selceted.png') }}">
+                                        {{-- @endif --}}
                                         <div>
-                                            <p>favourite</p>
+                                            <p> {{ __('favourite') }} </p>
                                         </div>
                                     </div>
                                     <div class="icon-box">
-                                        <img src="imgs/thumbs-up-like-square.png" alt=""
-                                            data-src="./imgs/lik-selceted.png">
+                                        <img src="{{ asset('front/client/imgs/thumbs-up-like-square.png') }}"
+                                            alt=""
+                                            data-src="{{ asset('front/client/imgs/lik-selceted.png') }}">
                                         <div>
-                                            <p>active</p>
+                                            <p> {{ __('active') }} </p>
                                         </div>
                                     </div>
                                     <div class="icon-box">
-                                        <img src="imgs/dislike.png" alt="" data-src="./imgs/dis-selceted.png">
+                                        <img src="{{ asset('front/client/imgs/dislike.png') }}" alt=""
+                                            data-src="{{ asset('front/client/imgs/dis-selceted.png') }}">
                                         <div>
-                                            <p>inactive</p>
+                                            <p>{{ __('inactive') }}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -152,11 +163,12 @@
 
 
                                 <div class="modal-footer d-flex">
-                                    <span><img src="imgs/share-icon-copuon.png" alt=""> Share
+                                    <span><img src="{{ asset('front/client/imgs/share-icon-copuon.png') }}"
+                                            alt=""> {{ __('Share') }}
                                     </span>
                                     <a type="button" class="copy-button btn btn-secondary">
                                         {{ __('Copy Code') }}
-                                        <img src="imgs/copy-icon.png" alt="">
+                                        <img src="{{ asset('front/client/imgs/copy-icon.png') }}" alt="">
                                     </a>
                                 </div>
                             </div>
@@ -184,10 +196,37 @@
                     var store_image = document.getElementById('coupon_store_image');
                     var src = store_image.getAttribute("url");
                     store_image.setAttribute("src", src + response.data.coupon.store.icon);
+                    var favorite_icon = document.getElementById('favorite_icon');
+                    favorite_icon.setAttribute('onclick',
+                        'addToFavorite(' + response.data.coupon.id + ', "coupon")');
+
+                    axios.get('/check-user-coupon/' + coupon_id)
+                        .then(function(response) {
+                            console.log(response.data.has_coupon);
+                            if (response.data.has_coupon) {
+                                favorite_icon.setAttribute("src",
+                                    "{{ asset('/front/client/imgs/heart-selceted.png') }}");
+                                favorite_icon.setAttribute("data-src",
+                                    "{{ asset('/front/client/imgs/Heart, Favorite.png') }}");
+                            }else {
+                                favorite_icon.setAttribute("src",
+                                    "{{ asset('/front/client/imgs/Heart, Favorite.png') }}");
+                                favorite_icon.setAttribute("data-src",
+                                    "{{ asset('/front/client/imgs/heart-selceted.png') }}");
+                            }
+                        })
 
                 })
                 .catch(function(error) {
                     console.log(error);
+                });
+        }
+
+        function addToFavorite(id, position) {
+            axios.get('/add-to-favorite/' + id + '/' + position)
+                .then(function(response) {})
+                .catch(function(error) {
+                    window.location.href = '/login';
                 });
         }
     </script>

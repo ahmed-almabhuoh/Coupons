@@ -6,7 +6,8 @@
             style="@error('current_password')
             border-color: rgb(230, 22, 22);
             @enderror"
-            name="current-password" wire:model="current_password" placeholder="Current Password" required autofocus>
+            name="current-password" wire:model="current_password" placeholder="{{ __('Current Password') }}" required
+            autofocus>
         <span toggle="#password" class="toggle-password fa fa-fw fa-eye" data-target="#password1"></span>
     </div>
     @error('current_password')
@@ -17,7 +18,7 @@
     <div class="form-group">
         <label for="new_password"></label>
         <input id="new_password" wire:model="new_password" type="password" class="form-control" name="new_password"
-            placeholder="New Password" required autofocus
+            placeholder="{{ __('New Password') }}" required autofocus
             style="@error('new_password')
             border-color: rgb(230, 22, 22);
             @enderror">
@@ -31,13 +32,14 @@
     <div class="form-group">
         <label for="new_password_confirmation"></label>
         <input id="new_password_confirmation" wire:model="new_password_confirmation" type="password"
-            class="form-control" name="new_password_confirmation" placeholder="Confirm New Password" required autofocus>
+            class="form-control" name="new_password_confirmation" placeholder="{{ __('New Password Confirmation') }}"
+            required autofocus>
         <span toggle="#password" class="toggle-password fa fa-fw fa-eye" data-target="#password3"></span>
     </div>
 
     <div class="form-group no-margin">
         <button type="button" wire:click="updatePassword()" class="btn btn-primary btn-block">
-            {{__('Change password')}}
+            {{ __('Change password') }}
         </button>
     </div>
 

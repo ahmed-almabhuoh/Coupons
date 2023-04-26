@@ -20,20 +20,21 @@
                         {{ __('Filter by Status') }}
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                        <li><a class="dropdown-item" href="#">Active</a></li>
-                        <li><a class="dropdown-item" href="#">Inactive</a></li>
+                        <li><a class="dropdown-item" href="#"> {{ __('Active') }} </a></li>
+                        <li><a class="dropdown-item" href="#"> {{ __('Inactive') }} </a></li>
                     </ul>
                 </div>
             </th>
             <th scope="col">
                 <label for="searchInput" class="visually-hidden"> {{ __('Search') }} </label>
-                <input type="text" id="searchInput" class="form-control" placeholder="Find what You want..">
+                <input type="text" id="searchInput" class="form-control"
+                    placeholder="{{ __('Find what You want..') }}">
             </th>
         </tr>
         <tr>
             <th class="header-tabel" scope="col"> {{ __('Coupon') }} </th>
             <th class="header-tabel" scope="col"> {{ __('Platform name') }} </th>
-            <th class="header-tabel" scope="col"> {{ __('Discounting') }} </th>
+            <th class="header-tabel" scope="col"> {{ __('Discount') }} </th>
             <th class="header-tabel" scope="col"> {{ __('Status') }} </th>
             <th class="header-tabel" scope="col"> {{ __('Commands') }} </th>
         </tr>
@@ -55,7 +56,11 @@
             </tr>
         @endforeach
     </tbody>
-    <div class="mt-15">
+    {{-- <div class="mt-15">
+        {{ $favorites->links() }}
+    </div> --}}
+
+    <div class="paginator">
         {{ $favorites->links() }}
     </div>
 </table>

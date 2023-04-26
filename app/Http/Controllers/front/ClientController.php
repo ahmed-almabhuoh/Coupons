@@ -7,6 +7,7 @@ use App\Models\Aqs;
 use App\Models\Blog;
 use App\Models\Category;
 use App\Models\Coupon;
+use App\Models\Favorite;
 use App\Models\Offer;
 use App\Models\Product;
 use App\Models\Store;
@@ -122,6 +123,17 @@ class ClientController extends Controller
             'coupons' => Coupon::active()->get(),
             'categories' => Category::active()->get(),
             'stores' => Store::active()->get(),
+        ]);
+    }
+
+    // Check if the user has the coupon of not
+    public function checkUserCoupone($id)
+    {
+        return response()->json([
+            'has_coupon' => Favorite::where([
+                ['coupon_id', '=', $id],
+                ['user_id', '=', auth()->user()->id]
+            ])->exists(),
         ]);
     }
 }
