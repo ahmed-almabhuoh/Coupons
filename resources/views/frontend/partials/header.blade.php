@@ -34,7 +34,7 @@
             @if (!auth('client')->user()->image)
                 <img src="{{ asset('front/pages/imgs/user-image.png') }}" alt="">
             @else
-                <img src="{{ env('APP_URL') . 'human/' . auth('client')->user()->image }}" width="40px"
+                <img src="{{ env('APP_URL') . 'human/' . auth('client')->user()->image }}" width="40px" style="border-radius: 50%;"
                     height="40px" alt="">
             @endif
         </div>
