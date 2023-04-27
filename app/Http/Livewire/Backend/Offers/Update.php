@@ -56,5 +56,7 @@ class Update extends Component
         $this->offer->image = $path ?? $this->offer->image;
 
         $this->showSuccess = $this->offer->save();
+
+        return redirect()->route('offers.index');
     }
 }

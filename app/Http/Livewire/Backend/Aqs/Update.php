@@ -41,5 +41,7 @@ class Update extends Component
         $this->aq->answer = $data['answer'];
 
         $this->showSuccess = $this->aq->save();
+
+        return redirect()->route('aqs.index');
     }
 }

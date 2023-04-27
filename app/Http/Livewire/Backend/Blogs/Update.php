@@ -57,5 +57,6 @@ class Update extends Component
         $this->blog->image = $path ?? $this->blog->image;
 
         $this->showSuccess = $this->blog->save();
+        return redirect()->route('blogs.index');
     }
 }

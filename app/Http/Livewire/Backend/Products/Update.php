@@ -117,5 +117,7 @@ class Update extends Component
                 ]);
             }
         }
+
+        return redirect()->route('products.index');
     }
 }

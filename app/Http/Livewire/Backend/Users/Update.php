@@ -68,5 +68,7 @@ class Update extends Component
             $this->user->image = $path;
         }
         $this->showSuccess = $this->user->save();
+
+        return redirect()->route('users.index');
     }
 }

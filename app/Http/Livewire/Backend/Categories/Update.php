@@ -47,5 +47,6 @@ class Update extends Component
             $this->category->image = $path;
         }
         $this->showSuccess = $this->category->save();
+        return redirect()->route('categories.index');
     }
 }

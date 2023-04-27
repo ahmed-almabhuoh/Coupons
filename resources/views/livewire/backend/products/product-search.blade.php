@@ -71,7 +71,7 @@
             <tbody>
                 @if (!count($products))
                     <tr class="odd">
-                        <td valign="top" colspan="6" class="dataTables_empty">
+                        <td valign="top" colspan="12" class="dataTables_empty">
                             {{ __('No products found yet ... !') }} </td>
                     </tr>
                 @endif

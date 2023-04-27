@@ -45,7 +45,7 @@ class Update extends Component
             'fname' => 'required|string|min:2|max:25',
             'lname' => 'required|string|min:2|max:25',
             'email' => 'required|email|unique:admins,email,' . $this->admin->id,
-            'phone' => 'required|string|unique:admins,phone,'. $this->admin->id,
+            'phone' => 'required|string|unique:admins,phone,' . $this->admin->id,
             'password' => 'nullable|confirmed',
             'password_confirmation' => 'nullable',
             'status' => 'required|string|in:active,disabled',
@@ -64,10 +64,10 @@ class Update extends Component
             $path = $data['image']->store('admins', [
                 'disk' => 'human_resources',
             ]);
-            // $filename = Str::afterLast($path, '/');
-            // $admin->image = asset('storage/' . $filename);
             $this->admin->image = $path;
         }
         $this->showSuccess = $this->admin->save();
+
+        return redirect()->route('admins.index');
     }
 }

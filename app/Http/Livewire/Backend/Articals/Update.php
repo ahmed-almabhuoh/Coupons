@@ -53,5 +53,6 @@ class Update extends Component
         $this->artical->image = $path ?? $this->artical->image;
 
         $this->showSuccess = $this->artical->save();
+        return redirect()->route('articals.index');
     }
 }

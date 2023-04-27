@@ -58,5 +58,7 @@ class Update extends Component
                 $this->store->icon = 'stores/default.png';
         }
         $this->showSuccess = $this->store->save();
+
+        return redirect()->route('stores.index');
     }
 }

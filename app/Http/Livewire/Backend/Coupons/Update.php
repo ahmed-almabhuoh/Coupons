@@ -68,5 +68,7 @@ class Update extends Component
         $this->coupon->from_date = $data['cusDate'] ?? $date;
         $this->coupon->to_date = $date->copy()->addDays($data['duration']);
         $this->showSuccess = $this->coupon->save();
+
+        return redirect()->route('coupons.index');
     }
 }
