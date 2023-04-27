@@ -7,7 +7,7 @@
     @enderror" name="{{ $name }}"
         id="{{ $id ?? $name }}" placeholder="{{ __($placeholder) ?? __('Enter the ' . $name) }}" {{-- @if ($isRequired) required="" @endif --}}
         {{-- @if ($readOnly) readonly @endif --}} />
-    @if ($desc ?? true)
+    @if ($desc ?? false)
         <small class="text-muted">{{ __($desc) ?? '' }}</small>
     @endif
     @error($model ?? $name)
