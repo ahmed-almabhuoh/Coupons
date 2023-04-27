@@ -33,7 +33,7 @@ class Home extends Component
         if ($selectedCategory == 'all') {
             $this->coupons = Coupon::active()->get();
         } else {
-            $this->coupons = Coupon::active()->whereHas('store', function ($query) use ($selectedCategory) {
+            $this->coupons = Coupon::active()->whereHas('category', function ($query) use ($selectedCategory) {
                 $query->where('id', $selectedCategory);
             })->get();
         }
