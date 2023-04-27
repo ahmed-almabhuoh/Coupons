@@ -8,14 +8,6 @@
             href="{{ route('pages.coupons') }}">{{ __('Coupons') }}</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link p-2 p-lg-3 @if (Route::currentRouteName() == 'pages.about') active @endif"
-            href="{{ route('pages.about') }}">{{ __('About') }}</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link p-2 p-lg-3 @if (Route::currentRouteName() == 'pages.fqs') active @endif"
-            href="{{ route('pages.fqs') }}">{{ __('Common Questions') }}</a>
-    </li>
-    <li class="nav-item">
         <a class="nav-link p-2 p-lg-3 @if (Route::currentRouteName() == 'pages.offers') active @endif "
             href="{{ route('pages.offers') }}">{{ __('Offers') }}</a>
     </li>
@@ -25,6 +17,14 @@
                 href="{{ route('pages.blogs') }}">{{ __('Blogs') }}</a>
         </li>
     @endif
+    <li class="nav-item">
+        <a class="nav-link p-2 p-lg-3 @if (Route::currentRouteName() == 'pages.fqs') active @endif"
+            href="{{ route('pages.fqs') }}">{{ __('Common Questions') }}</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link p-2 p-lg-3 @if (Route::currentRouteName() == 'pages.about') active @endif"
+            href="{{ route('pages.about') }}">{{ __('About') }}</a>
+    </li>
 </ul>
 
 

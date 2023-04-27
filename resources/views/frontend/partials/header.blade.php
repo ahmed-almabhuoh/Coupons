@@ -34,8 +34,8 @@
             @if (!auth('client')->user()->image)
                 <img src="{{ asset('front/pages/imgs/user-image.png') }}" alt="">
             @else
-                <img src="{{ env('APP_URL') . 'human/' . auth('client')->user()->image }}" width="40px" style="border-radius: 50%;"
-                    height="40px" alt="">
+                <img src="{{ env('APP_URL') . 'human/' . auth('client')->user()->image }}" width="40px"
+                    style="border-radius: 50%;" height="40px" alt="">
             @endif
         </div>
         <button class="btn text-black-50 btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown"
@@ -67,19 +67,25 @@
         </ul>
     </div>
 @else
+    @php
+        $site = DB::table('website_settings')->first();
+    @endphp
     <a class="btn rounded-pill main-btn" href="{{ route('users.register') }}"
         onclick="">{{ __('Create account') }}</a>
-    <div class="country btn-group m-3">
-        <button class="btn text-black-50  btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown"
-            aria-expanded="false">
-            <img src="{{ asset('front/client/imgs/united-states.png') }}" alt="">
-            {{ __('English') }}
-        </button>
-        <ul class="dropdown-menu mt-2 text-start">
-            <li>
-                <img src="{{ asset('front/client/imgs/saudi-arabia.png') }}" alt="">
-                <a class="text-black-50" href="#">{{ __('Arabic') }}</a>
-            </li>
-        </ul>
-    </div>
+
+    @if ($site->lang_is_shown)
+        <div class="country btn-group m-3">
+            <button class="btn text-black-50  btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                <img src="{{ asset('front/client/imgs/united-states.png') }}" alt="">
+                {{ __('English') }}
+            </button>
+            <ul class="dropdown-menu mt-2 text-start">
+                <li>
+                    <img src="{{ asset('front/client/imgs/saudi-arabia.png') }}" alt="">
+                    <a class="text-black-50" href="#">{{ __('Arabic') }}</a>
+                </li>
+            </ul>
+        </div>
+    @endif
 @endif
