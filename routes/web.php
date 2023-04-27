@@ -7,6 +7,7 @@ use App\Http\Controllers\ArticalController;
 use App\Http\Controllers\backend\AuthenticationController;
 use App\Http\Controllers\backend\ContactUsController;
 use App\Http\Controllers\backend\DashboardController;
+use App\Http\Controllers\backend\WebsiteSettings;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CouponController;
@@ -59,6 +60,8 @@ Route::prefix('cpanel')->middleware('auth:admin')->group(function () {
     Route::get('contacts', [ContactUsController::class, 'getContacts'])->name('contacts.index');
     Route::delete('contacts/{contact_id}', [ContactUsController::class, 'deleteContact'])->name('contacts.destroy');
     Route::get('/add-contact-to-questions/{contact_id}', [ContactUsController::class, 'addContactToQuestions'])->name('contacts.to.questions');
+    Route::get('/logo-setup', [WebsiteSettings::class, 'getLogoSetup'])->name('logo.setup');
+    Route::post('/logo-setup', [WebsiteSettings::class, 'logoSetup']);
 
     Route::get('update-account', [AccountManagementController::class, 'getAccountManagementView'])->name('manage.admins.accounts');
     Route::get('change-password', [AccountManagementController::class, 'changePassword'])->name('manage.admins.password');

@@ -28,7 +28,8 @@
     <nav class="navbar navbar-expand-lg sticky-top">
         <div class="container">
             <div class="logo">
-                Logo <span>here</span>
+                <img src="{{ env('APP_URL') . 'content/' . $logo }}" alt="" style="width: 50px; height: 50px;"
+                    class="website-logo">
             </div>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main"
                 aria-controls="main" aria-expanded="false" aria-label="Toggle navigation">
@@ -65,22 +66,24 @@
                         @if (!count($fqs))
                             <h2>{{ __('No questions published yet!') }}</h2>
                         @endif
-                        @foreach ($fqs as $fq)
+                        @foreach ($fqs as $index => $fq)
                             <div class="accordion-item">
-                                <h2 class="accordion-header" id="headingOne">
+                                <h2 class="accordion-header" id="heading{{ $index }}">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                        data-bs-target="#collapse{{ $index }}" aria-expanded="false"
+                                        aria-controls="collapse{{ $index }}">
                                         {{ $fq->title }}
                                     </button>
                                 </h2>
-                                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
-                                    data-bs-parent="#accordionExample">
+                                <div id="collapse{{ $index }}" class="accordion-collapse collapse"
+                                    aria-labelledby="heading{{ $index }}" data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
                                         {{ $fq->answer }}
                                     </div>
                                 </div>
                             </div>
                         @endforeach
+
 
 
                     </div>

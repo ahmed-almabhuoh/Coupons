@@ -38,6 +38,7 @@ class ClientController extends Controller
     {
         return response()->view('frontend.client.fqs', [
             'fqs' => Aqs::active()->get(),
+            'logo' => DB::table('website_settings')->orderByDesc('created_at')->first()->logo,
         ]);
     }
 

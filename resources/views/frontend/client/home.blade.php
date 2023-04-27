@@ -32,7 +32,13 @@
     <nav class="navbar navbar-expand-lg sticky-top">
         <div class="container">
             <div class="logo">
-                Logo <span>here</span>
+                @php
+                    $logo = DB::table('website_settings')
+                        ->orderByDESC('created_at')
+                        ->first()->logo;
+                @endphp
+                <img src="{{ env('APP_URL') . 'content/' . $logo }}" alt="" style="width: 50px; height: 50px;"
+                    class="website-logo">
             </div>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main"
                 aria-controls="main" aria-expanded="false" aria-label="Toggle navigation">
@@ -61,7 +67,8 @@
                     <img class="flowerd" src="{{ env('APP_URL') . 'content/' . $offer->image }}" alt="">
                     <div class="carousel-caption">
                         <h3 class="pd-6" style="width: 50%">{{ $offer->title }}</h3>
-                        <a class="dif-button btn btn-primary" href="{{ $offer->btn_action }}">{{ $offer->btn_txt }}</a>
+                        <a class="dif-button btn btn-primary"
+                            href="{{ $offer->btn_action }}">{{ $offer->btn_txt }}</a>
                     </div>
                 </div>
             @endforeach

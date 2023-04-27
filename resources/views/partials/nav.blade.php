@@ -184,6 +184,12 @@
     </ul>
 </li>
 
+<li class=" nav-item"><a class="d-flex align-items-center" href="{{ route('logo.setup') }}">
+        <i data-feather="image"></i>
+        <span class="menu-title text-truncate" data-i18n="Chat">{{ __('Set Logo') }}</span>
+    </a>
+</li>
+
 <li class=" nav-item"><a class="d-flex align-items-center" href="{{ route('contacts.index') }}">
         <i data-feather="phone"></i>
         <span class="menu-title text-truncate" data-i18n="Chat">{{ __('Contact Us') }}</span>
