@@ -13,11 +13,12 @@ class SingleImage extends Component
     public $id;
     public $isRequired;
     public $model;
+    public $description;
 
     /**
      * Create a new component instance.
      */
-    public function __construct($label, $name, $id = null, $isRequired = false, $model = null)
+    public function __construct($label, $name, $id = null, $isRequired = false, $model = null, $description = null)
     {
         //
         $this->name = $name;
@@ -25,6 +26,7 @@ class SingleImage extends Component
         $this->id = $id;
         $this->isRequired = $isRequired;
         $this->model = $model;
+        $this->description = $description;
     }
 
     /**

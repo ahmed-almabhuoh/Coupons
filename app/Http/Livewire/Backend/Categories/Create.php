@@ -26,7 +26,7 @@ class Create extends Component
         $data = $this->validate([
             'name' => 'required|string|min:2|max:25|unique:categories,name',
             'status' => 'required|string|in:' . implode(",", Category::STATUS),
-            'image' => 'nullable',
+            'image' => 'required|image|dimensions:max_width=100,max_height=100',
         ]);
 
         $category = new Category();

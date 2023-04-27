@@ -69,22 +69,32 @@ class StoreController extends Controller
     {
         //
         $store = Store::findOrFail(Crypt::decrypt($id));
-        //
-        if ($store->delete()) {
-            return response()->json([
-                'header' => __('Success'),
-                'body' => __('Store deleted successfully'),
-                'icon' => 'success',
-                'title' => __('Success'),
-                'text' => __('Store deleted successfully'),
-            ], Response::HTTP_OK);
+
+        if (count($store->coupons) || count($store->products) || count($store->blogs)) {
+            if ($store->delete()) {
+                return response()->json([
+                    'header' => __('Success'),
+                    'body' => __('Store deleted successfully'),
+                    'icon' => 'success',
+                    'title' => __('Success'),
+                    'text' => __('Store deleted successfully'),
+                ], Response::HTTP_OK);
+            } else {
+                return response()->json([
+                    'header' => __('Failed!'),
+                    'body' => __('Failed to delete the store!'),
+                    'icon' => 'error',
+                    'title' =>  __('Failed!'),
+                    'text' =>  __('Failed to delete the store!'),
+                ], Response::HTTP_BAD_REQUEST);
+            }
         } else {
             return response()->json([
                 'header' => __('Failed!'),
-                'body' => __('Failed to delete the store!'),
+                'body' => __('Failed to delete the store, store has some related information!'),
                 'icon' => 'error',
                 'title' =>  __('Failed!'),
-                'text' =>  __('Failed to delete the store!'),
+                'text' =>  __('Failed to delete the store, store has some related information!'),
             ], Response::HTTP_BAD_REQUEST);
         }
     }

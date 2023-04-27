@@ -12,7 +12,7 @@
 
     <x-form.select name="status" label="Category status" :options="App\Models\Category::STATUS" />
 
-    <x-form.single-image name="image" label="Category image (optional)" />
+    <x-form.single-image name="image" label="Category image" description="The image dimensions should be at max 100 X 100" />
 
     <div>
         <x-form.submit text="Store" action="store()" type="button" />

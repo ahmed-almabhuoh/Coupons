@@ -2,6 +2,9 @@
     <label for="{{ $id ?? $name }}" class="form-label">{{ __($label) }}</label>
     <input class="form-control @error($model ?? $name) is-invalid @enderror" type="file" id="{{ $id ?? $name }}"
         wire:model="{{ $model ?? $name }}">
+    @if ($description)
+        <small>{{ __($description) }}</small>
+    @endif
     @error($model ?? $name)
         <div class="invalid-feedback">{{ __($message) }}
         </div>
