@@ -29,7 +29,7 @@ class Create extends Component
             'btn_txt' => 'nullable|min:2|max:20',
             'btn_action' => 'nullable|min:2',
             'status' => 'required|string|in:' . implode(",", Offer::STATUS),
-            'image' => 'nullable|image',
+            'image' => 'required|image|max_width:320|max_height:320',
         ]);
 
         $offer = new Offer();

@@ -16,7 +16,7 @@
 
     <x-form.select name="status" model="status" label="Offer status" :options="App\Models\Offer::STATUS" />
 
-    <x-form.single-image name="image" model="image" label="Offer image" />
+    <x-form.single-image name="image" model="image" label="Offer image" description="The image size offer should be at most 320 X 320" />
 
     <div>
         <x-form.submit text="Store" action="store()" type="button" />

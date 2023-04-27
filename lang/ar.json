@@ -13,6 +13,7 @@
     "Logo": "اللوجو",
     "Admins": "المشرفون",
     "The image dimensions should be at least 50 X 100": "يجب ألا تقل أبعاد الصورة عن 50 × 100",
+    "The image size offer should be at most 320 X 320": "يجب ألا يتجاوز عرض حجم الصورة 320 × 320",
     "Store deleted successfully": "تم حذف المتجر بنجاح",
     "The image dimensions should be at max 100 X 100": "يجب أن تكون أبعاد الصورة بحد أقصى 100 × 100",
     "Sign in": "تسجيل الدخول",
