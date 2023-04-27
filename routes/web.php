@@ -79,7 +79,8 @@ Route::prefix('cpanel')->group(function () {
 
 Route::prefix('/')->group(function () {
     Route::get('about', [ClientController::class, 'getAboutPage'])->name('pages.about');
-    Route::get('blogs', [ClientController::class, 'getBlogsPage'])->middleware(['auth:client'])->name('pages.blogs');
+    // Route::get('blogs', [ClientController::class, 'getBlogsPage'])->middleware(['auth:client'])->name('pages.blogs');
+    Route::get('blogs', [ClientController::class, 'getBlogsPage'])->name('pages.blogs');
     Route::get('fqs', [ClientController::class, 'getFqsPage'])->name('pages.fqs');
     Route::get('/offers', [ClientController::class, 'getOfferPage'])->name('pages.offers');
     Route::get('/coupons', [ClientController::class, 'getCouponsPage'])->name('pages.coupons');
