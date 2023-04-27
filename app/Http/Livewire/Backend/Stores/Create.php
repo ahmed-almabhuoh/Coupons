@@ -61,5 +61,6 @@ class Create extends Component
         $this->status = '';
         $this->icon = '';
         $this->action = '';
+        $this->description = '';
     }
 }

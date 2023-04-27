@@ -70,32 +70,23 @@ class StoreController extends Controller
         //
         $store = Store::findOrFail(Crypt::decrypt($id));
 
-        if (count($store->coupons) || count($store->products) || count($store->blogs)) {
-            if ($store->delete()) {
-                return response()->json([
-                    'header' => __('Success'),
-                    'body' => __('Store deleted successfully'),
-                    'icon' => 'success',
-                    'title' => __('Success'),
-                    'text' => __('Store deleted successfully'),
-                ], Response::HTTP_OK);
-            } else {
-                return response()->json([
-                    'header' => __('Failed!'),
-                    'body' => __('Failed to delete the store!'),
-                    'icon' => 'error',
-                    'title' =>  __('Failed!'),
-                    'text' =>  __('Failed to delete the store!'),
-                ], Response::HTTP_BAD_REQUEST);
-            }
+        if ($store->coupons()->exists() || $store->products()->exists() || $store->blogs()->exists()) {
+            $message = __('Failed to delete the store, store has some related information!');
+            $status = Response::HTTP_BAD_REQUEST;
+        } elseif ($store->delete()) {
+            $message = __('Store deleted successfully');
+            $status = Response::HTTP_OK;
         } else {
-            return response()->json([
-                'header' => __('Failed!'),
-                'body' => __('Failed to delete the store, store has some related information!'),
-                'icon' => 'error',
-                'title' =>  __('Failed!'),
-                'text' =>  __('Failed to delete the store, store has some related information!'),
-            ], Response::HTTP_BAD_REQUEST);
+            $message = __('Failed to delete the store!');
+            $status = Response::HTTP_BAD_REQUEST;
         }
+
+        return response()->json([
+            'header' => __($status === Response::HTTP_OK ? 'Success' : 'Failed!'),
+            'body' => $message,
+            'icon' => $status === Response::HTTP_OK ? 'success' : 'error',
+            'title' => __($status === Response::HTTP_OK ? 'Success' : 'Failed!'),
+            'text' => $message,
+        ], $status);
     }
 }
