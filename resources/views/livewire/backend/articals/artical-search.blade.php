@@ -96,7 +96,7 @@
                             </a>
 
                             <button type="button"
-                                onclick="confirmationDelete('{{ Crypt::encrypt($artical->id) }}', this)"
+                                onclick="confirmationDelete('{{ Crypt::encrypt($artical->id) }}', this, '{{ auth('admin')->user()->lang }}')"
                                 class="btn btn-icon btn-danger waves-effect waves-float waves-light">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"

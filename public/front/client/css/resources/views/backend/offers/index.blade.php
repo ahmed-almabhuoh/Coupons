@@ -43,15 +43,30 @@
     <!-- END: Page JS-->
 
     <script>
-        function confirmationDelete(id, refrance) {
+        function confirmationDelete(id, refrance, lang = 'ar') {
+
+            var title, text, confirmButtonText, cancelButtonText;
+            if (lang == "ar") {
+                title = "هل أنت متأكد؟";
+                text = "لن تتمكن من التراجع عن هذا!";
+                confirmButtonText = "نعم، احذفها";
+                cancelButtonText = "لا، ألغِ الأمر";
+            } else {
+                title = "Are you sure?";
+                text = "You won't be able to revert this!";
+                confirmButtonText = "Yes, delete it!";
+                cancelButtonText = "No, cancel";
+            }
+
             Swal.fire({
-                title: 'Are you sure?',
-                text: "You won't be able to revert this!",
+                title: title,
+                text: text,
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
+                confirmButtonText: confirmButtonText,
+                cancelButtonText: cancelButtonText
             }).then((result) => {
                 if (result.isConfirmed) {
                     deleteAdmin(id, refrance);
