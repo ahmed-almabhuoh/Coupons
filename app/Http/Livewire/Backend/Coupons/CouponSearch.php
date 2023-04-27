@@ -13,12 +13,6 @@ class CouponSearch extends Component
 
     public function render()
     {
-        // $this->coupons = Coupon::where(function ($query) {
-        //     $query->where('code', 'like', "%" . $this->searchTerm . "%")
-        //         ->orWhere('discount', 'like', "%" . $this->searchTerm . "%")
-        //         ->orWhere('status', 'like', "%" . $this->searchTerm . "%");
-        // })->paginate($this->paginate);
-
         $this->coupons = Coupon::where(function ($query) {
             $query->where('code', 'like', "%" . $this->searchTerm . "%")
                 ->orWhere('discount', 'like', "%" . $this->searchTerm . "%")

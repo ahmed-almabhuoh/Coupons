@@ -13,7 +13,7 @@ class SetupLogo extends Component
     use WithFileUploads;
 
     public $image;
-    public $is_shown;
+    public $is_shown = false;
     public $showSuccess = false;
 
     public function render()
@@ -23,20 +23,12 @@ class SetupLogo extends Component
 
     public function store()
     {
-        $data = [];
         $site = DB::table('website_settings')->first();
+        $data = $this->validate([
+            'image' => 'nullable',
+            'is_shown' => 'required|boolean',
+        ]);
 
-        if (is_null($site)) {
-            $data = $this->validate([
-                'image' => 'required|image',
-                'is_shown' => 'required|boolean',
-            ]);
-        } else {
-            $data = $this->validate([
-                'image' => 'nullable',
-                'is_shown' => 'required|boolean',
-            ]);
-        }
 
         if ($data['image']) {
             $path = $data['image']->store('website-settings', [
@@ -51,9 +43,7 @@ class SetupLogo extends Component
                     'updated_at' => Carbon::now(),
                     'lang_is_shown' => $data['is_shown'],
                 ]);
-                if ($id) {
-                    $this->showSuccess = true;
-                }
+                $this->showSuccess = true;
             } else {
                 DB::table('website_settings')->where('id', $first->id)->update([
                     'logo' => $path,
@@ -62,7 +52,7 @@ class SetupLogo extends Component
                 ]);
                 $this->showSuccess = true;
             }
-        }else {
+        } else {
             DB::table('website_settings')->where('id', $site->id)->update([
                 'updated_at' => Carbon::now(),
                 'lang_is_shown' => $data['is_shown'],
