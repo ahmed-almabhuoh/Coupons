@@ -11,16 +11,22 @@
     @else
         <link rel="stylesheet" href="{{ asset('front/client/css/master.css') }}" />
     @endif
+    <link rel="stylesheet" href="{{ asset('front/client/css/all.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('front/client/css/bootstrap.min.css') }}" />
     <!-- Bootstrap File -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js"></script>
-    <link rel="stylesheet" href="{{ asset('front/client/css/all.min.css') }}" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <!-- Page title -->
     <title> {{ __('Offers') }} </title>
+
+    {{-- <style>
+        .offers-product::before {
+            content: '',
+        }
+    </style> --}}
 
     @livewireStyles
 </head>

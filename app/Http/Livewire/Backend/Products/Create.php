@@ -43,7 +43,7 @@ class Create extends Component
             'category_id' => 'required|integer|exists:categories,id',
             'store_id' => 'required|integer|exists:stores,id',
             'coupon_id' => 'nullable',
-            'images' => 'required|image',
+            'images' => 'nullable',
             'description' => 'nullable|min:10|max:150',
             'offer' => 'required|integer|min:0|max:100',
             'duration' => 'required|min:0',

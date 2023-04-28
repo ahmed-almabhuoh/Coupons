@@ -45,7 +45,7 @@
                         <h3>{{ __('No products found yet!') }}</h3>
                     @endif
                     @foreach ($products as $product)
-                        <div class="item" data-id="Fashion">
+                        {{-- <div class="item" data-id="Fashion">
                             <div class="card offers-product">
                                 @if ($product->image)
                                     <img src="{{ env('APP_URL') . 'content/' . $product->image }}" class="card-img-top"
@@ -81,6 +81,44 @@
                                     </div>
                                 </div>
                             </div>
+                        </div> --}}
+
+                        <div class="item" data-id="Fashion">
+
+                            <div class="card offers-product">
+                                <a class="category"
+                                    href="{{ route('categories.edit', Crypt::encrypt($category->id)) }}">
+                                    {{ $product->category->name }} </a>
+                                @if ($product->image)
+                                    <img src="{{ env('APP_URL') . 'content/' . $product->image }}" class="card-img-top"
+                                        alt="...">
+                                @else
+                                    <img src="{{ env('APP_URL') . 'content/' . $product->store->icon }}"
+                                        class="card-img-top" alt="...">
+                                @endif
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ $product->name }}</h5>
+                                    <p class="card-text">{{ $product->offer }} {{ __('Riyals') }} <br> <small
+                                            class="text-muted">{{ $product->original_price }}
+                                            {{ __('Riyals') }}</small>
+                                    </p>
+                                </div>
+                                <div class="position-relative">
+                                    <div class="bottom-text mb-5 d-flex justify-content-around">
+                                        <div class="left-sec"> <img class="card-icon"
+                                                src="{{ env('APP_URL') . 'content/' . $product->store->icon }}"
+                                                alt="">
+                                            <span>{{ $product->store->name }}</span>
+                                        </div>
+                                        <button class="button btn btn-primary"
+                                            onclick="getProduct('{{ $product->id }}')" data-bs-toggle="modal"
+                                            data-bs-target="#exampleModal">
+                                            <span class="m-auto">{{ __('Git it') }}</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     @endforeach
 
@@ -110,7 +148,8 @@
                                             </div>
                                         </div>
                                         <div class="button">
-                                            <a href="#" id="product_action" target="_blank">Visit &rarr;</a>
+                                            <a href="#" id="product_action" target="_blank">{{ __('Visit') }}
+                                                &rarr;</a>
                                         </div>
                                     </div>
                                     <!--Section #2 -->
