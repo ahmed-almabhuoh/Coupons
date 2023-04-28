@@ -61,7 +61,7 @@
     <div class=" pt-5 pb-5">
         <div class="container">
 
-            @if (count($products) >= 1 && !auth('client')->check())
+            @if (count($products) >= 1)
                 <div class="row">
                     <section class="portfolio special-offers" id="Portfolio">
                         <div class="container">

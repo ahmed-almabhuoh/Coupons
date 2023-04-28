@@ -90,14 +90,14 @@
                             {{ $product->offer . ' %' }}
                         </td>
                         <td>
-                            {{ $product->specail ? 'Specail' : 'NOT' }}
+                            {{ $product->specail ? __('Specail') : __('NOT') }}
                         </td>
                         <td>
                             {{ $product->code }}
                         </td>
                         <td>
                             @if ($product->action)
-                                <a href="{{ $product->action }}" target="_blank">Link</a>
+                                <a href="{{ $product->action }}" target="_blank"> {{ __('Link') }} </a>
                             @else
                                 {{ __('No link') }}
                             @endif
