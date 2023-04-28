@@ -76,22 +76,23 @@ class BlogController extends Controller
     {
         $blog = Blog::findOrFail(Crypt::decrypt($id));
         //
-        if ($blog->delete()) {
-            return response()->json([
-                'header' => __('Success'),
-                'body' => __('Blog deleted successfully'),
-                'icon' => 'success',
-                'title' => __('Success'),
-                'text' => __('Blog deleted successfully'),
-            ], Response::HTTP_OK);
+        if ($blog->articals()->exists()) {
+            $message = __('Failed to delete the blog, blog has some related information!');
+            $status = Response::HTTP_BAD_REQUEST;
+        } elseif ($blog->delete()) {
+            $message = __('Blog deleted successfully');
+            $status = Response::HTTP_OK;
         } else {
-            return response()->json([
-                'header' => __('Failed!'),
-                'body' => __('Failed to delete the blog!'),
-                'icon' => 'error',
-                'title' =>  __('Failed!'),
-                'text' =>  __('Failed to delete the blog!'),
-            ], Response::HTTP_BAD_REQUEST);
+            $message = __('Failed to delete the blog!');
+            $status = Response::HTTP_BAD_REQUEST;
         }
+
+        return response()->json([
+            'header' => __($status === Response::HTTP_OK ? 'Success' : 'Failed!'),
+            'body' => $message,
+            'icon' => $status === Response::HTTP_OK ? 'success' : 'error',
+            'title' => __($status === Response::HTTP_OK ? 'Success' : 'Failed!'),
+            'text' => $message,
+        ], $status);
     }
 }

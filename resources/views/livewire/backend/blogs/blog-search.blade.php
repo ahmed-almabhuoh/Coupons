@@ -41,6 +41,9 @@
                         {{ __('Title') }}</th>
                     <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
                         style="width: 101.734px;" aria-label="Role: activate to sort column ascending">
+                        {{ __('Articals') }}</th>
+                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
+                        style="width: 101.734px;" aria-label="Role: activate to sort column ascending">
                         {{ __('Category') }}</th>
                     <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
                         style="width: 101.734px;" aria-label="Role: activate to sort column ascending">
@@ -75,11 +78,18 @@
                             {{ $blog->title }}
                         </td>
                         <td>
+                            @if (count($blog->articals))
+                                {{ count($blog->articals) . ' ' . __('ARTICALs') }}
+                            @else
+                                {{ __('No Articals') }}
+                            @endif
+                        </td>
+                        <td>
                             @if ($blog->category)
                                 <a
                                     href="{{ route('categories.edit', Crypt::encrypt($blog->category->id)) }}">{{ $blog->category->name }}</a>
                             @else
-                                {{__('No category')}}
+                                {{ __('No category') }}
                             @endif
                         </td>
                         <td>
@@ -87,7 +97,7 @@
                                 <a
                                     href="{{ route('stores.edit', Crypt::encrypt($blog->store->id)) }}">{{ $blog->store->name }}</a>
                             @else
-                                {{__('No store')}}
+                                {{ __('No store') }}
                             @endif
                         </td>
                         <td>
