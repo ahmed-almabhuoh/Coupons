@@ -148,10 +148,26 @@ class ClientController extends Controller
     }
 
     // Set coupons as inactivated coupon
-    public function setCouponeAsInActivated ($id) {
+    public function setCouponeAsInActivated($id)
+    {
         $coupon = DB::table('coupons')->where('id', $id)->first();
         DB::table('coupons')->where('id', $id)->update([
             'inactivation_count' => $coupon->inactivation_count + 1,
+        ]);
+    }
+
+    // Get the articals
+    public function getArticalsPage($blog_id)
+    {
+        $blog = Blog::where('id', Crypt::decrypt($blog_id))->with('articals', function ($query) {
+            $query->where('status', 'active');
+        })->first();
+
+        $blogs = Blog::active()->get();
+
+        return response()->view('frontend.client.articals', [
+            'blog' => $blog,
+            'blogs' => $blogs,
         ]);
     }
 }

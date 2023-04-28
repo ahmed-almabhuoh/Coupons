@@ -80,6 +80,7 @@
         <script src="{{ asset('front/client/js/all.min.js') }}"></script>
         <script src="{{ asset('front/client/js/script.js') }}"></script>
 
+        @stack('scripts')
         @livewireScripts
 </body>
 

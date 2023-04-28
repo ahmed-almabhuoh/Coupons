@@ -84,6 +84,7 @@ Route::prefix('/')->group(function () {
     Route::get('fqs', [ClientController::class, 'getFqsPage'])->name('pages.fqs');
     Route::get('/offers', [ClientController::class, 'getOfferPage'])->name('pages.offers');
     Route::get('/coupons', [ClientController::class, 'getCouponsPage'])->name('pages.coupons');
+    Route::get('/articals/{blog_id}', [ClientController::class, 'getArticalsPage'])->name('pages.articals');
     Route::get('/', [ClientController::class, 'getHomePage'])->name('pages.home');
     Route::get('/get-product/{product_id}', [ClientController::class, 'getProduct'])->name('get.specific.product');
     Route::get('/get-coupon/{coupons_id}', [ClientController::class, 'getCoupon'])->name('get.specific.coupon');
