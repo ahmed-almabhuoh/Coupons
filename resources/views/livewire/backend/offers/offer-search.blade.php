@@ -36,9 +36,9 @@
                     <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
                         style="width: 101.734px;" aria-label="Role: activate to sort column ascending">
                         {{ __('Image') }}</th>
-                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
+                    {{-- <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
                         style="width: 101.734px;" aria-label="Role: activate to sort column ascending">
-                        {{ __('Title') }}</th>
+                        {{ __('Title') }}</th> --}}
                     <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
                         style="width: 101.266px;" aria-label="Coupon: activate to sort column ascending">
                         {{ __('Action') }}</th>
@@ -65,9 +65,9 @@
                                 {{ __('No image') }}
                             @endif
                         </td>
-                        <td>
+                        {{-- <td>
                             {{ $offer->title }}
-                        </td>
+                        </td> --}}
                         <td>
                             @if ($offer->btn_txt)
                                 <a href="{{ $offer->btn_action }}" target="_blank"

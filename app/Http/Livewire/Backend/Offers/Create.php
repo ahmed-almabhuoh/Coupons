@@ -10,7 +10,7 @@ class Create extends Component
 {
     use WithFileUploads;
 
-    public $title;
+    // public $title;
     public $btn_txt;
     public $btn_action;
     public $image;
@@ -25,7 +25,7 @@ class Create extends Component
     public function store()
     {
         $data = $this->validate([
-            'title' => 'required|string|min:5|unique:offers,title',
+            // 'title' => 'required|string|min:5|unique:offers,title',
             'btn_txt' => 'nullable|min:2|max:20',
             'btn_action' => 'nullable|min:2',
             'status' => 'required|string|in:' . implode(",", Offer::STATUS),
@@ -33,7 +33,7 @@ class Create extends Component
         ]);
 
         $offer = new Offer();
-        $offer->title = $data['title'];
+        // $offer->title = $data['title'];
         $offer->btn_action = $data['btn_action'];
         $offer->btn_txt = $data['btn_txt'];
         $offer->status = $data['status'];
@@ -56,7 +56,7 @@ class Create extends Component
     // Reset models
     protected function resetModels()
     {
-        $this->title = '';
+        // $this->title = '';
         $this->btn_txt = '';
         $this->btn_action = '';
         $this->image = '';

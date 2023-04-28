@@ -8,7 +8,7 @@
         </div>
     @endif
 
-    <x-form.input name="title" type="text" label="Offer title" placeholder="Enter the offer title here ...." />
+    {{-- <x-form.input name="title" type="text" label="Offer title" placeholder="Enter the offer title here ...." /> --}}
 
     <x-form.input name="btn_txt" type="text" label="Offer BTN TXT" placeholder="Enter the offer BTN TXT here ...." />
 
