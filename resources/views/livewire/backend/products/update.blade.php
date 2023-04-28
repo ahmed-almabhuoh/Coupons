@@ -32,7 +32,7 @@
         desc="Let the input value 0, if you need to make this coupon available always" />
 
     <div class="col-sm-12 col-12  py-1">
-        <label class="form-label" for="fp-default">Customize Product Date</label>
+        <label class="form-label" for="fp-default"> {{ __('Customize Product Date') }} </label>
         <input type="text" id="fp-default" wire:model="cusDate" class="form-control flatpickr-basic flatpickr-input"
             placeholder="YYYY-MM-DD" readonly="readonly">
     </div>
@@ -44,7 +44,7 @@
     <div>
         <div class="form-check">
             <input class="form-check-input" wire:model="specail" type="checkbox" id="specail">
-            <label class="form-check-label" for="specail">Mark as a specail offer?</label>
+            <label class="form-check-label" for="specail"> {{ __('Mark as a specail offer?') }} </label>
         </div>
     </div>
 
