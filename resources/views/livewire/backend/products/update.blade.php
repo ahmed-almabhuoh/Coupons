@@ -46,6 +46,9 @@
             <input class="form-check-input" wire:model="specail" type="checkbox" id="specail">
             <label class="form-check-label" for="specail"> {{ __('Mark as a specail offer?') }} </label>
         </div>
+        @error('cusDate')
+            <small style="color: red;">{{ $message }}</small>
+        @enderror
     </div>
 
     <div>

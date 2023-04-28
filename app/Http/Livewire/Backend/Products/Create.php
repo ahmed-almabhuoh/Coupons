@@ -47,7 +47,7 @@ class Create extends Component
             'description' => 'nullable|min:10|max:150',
             'offer' => 'required|integer|min:0|max:100',
             'duration' => 'required|min:0',
-            'cusDate' => 'nullable|date',
+            'cusDate' => 'nullable|date|after_or_equal:today',
             'action' => 'required|string',
             'specail' => 'required|boolean',
         ]);

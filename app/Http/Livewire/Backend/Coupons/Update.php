@@ -56,7 +56,7 @@ class Update extends Component
             'store_id' => 'required|integer|exists:stores,id',
             'description' => 'nullable|min:10|max:150',
             'duration' => 'required|integer|min:0',
-            'cusDate' => 'nullable|date',
+            'cusDate' => 'nullable|date|after_or_equal:today',
             'url' => 'nullable',
         ]);
         $date = Carbon::now();

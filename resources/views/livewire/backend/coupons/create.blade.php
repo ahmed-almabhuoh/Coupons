@@ -30,6 +30,9 @@
         <label class="form-label" for="fp-default">{{ __('Customize Coupon Date') }}</label>
         <input type="text" id="fp-default" wire:model="cusDate" class="form-control flatpickr-basic flatpickr-input"
             placeholder="YYYY-MM-DD" readonly="readonly">
+        @error('cusDate')
+            <small style="color: red;">{{ $message }}</small>
+        @enderror
     </div>
 
     <x-form.textarea name="description" label="Coupons Description"
