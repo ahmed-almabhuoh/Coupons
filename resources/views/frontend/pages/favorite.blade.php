@@ -1,6 +1,6 @@
 @extends('frontend.layouts.client-pages')
 
-@section('title', 'Favorite')
+@section('title', __('Favorite'))
 
 @section('styles')
     <style>
@@ -14,7 +14,7 @@
     <div class="card-tabel">
         <div class="header-text">
             <h3>{{ __('Coupons') }}</h3>
-            <p>{{__('Coupons that you have obtained through us or that you have posted we\'ve got')}}</p>
+            <p>{{ __('Coupons that you have obtained through us or that you have posted we\'ve got') }}</p>
         </div>
         <!-- Start Tabel -->
         <div class="container">
@@ -26,5 +26,5 @@
 @endsection
 
 @section('scripts')
-
+    @stack('scripts')
 @endsection

@@ -82,7 +82,15 @@
                         <td class="@if ($favorite->product->status == 'active') green-text @else red-text @endif">
                             {{ __(ucfirst($favorite->product->status)) }}</td>
                     @endif
-                    <td class="btn"> {{ __('Copy') }} </td>
+
+                    {{-- Copy Buttong --}}
+                    @if ($favorite->coupon)
+                        <td class="btn" id="copying_button" onclick="copyCode({{ $favorite }})">
+                            {{ __('Copy') }} </td>
+                    @elseif ($favorite->product)
+                        <td class="btn" id="copying_button" onclick="copyCode({{ $favorite }})">
+                            {{ __('Copy') }} </td>
+                    @endif
                 </tr>
             @endforeach
         </tbody>
@@ -96,3 +104,35 @@
     </table>
 
 </div>
+
+@push('scripts')
+    <script>
+        function copyCode(favorite) {
+            // var btn = document.getElementById('copying_button');
+            if (favorite.coupon) {
+                navigator.clipboard.writeText(favorite.coupon.code)
+                    .then(() => {
+                        alert("Code copied to clipboard");
+                    })
+                    .catch((error) => {
+                        alert("Failed to copy text: ", error);
+                    });
+            } else {
+                navigator.clipboard.writeText(favorite.product.name)
+                    .then(() => {
+                        alert("Code copied to clipboard");
+                    })
+                    .catch((error) => {
+                        alert("Failed to copy text: ", error);
+                    });
+            }
+            // navigator.clipboard.writeText(btn.getAttribute('value'))
+            //     .then(() => {
+            //         alert("Code copied to clipboard");
+            //     })
+            //     .catch((error) => {
+            //         alert("Failed to copy text: ", error);
+            //     });
+        }
+    </script>
+@endpush
