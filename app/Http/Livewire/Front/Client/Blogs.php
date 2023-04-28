@@ -34,14 +34,13 @@ class Blogs extends Component
 
     public function dropForStores($type = 'all')
     {
-        // dd($type);
         $this->selectedStore = $type;
         if ($type == 'all') {
-            $this->stores = Store::active()->get();
+            $this->blogs = Blog::active()->get();
         } else {
-            $this->stores = Blog::active()->whereHas('store', function ($query) use ($type) {
-                    $query->where('id', $type);
-                })->get();
+            $this->blogs = Blog::active()->whereHas('store', function ($query) use ($type) {
+                $query->where('id', $type);
+            })->get();
         }
     }
 }
