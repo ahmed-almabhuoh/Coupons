@@ -4,7 +4,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Authentication Language Lines - Arabic translation
+    | Authentication Language Lines
     |--------------------------------------------------------------------------
     |
     | The following language lines are used during authentication for various
@@ -13,8 +13,8 @@ return [
     |
     */
 
-    'failed' => 'هذه البيانات لا تتطابق مع سجلاتنا.',
-    'password' => 'كلمة المرور المدخلة غير صحيحة.',
-    'throttle' => 'لقد تجاوزت الحد الأقصى لمحاولات تسجيل الدخول. الرجاء المحاولة مرة أخرى بعد :seconds ثانية.',
+    'failed' => 'These credentials do not match our records.',
+    'password' => 'The provided password is incorrect.',
+    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
 
 ];

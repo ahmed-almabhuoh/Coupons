@@ -48,7 +48,7 @@
     <!-- ================ End Header ================= -->
 
     <!-- ============== Start Main Section ======== -->
-    <div class="main-section pt-5 pb-3 mt-5">
+    <div class="main-section common pt-5 pb-3 mt-5">
         <div class="container">
             @if (session('message'))
                 <div class="alert @if (session('code') == 200) alert-success @else alert-danger @endif"

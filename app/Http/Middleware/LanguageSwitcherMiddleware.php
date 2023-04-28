@@ -18,7 +18,7 @@ class LanguageSwitcherMiddleware
         if (auth()->check()) {
             $user = auth()->user();
             session(['lang' => $user->lang]);
-        }else {
+        } else {
             session(['lang' => 'ar']);
         }
         app()->setLocale(session('lang'));

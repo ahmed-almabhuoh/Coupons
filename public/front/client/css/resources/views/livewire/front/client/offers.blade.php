@@ -101,7 +101,7 @@
                                     <div class="first-sec d-flex justify-content-between">
                                         <!--Section #1 -->
                                         <div class="content d-flex align-items-center justify-content-center">
-                                            <img class="icon-model"
+                                            <img class="icon-model website-logo"
                                                 src="{{ asset('front/client/imgs/flaword-icon-card.png') }}"
                                                 alt="">
                                             <div class="text-des ml-3">
@@ -110,7 +110,8 @@
                                             </div>
                                         </div>
                                         <div class="button">
-                                            <a href="#" id="product_action" target="_blank">Visit &rarr;</a>
+                                            <a href="#" id="product_action" target="_blank">{{ __('Visit') }}
+                                                <span> &rarr;</span></a>
                                         </div>
                                     </div>
                                     <!--Section #2 -->

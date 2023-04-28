@@ -93,7 +93,7 @@
                                     <div class="first-sec d-flex justify-content-between">
                                         <!--Section #1 -->
                                         <div class="content d-flex align-items-center justify-content-center">
-                                            <img class="icon-model" src="" style="width: 50px; height: 50px;"
+                                            <img class="icon-model website-logo" src="" style="width: 50px; height: 50px;"
                                                 id="coupon_store_image" url="{{ env('APP_URL') . 'content/' }}"
                                                 alt="">
                                             <div class="text-des ml-3">
@@ -102,7 +102,7 @@
                                             </div>
                                         </div>
                                         <div class="button">
-                                            <a href="#" id="store_action">Visit &rarr;</a>
+                                            <a href="#" id="store_action">Visit <span> &rarr;</span></a>
                                         </div>
                                     </div>
                                     <!--Section #2 -->
