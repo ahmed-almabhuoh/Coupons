@@ -31,7 +31,10 @@
                         @foreach ($categories as $category)
                             <li data-target="Fashion" class="{{ $selected_category == $category->id ? 'active' : '' }}"
                                 wire:click="getCouponsFromCategory('{{ $category->id }}')">
-                                {{ $category->name }}</li>
+                                <img class="img-product" src="{{ env('APP_URL') . 'content/' . $category->image }}"
+                                    alt="">
+                                {{ $category->name }}
+                            </li>
                         @endforeach
                     </ul>
                 </div>

@@ -31,7 +31,10 @@
                             <li data-target="Fashion"
                                 class="{{ $newSelectedCategory == $category->id ? 'active' : '' }}"
                                 wire:click="getCategories('{{ Crypt::encrypt($category->id) }}')">
-                                {{ $category->name }}</li>
+                                <img class="img-product" src="{{ env('APP_URL') . 'content/' . $category->image }}"
+                                    alt="">
+                                {{ $category->name }}
+                            </li>
                         @endforeach
                     </ul>
                 </div>

@@ -28,6 +28,8 @@
                 @foreach ($categories as $category)
                     <li class="{{ $selectedCategory == $category->id ? 'active' : '' }}"
                         wire:click="selectByCAT('{{ $category->id }}')">
+                        <img class="img-product" src="{{ env('APP_URL') . 'content/' . $category->image }}"
+                            alt="">
                         {{ $category->name }}
                     </li>
                 @endforeach
