@@ -60,7 +60,7 @@
                                 @endif
                                 <div class="card-body">
                                     <h5 class="card-title">{{ $product->name }}</h5>
-                                    <p class="card-text">{{ $product->offer }} {{ __('Riyals') }} <br> <small
+                                    <p class="card-text">{{ $product->price }} {{ __('Riyals') }} <br> <small
                                             class="text-muted">{{ $product->original_price }}
                                             {{ __('Riyals') }}</small>
                                     </p>
@@ -122,7 +122,7 @@
                                                     class="product_discount"></strong></span>
                                         </div>
                                         <div class="first-dev">
-                                            <span>{{ __('Last use') }}: <strong>a day ago</strong></span>
+                                            <span>{{ __('Last use') }}: <strong id="product_last_use"></strong></span>
                                         </div>
                                         <div class="first-dev">
                                             <span>{{ __('Category') }}: <strong
@@ -162,7 +162,8 @@
                                             </div>
                                         </div>
                                         <div class="icon-box">
-                                            <img src="{{ asset('front/client/imgs/thumbs-up-like-square.png') }}"
+                                            <img id="product_activation"
+                                                src="{{ asset('front/client/imgs/thumbs-up-like-square.png') }}"
                                                 alt=""
                                                 data-src="{{ asset('front/client/imgs/lik-selceted.png') }}">
                                             <div>
@@ -171,6 +172,7 @@
                                         </div>
                                         <div class="icon-box">
                                             <img src="{{ asset('front/client/imgs/dislike.png') }}" alt=""
+                                                id="product_inactivation"
                                                 data-src="{{ asset('front/client/imgs/dis-selceted.png') }}">
                                             <div>
                                                 <p>{{ __('inactive') }}</p>
@@ -219,6 +221,19 @@
                         elements[i].textContent = response.data.product.offer + '%';
                     }
 
+                    if (response.data.product.last_use) {
+                        document.getElementById('product_last_use').textContent = timeAgo(response.data.product
+                            .last_use);
+                    } else {
+                        document.getElementById('product_last_use').textContent = 'غير مستخدم';
+                    }
+
+                    document.getElementById('product_activation').setAttribute('onclick', 'markAsActivation(' +
+                        response.data.product.id + ')');
+
+                    document.getElementById('product_inactivation').setAttribute('onclick', 'markAsInActivation(' +
+                        response.data.product.id + ')');
+
                     const product_action = document.getElementById('product_action');
                     product_action.setAttribute('href', response.data.product.action);
 
@@ -227,6 +242,66 @@
                 .catch(function(error) {
                     console.log(error);
                 });
+        }
+
+        function timeAgo(date) {
+            const locale = 'ar-EG'; // Use the Arabic locale
+            const intervals = [{
+                    name: 'year',
+                    seconds: 31536000
+                },
+                {
+                    name: 'month',
+                    seconds: 2592000
+                },
+                {
+                    name: 'week',
+                    seconds: 604800
+                },
+                {
+                    name: 'day',
+                    seconds: 86400
+                },
+                {
+                    name: 'hour',
+                    seconds: 3600
+                },
+                {
+                    name: 'minute',
+                    seconds: 60
+                },
+                {
+                    name: 'second',
+                    seconds: 1
+                }
+            ];
+
+            const secondsAgo = Math.floor((new Date() - new Date(date)) / 1000);
+            for (let i = 0; i < intervals.length; i++) {
+                const interval = intervals[i];
+                const count = Math.floor(secondsAgo / interval.seconds);
+                if (count >= 1) {
+                    return new Intl.RelativeTimeFormat(locale, {
+                            numeric: 'auto'
+                        })
+                        .format(-count, interval.name);
+                }
+            }
+            return 'الآن';
+        }
+
+        // Make product as activation
+        function markAsActivation(id) {
+            axios.get('/set-product-as-activation/' + id)
+                .then(function(response) {
+
+                })
+        }
+
+        // Make product as activation
+        function markAsInActivation(id) {
+            axios.get('/set-product-as-inactivation/' + id)
+                .then(function(response) {})
         }
     </script>
 @endpush

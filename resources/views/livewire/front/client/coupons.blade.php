@@ -130,15 +130,9 @@
                                     </div>
 
                                     <div class="icon-box">
-                                        {{-- @if (auth('client')->check())
-                                        <img src="{{ asset('front/client/imgs/heart-selceted.png') }}"
-                                            id="favorite_icon" alt=""
-                                            data-src="{{ asset('front/client/imgs/Heart, Favorite.png') }}">
-                                    @else --}}
                                         <img src="{{ asset('front/client/imgs/Heart, Favorite.png') }}" alt=""
                                             id="favorite_icon"
                                             data-src="{{ asset('front/client/imgs/heart-selceted.png') }}">
-                                        {{-- @endif --}}
                                         <div>
                                             <p> {{ __('favourite') }} </p>
                                         </div>

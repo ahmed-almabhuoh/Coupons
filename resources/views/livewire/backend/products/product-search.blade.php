@@ -50,15 +50,23 @@
                         {{ __('Is Specail') }}</th>
                     <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
                         style="width: 101.266px;" aria-label="Coupon: activate to sort column ascending">
+                        {{ __('Active Actions') }}</th>
+                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
+                        style="width: 101.266px;" aria-label="Coupon: activate to sort column ascending">
+                        {{ __('Inactive Actions') }}</th>
+                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
+                        style="width: 101.266px;" aria-label="Coupon: activate to sort column ascending">
                         {{ __('Code') }}</th>
                     <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
                         style="width: 101.266px;" aria-label="Coupon: activate to sort column ascending">
                         {{ __('Action') }}</th>
-                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
-                        style="width: 125.906px;" aria-label="Status: activate to sort column ascending">
+                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1"
+                        colspan="1" style="width: 125.906px;"
+                        aria-label="Status: activate to sort column ascending">
                         {{ __('Category') }} </th>
-                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
-                        style="width: 125.906px;" aria-label="Status: activate to sort column ascending">
+                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1"
+                        colspan="1" style="width: 125.906px;"
+                        aria-label="Status: activate to sort column ascending">
                         {{ __('Store') }} </th>
                     <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1"
                         colspan="1" style="width: 125.906px;"
@@ -91,6 +99,24 @@
                         </td>
                         <td>
                             {{ $product->specail ? __('Specail') : __('NOT') }}
+                        </td>
+                        <td>
+                            @if ($product->activation_count)
+                                <img src="{{ asset('front/client/imgs/thumbs-up-like-square.png') }}" alt=""
+                                    data-src="./imgs/lik-selceted.png">
+                                {{ $product->activation_count }}
+                            @else
+                                {{ __('No Interactions') }}
+                            @endif
+                        </td>
+                        <td>
+                            @if ($product->inactivation_count)
+                                <img src="{{ asset('front/client/imgs/dislike.png') }}" alt=""
+                                    data-src="./imgs/lik-selceted.png">
+                                {{ $product->inactivation_count }}
+                            @else
+                                {{ __('No Interactions') }}
+                            @endif
                         </td>
                         <td>
                             {{ $product->code }}

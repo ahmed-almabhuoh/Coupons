@@ -112,9 +112,15 @@ Route::prefix('/')->middleware(['auth:client'])->group(function () {
     Route::get('/add-to-favorite/{id}/{position}', [Home::class, 'addToFavorite'])->name('add.to.favorite');
     Route::get('/check-user-coupon/{id}', [ClientController::class, 'checkUserCoupone'])->name('users.check.coupons');
 
-    // Coupons Activation OR NOT
-    Route::get('/set-as-activation/{coupon_id}', [ClientController::class, 'setCouponeAsActivated'])->name('coupons.activated');
-    Route::get('/set-as-inactivation/{coupon_id}', [ClientController::class, 'setCouponeAsInActivated'])->name('coupons.inactivated');
+    Route::prefix('/')->withoutMiddleware('auth:client')->group(function () {
+        // Coupons Activation OR NOT
+        Route::get('/set-as-activation/{coupon_id}', [ClientController::class, 'setCouponeAsActivated'])->name('coupons.activated');
+        Route::get('/set-as-inactivation/{coupon_id}', [ClientController::class, 'setCouponeAsInActivated'])->name('coupons.inactivated');
+
+        // Product Activation OR NOT
+        Route::get('/set-product-as-activation/{product_id}', [ClientController::class, 'setProductAsActivated'])->name('products.activated');
+        Route::get('/set-product-as-inactivation/{product_id}', [ClientController::class, 'setProductAsInActivated'])->name('products.inactivated');
+    });
 
     Route::get('favorite', [PagesController::class, 'getFavorite'])->name('users.favorite');
     Route::get('change-password', [PagesController::class, 'getChangePassword'])->name('users.change.password');
