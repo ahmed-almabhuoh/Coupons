@@ -138,6 +138,17 @@ class ClientController extends Controller
         ]);
     }
 
+    // Check if the user has the product of not
+    public function checkUserProduct($id)
+    {
+        return response()->json([
+            'has_product' => Favorite::where([
+                ['product_id', '=', $id],
+                ['user_id', '=', auth()->user()->id]
+            ])->exists(),
+        ]);
+    }
+
     // Set coupons as activated coupon
     public function setCouponeAsActivated($id)
     {
@@ -156,23 +167,23 @@ class ClientController extends Controller
         ]);
     }
 
-       // Set products as activated coupon
-       public function setProductAsActivated($id)
-       {
-           $product = DB::table('products')->where('id', $id)->first();
-           DB::table('products')->where('id', $id)->update([
-               'activation_count' => $product->activation_count + 1,
-           ]);
-       }
+    // Set products as activated coupon
+    public function setProductAsActivated($id)
+    {
+        $product = DB::table('products')->where('id', $id)->first();
+        DB::table('products')->where('id', $id)->update([
+            'activation_count' => $product->activation_count + 1,
+        ]);
+    }
 
-       // Set products as inactivated coupon
-       public function setProductAsInActivated($id)
-       {
-           $product = DB::table('products')->where('id', $id)->first();
-           DB::table('products')->where('id', $id)->update([
-               'inactivation_count' => $product->inactivation_count + 1,
-           ]);
-       }
+    // Set products as inactivated coupon
+    public function setProductAsInActivated($id)
+    {
+        $product = DB::table('products')->where('id', $id)->first();
+        DB::table('products')->where('id', $id)->update([
+            'inactivation_count' => $product->inactivation_count + 1,
+        ]);
+    }
 
     // Get the articals
     public function getArticalsPage($blog_id)

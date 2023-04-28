@@ -18,4 +18,9 @@ class Favorite extends Model
     {
         return $this->belongsTo(Coupon::class, 'coupon_id', 'id');
     }
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class, 'product_id', 'id');
+    }
 }

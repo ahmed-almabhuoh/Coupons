@@ -155,7 +155,7 @@
                                         </div>
                                         <div class="icon-box">
                                             <img src="{{ asset('front/client/imgs/Heart, Favorite.png') }}"
-                                                alt=""
+                                                alt="" id="favorite_icon"
                                                 data-src="{{ asset('front/client/imgs/heart-selceted.png') }}">
                                             <div>
                                                 <p>{{ __('favourite') }}</p>
@@ -237,10 +237,41 @@
                     const product_action = document.getElementById('product_action');
                     product_action.setAttribute('href', response.data.product.action);
 
+                    var favorite_icon = document.getElementById('favorite_icon');
+                    favorite_icon.setAttribute('onclick',
+                        'addToFavorite(' + response.data.product.id + ', "product")');
+
+
+
+                    axios.get('/check-user-product/' + product_id)
+                        .then(function(response) {
+                            if (response.data.has_product) {
+                                favorite_icon.setAttribute("src",
+                                    "{{ asset('/front/client/imgs/heart-selceted.png') }}");
+                                favorite_icon.setAttribute("data-src",
+                                    "{{ asset('/front/client/imgs/Heart, Favorite.png') }}");
+                            } else {
+                                favorite_icon.setAttribute("src",
+                                    "{{ asset('/front/client/imgs/Heart, Favorite.png') }}");
+                                favorite_icon.setAttribute("data-src",
+                                    "{{ asset('/front/client/imgs/heart-selceted.png') }}");
+                            }
+                        })
+
                     // console.log(product_store_name);
                 })
                 .catch(function(error) {
                     console.log(error);
+                });
+        }
+
+        function addToFavorite(id, position) {
+            axios.get('/add-to-favorite/' + id + '/' + position)
+                .then(function(response) {
+                    console.log(response.data);
+                })
+                .catch(function(error) {
+                    // window.location.href = '/login';
                 });
         }
 

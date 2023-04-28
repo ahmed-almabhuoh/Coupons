@@ -111,6 +111,7 @@ Route::prefix('/')->middleware(['auth:client'])->group(function () {
     // User Interactions Routes
     Route::get('/add-to-favorite/{id}/{position}', [Home::class, 'addToFavorite'])->name('add.to.favorite');
     Route::get('/check-user-coupon/{id}', [ClientController::class, 'checkUserCoupone'])->name('users.check.coupons');
+    Route::get('/check-user-product/{id}', [ClientController::class, 'checkUserProduct'])->name('users.check.products');
 
     Route::prefix('/')->withoutMiddleware('auth:client')->group(function () {
         // Coupons Activation OR NOT

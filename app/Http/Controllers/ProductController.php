@@ -82,6 +82,7 @@ class ProductController extends Controller
     public function destroy($id)
     {
         $product = Product::findOrFail(Crypt::decrypt($id));
+        DB::table('favorites')->where('product_id', $product->id)->delete();
         //
         if ($product->delete()) {
             return response()->json([

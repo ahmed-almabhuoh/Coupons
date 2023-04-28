@@ -43,18 +43,21 @@ class Home extends Component
     // Add to favorite
     public function addToFavorite($id, $position)
     {
+        // addToFavorite(42, "product")
         $conditions = [];
         if ($position == 'coupon') {
             $conditions[] = ['coupon_id', '=', $id];
             DB::table('coupons')->where('id', $id)->update([
                 'last_use' => Carbon::now(),
             ]);
-        } else {
+        } elseif ($position == 'product') {
             $conditions[] = ['product_id', '=', $id];
             DB::table('products')->where('id', $id)->update([
                 'last_use' => Carbon::now(),
             ]);
         }
+
+
 
 
 
@@ -68,12 +71,16 @@ class Home extends Component
             ])->delete();
         } else {
             if (auth('client')->check()) {
-                DB::table('favorites')->insert([
+                $id = DB::table('favorites')->insertGetId([
                     'user_id' => auth()->user()->id,
                     'position' => $position == 'coupon' ? 'coupon' : 'product',
-                    'coupon_id' => $position == 'coupon' ? $id : 0,
-                    'product_id' => $position == 'product' ? $id : 0,
+                    'coupon_id' => $position == 'coupon' ? $id : null,
+                    'product_id' => $position == 'product' ? $id : null,
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now(),
                 ]);
+
+                return response()->json($id);
             }
         }
     }

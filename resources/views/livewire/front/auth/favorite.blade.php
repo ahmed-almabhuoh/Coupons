@@ -54,11 +54,34 @@
             @endif
             @foreach ($favorites as $favorite)
                 <tr>
-                    <th scope="row" class="text-black fw-normal">{{ $favorite->coupon->code }}</th>
-                    <td>{{ $favorite->coupon->store->name }}</td>
-                    <td>{{ $favorite->coupon->discount . '%' }} </td>
-                    <td class="@if ($favorite->coupon->status == 'active') green-text @else red-text @endif">
-                        {{ __(ucfirst($favorite->coupon->status)) }}</td>
+                    <th scope="row" class="text-black fw-normal">
+                        @if ($favorite->coupon)
+                            {{ $favorite->coupon->code }}
+                        @elseif ($favorite->product)
+                            {{ $favorite->product->name }}
+                        @endif
+                    </th>
+                    <td>
+                        @if ($favorite->coupon)
+                            {{ $favorite->coupon->store->name }}
+                        @elseif ($favorite->product)
+                            {{ $favorite->product->store->name }}
+                        @endif
+                    </td>
+                    <td>
+                        @if ($favorite->coupon)
+                            {{ $favorite->coupon->discount . '%' }}
+                        @elseif ($favorite->product)
+                            {{ $favorite->product->offer . '%' }}
+                        @endif
+                    </td>
+                    @if ($favorite->coupon)
+                        <td class="@if ($favorite->coupon->status == 'active') green-text @else red-text @endif">
+                            {{ __(ucfirst($favorite->coupon->status)) }}</td>
+                    @elseif ($favorite->product)
+                        <td class="@if ($favorite->product->status == 'active') green-text @else red-text @endif">
+                            {{ __(ucfirst($favorite->product->status)) }}</td>
+                    @endif
                     <td class="btn"> {{ __('Copy') }} </td>
                 </tr>
             @endforeach
