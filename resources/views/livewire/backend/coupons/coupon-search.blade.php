@@ -51,6 +51,12 @@
                     <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
                         style="width: 125.906px;" aria-label="Status: activate to sort column ascending">
                         {{ __('Store') }} </th>
+                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
+                        style="width: 101.266px;" aria-label="Coupon: activate to sort column ascending">
+                        {{ __('Active Actions') }}</th>
+                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
+                        style="width: 101.266px;" aria-label="Coupon: activate to sort column ascending">
+                        {{ __('Inactive Actions') }}</th>
                     <th class="sorting_disabled" rowspan="1" colspan="1" style="width: 135.891px;"
                         aria-label="Actions"> {{ __('Actions') }} </th>
                 </tr>
@@ -91,6 +97,24 @@
                         <td>
                             <a
                                 href="{{ route('stores.edit', Crypt::encrypt($coupon->store->id)) }}">{{ $coupon->store->name }}</a>
+                        </td>
+                        <td>
+                            @if ($coupon->activation_count)
+                                <img src="{{ asset('front/client/imgs/thumbs-up-like-square.png') }}" alt=""
+                                    data-src="./imgs/lik-selceted.png">
+                                {{ $coupon->activation_count }}
+                            @else
+                                {{ __('No Interactions') }}
+                            @endif
+                        </td>
+                        <td>
+                            @if ($coupon->inactivation_count)
+                                <img src="{{ asset('front/client/imgs/dislike.png') }}" alt=""
+                                    data-src="./imgs/lik-selceted.png">
+                                {{ $coupon->inactivation_count }}
+                            @else
+                                {{ __('No Interactions') }}
+                            @endif
                         </td>
                         <td>
 
