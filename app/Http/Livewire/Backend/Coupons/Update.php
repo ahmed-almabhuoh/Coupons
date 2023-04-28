@@ -23,6 +23,7 @@ class Update extends Component
     public $description;
     public $duration = 0;
     public $cusDate;
+    public $url;
 
     public function mount($coupon)
     {
@@ -35,6 +36,7 @@ class Update extends Component
         $this->description = $this->coupon->description;
         $this->cusDate = $this->coupon->from_date;
         $this->duration = $this->coupon->duration;
+        $this->url = $this->coupon->url;
     }
 
     public function render()
@@ -55,6 +57,7 @@ class Update extends Component
             'description' => 'nullable|min:10|max:150',
             'duration' => 'required|integer|min:0',
             'cusDate' => 'nullable|date',
+            'url' => 'nullable',
         ]);
         $date = Carbon::now();
 
@@ -65,6 +68,7 @@ class Update extends Component
         $this->coupon->store_id = $data['store_id'];
         $this->coupon->description = $data['description'];
         $this->coupon->duration = $data['duration'];
+        $this->coupon->url = $data['url'];
         $this->coupon->from_date = $data['cusDate'] ?? $date;
         $this->coupon->to_date = $date->copy()->addDays($data['duration']);
         $this->showSuccess = $this->coupon->save();

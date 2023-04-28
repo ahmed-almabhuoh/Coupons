@@ -10,6 +10,9 @@
 
     <x-form.input name="code" type="text" label="Coupon Code" placeholder="Enter the coupon code here ...." />
 
+    <x-form.input name="url" model="url" type="url" label="Coupon URL"
+        placeholder="Enter the coupon URL ...." />
+
     <x-form.input name="coupon" model="discount" type="number" label="Coupon Discount"
         placeholder="Enter the coupon value here ...." />
 
@@ -24,9 +27,9 @@
         desc="Let the input value 0, if you need to make this coupon available always" />
 
     <div class="col-sm-12 col-12  py-1">
-        <label class="form-label" for="fp-default">{{__('Customize Coupon Date')}}</label>
-        <input type="text" id="fp-default" wire:model="cusDate"
-            class="form-control flatpickr-basic flatpickr-input" placeholder="YYYY-MM-DD" readonly="readonly">
+        <label class="form-label" for="fp-default">{{ __('Customize Coupon Date') }}</label>
+        <input type="text" id="fp-default" wire:model="cusDate" class="form-control flatpickr-basic flatpickr-input"
+            placeholder="YYYY-MM-DD" readonly="readonly">
     </div>
 
     <x-form.textarea name="description" label="Coupons Description"

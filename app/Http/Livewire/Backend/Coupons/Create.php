@@ -22,6 +22,7 @@ class Create extends Component
     public $description;
     public $duration = 0;
     public $cusDate;
+    public $url;
 
     public function render()
     {
@@ -39,6 +40,7 @@ class Create extends Component
             'description' => 'nullable|min:10|max:150',
             'duration' => 'required|integer|min:0',
             'cusDate' => 'nullable|date',
+            'url' => 'nullable',
         ]);
 
         $coupon = new Coupon();
@@ -49,6 +51,7 @@ class Create extends Component
         $coupon->description = $data['description'];
         $coupon->store_id = $data['store_id'];
         $coupon->duration = $data['duration'];
+        $coupon->url = $data['url'];
         $date = Carbon::now();
         $coupon->from_date = $data['cusDate'] ?? $date;
         $coupon->to_date = $date->copy()->addDays($data['duration']);
@@ -70,5 +73,6 @@ class Create extends Component
         $this->store_id = '';
         $this->description = '';
         $this->duration = '';
+        $this->url = '';
     }
 }

@@ -13,6 +13,9 @@
     <x-form.input name="coupon" model="discount" type="number" label="Coupon Discount"
         placeholder="Enter the coupon value here ...." />
 
+    <x-form.input name="url" model="url" type="url" label="Coupon URL"
+        placeholder="Enter the coupon URL ...." />
+
     <x-form.select name="status" model="status" label="Coupon status" :options="App\Models\Coupon::STATUS" />
 
     <x-form.select name="category" model="category_id" label="Coupon Category" :options="$categories" />

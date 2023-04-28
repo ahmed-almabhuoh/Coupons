@@ -37,6 +37,9 @@
                         style="width: 101.734px;" aria-label="Role: activate to sort column ascending">
                         {{ __('Discount') }}</th>
                     <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
+                        style="width: 101.734px;" aria-label="Role: activate to sort column ascending">
+                        {{ __('Link') }}</th>
+                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
                         style="width: 101.266px;" aria-label="Coupon: activate to sort column ascending">
                         {{ __('Stauts') }}</th>
                     <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
@@ -65,6 +68,13 @@
                             <div class="avatar bg-success">
                                 <div class="avatar-content">{{ $coupon->discount . '%' }}</div>
                             </div>
+                        </td>
+                        <td>
+                            @if ($coupon->url)
+                                <a href="{{ $coupon->url }}">{{ __('Link') }}</a>
+                            @else
+                                {{ __('No link') }}
+                            @endif
                         </td>
                         <td>
                             <span class="{{ $coupon->status_class }}">{{ ucfirst($coupon->status) }}</span>

@@ -111,6 +111,10 @@ Route::prefix('/')->middleware(['auth:client'])->group(function () {
     Route::get('/add-to-favorite/{id}/{position}', [Home::class, 'addToFavorite'])->name('add.to.favorite');
     Route::get('/check-user-coupon/{id}', [ClientController::class, 'checkUserCoupone'])->name('users.check.coupons');
 
+    // Coupons Activation OR NOT
+    Route::get('/set-as-activation/{coupon_id}', [ClientController::class, 'setCouponeAsActivated'])->name('coupons.activated');
+    Route::get('/set-as-inactivation/{coupon_id}', [ClientController::class, 'setCouponeAsInActivated'])->name('coupons.inactivated');
+
     Route::get('favorite', [PagesController::class, 'getFavorite'])->name('users.favorite');
     Route::get('change-password', [PagesController::class, 'getChangePassword'])->name('users.change.password');
     Route::get('account', [PagesController::class, 'getAccount'])->name('users.account');

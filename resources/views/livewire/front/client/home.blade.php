@@ -52,7 +52,8 @@
                                 <!-- icon -->
                                 <div class="icon">
                                     <img src="{{ asset('front/client/imgs/share-icon-card.png') }}" alt="icon">
-                                    <img src="{{ asset('front/client/imgs/icon-card-multi.png') }}" alt="icon">
+                                    <img src="{{ asset('front/client/imgs/icon-card-multi.png') }}" alt="icon"
+                                        id="another-copying-element">
                                 </div>
                                 <!-- img -->
                                 <div class="img">
@@ -121,7 +122,8 @@
                                             <span>{{ __('Discount') }}: <strong id="coupon_discount"></strong></span>
                                         </div>
                                         <div class="first-dev">
-                                            <span>{{ __('Last use') }}: <strong>a day ago</strong></span>
+                                            <span>{{ __('Last use') }}: <strong id="coupon_last_use">a day
+                                                    ago</strong></span>
                                         </div>
                                         <div class="first-dev">
                                             <span>{{ __('Category') }}: <strong
@@ -131,7 +133,7 @@
                                 </div>
 
                                 <div class="icon-container">
-                                    <div class="icon-box">
+                                    <div class="icon-box" id="shopping_coupon_action">
                                         <img src="{{ asset('front/client/imgs/cart.png') }}" alt=""
                                             data-src="">
                                         <div>
@@ -140,21 +142,16 @@
                                     </div>
 
                                     <div class="icon-box">
-                                        {{-- @if (auth('client')->check())
-                                            <img src="{{ asset('front/client/imgs/heart-selceted.png') }}"
-                                                id="favorite_icon" alt=""
-                                                data-src="{{ asset('front/client/imgs/Heart, Favorite.png') }}">
-                                        @else --}}
                                         <img src="{{ asset('front/client/imgs/Heart, Favorite.png') }}" alt=""
                                             id="favorite_icon"
                                             data-src="{{ asset('front/client/imgs/heart-selceted.png') }}">
-                                        {{-- @endif --}}
                                         <div>
                                             <p> {{ __('favourite') }} </p>
                                         </div>
                                     </div>
                                     <div class="icon-box">
-                                        <img src="{{ asset('front/client/imgs/thumbs-up-like-square.png') }}"
+                                        <img id="coupon_activation"
+                                            src="{{ asset('front/client/imgs/thumbs-up-like-square.png') }}"
                                             alt=""
                                             data-src="{{ asset('front/client/imgs/lik-selceted.png') }}">
                                         <div>
@@ -163,6 +160,7 @@
                                     </div>
                                     <div class="icon-box">
                                         <img src="{{ asset('front/client/imgs/dislike.png') }}" alt=""
+                                            id="coupon_inactivation"
                                             data-src="{{ asset('front/client/imgs/dis-selceted.png') }}">
                                         <div>
                                             <p>{{ __('inactive') }}</p>
@@ -176,7 +174,7 @@
                                     <span><img src="{{ asset('front/client/imgs/share-icon-copuon.png') }}"
                                             alt=""> {{ __('Share') }}
                                     </span>
-                                    <a type="button" class="copy-button btn btn-secondary">
+                                    <a type="button" class="copy-button btn btn-secondary" id="copyButton">
                                         {{ __('Copy Code') }}
                                         <img src="{{ asset('front/client/imgs/copy-icon.png') }}" alt="">
                                     </a>
@@ -211,9 +209,44 @@
                         'addToFavorite(' + response.data.coupon.id + ', "coupon")');
                     document.getElementById('store_action').setAttribute('href', response.data.coupon.store.action);
 
+                    if (response.data.coupon.last_use) {
+                        document.getElementById('coupon_last_use').textContent = timeAgo(response.data.coupon
+                            .last_use);
+                    } else {
+                        document.getElementById('coupon_last_use').textContent = 'غير مستخدم';
+                    }
+
+                    var shopping_div = document.getElementById('shopping_coupon_action');
+                    console.log(shopping_div);
+                    shopping_div.setAttribute('onclick', 'shoppingCoupon("' + response.data.coupon.url + '")')
+
+                    document.getElementById('coupon_activation').setAttribute('onclick', 'markAsActivation(' +
+                        response.data.coupon.id + ')');
+
+                    document.getElementById('coupon_inactivation').setAttribute('onclick', 'markAsInActivation(' +
+                        response.data.coupon.id + ')');
+
+
+                    // Get the copy button element by ID
+                    const copyButton = document.getElementById('copyButton');
+                    const anotherCopyButton = document.getElementById('another-copying-element');
+                    copyButton.setAttribute('value', response.data.coupon.code);
+                    anotherCopyButton.setAttribute('value', response.data.coupon.code);
+
+                    // Add a click event to the copy button
+                    copyButton.onclick = function() {
+                        navigator.clipboard.writeText(copyButton.getAttribute('value'));
+                        alert('Text copied to clipboard!');
+                    };
+
+                    anotherCopyButton.onclick = function() {
+                        navigator.clipboard.writeText(copyButton.getAttribute('value'));
+                        alert('Text copied to clipboard!');
+                    };
+
+
                     axios.get('/check-user-coupon/' + coupon_id)
                         .then(function(response) {
-                            console.log(response.data.has_coupon);
                             if (response.data.has_coupon) {
                                 favorite_icon.setAttribute("src",
                                     "{{ asset('/front/client/imgs/heart-selceted.png') }}");
@@ -233,9 +266,77 @@
                 });
         }
 
+        // Redirect for shopping coupon
+        function shoppingCoupon($url) {
+            window.redirect = $url;
+        }
+
+        // Make coupon as activation
+        function markAsActivation(id) {
+            axios.get('/set-as-activation/' + id)
+                .then(function(response) {})
+        }
+
+        // Make coupon as activation
+        function markAsInActivation(id) {
+            axios.get('/set-as-inactivation/' + id)
+                .then(function(response) {})
+        }
+
+
+        function timeAgo(date) {
+            const locale = 'ar-EG'; // Use the Arabic locale
+            const intervals = [{
+                    name: 'year',
+                    seconds: 31536000
+                },
+                {
+                    name: 'month',
+                    seconds: 2592000
+                },
+                {
+                    name: 'week',
+                    seconds: 604800
+                },
+                {
+                    name: 'day',
+                    seconds: 86400
+                },
+                {
+                    name: 'hour',
+                    seconds: 3600
+                },
+                {
+                    name: 'minute',
+                    seconds: 60
+                },
+                {
+                    name: 'second',
+                    seconds: 1
+                }
+            ];
+
+            const secondsAgo = Math.floor((new Date() - new Date(date)) / 1000);
+            for (let i = 0; i < intervals.length; i++) {
+                const interval = intervals[i];
+                const count = Math.floor(secondsAgo / interval.seconds);
+                if (count >= 1) {
+                    return new Intl.RelativeTimeFormat(locale, {
+                            numeric: 'auto'
+                        })
+                        .format(-count, interval.name);
+                }
+            }
+            return 'الآن';
+        }
+
+
+
         function addToFavorite(id, position) {
             axios.get('/add-to-favorite/' + id + '/' + position)
-                .then(function(response) {})
+                .then(function(response) {
+                    // console.log(response);
+                })
                 .catch(function(error) {
                     window.location.href = '/login';
                 });

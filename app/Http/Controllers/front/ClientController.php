@@ -137,4 +137,21 @@ class ClientController extends Controller
             ])->exists(),
         ]);
     }
+
+    // Set coupons as activated coupon
+    public function setCouponeAsActivated($id)
+    {
+        $coupon = DB::table('coupons')->where('id', $id)->first();
+        DB::table('coupons')->where('id', $id)->update([
+            'activation_count' => $coupon->activation_count + 1,
+        ]);
+    }
+
+    // Set coupons as inactivated coupon
+    public function setCouponeAsInActivated ($id) {
+        $coupon = DB::table('coupons')->where('id', $id)->first();
+        DB::table('coupons')->where('id', $id)->update([
+            'inactivation_count' => $coupon->inactivation_count + 1,
+        ]);
+    }
 }

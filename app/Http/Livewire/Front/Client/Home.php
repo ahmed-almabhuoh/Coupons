@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Front\Client;
 
 use App\Models\Coupon;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 
@@ -45,8 +46,14 @@ class Home extends Component
         $conditions = [];
         if ($position == 'coupon') {
             $conditions[] = ['coupon_id', '=', $id];
+            DB::table('coupons')->where('id', $id)->update([
+                'last_use' => Carbon::now(),
+            ]);
         } else {
             $conditions[] = ['product_id', '=', $id];
+            DB::table('products')->where('id', $id)->update([
+                'last_use' => Carbon::now(),
+            ]);
         }
 
 
