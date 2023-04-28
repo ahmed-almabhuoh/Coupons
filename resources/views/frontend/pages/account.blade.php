@@ -1,6 +1,6 @@
 @extends('frontend.layouts.client-pages')
 
-@section('title', 'Manage Account')
+@section('title', __('Manage Account'))
 
 @section('styles')
 
