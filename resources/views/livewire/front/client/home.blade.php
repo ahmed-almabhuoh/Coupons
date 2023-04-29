@@ -54,8 +54,11 @@
                             <div class="card inner">
                                 <!-- icon -->
                                 <div class="icon">
-                                    <img src="{{ asset('front/client/imgs/share-icon-card.png') }}" alt="icon">
+                                    {{-- shareByEmail('${response.data.coupon.store.name}', '${response.data.coupon.code}', '${response.data.coupon.discount}') --}}
+                                    <img src="{{ asset('front/client/imgs/share-icon-card.png') }}" alt="icon"
+                                        onclick="shareByEmail('{{ $coupon->store->name }}', '{{ $coupon->code }}', '{{ $coupon->discount }}')">
                                     <img src="{{ asset('front/client/imgs/icon-card-multi.png') }}" alt="icon"
+                                        onclick="copyCodeToClipboard('{{ $coupon->code }}')"
                                         id="another-copying-element">
                                 </div>
                                 <!-- img -->
@@ -107,9 +110,8 @@
                                     <div class="first-sec d-flex justify-content-between">
                                         <!--Section #1 -->
                                         <div class="content d-flex align-items-center justify-content-center">
-                                            <img class="icon-model" src="" style="width: 50px; height: 50px;"
-                                                id="coupon_store_image" url="{{ env('APP_URL') . 'content/' }}"
-                                                alt="">
+                                            <img class="icon-model website-logo" src="" id="coupon_store_image"
+                                                url="{{ env('APP_URL') . 'content/' }}" alt="">
                                             <div class="text-des ml-3">
                                                 <strong id="coupon_store_name">Floward</strong>
                                                 <p id="coupon_description">A store that specializes in rose bouquets</p>
@@ -174,7 +176,8 @@
 
 
                                 <div class="modal-footer d-flex">
-                                    <span><img src="{{ asset('front/client/imgs/share-icon-copuon.png') }}"
+                                    <span id="share_element"><img
+                                            src="{{ asset('front/client/imgs/share-icon-copuon.png') }}"
                                             alt=""> {{ __('Share') }}
                                     </span>
                                     <a type="button" class="copy-button btn btn-secondary" id="copyButton">
@@ -220,7 +223,6 @@
                     }
 
                     var shopping_div = document.getElementById('shopping_coupon_action');
-                    console.log(shopping_div);
                     shopping_div.setAttribute('onclick', 'shoppingCoupon("' + response.data.coupon.url + '")')
 
                     document.getElementById('coupon_activation').setAttribute('onclick', 'markAsActivation(' +
@@ -246,6 +248,16 @@
                         navigator.clipboard.writeText(copyButton.getAttribute('value'));
                         alert('Text copied to clipboard!');
                     };
+
+                    // Share Element
+                    document.getElementById('share_element').setAttribute('onclick',
+                        `shareByEmail('${response.data.coupon.store.name}', '${response.data.coupon.code}', '${response.data.coupon.discount}')`
+                    );
+
+                    // Shopping Element
+                    document.getElementById('shopping_coupon_action').setAttribute('onclick',
+                        `redirectShopping('${response.data.coupon.url}')`);
+
 
 
                     axios.get('/check-user-coupon/' + coupon_id)
@@ -333,8 +345,6 @@
             return 'الآن';
         }
 
-
-
         function addToFavorite(id, position) {
             axios.get('/add-to-favorite/' + id + '/' + position)
                 .then(function(response) {
@@ -343,6 +353,39 @@
                 .catch(function(error) {
                     window.location.href = '/login';
                 });
+        }
+
+        // Share Button
+        function shareByEmail(store_name, code, discount) {
+            const subject = store_name;
+            const body =
+                `استخدم كود (${code}) للحصول على خصم العرض ${discount}% في ${store_name} 😁\n\nحمل تطبيق كوبنز للحصول على أحدث كوبونات الخصم`;
+
+            const mailtoUrl =
+                `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+            window.location.href = mailtoUrl;
+        }
+
+        // Copy Element
+        function copyCodeToClipboard(code) {
+            const el = document.createElement('textarea');
+            el.value = code;
+            document.body.appendChild(el);
+            el.select();
+            document.execCommand('copy');
+            document.body.removeChild(el);
+
+            const copiedEl = document.getElementById('copied');
+            copiedEl.classList.add('show');
+            setTimeout(() => {
+                copiedEl.classList.remove('show');
+            }, 2000);
+        }
+
+        // Shopping Redirect
+        function redirectShopping(url) {
+            location.href = url;
         }
     </script>
 @endpush

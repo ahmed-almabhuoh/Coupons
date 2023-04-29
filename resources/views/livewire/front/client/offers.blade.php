@@ -104,7 +104,7 @@
                                     <div class="first-sec d-flex justify-content-between">
                                         <!--Section #1 -->
                                         <div class="content d-flex align-items-center justify-content-center">
-                                            <img class="icon-model"
+                                            <img class="icon-model website-logo"
                                                 src="{{ asset('front/client/imgs/flaword-icon-card.png') }}"
                                                 alt="">
                                             <div class="text-des ml-3">
@@ -149,7 +149,7 @@
                                     </div>
 
                                     <div class="icon-container">
-                                        <div class="icon-box">
+                                        <div class="icon-box" id="shopping_coupon_action">
                                             <img src="{{ asset('front/client/imgs/cart.png') }}" alt=""
                                                 data-src="">
                                             <div>
@@ -185,10 +185,11 @@
 
 
                                     <div class="modal-footer d-flex">
-                                        <span><img src="{{ asset('front/client/imgs/share-icon-copuon.png') }}"
+                                        <span id="share_element"><img
+                                                src="{{ asset('front/client/imgs/share-icon-copuon.png') }}"
                                                 alt=""> {{ __('Share') }}
                                         </span>
-                                        <a type="button" class="copy-button btn btn-secondary">
+                                        <a type="button" class="copy-button btn btn-secondary" id="copyButton">
                                             {{ __('Copy Code') }} <img
                                                 src="{{ asset('front/client/imgs/copy-icon.png') }}" alt="">
                                         </a>
@@ -217,8 +218,8 @@
                         .name;
                     document.getElementById('product_description').textContent = response.data.product.description;
                     document.getElementById('product_original_price').textContent = response.data.product
-                        .original_price + ' Riyals';
-                    document.getElementById('product_price').textContent = response.data.product.price + ' Riyals';
+                        .original_price + ' ريال';
+                    document.getElementById('product_price').textContent = response.data.product.price + ' ريال';
                     const elements = document.getElementsByClassName('product_discount');
                     for (let i = 0; i < elements.length; i++) {
                         elements[i].textContent = response.data.product.offer + '%';
@@ -243,6 +244,26 @@
                     var favorite_icon = document.getElementById('favorite_icon');
                     favorite_icon.setAttribute('onclick',
                         'addToFavorite(' + response.data.product.id + ', "product")');
+
+                    // Share Element
+                    // product_name, price, discount
+                    document.getElementById('share_element').setAttribute('onclick',
+                        `shareByEmail('${response.data.product.store.name}', '${response.data.product.original_price} ريال', '${response.data.product.price} ريال')`
+                    );
+
+                    // Get the copy button element by ID
+                    const copyButton = document.getElementById('copyButton');
+                    copyButton.setAttribute('value', response.data.product.name);
+
+                    // Add a click event to the copy button
+                    copyButton.onclick = function() {
+                        navigator.clipboard.writeText(copyButton.getAttribute('value'));
+                        alert('Text copied to clipboard!');
+                    };
+
+                    // Shopping Element
+                    document.getElementById('shopping_coupon_action').setAttribute('onclick',
+                        `redirectShopping('${response.data.product.action}')`);
 
 
 
@@ -274,7 +295,7 @@
                     console.log(response.data);
                 })
                 .catch(function(error) {
-                    // window.location.href = '/login';
+                    window.location.href = '/login';
                 });
         }
 
@@ -336,6 +357,44 @@
         function markAsInActivation(id) {
             axios.get('/set-product-as-inactivation/' + id)
                 .then(function(response) {})
+        }
+
+        // Share Button
+        function shareByEmail(product_name, price, discount) {
+            const subject = product_name;
+            const body =
+                `استخدم كود (${price}) للحصول على خصم العرض ${discount} في ${product_name} 😁\n\nحمل تطبيق كوبنز للحصول على أحدث كوبونات الخصم`;
+
+            const mailtoUrl =
+                `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+            window.location.href = mailtoUrl;
+        }
+
+        // Copy Element
+        function copyCodeToClipboard(code) {
+            const el = document.createElement('textarea');
+            el.value = code;
+            document.body.appendChild(el);
+            el.select();
+            document.execCommand('copy');
+            document.body.removeChild(el);
+
+            const copiedEl = document.getElementById('copied');
+            copiedEl.classList.add('show');
+            setTimeout(() => {
+                copiedEl.classList.remove('show');
+            }, 2000);
+        }
+
+        // Shopping Redirect
+        function redirectShopping(url) {
+            location.href = url;
+        }
+
+        // Shopping Redirect
+        function redirectShopping(url) {
+            location.href = url;
         }
     </script>
 @endpush

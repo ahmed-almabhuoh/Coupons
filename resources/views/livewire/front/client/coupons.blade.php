@@ -53,8 +53,10 @@
                             <div class="card inner">
                                 <!-- icon -->
                                 <div class="icon">
-                                    <img src="{{ asset('front/client/imgs/share-icon-card.png') }}" alt="icon">
-                                    <img src="{{ asset('front/client/imgs/icon-card-multi.png') }}" alt="icon">
+                                    <img src="{{ asset('front/client/imgs/share-icon-card.png') }}" alt="icon"
+                                        onclick="shareByEmail('{{ $coupon->store->name }}', '{{ $coupon->code }}', '{{ $coupon->discount }}')">
+                                    <img src="{{ asset('front/client/imgs/icon-card-multi.png') }}" alt="icon"
+                                        onclick="copyCodeToClipboard('{{ $coupon->code }}')">
                                 </div>
                                 <!-- img -->
                                 <div class="img">
@@ -95,9 +97,8 @@
                                     <div class="first-sec d-flex justify-content-between">
                                         <!--Section #1 -->
                                         <div class="content d-flex align-items-center justify-content-center">
-                                            <img class="icon-model" src="" style="width: 50px; height: 50px;"
-                                                id="coupon_store_image" url="{{ env('APP_URL') . 'content/' }}"
-                                                alt="">
+                                            <img class="icon-model website-logo" src="" id="coupon_store_image"
+                                                url="{{ env('APP_URL') . 'content/' }}" alt="">
                                             <div class="text-des ml-3">
                                                 <strong id="coupon_store_name">Floward</strong>
                                                 <p id="coupon_description">A store that specializes in rose bouquets</p>
@@ -162,10 +163,11 @@
 
 
                                 <div class="modal-footer d-flex">
-                                    <span><img src="{{ asset('front/client/imgs/share-icon-copuon.png') }}"
+                                    <span id="share_element"><img
+                                            src="{{ asset('front/client/imgs/share-icon-copuon.png') }}"
                                             alt=""> {{ __('Share') }}
                                     </span>
-                                    <a type="button" class="copy-button btn btn-secondary">
+                                    <a type="button" class="copy-button btn btn-secondary" id="copyButton">
                                         {{ __('Copy Code') }}
                                         <img src="{{ asset('front/client/imgs/copy-icon.png') }}" alt="">
                                     </a>
@@ -215,6 +217,26 @@
 
                     document.getElementById('coupon_inactivation').setAttribute('onclick', 'markAsInActivation(' +
                         response.data.coupon.id + ')');
+
+                    // Share Element
+                    document.getElementById('share_element').setAttribute('onclick',
+                        `shareByEmail('${response.data.coupon.store.name}', '${response.data.coupon.code}', '${response.data.coupon.discount}')`
+                    );
+
+                    // Shopping Element
+                    document.getElementById('shopping_coupon_action').setAttribute('onclick',
+                        `redirectShopping('${response.data.coupon.url}')`);
+
+                    // Get the copy button element by ID
+                    const copyButton = document.getElementById('copyButton');
+                    copyButton.setAttribute('value', response.data.coupon.code);
+
+                    // Add a click event to the copy button
+                    copyButton.onclick = function() {
+                        navigator.clipboard.writeText(copyButton.getAttribute('value'));
+                        alert('Text copied to clipboard!');
+                    };
+
 
 
                     axios.get('/check-user-coupon/' + coupon_id)
@@ -312,6 +334,38 @@
                 .catch(function(error) {
                     window.location.href = '/login';
                 });
+        }
+
+        function shareByEmail(store_name, code, discount) {
+            const subject = store_name;
+            const body =
+                `استخدم كود (${code}) للحصول على خصم العرض ${discount}% في ${store_name} 😁\n\nحمل تطبيق كوبنز للحصول على أحدث كوبونات الخصم`;
+
+            const mailtoUrl =
+                `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+            window.location.href = mailtoUrl;
+        }
+
+        // Copy Element
+        function copyCodeToClipboard(code) {
+            const el = document.createElement('textarea');
+            el.value = code;
+            document.body.appendChild(el);
+            el.select();
+            document.execCommand('copy');
+            document.body.removeChild(el);
+
+            const copiedEl = document.getElementById('copied');
+            copiedEl.classList.add('show');
+            setTimeout(() => {
+                copiedEl.classList.remove('show');
+            }, 2000);
+        }
+
+        // Shopping Redirect
+        function redirectShopping(url) {
+            location.href = url;
         }
     </script>
 @endpush
