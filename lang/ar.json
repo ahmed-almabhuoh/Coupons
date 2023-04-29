@@ -30,6 +30,7 @@
     "Store deleted successfully": "تم حذف المتجر بنجاح",
     "The image dimensions should be at max 100 X 100": "يجب أن تكون أبعاد الصورة بحد أقصى 100 × 100",
     "Coupon URL": "عنوان URL الخاص بالقسيمة",
+    "Setup Website": "إعداد موقع الويب",
     "Sign in": "تسجيل الدخول",
     "Failed to delete the store, store has some related information!": "فشل حذف المتجر ، يحتوي المتجر على بعض المعلومات ذات الصلة!",
     "Show Languages Items?": "إظهار عناصر اللغات؟",

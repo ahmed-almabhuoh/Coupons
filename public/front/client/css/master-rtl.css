@@ -26,6 +26,10 @@ navbar.logo {
   align-items: center;
   font-size: 14px;
 }
+.website-logo {
+  width: 40px !important;
+  height: 40px !important;
+}
 
 a.main-btn {
   background-color: var(--primary-color) !important;
@@ -452,6 +456,7 @@ img.flowerd {
   padding: 5px 20px;
   color: white;
   transition: 0.3s ease;
+  display: flex;
 }
 .modal-body .button a:hover {
   background-color: #f05555cc !important;
@@ -482,7 +487,7 @@ img.flowerd {
   width: 100%;
   height: 1px;
   position: absolute;
-  bottom: 100px;
+  top: 110px;
   background: rgba(151, 151, 151, 0.1);
 }
 .midel-sec::after {
@@ -628,8 +633,7 @@ img.flowerd {
 .card.offers-product {
   height: auto !important;
 }
-.card.offers-product::before {
-  content: "10% Discount";
+.card.offers-product a.category {
   top: 10px;
   position: absolute;
   left: 10px;
@@ -641,7 +645,22 @@ img.flowerd {
   font-size: 14px;
   line-height: 20px;
   color: white;
+  text-decoration: none;
 }
+/* .card.offers-product::before {
+  content: "";
+  top: 10px;
+  position: absolute;
+  left: 10px;
+  background-color: red;
+  border-radius: 8px;
+  padding: 10px;
+  background: rgba(240, 85, 85, 0.5);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: white;
+} */
 .card.offers-product::after {
   content: "";
   display: inline-block;
@@ -723,8 +742,7 @@ img.flowerd {
   bottom: 0;
   position: absolute;
   width: 40%;
-  /* Edite */
-  right: 20%;
+  left: 40%;
   transform: translateX(-100%);
   height: 58px;
   display: flex;
@@ -760,9 +778,7 @@ img.flowerd {
   font-size: 18px;
   color: #323232;
 }
-.card.offers-product.blog::before {
-  content: "Category";
-}
+
 /* =====(End Blog page)====== */
 
 /* =====(Start Blogs page)====== */
@@ -843,9 +859,9 @@ img.flowerd {
   transition: 0.3s ease;
 }
 .filter-buttons .img-product {
-  width: 16px;
-  height: 16px;
-  margin-right: 3px;
+  width: 20px;
+  height: 20px;
+  margin-left: 3px;
 }
 .portfolio-gallery {
   flex: 0 0 100%;
@@ -969,8 +985,8 @@ a.dropdown-item {
   transform: translateX(-50%);
 }
 .portfolio .portfolio-gallery .item .img img {
-  width: 40px;
-  height: 40px;
+  width: 40px !important;
+  height: 40px !important;
 }
 
 .portfolio .btn-primary {
@@ -1147,7 +1163,7 @@ footer .links a {
 @media (max-width: 767px) {
   .portfolio .dropdown-toggle {
     top: -130px;
-    right: 35%;
+    left: 30%;
   }
   .portfolio .dropdown-toggle.offers {
     top: -110px;

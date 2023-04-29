@@ -17,7 +17,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('panel/app-assets/images/ico/favicon.ico') }}">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600"
         rel="stylesheet">
-        {{-- {{dd(App::getLocale())}} --}}
+    {{-- {{dd(App::getLocale())}} --}}
 
     @if (session('lang') == 'en')
         <!-- BEGIN: Vendor CSS-->
@@ -106,14 +106,17 @@
 
             {{-- Languages --}}
             <ul class="nav navbar-nav align-items-center ms-auto">
-                <li class="nav-item dropdown dropdown-language"><a class="nav-link dropdown-toggle" id="dropdown-flag"
-                        href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
-                            class="flag-icon flag-icon-us"></i><span class="selected-language">English</span></a>
+                <li class="nav-item dropdown dropdown-language"><a class="nav-link dropdown-toggle"
+                        id="dropdown-flag" href="#" data-bs-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false"><i class="flag-icon flag-icon-us"></i><span
+                            class="selected-language">English</span></a>
                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-flag">
-                        <a class="dropdown-item" href="{{ route('admins.change.locale', 'en') }}" data-language="en">
+                        <a class="dropdown-item" href="{{ route('admins.change.locale', 'en') }}"
+                            data-language="en">
                             <i class="flag-icon flag-icon-us"></i> English
                         </a>
-                        <a class="dropdown-item" href="{{ route('admins.change.locale', 'ar') }}" data-language="ar">
+                        <a class="dropdown-item" href="{{ route('admins.change.locale', 'ar') }}"
+                            data-language="ar">
                             <i class="flag-icon flag-icon-sa"></i> Arabic
                         </a>
                     </div>

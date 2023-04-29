@@ -1,0 +1,284 @@
+{
+    "COPYRIGHT": "حقوق الطبع والنشر",
+    "& Made with": "وصُنــع فـــي",
+    "All rights Reserved": "جميع الحقوق محفوظة",
+    "Couponse": "كـــوبوناتـــي",
+    "Remember Me": "تذكرني",
+    "Password": "كلمة المرور",
+    "Human Resources": "الموارد البشرية",
+    "Admins": "المشرفون",
+    "Sign in": "تسجيل الدخول",
+    "User updated successfully": "تم تحديث المستخدم بنجاح",
+    "Categories": "التصنيفات",
+    "User created successfully": "تم إنشاء المستخدم بنجاح",
+    "Username": "اسم المستخدم",
+    "List": "قائمة",
+    "Failed to login, please try again!": "فشل تسجيل الدخول، يرجى المحاولة مرة أخرى!",
+    "Users": "المستخدمون",
+    "Login successfully": "تم تسجيل الدخول بنجاح",
+    "User deleted successfully": "تم حذف المستخدم بنجاح",
+    "Failed to delete the user!": "فشل حذف المستخدم!",
+    "Add": "إضافة",
+    "Please sign-in to your account and start the adventure": "يرجى تسجيل الدخول إلى حسابك والبدء في المغامرة",
+    "Welcome to Dashboard": "مرحبًا بك في لوحة التحكم",
+    "Success": "نجاح",
+    "Admin created successfully": "تم إنشاء المشرف بنجاح",
+    "Admin deleted successfully": "تم حذف المشرف بنجاح",
+    "Failed!": "فشل!",
+    "Failed to delete the admin!": "فشل حذف المشرف!",
+    "No admins found yet ... !": "لم يتم العثور على مشرفين بعد ...!",
+    "Search": "بحث",
+    "Show": "عرض",
+    "entries": "مدخلات",
+    "Add New Admin": "إضافة مشرف جديد",
+    "Control Panel": "لوحة التحكم",
+    "Searching about admins ...": "البحث عن المشرفين ...",
+    "Change my password": "تغيير كلمة المرور الخاصة بي",
+    "Dashboard": "الداشبورد",
+    "Panel": "اللوحة",
+    "Manager": "الادارة",
+    "Update account info ": "تحديث معلومات الحساب",
+    "Accounts": "الحسابات",
+    "Update": "تحديث",
+    "CM": "ادارة المحتوى",
+    "HR": "الموراد البشرية",
+    "Create an admin": "إنشاء مشرف",
+    "FQs": "الأسئلة الشائعة",
+    "Create a new FQs": "أنشئ سؤالاً شائعاً جديداً",
+    "A mini-paragraph talking about what this site offers specifically A mini-paragraph talking about what this site offers specifically A mini-paragraph talking about what this site offers specifically A mini-paragraph talking about what this site offers specifically A mini-paragraph talking about what this site offers specifically A mini-paragraph talking about what This site presents a mini-paragraph that talks about what exactly this site offers. A mini-paragraph that specifically talks about what this site offers.": "فقرة صغيرة تتحدث عن ما يوفره هذا الموقع بشكل خاص. فقرة صغيرة تتحدث بشكل محدد عما يوفره هذا الموقع.",
+    "Articals": "المقالات",
+    "Update artical": "تحديث المقالة",
+    "Create a new artical": "أنشئ مقالاً جديداً",
+    "Forgot Password? 🔒": "نسيت كلمة المرور؟ 🔒",
+    "Enter your email and we'll send you instructions to reset your password": "أدخل بريدك الإلكتروني وسنرسل لك تعليمات لإعادة تعيين كلمة المرور الخاصة بك",
+    "Email": "البريد الإلكتروني",
+    "Send reset link": "إرسال رابط إعادة تعيين",
+    "Back to login": "العودة لتسجيل الدخول",
+    "Coupons - Control Panel - Login": "الكوبونات - لوحة التحكم - تسجيل الدخول",
+    "Blogs": "المدونات",
+    "Create a blog": "أنشئ مدونة",
+    "Create a new blog": "أنشئ مدونة جديدة",
+    "Create a new category": "أنشئ فئة جديدة",
+    "Contact Us": "اتصل بنا",
+    "Coupons": "الكوبونات",
+    "Create a new coupon": "أنشئ كوبون جديد",
+    "Offers": "العروض",
+    "Create a new offer": "أنشئ عرض جديد",
+    "Product Images": "صور المنتجات",
+    "Products": "المنتجات",
+    "Stores": "المتاجر",
+    "Create a new product": "أنشئ منتجاً جديداً",
+    "Create a new store": "أنشئ متجراً جديداً",
+    "Change Password": "تغيير كلمة المرور",
+    "Special Offers": "العروض الخاصة",
+    "Re-change your password when you feel someone has access to your account": "قم بتغيير كلمة المرور الخاصة بك عند شعورك بأن شخصاً ما يستخدم حسابك",
+    "Your Message Here..": "رسالتك هنا..",
+    "Do you have a question in your mind?!": "هل لديك سؤال في ذهنك؟!",
+    "No questions published yet!": "لم يتم نشر أي أسئلة حتى الآن!",
+    "Ask us and we will respond within 24 hours.": "اسألنا وسنرد خلال 24 ساعة.",
+    "Your E-mail": "بريدك الإلكتروني",
+    "Foreget Password": "هل نسيت كلمة المرور؟",
+    "Common questions": "الأسئلة الشائعة",
+    "Home": "الرئــيسية",
+    "E-Mail Address": "عنوان البريد الإلكتروني",
+    "Create a new user": "إنشاء مستخدم جديد",
+    "Forgot your password?..": "هل نسيت كلمة المرور؟..",
+    "Recover Password": "إسترجاع كلمة المرور",
+    "Don't have an account?..": "ليس لديك حساب؟..",
+    "Common Questions": "الأسئلة الشائعة",
+    "About our platform": "حول منصتنا",
+    "Login": "تسجيل الدخول",
+    "Register": "تسجيل جديد",
+    "About Us": "من نحن",
+    "Password Confirmation": "تأكيد كلمة المرور",
+    "New Password": "كلمة مرور جديدة",
+    "First name": "الاسم الأول",
+    "Last name": "اسم العائلة",
+    "Register a new account": "تسجيل حساب جديد",
+    "Phone no.": "رقم الهاتف",
+    "E-mail": "البريد الإلكتروني",
+    "About": "حول",
+    "Enter your first name here ....": "أدخل اسمك الأول هنا...",
+    "Status": "الحالة",
+    "Enter your E-mail here ....": "أدخل بريدك الإلكتروني هنا ...",
+    "Image": "صورة",
+    "Store": "المتجر",
+    "Title": "العنوان",
+    "Answer": "الإجابة",
+    "Account status": "حالة الحساب",
+    "Add New FQs": "إضافة أسئلة شائعة جديدة",
+    "Admin image": "صورة المسؤول",
+    "No image": "لا يوجد صورة",
+    "Actions": "الإجراءات",
+    "User": "المستخدم",
+    "Phone": "الهاتف",
+    "Choose your image": "اختر صورتك",
+    "Enter your Phone no. here ....": "أدخل رقم هاتفك هنا ...",
+    "Account updated successfully": "تم تحديث الحساب بنجاح",
+    "Enter your last name here ....": "أدخل اسمك الأخير هنا ...",
+    "Recover your password": "استعادة كلمة المرور",
+    "Recover": "استرداد",
+    "Coupons Login": "تسجيل الدخول إلى القسائم",
+    "Create an account!": "إنشاء حساب!",
+    "Favorite": "المفضلة",
+    "FQs title": "عنوان الأسئلة الشائعة",
+    "Coupons that you have obtained through us or that you have posted we've got": "القسائم التي حصلت عليها من خلالنا أو التي قمت بنشرها لدينا",
+    "FQs created successfully": "تم إنشاء الأسئلة الشائعة بنجاح",
+    "Searching about FQs ...": "البحث عن الأسئلة الشائعة ...",
+    "No common questions found yet ... !": "لم يتم العثور على أي أسئلة شائعة حتى الآن ...!",
+    "Offer BTN TXT": "نص زر العرض",
+    "Offer title": "عنوان العرض",
+    "Offer BTN action": "حدث زر العرض",
+    "Offer created successfully": "تم إنشاء العرض بنجاح",
+    "Edit account information": "تعديل معلومات الحساب",
+    "Change": "تغيير",
+    "Current Password": "كلمة المرور الحالية",
+    "Password changed successfully": "تم تغيير كلمة المرور بنجاح",
+    "You can modify the account information once and you will need 60 days before you can edit again": "يمكنك تعديل معلومات الحساب مرة واحدة وستحتاج إلى 60 يومًا قبل أن تتمكن من التعديل مرة أخرى",
+    "Previous": "السابق",
+    "Next": "التالي",
+    "My Account": "حسابي",
+    "Don't have an account?.. ": "ليس لديك حساب؟",
+    "FQs updated successfully": "تم تحديث الأسئلة الشائعة بنجاح",
+    "FQs status": "حالة الأسئلة الشائعة",
+    "Searching about articals ...": "البحث عن مقالات ...",
+    "Offer status": "حالة العرض",
+    "No category": "لا توجد فئة",
+    "No store": "لا يوجد متجر",
+    "No blogs found yet ... !": "لم يتم العثور على مدونات بعد ...!",
+    "Add New Blog": "أضف مدونة جديدة",
+    "Blog image": "صورة المدونة",
+    "Description": "الوصف",
+    "Blog": "المدونة",
+    "Artical created successfully": "تم إنشاء المقال بنجاح",
+    "Artical updated successfully": "تم تحديث المقال بنجاح",
+    "Searching about blogs ...": "البحث عن مدونات ...",
+    "Update account info": "تحديث بيانات الحساب",
+    "Blog Store": "متجر المدونة",
+    "Cancel": "إلغاء",
+    "Blog created successfully": "تم إنشاء المدونة بنجاح",
+    "Blog Category": "فئة المدونة",
+    "Coupon Code": "كود الكوبون",
+    "Blog status": "حالة المدونة",
+    "Enter the coupon code here ....": "أدخل كود الكوبون هنا...",
+    "Blog title": "عنوان المدونة",
+    "No articals found yet ... !": "لم يتم العثور على مقالات بعد ...!",
+    "Coupon status": "حالة الكوبون",
+    "Enter the coupon value here ....": "أدخل قيمة الكوبون هنا...",
+    "Store updated successfully": "تم تحديث المتجر بنجاح",
+    "Customize Coupon Date": "تخصيص تاريخ الكوبون",
+    "Enter the coupon description here ....": "أدخل وصف الكوبون هنا...",
+    "Coupons Description": "وصف الكوبونات",
+    "Coupon Category": "فئة الكوبون",
+    "Let the input value 0, if you need to make this coupon available always": "دع القيمة المدخلة 0، إذا كنت تريد جعل هذا القسيمة متاحًا دائمًا",
+    "Coupon Discount": "خصم القسيمة",
+    "Enter the coupon duration days here ....": "أدخل أيام صلاحية القسيمة هنا ....",
+    "Coupon Days": "أيام القسيمة",
+    "Coupon Store": "متجر القسيمة",
+    "Blog updated successfully": "تم تحديث المدونة بنجاح",
+    "No contacts found yet ... !'": "لا يوجد جهات اتصال حتى الآن...!",
+    "No coupons": "لا توجد قسائم",
+    "Coupon created successfully": "تم إنشاء القسيمة بنجاح",
+    "No coupons found yet ... !": "لا يوجد قسائم حتى الآن...!",
+    "Searching about coupons ...": "البحث عن القسائم ...",
+    "Searching about contacts ...": "البحث عن جهات الاتصال ...",
+    "Code": "الكود",
+    "Discount": "الخصم",
+    "Category image (optional)": "صورة الفئة (اختياري)",
+    "Add New Coupon": "إضافة قسيمة جديدة",
+    "Category name": "اسم الفئة",
+    "Category updated successfully": "تم تحديث الفئة بنجاح",
+    "Sended at": "أرسلت في",
+    "Message": "الرسالة",
+    "Category status": "حالة الفئة",
+    "Add New Category": "إضافة فئة جديدة",
+    "Enter the offer title here ....": "أدخل عنوان العرض هنا ....",
+    "Offer image": "صورة العرض",
+    "Enter the offer BTN action here ....": "أدخل إجراء BTN العرض هنا ...",
+    "Store URL": "عنوان URL للمتجر",
+    "Enter the store name here ....": "أدخل اسم المتجر هنا ....",
+    "Store status": "حالة المتجر",
+    "Enter the store description here ....": "أدخل وصف المتجر هنا ....",
+    "Add New Store": "إضافة متجر جديد",
+    "Store created successfully": "تم إنشاء المتجر بنجاح",
+    "No stores found yet ... !": "لم يتم العثور على متاجر بعد ... !",
+    "Enter the store URL here ....": "أدخل رابط المتجر هنا ....",
+    "Store icon (optional)": "أيقونة المتجر (اختياري)",
+    "Change password": "تغيير كلمة المرور",
+    "Filter by Platform": "التصفية حسب المنصة",
+    "No blogs found here!": "لم يتم العثور على مدونات هنا!",
+    "All": "الكل",
+    "Save Edite": "حفظ التحرير",
+    "Coupon details": "تفاصيل القسيمة",
+    "No coupons found yet!": "لم يتم العثور على قسائم بعد!",
+    "Phone Number": "رقم الهاتف",
+    "Copy Code": "نسخ الرمز",
+    "Various discount codes": "أكواد خصم متنوعة",
+    "Favorite is empty right now, start browsing and using coupons :(": "المفضلة فارغة الآن ، ابدأ في التصفح واستخدام القسائم :(",
+    "Last use": "آخر استخدام",
+    "Already have an account?": "هل لديك حساب؟",
+    "Site Settings": "إعدادات الموقع",
+    "Original price": "السعر الأصلي",
+    "Share": "مشاركة",
+    "Update account": "تحديث الحساب",
+    "Account Settings": "إعدادات الحساب",
+    "Content Management": "إدارة المحتوى",
+    "Logout": "تسجيل الخروج",
+    "Final price": "السعر النهائي",
+    "All Stores": "جميع المتاجر",
+    "active": "نشط",
+    "shopping": "تسوق",
+    "inactive": "غير نشط",
+    "Riyals": "ريال",
+    "favourite": "المفضلة",
+    "Full Name": "الاسم الكامل",
+    "Commands": "الأوامر",
+    "Product details": "تفاصيل المنتج",
+    "Git it": "احصل عليه",
+    "No users found yet ... !": "لم يتم العثور على مستخدمين بعد ...!",
+    "No products found yet!": "لم يتم العثور على منتجات بعد!",
+    "Floward": "فلاورد",
+    "Searching about users ...": "البحث عن المستخدمين ...",
+    "Namshi": "نمشي",
+    "Add New User": "إضافة مستخدم جديد",
+    "Store name": "اسم المتجر",
+    "Enter the user Password Confirmation here ....": "أدخل تأكيد كلمة مرور المستخدم هنا....",
+    "Product updated successfully": "تم تحديث المنتج بنجاح",
+    "Enter the product name here ....": "أدخل اسم المنتج هنا....",
+    "Searching about stores ...": "جاري البحث عن المتاجر ...",
+    "No offers found yet ... !": "لم يتم العثور على عروض حتى الآن...!",
+    "Mark as a specail offer?": "وضع علامة كعرض خاص؟",
+    "Product Offer": "عرض المنتج",
+    "Price": "السعر",
+    "Searching about products ...": "جاري البحث عن المنتجات ...",
+    "No link": "لا يوجد رابط",
+    "Enter the product offer here ....": "أدخل عرض المنتج هنا ....",
+    "Is Specail": "خاص؟",
+    "Product Days": "أيام المنتج",
+    "Name": "الاسم",
+    "Add New Product": "إضافة منتج جديد",
+    "Customize Product Date": "تخصيص تاريخ المنتج",
+    "Enter the product description here ....": "أدخل وصف المنتج هنا ....",
+    "Product Description": "وصف المنتج",
+    "Enter the offer BTN TXT here ....": "أدخل نص زر العرض هنا ....",
+    "Enter the product duration days here ....": "أدخل أيام مدة المنتج هنا ....",
+    "Product Store": "متجر المنتج",
+    "Product Coupon (Optional)": "كوبون المنتج (اختياري)",
+    "Product images": "صور المنتج",
+    "Product Link": "رابط المنتج",
+    "Enter the product link here ....": "أدخل رابط المنتج هنا ....",
+    "Product Category": "فئة المنتج",
+    "Enter the product price here ....": "أدخل سعر المنتج هنا ....",
+    "Product Price": "سعر المنتج",
+    "No categories found yet ... !": "لم يتم العثور على فئات بعد ...!",
+    "Product created successfully": "تم إنشاء المنتج بنجاح",
+    "Product Name": "اسم المنتج",
+    "Add New Offer": "إضافة عرض جديد",
+    "Category created successfully": "تم إنشاء الفئة بنجاح",
+    "No products": "لا يوجد منتجات",
+    "Enter the blog title here ....": "أدخل عنوان المدونة هنا ....",
+    "Add New Artical": "أضف مقال جديد",
+    "FQs answer": "إجابات الأسئلة الشائعة",
+    "Submit": "إرسال",
+    "Contacts": "جهات الاتصال"
+}
