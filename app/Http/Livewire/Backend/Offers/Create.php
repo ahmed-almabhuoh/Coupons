@@ -24,6 +24,9 @@ class Create extends Component
 
     public function store()
     {
+        if (!auth()->user()->can('create-offer')) {
+            abort(403);
+        }
         $data = $this->validate([
             // 'title' => 'required|string|min:5|unique:offers,title',
             'btn_txt' => 'nullable|min:2|max:20',

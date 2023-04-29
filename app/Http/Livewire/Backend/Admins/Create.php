@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Str;
+use Spatie\Permission\Models\Role;
 
 class Create extends Component
 {
@@ -22,7 +23,13 @@ class Create extends Component
     public $password;
     public $password_confirmation;
     public $showSuccess = false;
+    public $roles;
+    public $role_id;
 
+    public function mount()
+    {
+        $this->roles = Role::get();
+    }
 
     public function render()
     {
@@ -31,6 +38,9 @@ class Create extends Component
 
     public function store()
     {
+        if (!auth()->user()->can('create-admin')) {
+            abort(403);
+        }
         $data = $this->validate([
             'fname' => 'required|string|min:2|max:25',
             'lname' => 'required|string|min:2|max:25',
@@ -39,6 +49,7 @@ class Create extends Component
             'password' => 'required|string|min:6|confirmed',
             'password_confirmation' => 'required|string|min:6',
             'status' => 'required|string|in:active,disabled',
+            'role_id' => 'required|integer|exists:roles,id',
             'image' => 'nullable',
         ]);
 
@@ -58,6 +69,7 @@ class Create extends Component
             $admin->image = $path;
         }
         $this->showSuccess = $admin->save();
+        $admin->assignRole(Role::findById($data['role_id']));
 
         if ($this->showSuccess) {
             $this->resetModels();
@@ -76,5 +88,6 @@ class Create extends Component
         $this->password_confirmation = '';
         $this->status = '';
         $this->image = '';
+        $this->role_id = '';
     }
 }

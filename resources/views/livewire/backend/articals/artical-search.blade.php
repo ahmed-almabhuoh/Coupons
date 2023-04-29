@@ -42,8 +42,11 @@
                     <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
                         style="width: 101.734px;" aria-label="Role: activate to sort column ascending">
                         {{ __('Status') }}</th>
-                    <th class="sorting_disabled" rowspan="1" colspan="1" style="width: 135.891px;"
-                        aria-label="Actions"> {{ __('Actions') }} </th>
+                    @if (auth()->user()->can('delete-artical') ||
+                            auth()->user()->can('edit-artical'))
+                        <th class="sorting_disabled" rowspan="1" colspan="1" style="width: 135.891px;"
+                            aria-label="Actions"> {{ __('Actions') }} </th>
+                    @endif
                 </tr>
             </thead>
             <tbody>
@@ -81,34 +84,43 @@
                             {{-- {{ $artical->status }} --}}
                             <span class="{{ $artical->status_class }}">{{ ucfirst($artical->status) }}</span>
                         </td>
-                        <td>
+                        @if (auth()->user()->can('delete-A&Q') ||
+                                auth()->user()->can('edit-A&Q'))
+                            <td>
 
-                            <a href="{{ route('articals.edit', Crypt::encrypt($artical->id)) }}"
-                                class="btn btn-icon btn-info waves-effect waves-float waves-light">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
-                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round" class="feather feather-inbox">
-                                    {{-- <polyline points="22 12 16 12 14 15 10 15 8 12 2 12"></polyline> --}}
-                                    <path
-                                        d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10h-2c0 4.411-3.589 8-8 8s-8-3.589-8-8 3.589-8 8-8c2.394 0 4.561.988 6.129 2.571l-2.058 2.058h5.929v-5.929l-2.057 2.057c-1.323-1.323-3.058-2.057-4.872-2.057zm5.5 5.5l-2.5 2.5v-7h-1v7l-2.5-2.5-1.414 1.414 4.914 4.914 4.914-4.914-1.414-1.414z">
-                                    </path>
-                                </svg>
-                            </a>
+                                @if (auth()->user()->can('edit-artical'))
+                                    <a href="{{ route('articals.edit', Crypt::encrypt($artical->id)) }}"
+                                        class="btn btn-icon btn-info waves-effect waves-float waves-light">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round"
+                                            class="feather feather-inbox">
+                                            {{-- <polyline points="22 12 16 12 14 15 10 15 8 12 2 12"></polyline> --}}
+                                            <path
+                                                d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10h-2c0 4.411-3.589 8-8 8s-8-3.589-8-8 3.589-8 8-8c2.394 0 4.561.988 6.129 2.571l-2.058 2.058h5.929v-5.929l-2.057 2.057c-1.323-1.323-3.058-2.057-4.872-2.057zm5.5 5.5l-2.5 2.5v-7h-1v7l-2.5-2.5-1.414 1.414 4.914 4.914 4.914-4.914-1.414-1.414z">
+                                            </path>
+                                        </svg>
+                                    </a>
+                                @endif
 
-                            <button type="button"
-                                onclick="confirmationDelete('{{ Crypt::encrypt($artical->id) }}', this, '{{ auth('admin')->user()->lang }}')"
-                                class="btn btn-icon btn-danger waves-effect waves-float waves-light">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
-                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round" class="feather feather-inbox">
-                                    {{-- <polyline points="22 12 16 12 14 15 10 15 8 12 2 12"></polyline> --}}
-                                    <path
-                                        d="M19 5h-3.5l-1-1h-5l-1 1H5v2h14V5zM8.5 8l-1.5 9h9l-1.5-9h-6zM10 18v-7h1v7h-1zm3 0v-7h1v7h-1zm3 0v-7h1v7h-1z">
-                                    </path>
-                                </svg>
-                            </button>
+                                @if (auth()->user()->can('delete-artical'))
+                                    <button type="button"
+                                        onclick="confirmationDelete('{{ Crypt::encrypt($artical->id) }}', this, '{{ auth('admin')->user()->lang }}')"
+                                        class="btn btn-icon btn-danger waves-effect waves-float waves-light">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round"
+                                            class="feather feather-inbox">
+                                            {{-- <polyline points="22 12 16 12 14 15 10 15 8 12 2 12"></polyline> --}}
+                                            <path
+                                                d="M19 5h-3.5l-1-1h-5l-1 1H5v2h14V5zM8.5 8l-1.5 9h9l-1.5-9h-6zM10 18v-7h1v7h-1zm3 0v-7h1v7h-1zm3 0v-7h1v7h-1z">
+                                            </path>
+                                        </svg>
+                                    </button>
+                                @endif
 
-                        </td>
+                            </td>
+                        @endif
                     </tr>
                 @endforeach
                 <tr class="odd" wire:loading>

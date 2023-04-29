@@ -13,6 +13,9 @@ class CouponSearch extends Component
 
     public function render()
     {
+        if (!auth()->user()->can('view-coupons')) {
+            abort(403);
+        }
         $this->coupons = Coupon::where(function ($query) {
             $query->where('code', 'like', "%" . $this->searchTerm . "%")
                 ->orWhere('discount', 'like', "%" . $this->searchTerm . "%")

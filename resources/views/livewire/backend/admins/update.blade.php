@@ -32,7 +32,9 @@
 
     <x-form.select name="status" label="Account status" :options="['active', 'disabled']" />
 
+    <x-form.select name="role_id" label="Admin role" :options="$roles" />
 
-
-    <x-form.submit text="Update" action="update()" type="button" />
+    <div>
+        <x-form.submit text="Update" action="update()" type="button" />
+    </div>
 </div>

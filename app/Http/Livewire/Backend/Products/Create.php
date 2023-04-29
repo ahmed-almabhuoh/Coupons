@@ -37,6 +37,9 @@ class Create extends Component
 
     public function store()
     {
+        if (!auth()->user()->can('create-product')) {
+            abort(403);
+        }
         $data = $this->validate([
             'name' => 'required|string|min:2|unique:products,name',
             'price' => 'required|numeric|min:1',

@@ -14,6 +14,9 @@ class BlogSearch extends Component
 
     public function render()
     {
+        if (!auth()->user()->can('view-blogs')) {
+            abort(403);
+        }
         $this->blogs = Blog::where(function ($query) {
             $query->where('title', 'like', "%" . $this->searchTerm . "%")
                 ->where('status', 'LIKE',  "%" . $this->searchTerm . "%");

@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Backend\Admins;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Spatie\Permission\Models\Role;
 
 class Update extends Component
 {
@@ -21,6 +22,8 @@ class Update extends Component
     public $password;
     public $password_confirmation;
     public $showSuccess = false;
+    public $roles;
+    public $role_id;
 
     public function mount($admin)
     {
@@ -30,6 +33,7 @@ class Update extends Component
         $this->email = $this->admin->email;
         $this->phone = $this->admin->phone;
         $this->status = $this->admin->status;
+        $this->roles = Role::get();
     }
 
     public function render()
@@ -41,6 +45,9 @@ class Update extends Component
 
     public function update()
     {
+        if (!auth()->user()->can('edit-admin')) {
+            abort(403);
+        }
         $data = $this->validate([
             'fname' => 'required|string|min:2|max:25',
             'lname' => 'required|string|min:2|max:25',
@@ -49,6 +56,7 @@ class Update extends Component
             'password' => 'nullable|confirmed',
             'password_confirmation' => 'nullable',
             'status' => 'required|string|in:active,disabled',
+            'role_id' => 'required|integer|exists:roles,id',
             'image' => 'nullable',
         ]);
 
@@ -67,6 +75,12 @@ class Update extends Component
             $this->admin->image = $path;
         }
         $this->showSuccess = $this->admin->save();
+
+        // Remove all previous roles
+        $this->admin->syncRoles([]);
+
+        // Assign the new role
+        $this->admin->assignRole(Role::findById($data['role_id']));
 
         return redirect()->route('admins.index');
     }

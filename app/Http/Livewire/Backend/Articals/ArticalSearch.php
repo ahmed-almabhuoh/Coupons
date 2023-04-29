@@ -13,6 +13,9 @@ class ArticalSearch extends Component
 
     public function render()
     {
+        if (!auth()->user()->can('view-articals')) {
+            abort(403);
+        }
         $this->articals = Artical::where(function ($query) {
             $query->where('description', 'like', "%" . $this->searchTerm . "%")
                 ->where('status', 'like', "%" . $this->searchTerm . "%");

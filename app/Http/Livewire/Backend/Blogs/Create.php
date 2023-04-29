@@ -26,6 +26,9 @@ class Create extends Component
 
     public function store()
     {
+        if (!auth()->user()->can('create-blog')) {
+            abort(403);
+        }
         $data = $this->validate([
             'title' => 'required|string|min:5|unique:blogs,title',
             'image' => 'nullable',

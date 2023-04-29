@@ -15,6 +15,9 @@ class AqsController extends Controller
     public function index()
     {
         //
+        if (!auth()->user()->can('view-A&Qs')) {
+            abort(403);
+        }
         return response()->view('backend.aqs.index');
     }
 
@@ -24,6 +27,9 @@ class AqsController extends Controller
     public function create()
     {
         //
+        if (!auth()->user()->can('create-A&Q')) {
+            abort(403);
+        }
         return response()->view('backend.aqs.store');
     }
 
@@ -48,6 +54,9 @@ class AqsController extends Controller
      */
     public function edit($id)
     {
+        if (!auth()->user()->can('edit-A&Q')) {
+            abort(403);
+        }
         //
         return response()->view('backend.aqs.edit', [
             'aq' => Aqs::findOrFail(Crypt::decrypt($id)),
@@ -67,6 +76,9 @@ class AqsController extends Controller
      */
     public function destroy($id)
     {
+        if (!auth()->user()->can('delete-A&Q')) {
+            abort(403);
+        }
         $aqs = Aqs::findOrFail(Crypt::decrypt($id));
         //
         if ($aqs->delete()) {

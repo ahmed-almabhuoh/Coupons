@@ -19,6 +19,9 @@ class Create extends Component
 
     public function store()
     {
+        if (!auth()->user()->can('create-A&Q')) {
+            abort(403);
+        }
         $data = $this->validate([
             'title' => 'required|string|min:2|max:25|unique:aqs,title',
             'status' => 'required|string|in:' . implode(",", Aqs::STATUS),

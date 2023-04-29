@@ -15,6 +15,9 @@ class OfferController extends Controller
     public function index()
     {
         //
+        if (!auth()->user()->can('view-offers')) {
+            abort(403);
+        }
         return response()->view('backend.offers.index');
     }
 
@@ -24,6 +27,9 @@ class OfferController extends Controller
     public function create()
     {
         //
+        if (!auth()->user()->can('create-offer')) {
+            abort(403);
+        }
         return response()->view('backend.offers.store');
     }
 
@@ -48,6 +54,9 @@ class OfferController extends Controller
      */
     public function edit($id)
     {
+        if (!auth()->user()->can('edit-offer')) {
+            abort(403);
+        }
         return response()->view('backend.offers.edit', [
             'offer' => Offer::findOrFail(Crypt::decrypt($id)),
         ]);
@@ -66,6 +75,9 @@ class OfferController extends Controller
      */
     public function destroy($id)
     {
+        if (!auth()->user()->can('delete-offer')) {
+            abort(403);
+        }
         $offer = Offer::findOrFail(Crypt::decrypt($id));
         //
         if ($offer->delete()) {

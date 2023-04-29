@@ -24,6 +24,9 @@ class Create extends Component
 
     public function store()
     {
+        if (!auth()->user()->can('create-artical')) {
+            abort(403);
+        }
         $data = $this->validate([
             'description' => 'required|string|min:50',
             'blog_id' => 'required|integer|exists:blogs,id',

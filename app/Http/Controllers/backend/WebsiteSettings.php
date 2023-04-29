@@ -11,6 +11,9 @@ class WebsiteSettings extends Controller
     // Logo setup view
     public function getLogoSetup()
     {
+        if (!auth()->user()->can('manage-website')) {
+            abort(403);
+        }
         return response()->view('backend.settings.logo-setup');
     }
 }

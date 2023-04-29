@@ -48,6 +48,9 @@ class Update extends Component
 
     public function update()
     {
+        if (!auth()->user()->can('update-coupon')) {
+            abort(403);
+        }
         $data = $this->validate([
             'code' => 'required|string|min:3|unique:coupons,code,' . $this->coupon->id,
             'status' => 'required|string|in:' . implode(",", Coupon::STATUS),

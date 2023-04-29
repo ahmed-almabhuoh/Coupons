@@ -58,6 +58,9 @@ class Update extends Component
 
     public function update()
     {
+        if (!auth()->user()->can('edit-product')) {
+            abort(403);
+        }
         $data = $this->validate([
             'name' => 'required|string|min:2|unique:products,name,' . $this->product->id,
             'price' => 'required|numeric|min:1',

@@ -3,7 +3,7 @@
         <div class="alert alert-success" role="alert">
             <h4 class="alert-heading">{{ __('Success') }}</h4>
             <div class="alert-body">
-                {{__('Admin created successfully')}}
+                {{ __('Admin created successfully') }}
             </div>
         </div>
     @endif
@@ -25,5 +25,9 @@
 
     <x-form.select name="status" label="Account status" :options="['active', 'disabled']" />
 
-    <x-form.submit text="Store" action="store()" type="button" />
+    <x-form.select name="role_id" label="Admin role" :options="$roles" />
+
+    <div>
+        <x-form.submit text="Store" action="store()" type="button" />
+    </div>
 </div>

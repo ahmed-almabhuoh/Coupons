@@ -18,11 +18,17 @@ class SetupLogo extends Component
 
     public function render()
     {
+        if (!auth()->user()->can('manage-website')) {
+            abort(403);
+        }
         return view('livewire.backend.website-settings.setup-logo');
     }
 
     public function store()
     {
+        if (!auth()->user()->can('manage-website')) {
+            abort(403);
+        }
         $site = DB::table('website_settings')->first();
         $data = $this->validate([
             'image' => 'nullable',

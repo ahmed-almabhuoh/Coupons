@@ -13,6 +13,9 @@ class ProductSearch extends Component
 
     public function render()
     {
+        if (!auth()->user()->can('view-products')) {
+            abort(403);
+        }
         $this->products = Product::where(function ($query) {
             $query->where('name', 'like', "%" . $this->searchTerm . "%")
                 ->orWhere('offer', 'like', "%" . $this->searchTerm . "%")

@@ -16,6 +16,9 @@ class ContactSearch extends Component
 
     public function render()
     {
+        if (!auth()->user()->can('contact-us')) {
+            abort(403);
+        }
         return view('livewire.backend.contacts.contact-search', [
             'contacts' => $this->contacts,
         ]);

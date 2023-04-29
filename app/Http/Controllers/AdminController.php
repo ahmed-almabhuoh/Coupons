@@ -15,6 +15,9 @@ class AdminController extends Controller
     public function index()
     {
         //
+        if (!auth()->user()->can('view-admins')) {
+            abort(403);
+        }
         return response()->view('backend.admins.index');
     }
 
@@ -24,6 +27,9 @@ class AdminController extends Controller
     public function create()
     {
         //
+        if (!auth()->user()->can('create-admin')) {
+            abort(403);
+        }
         return response()->view('backend.admins.store');
     }
 
@@ -49,6 +55,9 @@ class AdminController extends Controller
     public function edit($id)
     {
         //
+        if (!auth()->user()->can('edit-admin')) {
+            abort(403);
+        }
         return response()->view('backend.admins.edit', [
             'admin' => Admin::findOrFail(Crypt::decrypt($id)),
         ]);
@@ -67,6 +76,9 @@ class AdminController extends Controller
      */
     public function destroy($id)
     {
+        if (!auth()->user()->can('delete-admin')) {
+            abort(403);
+        }
         $admin = Admin::findOrFail(Crypt::decrypt($id));
         //
         if ($admin->delete()) {

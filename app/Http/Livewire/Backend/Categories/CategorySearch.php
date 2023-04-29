@@ -13,6 +13,9 @@ class CategorySearch extends Component
 
     public function render()
     {
+        if (!auth()->user()->can('view-categories')) {
+            abort(403);
+        }
         $this->categories = Category::where(function ($query) {
             $query->where('name', 'like', "%" . $this->searchTerm . "%");
         })->withCount('coupons')->withCount('blogs')->withCount('products')->paginate($this->paginate);

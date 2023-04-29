@@ -18,6 +18,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Str;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class AuthenticationController extends Controller
 {
@@ -256,6 +258,101 @@ class AuthenticationController extends Controller
             ]);
         } else {
             return redirect()->route('users.login');
+        }
+    }
+
+    // Get roles view
+    public function getRoles()
+    {
+        if (!auth()->user()->can('view-roles')) {
+            abort(403);
+        }
+        return response()->view('backend.roles.index');
+    }
+
+    // Create a new role
+    public function createRole()
+    {
+        if (!auth()->user()->can('create-role')) {
+            abort(403);
+        }
+        return response()->view('backend.roles.store');
+    }
+
+    // Edit the role
+    public function editRole($id)
+    {
+        if (!auth()->user()->can('edit-role')) {
+            abort(403);
+        }
+        $role = Role::where('id', Crypt::decrypt($id))->first();
+        return response()->view('backend.roles.edit', [
+            'role' => $role,
+        ]);
+    }
+
+    // Delete the role
+    public function destroyRole($id)
+    {
+        if (!auth()->user()->can('delete-role')) {
+            abort(403);
+        }
+        $role = Role::findOrFail(Crypt::decrypt($id));
+        //
+        if ($role->delete()) {
+            return response()->json([
+                'header' => __('Success'),
+                'body' => __('Role deleted successfully'),
+                'icon' => 'success',
+                'title' => __('Success'),
+                'text' => __('Role deleted successfully'),
+            ], Response::HTTP_OK);
+        } else {
+            return response()->json([
+                'header' => __('Failed!'),
+                'body' => __('Failed to delete the role!'),
+                'icon' => 'error',
+                'title' =>  __('Failed!'),
+                'text' =>  __('Failed to delete the role!'),
+            ], Response::HTTP_BAD_REQUEST);
+        }
+    }
+
+    // Assign Permission to role view
+    public function assignPermissions($id)
+    {
+        if (!auth()->user()->can('assign-permissions')) {
+            abort(403);
+        }
+        $role = Role::where('id', Crypt::decrypt($id))->first();
+        $permissions = Permission::paginate(10);
+
+        return response()->view('backend.roles.assign-permissions', [
+            'role' => $role,
+            'permissions' => $permissions,
+        ]);
+    }
+
+    // Submit assign permission to role
+    public function assignPermissionToRole($role_id, $permission_id)
+    {
+        $role = Role::findOrFail(Crypt::decrypt($role_id));
+        $permission = Permission::findOrFail(Crypt::decrypt($permission_id));
+
+        if ($role->hasPermissionTo($permission)) {
+            $role->revokePermissionTo($permission);
+
+            return response()->json([
+                'header' => __('Success'),
+                'body' => __('Permission revoked from the role successfully'),
+            ]);
+        } else {
+            $role->givePermissionTo($permission);
+
+            return response()->json([
+                'header' => __('Success'),
+                'body' => __('Permission assigned to the role successfully'),
+            ]);
         }
     }
 }

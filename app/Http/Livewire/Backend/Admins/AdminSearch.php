@@ -13,6 +13,9 @@ class AdminSearch extends Component
 
     public function render()
     {
+        if (!auth()->user()->can('view-admins')) {
+            abort(403);
+        }
         $this->admins = Admin::where(function ($query) {
             $query->where('fname', 'like', "%" . $this->searchTerm . "%")
                 ->orWhere('lname', 'like', "%" . $this->searchTerm. "%");

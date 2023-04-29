@@ -30,6 +30,9 @@ class Update extends Component
 
     public function update()
     {
+        if (!auth()->user()->can('edit-A&Q')) {
+            abort(403);
+        }
         $data = $this->validate([
             'title' => 'required|string|min:2|max:25|unique:aqs,title,' . $this->aq->id,
             'status' => 'required|string|in:' . implode(",", Aqs::STATUS),

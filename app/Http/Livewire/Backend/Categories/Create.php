@@ -23,6 +23,9 @@ class Create extends Component
 
     public function store()
     {
+        if (!auth()->user()->can('create-category')) {
+            abort(403);
+        }
         $data = $this->validate([
             'name' => 'required|string|min:2|max:25|unique:categories,name',
             'status' => 'required|string|in:' . implode(",", Category::STATUS),

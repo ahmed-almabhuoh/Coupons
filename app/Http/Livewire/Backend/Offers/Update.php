@@ -34,6 +34,9 @@ class Update extends Component
 
     public function update()
     {
+        if (!auth()->user()->can('edit-offer')) {
+            abort(403);
+        }
         $data = $this->validate([
             // 'title' => 'required|string|min:5|unique:offers,title,' . $this->offer->id,
             'btn_txt' => 'nullable|min:2|max:20',

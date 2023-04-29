@@ -19,6 +19,9 @@ class ProductController extends Controller
     public function index()
     {
         //
+        if (!auth()->user()->can('view-products')) {
+            abort(403);
+        }
         return response()->view('backend.products.index');
     }
 
@@ -28,6 +31,9 @@ class ProductController extends Controller
     public function create()
     {
         //
+        if (!auth()->user()->can('create-product')) {
+            abort(403);
+        }
         return response()->view('backend.products.store', [
             'categories' => Category::active()->get(),
             'stores' => Store::active()->get(),
@@ -49,6 +55,9 @@ class ProductController extends Controller
     public function show($id)
     {
         //
+        if (!auth()->user()->can('edit-product')) {
+            abort(403);
+        }
         return response()->json([
             'product' => Product::active()->where('id', Crypt::decrypt($id))->first(),
         ], Response::HTTP_OK);
@@ -59,6 +68,9 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
+        if (!auth()->user()->can('edit-product')) {
+            abort(403);
+        }
         return response()->view('backend.products.edit', [
             'coupons' => Coupon::active()->get(),
             'categories' => Category::active()->get(),
@@ -81,6 +93,9 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
+        if (!auth()->user()->can('delete-product')) {
+            abort(403);
+        }
         $product = Product::findOrFail(Crypt::decrypt($id));
         DB::table('favorites')->where('product_id', $product->id)->delete();
         //

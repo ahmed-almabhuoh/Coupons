@@ -36,6 +36,9 @@ class Update extends Component
 
     public function update()
     {
+        if (!auth()->user()->can('edit-blog')) {
+            abort(403);
+        }
         $data = $this->validate([
             'title' => 'required|string|min:5|unique:blogs,title,' . $this->blog->id,
             'image' => 'nullable',

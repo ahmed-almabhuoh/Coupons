@@ -32,6 +32,9 @@ class Update extends Component
 
     public function update()
     {
+        if (!auth()->user()->can('edit-category')) {
+            abort(403);
+        }
         $data = $this->validate([
             'name' => 'required|string|min:2|max:25|unique:categories,name,' . $this->category->id,
             'status' => 'required|string|in:' . implode(",", Category::STATUS),

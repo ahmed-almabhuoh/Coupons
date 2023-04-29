@@ -17,6 +17,9 @@ class CouponController extends Controller
     public function index()
     {
         //
+        if (!auth()->user()->can('view-coupons')) {
+            abort(403);
+        }
         return response()->view('backend.coupons.index');
     }
 
@@ -26,6 +29,9 @@ class CouponController extends Controller
     public function create()
     {
         //
+        if (!auth()->user()->can('create-coupon')) {
+            abort(403);
+        }
         return response()->view('backend.coupons.store', [
             'categories' => Category::active()->get(),
             'stores' => Store::active()->get(),
@@ -54,6 +60,9 @@ class CouponController extends Controller
     public function edit($id)
     {
         //
+        if (!auth()->user()->can('edit-coupon')) {
+            abort(403);
+        }
         return response()->view('backend.coupons.edit', [
             'coupon' => Coupon::findOrFail(Crypt::decrypt($id)),
             'categories' => Category::active()->get(),
@@ -74,6 +83,9 @@ class CouponController extends Controller
      */
     public function destroy($id)
     {
+        if (!auth()->user()->can('delete-coupon')) {
+            abort(403);
+        }
         $coupon = Coupon::findOrFail(Crypt::decrypt($id));
         //
         if ($coupon->delete()) {

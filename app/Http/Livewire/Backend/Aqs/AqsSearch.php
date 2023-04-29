@@ -13,6 +13,9 @@ class AqsSearch extends Component
 
     public function render()
     {
+        if (!auth()->user()->can('view-A&Qs')) {
+            abort(403);
+        }
         $this->aqs = Aqs::where(function ($query) {
             $query->where('title', 'like', "%" . $this->searchTerm . "%")
             ->orWhere('answer', 'like', "%" . $this->searchTerm . "%")

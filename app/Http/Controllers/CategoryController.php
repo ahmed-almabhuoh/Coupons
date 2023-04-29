@@ -15,6 +15,9 @@ class CategoryController extends Controller
     public function index()
     {
         //
+        if (!auth()->user()->can('view-categories')) {
+            abort(403);
+        }
         return response()->view('backend.categories.index');
     }
 
@@ -24,6 +27,9 @@ class CategoryController extends Controller
     public function create()
     {
         //
+        if (!auth()->user()->can('create-category')) {
+            abort(403);
+        }
         return response()->view('backend.categories.store');
     }
 
@@ -49,6 +55,9 @@ class CategoryController extends Controller
     public function edit($id)
     {
         //
+        if (!auth()->user()->can('edit-category')) {
+            abort(403);
+        }
         return response()->view('backend.categories.edit', [
             'category' => Category::findOrFail(Crypt::decrypt($id)),
         ]);
@@ -67,6 +76,9 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
+        if (!auth()->user()->can('delete-category')) {
+            abort(403);
+        }
         $category = Category::findOrFail(Crypt::decrypt($id));
 
         if (count($category->coupons) || count($category->products) || count($category->blogs)) {

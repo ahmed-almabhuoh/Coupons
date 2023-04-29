@@ -29,6 +29,9 @@ class Update extends Component
 
     public function render()
     {
+        if (!auth()->user()->can('edit-store')) {
+            abort(403);
+        }
         return view('livewire.backend.stores.update', [
             'store' => $this->store,
         ]);

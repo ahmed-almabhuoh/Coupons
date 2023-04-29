@@ -15,6 +15,9 @@ class StoreController extends Controller
     public function index()
     {
         //
+        if (!auth()->user()->can('view-stores')) {
+            abort(403);
+        }
         return response()->view('backend.stores.index');
     }
 
@@ -24,6 +27,9 @@ class StoreController extends Controller
     public function create()
     {
         //
+        if (!auth()->user()->can('create-store')) {
+            abort(403);
+        }
         return response()->view('backend.stores.store');
     }
 
@@ -48,6 +54,9 @@ class StoreController extends Controller
      */
     public function edit($id)
     {
+        if (!auth()->user()->can('edit-store')) {
+            abort(403);
+        }
         //
         return response()->view('backend.stores.edit', [
             'store' => Store::findOrFail(Crypt::decrypt($id)),
@@ -67,6 +76,9 @@ class StoreController extends Controller
      */
     public function destroy($id)
     {
+        if (!auth()->user()->can('delete-store')) {
+            abort(403);
+        }
         //
         $store = Store::findOrFail(Crypt::decrypt($id));
 

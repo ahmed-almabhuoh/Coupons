@@ -17,6 +17,9 @@ class BlogController extends Controller
     public function index()
     {
         //
+        if (!auth()->user()->can('view-blogs')) {
+            abort(403);
+        }
         return response()->view('backend.blogs.index');
     }
 
@@ -26,6 +29,9 @@ class BlogController extends Controller
     public function create()
     {
         //
+        if (!auth()->user()->can('create-blog')) {
+            abort(403);
+        }
         return response()->view('backend.blogs.store', [
             'categories' => Category::active()->get(),
             'stores' => Store::active()->get(),
@@ -54,6 +60,9 @@ class BlogController extends Controller
     public function edit($id)
     {
         //
+        if (!auth()->user()->can('edit-blog')) {
+            abort(403);
+        }
         return response()->view('backend.blogs.edit', [
             'blog' => Blog::findOrFail(Crypt::decrypt($id)),
             'categories' => Category::active()->get(),
@@ -74,6 +83,9 @@ class BlogController extends Controller
      */
     public function destroy($id)
     {
+        if (!auth()->user()->can('delete-blog')) {
+            abort(403);
+        }
         $blog = Blog::findOrFail(Crypt::decrypt($id));
         //
         if ($blog->articals()->exists()) {

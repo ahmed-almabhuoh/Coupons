@@ -15,11 +15,17 @@ class ContactUsController extends Controller
     //
     public function getContacts()
     {
+        if (!auth()->user()->can('contact-us')) {
+            abort(403);
+        }
         return response()->view('backend.contacts.index');
     }
 
     public function deleteContact($id)
     {
+        if (!auth()->user()->can('contact-us')) {
+            abort(403);
+        }
         $contact = DB::table('contact_us')->where('id', Crypt::decrypt($id))->delete();
         //
         if ($contact) {
@@ -44,6 +50,9 @@ class ContactUsController extends Controller
     // Add the contact msg to common questions
     public function addContactToQuestions($id)
     {
+        if (!auth()->user()->can('contact-us')) {
+            abort(403);
+        }
         $contact = DB::table('contact_us')->where('id', Crypt::decrypt($id))->first();
 
         $aqs = new Aqs();

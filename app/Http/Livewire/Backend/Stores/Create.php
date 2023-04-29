@@ -25,6 +25,9 @@ class Create extends Component
 
     public function store()
     {
+        if (!auth()->user()->can('create-store')) {
+            abort(403);
+        }
         $data = $this->validate([
             'name' => 'required|string|min:2|max:25|unique:stores,name',
             'status' => 'required|string|in:' . implode(",", Store::STATUS),

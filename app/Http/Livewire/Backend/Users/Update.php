@@ -40,6 +40,9 @@ class Update extends Component
 
     public function update()
     {
+        if (!auth()->user()->can('edit-user')) {
+            abort(403);
+        }
         $data = $this->validate([
             'fname' => 'required|string|min:2|max:25',
             'lname' => 'required|string|min:2|max:25',

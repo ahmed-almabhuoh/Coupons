@@ -13,6 +13,9 @@ class OfferSearch extends Component
 
     public function render()
     {
+        if (!auth()->user()->can('view-offers')) {
+            abort(403);
+        }
         $this->offers = Offer::where(function ($query) {
             $query->where('title', 'like', "%" . $this->searchTerm . "%")
                 ->orWhere('btn_txt', 'like', "%" . $this->searchTerm . "%")

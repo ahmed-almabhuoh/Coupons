@@ -31,6 +31,9 @@ class Create extends Component
 
     public function store()
     {
+        if (!auth()->user()->can('create-coupon')) {
+            abort(403);
+        }
         $data = $this->validate([
             'code' => 'required|string|min:3|unique:coupons,code',
             'status' => 'required|string|in:' . implode(",", Coupon::STATUS),

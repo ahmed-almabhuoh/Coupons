@@ -18,6 +18,8 @@ use App\Http\Controllers\OfferController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\UserController;
+use App\Http\Livewire\Backend\Roles\Create;
+use App\Http\Livewire\Backend\Roles\RoleSearch;
 use App\Http\Livewire\Front\Client\Home;
 use Illuminate\Support\Facades\Route;
 
@@ -53,6 +55,14 @@ Route::prefix('cpanel')->middleware('auth:admin')->group(function () {
     Route::resource('offers', OfferController::class);
     Route::resource('blogs', BlogController::class);
     Route::resource('articals', ArticalController::class);
+
+    // Roles Authorization Routes
+    Route::get('roles', [AuthenticationController::class, 'getRoles'])->name('roles.management');
+    Route::get('roles/create',  [AuthenticationController::class, 'createRole'])->name('roles.create');
+    Route::get('roles/edit/{role_id}', [AuthenticationController::class, 'editRole'])->name('roles.edit');
+    Route::delete('roles/destroy/{role_id}', [AuthenticationController::class, 'destroyRole'])->name('roles.delete');
+    Route::get('roles/assign-permission/{role_id}', [AuthenticationController::class, 'assignPermissions'])->name('roles.assign.permissions');
+    Route::get('roles/assign-permission/{role_id}/{permission_id}', [AuthenticationController::class, 'assignPermissionToRole']);
 });
 
 Route::prefix('cpanel')->middleware('auth:admin')->group(function () {

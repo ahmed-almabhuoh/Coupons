@@ -15,6 +15,9 @@ class UserController extends Controller
     public function index()
     {
         //
+        if (!auth()->user()->can('view-users')) {
+            abort(403);
+        }
         return response()->view('backend.users.index');
     }
 
@@ -24,6 +27,9 @@ class UserController extends Controller
     public function create()
     {
         //
+        if (!auth()->user()->can('create-user')) {
+            abort(403);
+        }
         return response()->view('backend.users.store');
     }
 
@@ -48,6 +54,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
+        if (!auth()->user()->can('edit-user')) {
+            abort(403);
+        }
         //
         return response()->view('backend.users.edit', [
             'user' => User::findOrFail(Crypt::decrypt($id)),
@@ -67,6 +76,9 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
+        if (!auth()->user()->can('delete-user')) {
+            abort(403);
+        }
         $user = User::findOrFail(Crypt::decrypt($id));
         //
         if ($user->delete()) {
