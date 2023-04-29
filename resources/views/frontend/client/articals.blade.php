@@ -108,50 +108,55 @@
         <div class="container">
 
 
-            <div class="row">
-                <section class="portfolio" id="Portfolio">
-                    <div class="container">
-                        <div class="row">
-                            <div
-                                class="main-title fw-bold fs-2 d-flex justify-content-center text-center mb-5 position-relative ">
-                                <h2 class="position-absolute "> Blog</h2>
+            @if (count($blogs) > 1)
+                <div class="row">
+                    <section class="portfolio" id="Portfolio">
+                        <div class="container">
+                            <div class="row">
+                                <div
+                                    class="main-title fw-bold fs-2 d-flex justify-content-center text-center mb-5 position-relative ">
+                                    <h2 class="position-absolute "> Blog</h2>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="row mb-lg-3">
-                            <!-- =============Start portfolio=========== -->
-                            <div class="portfolio-gallery offers-product" id="portfolio-gallery">
+                            <div class="row mb-lg-3">
+                                <!-- =============Start portfolio=========== -->
+                                <div class="portfolio-gallery offers-product" id="portfolio-gallery">
 
-                                @foreach ($blogs as $new_blog)
-                                    @if ($blog->id != $new_blog->id)
-                                        <div class="item" data-id="Fashion">
-                                            <!-- card #1 -->
-                                            <div class="card offers-product blog">
-                                                <a class="category" href="#">{{ $new_blog->category->name }}</a>
-                                                <img src="{{ env('APP_URL') . 'content/' . $new_blog->image }}"
-                                                    class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h6 class="card-title blog">{{ $new_blog->title }}</h6>
-                                                    </p>
-                                                </div>
-                                                <div class="position-relative">
-                                                    <div class="bottom-text mb-5 d-flex justify-content-around">
-                                                        <button id="myButton" class="button blog btn btn-primary"><span
-                                                                class="m-auto"> {{ __('Git it') }} </span></button>
+                                    @foreach ($blogs as $new_blog)
+                                        @if ($blog->id != $new_blog->id)
+                                            <div class="item" data-id="Fashion">
+                                                <!-- card #1 -->
+                                                <div class="card offers-product blog">
+                                                    <a class="category"
+                                                        href="#">{{ $new_blog->category->name }}</a>
+                                                    <img src="{{ env('APP_URL') . 'content/' . $new_blog->image }}"
+                                                        class="card-img-top" alt="...">
+                                                    <div class="card-body">
+                                                        <h6 class="card-title blog">{{ $new_blog->title }}</h6>
+                                                        </p>
+                                                    </div>
+                                                    <div class="position-relative">
+                                                        <div class="bottom-text mb-5 d-flex justify-content-around">
+                                                            <button id="myButton"
+                                                                class="button blog btn btn-primary"><span
+                                                                    class="m-auto"> {{ __('Git it') }}
+                                                                </span></button>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    @endif
-                                @endforeach
-                                <!-- ============================================= -->
+                                        @endif
+                                    @endforeach
+                                    <!-- ============================================= -->
 
+                                </div>
+                                <!-- =============Start portfolio=========== -->
                             </div>
-                            <!-- =============Start portfolio=========== -->
-                        </div>
 
-                    </div>
-            </div>
+                        </div>
+                </div>
+            @endif
         </div>
         </section>
     </div>
