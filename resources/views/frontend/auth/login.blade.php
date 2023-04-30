@@ -58,13 +58,11 @@
                             <h4 class="card-title"> {{ __('Login') }} </h4>
 
                             <livewire:front.auth.login />
-
-                            <div class="footer">
-                                <span> {{ __('Forgot your password?..') }} <a
-                                        href="{{ route('clients.forgot.password') }}">
-                                        {{ __('Recover your password') }}</a></span>
-                            </div>
                         </div>
+                    </div>
+                    <div class="footer">
+                        <span> {{ __('Forgot your password?..') }} <a href="{{ route('clients.forgot.password') }}">
+                                {{ __('Recover your password') }}</a></span>
                     </div>
                 </div>
             </div>
