@@ -11,7 +11,7 @@
     <x-form.single-image name="image" label="Logo" mode="image" />
 
     <div class="col-lg-6 col-md-12 mb-1 mb-sm-0 py-1">
-        <label for="color" class="form-label"></label>
+        <label for="color" class="form-label">{{__('Primary Color')}}</label>
         <input type="color" id="color" wire:model="color" class="form-control" style="height: 40px;">
     </div>
 

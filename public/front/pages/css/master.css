@@ -1,12 +1,12 @@
 :root {
-  --primary-color: #0f8078;
+  --primary-color: #2dc863;
   --white-color: #fefefe;
   --link-color: #979797;
   --background-text-color: rgba(240, 85, 85, 0.2);
   --background-icon: #f7f7f7;
   --background-page-color: #fefefe;
   --box-color: #f9f9f9;
-  --footer-color: linear-gradient(91.53deg, #0f8078 28.27%, #ff7979 65.43%);
+  --footer-color: #2dc863;
   --black-color: #000000;
 }
 body {
@@ -217,7 +217,8 @@ sidebar a.nav-link i {
 }
 .form-control:focus {
   box-shadow: none !important;
-  border-color: #ee6c6c !important;
+  border-color: var(--primary-color) !important;
+  opacity: 0.8;
 }
 
 .card-wrapper .text p {
@@ -248,7 +249,8 @@ input#Phone.form-control {
   box-shadow: none !important;
 }
 .btn-primary:hover {
-  background-color: #ee6c6c !important;
+  background-color: var(--primary-color) !important;
+  opacity: 0.9;
 }
 
 /* ===== End Card===== */
@@ -318,7 +320,7 @@ input#Phone.form-control {
 }
 .form-check-input[type="checkbox"]:checked {
   background-color: var(--primary-color);
-  border-color: #0f8078 !important;
+  border-color: var(--primary-color) !important;
 }
 .form-switch .form-check-input:focus {
   outline: none;
@@ -425,11 +427,7 @@ tr {
 
 /* ============== Start Footer =================== */
 .footer {
-  background-image: linear-gradient(
-    91.53deg,
-    #0f8078 28.27%,
-    #ff7979 65.43%
-  ) !important;
+  background-color: var(--primary-color) !important;
 }
 .footer .links ul.links {
   list-style: none;
@@ -440,21 +438,7 @@ tr {
 .links h5 {
   font-weight: 400;
 }
-footer .links ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-footer .links li {
-  display: inline-block;
-  margin-left: 20px;
-}
 
-footer .links a {
-  color: #fff;
-  text-decoration: none;
-  transition: 0.5s ease;
-}
 .links ul li a:hover {
   color: white !important;
   transition: 0.5s ease;
@@ -506,7 +490,7 @@ footer .links a {
   }
 
   .sticky-top {
-    background-color: #0f8078 !important;
+    background-color: var(--primary-color) !important;
   }
   .navbar .navbar-nav .nav-link {
     color: var(--white-color);

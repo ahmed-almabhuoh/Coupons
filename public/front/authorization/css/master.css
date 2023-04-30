@@ -6,7 +6,7 @@
   margin: 0;
 }
 :root {
-  --primary-color: #0f8078;
+  --primary-color: #37c386;
   --main-transition: 0.3s;
   --section-background: #ececec;
 }
@@ -46,7 +46,8 @@ nav .language-switcher {
 }
 .language-switcher .active:hover {
   color: white;
-  background-color: #ee6c6c;
+  background-color: var(--primary-color);
+  opacity: 0.9;
 }
 .language-switcher li {
   display: inline-block;
@@ -67,6 +68,7 @@ nav .language-switcher {
 }
 .language-switcher a:hover {
   color: var(--primary-color);
+  opacity: 0.9;
 }
 /*==================== End header Section =================== */
 
@@ -208,7 +210,8 @@ input:focus {
 }
 .form-control:focus {
   box-shadow: none !important;
-  border-color: #ee6c6c !important;
+  border-color: var(--primary-color) !important;
+  opacity: 0.8;
 }
 .my-login-page .form-control.last {
   width: 40%;
@@ -249,7 +252,8 @@ input:focus {
   box-shadow: none !important;
 }
 .btn-primary:hover {
-  background-color: #ee6c6c !important;
+  background-color: var(--primary-color) !important;
+  opacity: 0.9;
 }
 .btn-close:focus {
   box-shadow: none !important;

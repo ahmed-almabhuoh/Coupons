@@ -60,7 +60,7 @@
     <!-- ================Start Hero Section=========== -->
     <div id="carouselExampleControls" class="carousel slide mb-0" data-bs-ride="carousel">
         <div class="carousel-inner">
-            @foreach ($offers as $key => $offer)
+            {{-- @foreach ($offers as $key => $offer)
                 <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
                     <img src="{{ asset('front/client/imgs/liner-background.png') }}" class="d-block w-100"
                         alt="...">
@@ -71,7 +71,20 @@
                             href="{{ $offer->btn_action }}">{{ $offer->btn_txt }}</a>
                     </div>
                 </div>
+            @endforeach --}}
+
+            @foreach ($offers as $key => $offer)
+                <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
+                    <div class="image-container">
+                        <img src="{{ env('APP_URL') . 'content/' . $offer->image }}" class="d-block  "
+                            alt="...">
+                    </div>
+                    <div class="carousel-caption">
+                        <a class="dif-button btn btn-primary" href="{{ $offer->btn_action }}">{{ $offer->btn_txt }}</a>
+                    </div>
+                </div>
             @endforeach
+
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
             data-bs-slide="prev">

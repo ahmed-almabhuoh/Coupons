@@ -18,7 +18,6 @@ class SetupLogo extends Component
     public $showSuccess = false;
     protected $replaced_str;
     protected $new_clr;
-    protected $primary_color;
 
     public function mount()
     {
@@ -51,23 +50,7 @@ class SetupLogo extends Component
         $this->new_clr = $data['color'];
 
         // Update CSS Files
-        $file_css_pages = file_get_contents(public_path('front/pages/css/master.css'));
-        file_put_contents(public_path('front/pages/css/master.css'), str_replace($this->replaced_str, $this->new_clr, $file_css_pages));
-
-        $file_css_pages = file_get_contents(public_path('front/pages/css/master-rtl.css'));
-        file_put_contents(public_path('front/pages/css/master-rtl.css'), str_replace($this->replaced_str, $this->new_clr, $file_css_pages));
-
-        $file_css_pages = file_get_contents(public_path('front/client/css/master.css'));
-        file_put_contents(public_path('front/client/css/master.css'), str_replace($this->replaced_str, $this->new_clr, $file_css_pages));
-
-        $file_css_pages = file_get_contents(public_path('front/client/css/master-rtl.css'));
-        file_put_contents(public_path('front/client/css/master-rtl.css'), str_replace($this->replaced_str, $this->new_clr, $file_css_pages));
-
-        $file_css_pages = file_get_contents(public_path('front/authorization/css/master.css'));
-        file_put_contents(public_path('front/authorization/css/master.css'), str_replace($this->replaced_str, $this->new_clr, $file_css_pages));
-
-        $file_css_pages = file_get_contents(public_path('front/authorization/css/master-rtl.css'));
-        file_put_contents(public_path('front/authorization/css/master-rtl.css'), str_replace($this->replaced_str, $this->new_clr, $file_css_pages));
+        $this->changeColors();
 
         if ($data['image']) {
             $path = $data['image']->store('website-settings', [
@@ -101,5 +84,28 @@ class SetupLogo extends Component
             ]);
             $this->showSuccess = true;
         }
+    }
+
+    // Change site colors function
+    protected function changeColors()
+    {
+        // Primary Color
+        $file_css_pages = file_get_contents(public_path('front/pages/css/master.css'));
+        file_put_contents(public_path('front/pages/css/master.css'), str_replace($this->replaced_str, $this->new_clr, $file_css_pages));
+
+        $file_css_pages = file_get_contents(public_path('front/pages/css/master-rtl.css'));
+        file_put_contents(public_path('front/pages/css/master-rtl.css'), str_replace($this->replaced_str, $this->new_clr, $file_css_pages));
+
+        $file_css_pages = file_get_contents(public_path('front/client/css/master.css'));
+        file_put_contents(public_path('front/client/css/master.css'), str_replace($this->replaced_str, $this->new_clr, $file_css_pages));
+
+        $file_css_pages = file_get_contents(public_path('front/client/css/master-rtl.css'));
+        file_put_contents(public_path('front/client/css/master-rtl.css'), str_replace($this->replaced_str, $this->new_clr, $file_css_pages));
+
+        $file_css_pages = file_get_contents(public_path('front/authorization/css/master.css'));
+        file_put_contents(public_path('front/authorization/css/master.css'), str_replace($this->replaced_str, $this->new_clr, $file_css_pages));
+
+        $file_css_pages = file_get_contents(public_path('front/authorization/css/master-rtl.css'));
+        file_put_contents(public_path('front/authorization/css/master-rtl.css'), str_replace($this->replaced_str, $this->new_clr, $file_css_pages));
     }
 }

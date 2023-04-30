@@ -1,12 +1,12 @@
 /* $$$$$$$ CREATED WITH ❤ BY FARES $$$$$$$ */
 /* Start Global Rules */
 :root {
-  --primary-color: #0f8078;
+  --primary-color: #37c386;
   --white-color: #fefefe;
   --link-color: #979797;
   --background-text-color: rgba(240, 85, 85, 0.2);
   --box-color: #f9f9f9;
-  --footer-color: linear-gradient(91.53deg, #0f8078 28.27%, #ff7979 65.43%);
+  --footer-color: linear-gradient(91.53deg, #37c386 28.27%, #ff7979 65.43%);
   --background-page-color: #fefefe;
   --black-color: #000000;
 }
@@ -321,8 +321,8 @@ img.flowerd {
 .common-question .btn-primary {
   /* width: 30%; */
   height: 58px;
-  background: #0f8078;
-  border: 2px solid #0f8078;
+  background: #37c386;
+  border: 2px solid #37c386;
   border-radius: 8px;
   transition: 0.3s ease;
   box-shadow: none;
@@ -331,13 +331,13 @@ img.flowerd {
 }
 .common-question .btn-primary:active {
   color: #fff;
-  background: #0f8078;
-  border: 2px solid #0f8078;
+  background: #37c386;
+  border: 2px solid #37c386;
 }
 .btn-check:focus + .btn-primary {
   color: #fff;
-  background: #0f8078 !important;
-  border: 2px solid #0f8078 !important;
+  background: #37c386 !important;
+  border: 2px solid #37c386 !important;
   box-shadow: none !important;
 }
 .btn-primary:focus {
@@ -455,7 +455,7 @@ img.flowerd {
 }
 .modal-body .button a {
   text-decoration: none;
-  background-color: #0f8078;
+  background-color: #37c386;
   border-radius: 8px;
   padding: 5px 20px;
   color: white;
@@ -463,7 +463,7 @@ img.flowerd {
   display: flex;
 }
 .modal-body .button a:hover {
-  background-color: #0f8078cc !important;
+  background-color: #37c386cc !important;
   transition: 0.3s ease;
 }
 .first-sec {
@@ -569,7 +569,7 @@ img.flowerd {
 
 .btn-secondary:hover {
   border: 1px solid white !important;
-  background-color: #0f8078cc !important;
+  background-color: #37c386cc !important;
 }
 .modal-footer .copy-button:active {
   background-color: var(--primary-color);
@@ -1018,7 +1018,7 @@ a.dropdown-item {
 .footer {
   background-image: linear-gradient(
     91.53deg,
-    #0f8078 28.27%,
+    #37c386 28.27%,
     #ff7979 65.43%
   ) !important;
   padding-top: 60px !important;
@@ -1117,7 +1117,7 @@ footer .links a {
     color: var(--black-color);
   }
   .sticky-top {
-    background-color: #0f8078 !important;
+    background-color: #37c386 !important;
   }
   .navbar .navbar-nav .nav-link {
     color: var(--white-color);
