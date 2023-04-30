@@ -223,9 +223,16 @@ img.flowerd {
   background-position: center;
   max-width: 120%;
 }
+
+.carousel-item .image-container img {
+  width: 100%;
+  max-height: 740px;
+  object-fit: cover;
+}
+
 .carousel-caption {
   position: absolute;
-  top: 50% !important;
+  top: 65% !important;
   transform: translateY(-50%) !important;
   right: 15% !important;
   bottom: unset !important;
@@ -647,33 +654,16 @@ img.flowerd {
   color: white;
   text-decoration: none;
 }
-/* .card.offers-product::before {
+
+.card.offers-product img.share-icon {
   content: "";
-  top: 10px;
-  position: absolute;
-  left: 10px;
-  background-color: red;
-  border-radius: 8px;
-  padding: 10px;
-  background: rgba(240, 85, 85, 0.5);
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 20px;
-  color: white;
-} */
-.card.offers-product::after {
-  content: "";
+  padding: 5px;
   display: inline-block;
   position: absolute;
   top: 10px;
   right: 19px;
   width: 35px;
   height: 35px;
-  background-image: url(../imgs/share-icon-card.png);
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-size: 70%;
-  background-position: center;
   background-color: white;
   border-radius: 8px;
   transform: translate(5px, 5px);
@@ -761,18 +751,17 @@ img.flowerd {
 /* =====(Start Blog page)====== */
 .portfolio .dropdown-toggle.blog {
   position: absolute;
-  padding-left: 107px;
-  left: 20px;
-  right: unset;
+  right: 20px;
 }
 .dropdown-toggle.blog::after {
   position: absolute;
-  left: 10px;
+  left: 15px;
   top: 45%;
   transform: translateX(-50%);
 }
 .button.blog.btn.btn-primary {
   width: 100%;
+  left: 100%;
 }
 .card-title.blog {
   font-size: 18px;
@@ -788,6 +777,9 @@ img.flowerd {
   font-weight: 500;
   line-height: 30px;
   font-size: 18px;
+}
+.img-fluid.header-img {
+  border-radius: 50px;
 }
 /* =====(End Blogs page)====== */
 
@@ -1227,8 +1219,19 @@ footer .links a {
   }
 }
 @media only screen and (max-width: 767px) {
-  .carousel {
-    display: none;
+  .carousel-caption {
+    display: flex;
+    position: absolute !important;
+    top: 65% !important;
+    transform: translatex(-50%) !important;
+    bottom: unset !important;
+    left: 50% !important;
+  }
+  .carousel-caption a {
+    font-size: 11px !important;
+  }
+  .dif-button {
+    padding: 5px !important;
   }
   /* Start footer */
   footer .container {

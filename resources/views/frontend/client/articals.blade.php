@@ -58,13 +58,13 @@
     <div class="blogs ">
         <div class="container">
 
-            <div class="row pt-5">
+            <div class="row pt-5 col-md-12">
                 <section class="portfolio" id="Portfolio">
                     <div class="container">
 
                         <div class="row">
                             <!-- header img  -->
-                            <img src="{{ env('APP_URL') . 'content/' . $blog->image }}" class="img-fluid"
+                            <img src="{{ env('APP_URL') . 'content/' . $blog->image }}" class="img-fluid header-img"
                                 alt="...">
 
                             <!-- section -->
@@ -81,7 +81,7 @@
                                                 class="img-fluid" alt="صورة">
                                         </div>
                                     @endif
-                                    <div class="description col-xl-7 col-md-12">
+                                    <div class="description col-lg-7 col-md-12">
                                         <p> {{ $artical->description }} </p>
                                     </div>
                                     @if ($index % 2 == 0)

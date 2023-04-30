@@ -27,6 +27,11 @@ navbar.logo {
   align-items: center;
   font-size: 14px;
 }
+.website-logo {
+  width: 40px !important;
+  height: 40px !important;
+}
+
 .main-btn {
   background-color: var(--primary-color);
   color: var(--white-color);
@@ -90,6 +95,9 @@ navbar.logo {
 .link ul.dropdown-menu ul:hover li {
   background-color: var(--link-color);
 }
+/* .dropdown-toggle::after {
+  margin-right: 0.255em;
+} */
 /* ========= End link ===========*/
 
 .main-title h2::after {
@@ -427,6 +435,7 @@ tr {
   list-style: none;
   padding: 0;
   margin-bottom: 0 !important;
+  padding-bottom: 4px;
 }
 .links h5 {
   font-weight: 400;

@@ -54,6 +54,9 @@
                                 <a class="category"
                                     href="{{ route('categories.edit', Crypt::encrypt($category->id)) }}">
                                     {{ $product->category->name }} </a>
+                                <img class="share-icon" src="{{ asset('front/client/imgs/share-icon-copuon.png') }}"
+                                    onclick="shareOffer({{ $product }}, '{{ env('APP_URL') . '/offers' }}')"
+                                    alt="">
                                 @if ($product->image)
                                     <img src="{{ env('APP_URL') . 'content/' . $product->image }}" class="card-img-top"
                                         alt="...">
@@ -395,6 +398,18 @@
         // Shopping Redirect
         function redirectShopping(url) {
             location.href = url;
+        }
+    </script>
+
+    <script>
+        // Share Button
+        function shareOffer(product, url) {
+            const subject = product.name;
+            const body =
+                `مرحبًا،\n\nأردت مشاركة هذا المنتج معك من ${product.name}: \n\ ${url}\n\nتفضل بزيارة هذا الرابط لعرض المنتج. \n\nشكرًا لك!`;
+
+            const mailtoUrl = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            window.location.href = mailtoUrl;
         }
     </script>
 @endpush

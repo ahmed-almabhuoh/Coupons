@@ -50,6 +50,9 @@
                 <div class="item" data-id="Fashion">
                     <!-- card #1 -->
                     <div class="card offers-product blog">
+                        <img class="share-icon" src="{{ asset('front/client/imgs/share-icon-copuon.png') }}"
+                            onclick="shareByEmail({{ $blog }}, '{{ Crypt::encrypt($blog->id) }}', '{{ env('APP_URL') . 'articals/' . Crypt::encrypt($blog->id) }}')"
+                            alt="">
                         <img src="{{ env('APP_URL') . 'content/' . $blog->image }}" class="card-img-top"
                             alt="...">
                         <div class="card-body">
@@ -76,6 +79,17 @@
 </div>
 
 @push('scripts')
+    <script>
+        // Share Button
+        function shareByEmail(blog, enc_blog_id, url) {
+            const subject = blog.title;
+            const body =
+                `مرحبًا،\n\nأردت مشاركة هذا المنشور المدوّن معك من ${blog.title}: \n\n ${url}\n\nتفضل بزيارة هذا الرابط لقراءة المدونة. \n\nشكرًا لك!`;
+
+            const mailtoUrl = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            window.location.href = mailtoUrl;
+        }
+    </script>
     <script>
         function redirectToArticals($url) {
             window.location.href = '/articals/' + $url;
