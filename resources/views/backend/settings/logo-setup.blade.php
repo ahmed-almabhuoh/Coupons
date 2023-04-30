@@ -7,7 +7,9 @@
 
 
 @section('styles')
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.min.css"
+        integrity="sha512-3UMpdtCnKd9XmeFHsBFV7Ux64O/+uV7K8pKdGRzLgoftghLGUuV6U2G6UjxP0TpHbKnK2O/8i/61bnN5ElC+w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 @endsection
 
 @section('content')
@@ -29,11 +31,16 @@
 @endsection
 
 @section('scripts')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.min.js"
+        integrity="sha512-X3q3tFpHtS0S8vjZdL1z2tRJ4R4lX96f4lMpP+DxLnI+WsLKml8GwvMh5uk5ivz+5B60E8Bv96gz+7N13L1bdw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     <script>
-        document.addEventListener('livewire:load', function() {
-            Livewire.on('admin-created', function(data) {
-                // alert(data.message);
-                console.log('Here');
+        $(document).ready(function() {
+            $("#color-picker").spectrum({
+                showInput: true,
+                preferredFormat: "hex",
+                showAlpha: false
             });
         });
     </script>

@@ -6,7 +6,7 @@
   margin: 0;
 }
 :root {
-  --main-color: #f05555;
+  --primary-color: #0f8078;
   --main-transition: 0.3s;
   --section-background: #ececec;
 }
@@ -41,7 +41,7 @@ nav .language-switcher {
   text-decoration: none;
 }
 .language-switcher .active {
-  background-color: #f05555;
+  background-color: var(--primary-color);
   color: white;
 }
 .language-switcher .active:hover {
@@ -66,7 +66,7 @@ nav .language-switcher {
   text-decoration: none;
 }
 .language-switcher a:hover {
-  color: #f05555;
+  color: var(--primary-color);
 }
 /*==================== End header Section =================== */
 
@@ -239,10 +239,10 @@ input:focus {
   left: 32px;
   top: 422px;
   font-weight: 500;
-  background: #f05555;
+  background: var(--primary-color);
   border-radius: 8px;
   border: none;
-  background-color: #f05555;
+  background-color: var(--primary-color);
   cursor: pointer;
 }
 .btn-primary:focus {
@@ -259,7 +259,7 @@ input:focus {
   padding-top: 25px;
 }
 .my-login-page .margin-top20 a {
-  color: #f05555;
+  color: var(--primary-color);
 }
 .my-login-page .no-margin {
   margin-top: 40px;
@@ -275,7 +275,7 @@ input:focus {
   text-align: center;
 }
 .footer span a {
-  color: #f05555;
+  color: var(--primary-color);
   text-decoration: none;
 }
 .footer.recover {

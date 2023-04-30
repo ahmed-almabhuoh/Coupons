@@ -90,6 +90,7 @@
     </style>
 
     @yield('styles')
+    @stack('styles')
     @livewireStyles
 </head>
 <!-- END: Head-->
@@ -324,6 +325,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     @yield('scripts')
+    @stack('scripts')
     @livewireScripts
 </body>
 <!-- END: Body-->

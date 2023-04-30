@@ -1,12 +1,12 @@
 /* $$$$$$$ CREATED WITH ❤ BY FARES $$$$$$$ */
 /* Start Global Rules */
 :root {
-  --primary-color: #f05555;
+  --primary-color: #0f8078;
   --white-color: #fefefe;
   --link-color: #979797;
   --background-text-color: rgba(240, 85, 85, 0.2);
   --box-color: #f9f9f9;
-  --footer-color: linear-gradient(91.53deg, #f05555 28.27%, #ff7979 65.43%);
+  --footer-color: linear-gradient(91.53deg, #0f8078 28.27%, #ff7979 65.43%);
   --background-page-color: #fefefe;
   --black-color: #000000;
 }
@@ -131,7 +131,7 @@ button:focus:not(:focus-visible) {
 
 .link ul.dropdown-menu {
   width: 160px;
-  height: 160px;
+  /* height: 160px; */
   border-radius: 16px;
   background-color: #f9f9f9;
   padding: 30px 25px;
@@ -328,8 +328,8 @@ img.flowerd {
 .common-question .btn-primary {
   /* width: 30%; */
   height: 58px;
-  background: #f05555;
-  border: 2px solid #f05555;
+  background: #0f8078;
+  border: 2px solid #0f8078;
   border-radius: 8px;
   transition: 0.3s ease;
   box-shadow: none;
@@ -338,13 +338,13 @@ img.flowerd {
 }
 .common-question .btn-primary:active {
   color: #fff;
-  background: #f05555;
-  border: 2px solid #f05555;
+  background: #0f8078;
+  border: 2px solid #0f8078;
 }
 .btn-check:focus + .btn-primary {
   color: #fff;
-  background: #f05555 !important;
-  border: 2px solid #f05555 !important;
+  background: #0f8078 !important;
+  border: 2px solid #0f8078 !important;
   box-shadow: none !important;
 }
 .btn-primary:focus {
@@ -357,11 +357,16 @@ img.flowerd {
   transition: 0.3s ease;
 }
 
+.form-control:focus {
+  border-color: var(--primary-color) !important;
+}
+
 .footer.common-question {
   position: absolute !important;
   bottom: 0 !important;
   width: 100% !important;
 }
+
 /* =====(End common qestions page)====== */
 
 /* =====(Start About page)====== */
@@ -405,7 +410,7 @@ img.flowerd {
 }
 .special-offers .img-top,
 .special-offers .card-img-top {
-  height: 90%;
+  max-height: 90%;
 }
 .special-offers .card-body {
   bottom: 0px !important;
@@ -458,7 +463,7 @@ img.flowerd {
 }
 .modal-body .button a {
   text-decoration: none;
-  background-color: #f05555;
+  background-color: #0f8078;
   border-radius: 8px;
   padding: 5px 20px;
   color: white;
@@ -466,7 +471,7 @@ img.flowerd {
   display: flex;
 }
 .modal-body .button a:hover {
-  background-color: #f05555cc !important;
+  background-color: #0f8078cc !important;
   transition: 0.3s ease;
 }
 .first-sec {
@@ -572,7 +577,7 @@ img.flowerd {
 
 .btn-secondary:hover {
   border: 1px solid white !important;
-  background-color: #f05555cc !important;
+  background-color: #0f8078cc !important;
 }
 .modal-footer .copy-button:active {
   background-color: var(--primary-color);
@@ -883,9 +888,10 @@ img.flowerd {
 ul.dropdown-menu {
   min-width: 2rem;
 }
-.dropdown-menu li a:hover {
+/* .dropdown-menu li a:hover {
   color: var(--primary-color) !important;
-}
+} */
+
 .portfolio .dropdown-menu.show {
   display: block;
   max-width: 141px !important;
@@ -1020,7 +1026,7 @@ a.dropdown-item {
 .footer {
   background-image: linear-gradient(
     91.53deg,
-    #f05555 28.27%,
+    #0f8078 28.27%,
     #ff7979 65.43%
   ) !important;
   padding-top: 60px !important;
@@ -1119,7 +1125,7 @@ footer .links a {
     color: var(--black-color);
   }
   .sticky-top {
-    background-color: #f05555 !important;
+    background-color: #0f8078 !important;
   }
   .navbar .navbar-nav .nav-link {
     color: var(--white-color);
@@ -1211,6 +1217,9 @@ footer .links a {
   .portfolio .dropdown-toggle.blog {
     margin-top: 60px;
     /* right: -50px; */
+  }
+  .midel-sec {
+    font-size: 12px;
   }
 }
 @media (min-width: 767px) {

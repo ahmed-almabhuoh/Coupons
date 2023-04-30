@@ -20,12 +20,16 @@
             href="{{ route('pages.offers') }}">{{ __('Offers') }}</a>
     </li>
     {{-- @if (auth('client')->check()) --}}
-        <li class="nav-item">
-            <a class="nav-link p-2 p-lg-3 @if (Route::currentRouteName() == 'pages.blogs') active @endif"
-                href="{{ route('pages.blogs') }}">{{ __('Blogs') }}</a>
-        </li>
+    <li class="nav-item">
+        <a class="nav-link p-2 p-lg-3 @if (Route::currentRouteName() == 'pages.blogs') active @endif"
+            href="{{ route('pages.blogs') }}">{{ __('Blogs') }}</a>
+    </li>
     {{-- @endif --}}
 </ul>
+
+@php
+    $settings = DB::table('website_settings')->first();
+@endphp
 
 
 @if (auth('client')->check())
@@ -67,13 +71,10 @@
         </ul>
     </div>
 @else
-    @php
-        $site = DB::table('website_settings')->first();
-    @endphp
     <a class="btn rounded-pill main-btn" href="{{ route('users.register') }}"
         onclick="">{{ __('Create account') }}</a>
 
-    @if ($site->lang_is_shown)
+    @if ($settings->lang_is_shown)
         <div class="country btn-group m-3">
             <button class="btn text-black-50  btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown"
                 aria-expanded="false">

@@ -24,6 +24,9 @@
 </head>
 
 <body>
+    @php
+        $settings = DB::table('website_settings')->first();
+    @endphp
     <!-- ================ Start Header ============ -->
     <nav class="navbar navbar-expand-lg sticky-top">
         <div class="container">

@@ -1,12 +1,12 @@
 :root {
-  --primary-color: #f05555;
+  --primary-color: #0f8078;
   --white-color: #fefefe;
   --link-color: #979797;
   --background-text-color: rgba(240, 85, 85, 0.2);
   --background-icon: #f7f7f7;
   --background-page-color: #fefefe;
   --box-color: #f9f9f9;
-  --footer-color: linear-gradient(91.53deg, #f05555 28.27%, #ff7979 65.43%);
+  --footer-color: linear-gradient(91.53deg, #0f8078 28.27%, #ff7979 65.43%);
   --black-color: #000000;
 }
 body {
@@ -58,7 +58,7 @@ navbar.logo {
 /* ========= Start link ===========*/
 .link ul.dropdown-menu {
   width: 160px;
-  height: 160px;
+  /* height: 160px; */
   border-radius: 16px;
   background-color: #f9f9f9;
   padding: 30px 25px;
@@ -95,9 +95,9 @@ navbar.logo {
 .link ul.dropdown-menu ul:hover li {
   background-color: var(--link-color);
 }
-/* .dropdown-toggle::after {
-  margin-right: 0.255em;
-} */
+.dropdown-toggle::after {
+  margin-left: 5px !important;
+}
 /* ========= End link ===========*/
 
 .main-title h2::after {
@@ -318,7 +318,7 @@ input#Phone.form-control {
 }
 .form-check-input[type="checkbox"]:checked {
   background-color: var(--primary-color);
-  border-color: #f05555 !important;
+  border-color: #0f8078 !important;
 }
 .form-switch .form-check-input:focus {
   outline: none;
@@ -427,7 +427,7 @@ tr {
 .footer {
   background-image: linear-gradient(
     91.53deg,
-    #f05555 28.27%,
+    #0f8078 28.27%,
     #ff7979 65.43%
   ) !important;
 }
@@ -506,7 +506,7 @@ footer .links a {
   }
 
   .sticky-top {
-    background-color: #f05555 !important;
+    background-color: #0f8078 !important;
   }
   .navbar .navbar-nav .nav-link {
     color: var(--white-color);

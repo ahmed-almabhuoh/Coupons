@@ -13,8 +13,19 @@ class SetupLogo extends Component
     use WithFileUploads;
 
     public $image;
+    public $color;
     public $is_shown = false;
     public $showSuccess = false;
+    protected $replaced_str;
+    protected $new_clr;
+    protected $primary_color;
+
+    public function mount()
+    {
+        $site = DB::table('website_settings')->first();
+        $this->color = $site->color;
+        $this->is_shown = $site->lang_is_shown;
+    }
 
     public function render()
     {
@@ -30,11 +41,33 @@ class SetupLogo extends Component
             abort(403);
         }
         $site = DB::table('website_settings')->first();
+        $this->replaced_str = $site->color;
+
         $data = $this->validate([
             'image' => 'nullable',
             'is_shown' => 'required|boolean',
+            'color' => 'required|string',
         ]);
+        $this->new_clr = $data['color'];
 
+        // Update CSS Files
+        $file_css_pages = file_get_contents(public_path('front/pages/css/master.css'));
+        file_put_contents(public_path('front/pages/css/master.css'), str_replace($this->replaced_str, $this->new_clr, $file_css_pages));
+
+        $file_css_pages = file_get_contents(public_path('front/pages/css/master-rtl.css'));
+        file_put_contents(public_path('front/pages/css/master-rtl.css'), str_replace($this->replaced_str, $this->new_clr, $file_css_pages));
+
+        $file_css_pages = file_get_contents(public_path('front/client/css/master.css'));
+        file_put_contents(public_path('front/client/css/master.css'), str_replace($this->replaced_str, $this->new_clr, $file_css_pages));
+
+        $file_css_pages = file_get_contents(public_path('front/client/css/master-rtl.css'));
+        file_put_contents(public_path('front/client/css/master-rtl.css'), str_replace($this->replaced_str, $this->new_clr, $file_css_pages));
+
+        $file_css_pages = file_get_contents(public_path('front/authorization/css/master.css'));
+        file_put_contents(public_path('front/authorization/css/master.css'), str_replace($this->replaced_str, $this->new_clr, $file_css_pages));
+
+        $file_css_pages = file_get_contents(public_path('front/authorization/css/master-rtl.css'));
+        file_put_contents(public_path('front/authorization/css/master-rtl.css'), str_replace($this->replaced_str, $this->new_clr, $file_css_pages));
 
         if ($data['image']) {
             $path = $data['image']->store('website-settings', [
@@ -47,12 +80,14 @@ class SetupLogo extends Component
                     'logo' => $path,
                     'created_at' => Carbon::now(),
                     'updated_at' => Carbon::now(),
+                    'color' => $data['color'],
                     'lang_is_shown' => $data['is_shown'],
                 ]);
                 $this->showSuccess = true;
             } else {
                 DB::table('website_settings')->where('id', $first->id)->update([
                     'logo' => $path,
+                    'color' => $data['color'],
                     'updated_at' => Carbon::now(),
                     'lang_is_shown' => $data['is_shown'],
                 ]);
@@ -61,6 +96,7 @@ class SetupLogo extends Component
         } else {
             DB::table('website_settings')->where('id', $site->id)->update([
                 'updated_at' => Carbon::now(),
+                'color' => $data['color'],
                 'lang_is_shown' => $data['is_shown'],
             ]);
             $this->showSuccess = true;
