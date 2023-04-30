@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Backend\WebsiteSettings;
 
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -107,5 +108,7 @@ class SetupLogo extends Component
 
         $file_css_pages = file_get_contents(public_path('front/authorization/css/master-rtl.css'));
         file_put_contents(public_path('front/authorization/css/master-rtl.css'), str_replace($this->replaced_str, $this->new_clr, $file_css_pages));
+
+        Artisan::call('cache:clear');
     }
 }

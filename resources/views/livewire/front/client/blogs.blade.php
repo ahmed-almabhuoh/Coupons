@@ -50,6 +50,8 @@
                 <div class="item" data-id="Fashion">
                     <!-- card #1 -->
                     <div class="card offers-product blog">
+                        <a class="category" href="{{ route('categories.edit', Crypt::encrypt($category->id)) }}">
+                            {{ $blog->category->name }} </a>
                         <img class="share-icon" src="{{ asset('front/client/imgs/share-icon-copuon.png') }}"
                             onclick="shareByEmail({{ $blog }}, '{{ Crypt::encrypt($blog->id) }}', '{{ env('APP_URL') . 'articals/' . Crypt::encrypt($blog->id) }}')"
                             alt="">
