@@ -6,7 +6,7 @@
   margin: 0;
 }
 :root {
-  --primary-color: #37c386;
+  --primary-color: #bd99ff;
   --main-transition: 0.3s;
   --section-background: #ececec;
 }
@@ -108,7 +108,7 @@ input:focus {
   padding: 16px 32px;
   gap: 10px;
   max-width: 542px;
-  height: 560px;
+  /* height: 560px; */
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -118,9 +118,9 @@ input:focus {
   border: none;
 }
 /* ====Start Size box height==== */
-.my-login-page .card.fat.login {
+/* .my-login-page .card.fat.login {
   height: 450px;
-}
+} */
 /* =======Icon in register======= */
 .toggle-password {
   position: absolute;
@@ -271,7 +271,7 @@ input:focus {
 /*==================== Start Footer =================== */
 
 .footer {
-  padding-top: 210px;
+  padding-top: 400px;
   text-align: center;
 }
 .footer span a {

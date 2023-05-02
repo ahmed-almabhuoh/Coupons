@@ -98,7 +98,11 @@ class ClientController extends Controller
         $products = Product::specail()->get();
         foreach ($products as $product) {
             $img = DB::table('product_images')->where('product_id', $product->id)->first();
-            $product->setAttribute('image', $img->image);
+            if (!is_null($img)) {
+                $product->setAttribute('image', $img->image);
+            } else {
+                $product->setAttribute('image', 'products/default.jpg');
+            }
         }
         return response()->view('frontend.client.coupons', [
             'stores' => Store::active()->get(),
