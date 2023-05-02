@@ -13,7 +13,7 @@ class ArticalSearch extends Component
 
     public function render()
     {
-        if (!auth()->user()->can('view-articals')) {
+        if (!auth()->user()->can('view-articles')) {
             abort(403);
         }
         $this->articals = Artical::where(function ($query) {

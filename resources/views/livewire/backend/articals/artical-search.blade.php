@@ -42,8 +42,8 @@
                     <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
                         style="width: 101.734px;" aria-label="Role: activate to sort column ascending">
                         {{ __('Status') }}</th>
-                    @if (auth()->user()->can('delete-artical') ||
-                            auth()->user()->can('edit-artical'))
+                    @if (auth()->user()->can('delete-article') ||
+                            auth()->user()->can('edit-article'))
                         <th class="sorting_disabled" rowspan="1" colspan="1" style="width: 135.891px;"
                             aria-label="Actions"> {{ __('Actions') }} </th>
                     @endif
@@ -88,7 +88,7 @@
                                 auth()->user()->can('edit-A&Q'))
                             <td>
 
-                                @if (auth()->user()->can('edit-artical'))
+                                @if (auth()->user()->can('edit-article'))
                                     <a href="{{ route('articals.edit', Crypt::encrypt($artical->id)) }}"
                                         class="btn btn-icon btn-info waves-effect waves-float waves-light">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
@@ -103,7 +103,7 @@
                                     </a>
                                 @endif
 
-                                @if (auth()->user()->can('delete-artical'))
+                                @if (auth()->user()->can('delete-article'))
                                     <button type="button"
                                         onclick="confirmationDelete('{{ Crypt::encrypt($artical->id) }}', this, '{{ auth('admin')->user()->lang }}')"
                                         class="btn btn-icon btn-danger waves-effect waves-float waves-light">

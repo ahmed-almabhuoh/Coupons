@@ -33,7 +33,7 @@ class Update extends Component
 
     public function update()
     {
-        if (!auth()->user()->can('edit-artical')) {
+        if (!auth()->user()->can('edit-article')) {
             abort(403);
         }
         $data = $this->validate([

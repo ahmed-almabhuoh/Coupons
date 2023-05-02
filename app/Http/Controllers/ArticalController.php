@@ -16,7 +16,7 @@ class ArticalController extends Controller
     public function index()
     {
         //
-        if (!auth()->user()->can('view-articals')) {
+        if (!auth()->user()->can('view-articles')) {
             abort(403);
         }
         return response()->view('backend.articals.index');
@@ -28,7 +28,7 @@ class ArticalController extends Controller
     public function create()
     {
         //
-        if (!auth()->user()->can('create-artical')) {
+        if (!auth()->user()->can('create-article')) {
             abort(403);
         }
         return response()->view('backend.articals.store', [
@@ -58,7 +58,7 @@ class ArticalController extends Controller
     public function edit($id)
     {
         //
-        if (!auth()->user()->can('edit-artical')) {
+        if (!auth()->user()->can('edit-article')) {
             abort(403);
         }
         return response()->view('backend.articals.edit', [
@@ -80,7 +80,7 @@ class ArticalController extends Controller
      */
     public function destroy($id)
     {
-        if (!auth()->user()->can('delete-artical')) {
+        if (!auth()->user()->can('delete-article')) {
             abort(403);
         }
         $artical = Artical::findOrFail(Crypt::decrypt($id));

@@ -265,18 +265,18 @@
     </li>
 @endif
 
-@if (auth()->user()->can('view-articals') ||
-        auth()->user()->can('create-artical'))
+@if (auth()->user()->can('view-articles') ||
+        auth()->user()->can('create-article'))
     <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="book-open"></i><span
                 class="menu-title text-truncate" data-i18n="Invoice">{{ __('Articals') }}</span></a>
         <ul class="menu-content">
-            @if (auth()->user()->can('view-articals'))
+            @if (auth()->user()->can('view-articles'))
                 <li><a class="d-flex align-items-center" href="{{ route('articals.index') }}"><i
                             data-feather="circle"></i><span class="menu-item text-truncate"
                             data-i18n="List">{{ __('List') }}</span></a>
                 </li>
             @endif
-            @if (auth()->user()->can('create-artical'))
+            @if (auth()->user()->can('create-article'))
                 <li><a class="d-flex align-items-center" href="{{ route('articals.create') }}"><i
                             data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Add">
                             {{ __('Add') }} </span></a>

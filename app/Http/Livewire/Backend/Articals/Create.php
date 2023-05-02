@@ -24,7 +24,7 @@ class Create extends Component
 
     public function store()
     {
-        if (!auth()->user()->can('create-artical')) {
+        if (!auth()->user()->can('create-article')) {
             abort(403);
         }
         $data = $this->validate([
