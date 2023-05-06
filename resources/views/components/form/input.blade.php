@@ -6,7 +6,7 @@
     is-invalid
     @enderror" name="{{ $name }}"
         id="{{ $id ?? $name }}" placeholder="{{ __($placeholder) ?? __('Enter the ' . $name) }}" {{-- @if ($isRequired) required="" @endif --}}
-        {{-- @if ($readOnly) readonly @endif --}} />
+        {{-- @if ($readOnly) readonly @endif --}} @if ($type == 'number') pattern="[0-9]+" @endif />
     @if ($desc ?? false)
         <small class="text-muted">{{ __($desc) ?? '' }}</small>
     @endif
