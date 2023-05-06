@@ -260,6 +260,7 @@
 
                     // Add a click event to the copy button
                     copyButton.onclick = function() {
+                        setLastUse(response.data.product.id, 'product');
                         navigator.clipboard.writeText(copyButton.getAttribute('value'));
                         alert('Text copied to clipboard!');
                     };
@@ -350,6 +351,7 @@
 
         // Make product as activation
         function markAsActivation(id) {
+            this.setLastUse(id, 'product');
             axios.get('/set-product-as-activation/' + id)
                 .then(function(response) {
 
@@ -358,36 +360,48 @@
 
         // Make product as activation
         function markAsInActivation(id) {
+            this.setLastUse(id, 'product');
             axios.get('/set-product-as-inactivation/' + id)
                 .then(function(response) {})
         }
 
         // Share Button
         function shareByEmail(product_name, price, discount) {
-            const subject = product_name;
+            // const subject = product_name;
             const body =
                 `استخدم كود (${price}) للحصول على خصم العرض ${discount} في ${product_name} 😁\n\nحمل تطبيق كوبنز للحصول على أحدث كوبونات الخصم`;
 
-            const mailtoUrl =
-                `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
-            window.location.href = mailtoUrl;
+
+            const phoneNumber =
+                '+972567077653'; // Replace with the phone number you want to send the message to, including country code but without any symbols or spaces
+            const message = 'Hello!'; // Replace with the message you want to send
+            const whatsappLink = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(body)}`;
+            window.location.href = whatsappLink;
+
+            // const mailtoUrl =
+            //     `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+            // window.location.href = mailtoUrl;
         }
 
         // Copy Element
-        function copyCodeToClipboard(code) {
-            const el = document.createElement('textarea');
-            el.value = code;
-            document.body.appendChild(el);
-            el.select();
-            document.execCommand('copy');
-            document.body.removeChild(el);
+        function copyCodeToClipboard(code, products) {
+            navigator.clipboard.writeText(code);
+            alert('Code copy successfully');
+            // const el = document.createElement('textarea');
+            // el.value = code;
+            // document.body.appendChild(el);
+            // el.select();
+            // document.execCommand('copy');
+            // document.body.removeChild(el);
 
-            const copiedEl = document.getElementById('copied');
-            copiedEl.classList.add('show');
-            setTimeout(() => {
-                copiedEl.classList.remove('show');
-            }, 2000);
+            // const copiedEl = document.getElementById('copied');
+            // copiedEl.classList.add('show');
+            // setTimeout(() => {
+            //     copiedEl.classList.remove('show');
+            // }, 2000);
+            this.setLastUse(products.id, 'product');
         }
 
         // Shopping Redirect
@@ -404,12 +418,26 @@
     <script>
         // Share Button
         function shareOffer(product, url) {
-            const subject = product.name;
+            // const subject = product.name;
             const body =
                 `مرحبًا،\n\nأردت مشاركة هذا المنتج معك من ${product.name}: \n\ ${url}\n\nتفضل بزيارة هذا الرابط لعرض المنتج. \n\nشكرًا لك!`;
 
-            const mailtoUrl = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-            window.location.href = mailtoUrl;
+            // const mailtoUrl = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            // window.location.href = mailtoUrl;
+
+            const phoneNumber =
+                '+972567077653'; // Replace with the phone number you want to send the message to, including country code but without any symbols or spaces
+            const message = 'Hello!'; // Replace with the message you want to send
+            const whatsappLink = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(body)}`;
+            window.location.href = whatsappLink;
+        }
+
+        // Set Last Use
+        function setLastUse(id, position) {
+            axios.get('/set-last-use/' + id + '/' + position)
+                .then(function(response) {
+                    // console.log(response);
+                });
         }
     </script>
 @endpush

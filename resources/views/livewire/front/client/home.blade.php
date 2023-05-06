@@ -58,7 +58,7 @@
                                     <img src="{{ asset('front/client/imgs/share-icon-card.png') }}" alt="icon"
                                         onclick="shareByEmail('{{ $coupon->store->name }}', '{{ $coupon->code }}', '{{ $coupon->discount }}')">
                                     <img src="{{ asset('front/client/imgs/icon-card-multi.png') }}" alt="icon"
-                                        onclick="copyCodeToClipboard('{{ $coupon->code }}')"
+                                        onclick="copyCodeToClipboard('{{ $coupon->code }}', {{ $coupon }})"
                                         id="another-copying-element">
                                 </div>
                                 <!-- img -->
@@ -240,11 +240,13 @@
 
                     // Add a click event to the copy button
                     copyButton.onclick = function() {
+                        setLastUse(response.data.coupon.id, 'coupons');
                         navigator.clipboard.writeText(copyButton.getAttribute('value'));
                         alert('Text copied to clipboard!');
                     };
 
                     anotherCopyButton.onclick = function() {
+                        setLastUse(response.data.coupon.id, 'coupons');
                         navigator.clipboard.writeText(copyButton.getAttribute('value'));
                         alert('Text copied to clipboard!');
                     };
@@ -288,12 +290,14 @@
 
         // Make coupon as activation
         function markAsActivation(id) {
+            this.setLastUse(id, 'coupons');
             axios.get('/set-as-activation/' + id)
                 .then(function(response) {})
         }
 
         // Make coupon as activation
         function markAsInActivation(id) {
+            this.setLastUse(id, 'coupons');
             axios.get('/set-as-inactivation/' + id)
                 .then(function(response) {})
         }
@@ -357,35 +361,46 @@
 
         // Share Button
         function shareByEmail(store_name, code, discount) {
-            const subject = store_name;
             const body =
-                `استخدم كود (${code}) للحصول على خصم العرض ${discount}% في ${store_name} 😁\n\nحمل تطبيق كوبنز للحصول على أحدث كوبونات الخصم`;
+                `استخدم كود (${code}) للحصول على خصم العرض ${discount}% في ${store_name} 😁\n\nتصفح موقع الكوبونات للحصول على أحدث كوبونات الخصم`;
 
-            const mailtoUrl =
-                `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
-            window.location.href = mailtoUrl;
+            const phoneNumber =
+                '+972567077653'; // Replace with the phone number you want to send the message to, including country code but without any symbols or spaces
+            const message = 'Hello!'; // Replace with the message you want to send
+            const whatsappLink = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(body)}`;
+            window.location.href = whatsappLink;
         }
 
         // Copy Element
-        function copyCodeToClipboard(code) {
-            const el = document.createElement('textarea');
-            el.value = code;
-            document.body.appendChild(el);
-            el.select();
-            document.execCommand('copy');
-            document.body.removeChild(el);
+        function copyCodeToClipboard(code, coupon) {
+            navigator.clipboard.writeText(code);
+            alert('Code copy successfully');
+            // const el = document.createElement('textarea');
+            // el.value = code;
+            // document.body.appendChild(el);
+            // el.select();
+            // document.execCommand('copy');
+            // document.body.removeChild(el);
 
-            const copiedEl = document.getElementById('copied');
-            copiedEl.classList.add('show');
-            setTimeout(() => {
-                copiedEl.classList.remove('show');
-            }, 2000);
+            // const copiedEl = document.getElementById('copied');
+            // copiedEl.classList.add('show');
+            // setTimeout(() => {
+            //     copiedEl.classList.remove('show');
+            // }, 2000);
+            this.setLastUse(coupon.id, 'coupon');
         }
 
         // Shopping Redirect
         function redirectShopping(url) {
             location.href = url;
+        }
+
+        // Set Last Use
+        function setLastUse(id, position) {
+            axios.get('/set-last-use/' + id + '/' + position)
+                .then(function(response) {
+                    // console.log(response);
+                });
         }
     </script>
 @endpush

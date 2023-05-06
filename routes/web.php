@@ -128,6 +128,9 @@ Route::prefix('/')->middleware(['auth:client'])->group(function () {
         Route::get('/set-as-activation/{coupon_id}', [ClientController::class, 'setCouponeAsActivated'])->name('coupons.activated');
         Route::get('/set-as-inactivation/{coupon_id}', [ClientController::class, 'setCouponeAsInActivated'])->name('coupons.inactivated');
 
+        // Set the last use
+        Route::get('/set-last-use/{id}/{position}', [Home::class, 'setLastUse'])->name('set.last.use');
+
         // Product Activation OR NOT
         Route::get('/set-product-as-activation/{product_id}', [ClientController::class, 'setProductAsActivated'])->name('products.activated');
         Route::get('/set-product-as-inactivation/{product_id}', [ClientController::class, 'setProductAsInActivated'])->name('products.inactivated');

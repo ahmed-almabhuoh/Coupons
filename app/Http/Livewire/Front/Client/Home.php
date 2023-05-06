@@ -84,4 +84,19 @@ class Home extends Component
             }
         }
     }
+
+    // Add last use to products and coupons
+    public function setLastUse($id, $position)
+    {
+        // addToFavorite(42, "product")
+        if ($position == 'coupon') {
+            DB::table('coupons')->where('id', $id)->update([
+                'last_use' => Carbon::now(),
+            ]);
+        } elseif ($position == 'product') {
+            DB::table('products')->where('id', $id)->update([
+                'last_use' => Carbon::now(),
+            ]);
+        }
+    }
 }
