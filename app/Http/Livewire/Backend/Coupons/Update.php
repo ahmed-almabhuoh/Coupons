@@ -52,7 +52,7 @@ class Update extends Component
             abort(403);
         }
         $data = $this->validate([
-            'code' => 'required|string|min:3|unique:coupons,code,' . $this->coupon->id,
+            'code' => 'required|string|min:3',
             'status' => 'required|string|in:' . implode(",", Coupon::STATUS),
             'discount' => 'required|numeric|min:1|max:100',
             'category_id' => 'required|integer|exists:categories,id',
