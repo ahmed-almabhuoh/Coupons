@@ -170,8 +170,8 @@
     <div class="main-menu menu-fixed menu-light menu-accordion menu-shadow" data-scroll-to-active="true">
         <div class="navbar-header">
             <ul class="nav navbar-nav flex-row">
-                <li class="nav-item me-auto"><a class="navbar-brand"
-                        href="panel/html/ltr/vertical-menu-template/index.html"><span class="brand-logo">
+                <li class="nav-item me-auto"><a class="navbar-brand" href="{{ route('coupons.index') }}"><span
+                            class="brand-logo">
                             <svg viewbox="0 0 139 95" version="1.1" xmlns="http://www.w3.org/2000/svg"
                                 xmlns:xlink="http://www.w3.org/1999/xlink" height="24">
                                 <defs>
@@ -209,8 +209,9 @@
                                         </g>
                                     </g>
                                 </g>
-                            </svg></span>
-                        <h2 class="brand-text">{{ env('APP_NAME') }}</h2>
+                            </svg>
+                        </span>
+                        <h3 class="brand-text">{{ env('APP_NAME') }}</h3>
                     </a></li>
                 <li class="nav-item nav-toggle"><a class="nav-link modern-nav-toggle pe-0"
                         data-bs-toggle="collapse"><i class="d-block d-xl-none text-primary toggle-icon font-medium-4"
@@ -323,6 +324,14 @@
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        function redirectToCoupons() {
+            document.getElementById('coupons-element').onclick(function() {
+                window.location.href = '/coupons';
+            });
+        }
+    </script>
 
     @yield('scripts')
     @stack('scripts')

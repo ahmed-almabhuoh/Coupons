@@ -5,18 +5,18 @@
 </style>
 
 {{-- Dashboard --}}
-<li class=" nav-item"><a class="d-flex align-items-center" href="index.html"><i data-feather="home"></i><span
+{{-- <li class=" nav-item"><a class="d-flex align-items-center" href="index.html"><i data-feather="home"></i><span
             class="menu-title text-truncate" data-i18n="Dashboards"> {{ __('Dashboards') }} </span><span
             class="badge badge-light-warning rounded-pill ms-auto me-1">2</span></a>
-    {{-- <ul class="menu-content">
+    <ul class="menu-content">
         <li><a class="d-flex align-items-center" href="dashboard-analytics.html"><i data-feather="circle"></i><span
                     class="menu-item text-truncate" data-i18n="Analytics">Analytics</span></a>
         </li>
         <li><a class="d-flex align-items-center" href="dashboard-ecommerce.html"><i data-feather="circle"></i><span
                     class="menu-item text-truncate" data-i18n="eCommerce">eCommerce</span></a>
         </li>
-    </ul> --}}
-</li>
+    </ul>
+</li> --}}
 
 
 @if (auth()->user()->can('view-admins') ||
