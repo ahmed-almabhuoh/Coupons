@@ -117,7 +117,7 @@ return [
         'mixed' => 'يجب أن يحتوي حقل :attribute على حرف واحد على الأقل من الأحرف الكبيرة والصغيرة.',
         'numbers' => 'يجب أن يحتوي حقل :attribute على رقم واحد على الأقل.',
         'symbols' => 'يجب أن يحتوي حقل :attribute على رمز واحد على الأقل.',
-        'uncompromised' => 'تم ظهور حقل :attribute المدخل في تسريب بيانات. يرجى اختيار :attribute مختلفًا.',
+        'uncompromised' => 'تم الكشف عن تسريب بيانات يتضمن :attribute المدخل. يرجى تحديد قيمة مختلفة تحتوي على أرقام وحروف ورموز خاصة لـ :attribute.',
     ],
     'present' => 'يجب توفر حقل :attribute.',
     'prohibited' => 'حقل :attribute محظور.',
