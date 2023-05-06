@@ -10,13 +10,13 @@
 
     {{-- <x-form.input name="title" type="text" label="Offer title" placeholder="Enter the offer title here ...." /> --}}
 
-    <x-form.input name="btn_txt" type="text" label="Offer BTN TXT" placeholder="Enter the offer BTN TXT here ...." />
+    {{-- <x-form.input name="btn_txt" type="text" label="Offer BTN TXT" placeholder="Enter the offer BTN TXT here ...." /> --}}
 
-    <x-form.input name="btn_action" type="url" label="Offer BTN action" placeholder="Enter the offer BTN action here ...." />
+    <x-form.input name="btn_action" type="url" label="Action" placeholder="Enter the offer action here ...." />
 
     <x-form.select name="status" model="status" label="Offer status" :options="App\Models\Offer::STATUS" />
 
-    <x-form.single-image name="image" model="image" label="Offer image" description="The image size offer should be at most 320 X 320" />
+    <x-form.single-image name="image" model="image" label="Offer image" description="468 x 60 (banner), 728 x 90 (leaderboard banner), 250 x 250 (square) and 120 x 600 (skyscraper)" />
 
     <div>
         <x-form.submit text="Store" action="store()" type="button" />

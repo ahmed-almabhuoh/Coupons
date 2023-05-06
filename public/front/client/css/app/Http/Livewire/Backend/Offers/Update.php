@@ -35,11 +35,11 @@ class Update extends Component
     public function update()
     {
         $data = $this->validate([
-            'title' => 'required|string|min:5|unique:offers,title,' . $this->offer->id,
-            'btn_txt' => 'nullable|min:2|max:20',
-            'btn_action' => 'nullable|min:2',
+            // 'title' => 'required|string|min:5|unique:offers,title,' . $this->offer->id,
+            // 'btn_txt' => 'nullable|min:2|max:20',
+            'btn_action' => 'required|min:5',
             'status' => 'required|string|in:' . implode(",", Offer::STATUS),
-            'image' => 'nullable|image',
+            'image' =>  'required|image|mimes:jpeg,png|max:2048|dimensions:width=468,height=60|dimensions:width=728,height=90|dimensions:width=250,height=250|dimensions:width=120,height=600',
         ]);
 
         $this->offer->title = $data['title'];

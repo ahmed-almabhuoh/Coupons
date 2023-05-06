@@ -74,15 +74,18 @@
             @endforeach --}}
 
             @foreach ($offers as $key => $offer)
-                <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
-                    <div class="image-container">
-                        <img src="{{ env('APP_URL') . 'content/' . $offer->image }}" class="d-block  "
-                            alt="...">
+                <a href="{{ $offer->btn_action }}">
+                    <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
+                        <div class="image-container">
+                            <img src="{{ env('APP_URL') . 'content/' . $offer->image }}" class="d-block  "
+                                alt="...">
+                        </div>
+                        <div class="carousel-caption">
+                            <a class="dif-button btn btn-primary"
+                                href="{{ $offer->btn_action }}">{{ $offer->btn_txt }}</a>
+                        </div>
                     </div>
-                    <div class="carousel-caption">
-                        <a class="dif-button btn btn-primary" href="{{ $offer->btn_action }}">{{ $offer->btn_txt }}</a>
-                    </div>
-                </div>
+                </a>
             @endforeach
 
         </div>
