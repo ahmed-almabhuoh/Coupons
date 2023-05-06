@@ -57,7 +57,7 @@ class ClientController extends Controller
         ]);
 
         return redirect()->back()->with([
-            'message' => $id ? 'Thank you for your effort, you work hard to contact with you via your email " ' . $request->post('email') . '" so soon :)' : 'Failed to recieve your contact request, please try again later!',
+            'message' => $id ? __('Thank you for your effort, we work hard to contact with you via your email "') . $request->post('email') . __('" so soon :)') : __('Failed to receive your contact request, please try again later!'),
             'code' => $id ? 200 : 401,
         ]);
     }
