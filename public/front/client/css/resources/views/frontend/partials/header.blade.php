@@ -19,12 +19,12 @@
         <a class="nav-link p-2 p-lg-3 @if (Route::currentRouteName() == 'pages.offers') active @endif "
             href="{{ route('pages.offers') }}">{{ __('Offers') }}</a>
     </li>
-    @if (auth('client')->check())
+    {{-- @if (auth('client')->check())
         <li class="nav-item">
             <a class="nav-link p-2 p-lg-3 @if (Route::currentRouteName() == 'pages.blogs') active @endif"
                 href="{{ route('pages.blogs') }}">{{ __('Blogs') }}</a>
         </li>
-    @endif
+    @endif --}}
 </ul>
 
 

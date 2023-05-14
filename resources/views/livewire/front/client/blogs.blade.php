@@ -6,19 +6,21 @@
     </div>
     <div class="row">
 
-        <div class="dropdown" wire:ignore>
-            <a class="btn  dropdown-toggle blog" href="#" role="button" id="dropdownMenuLink"
-                data-bs-toggle="dropdown" aria-expanded="false">
-                {{ __('All') }}
-            </a>
+        @if ($new_website_settings->show_store_items)
+            <div class="dropdown" wire:ignore>
+                <a class="btn  dropdown-toggle blog" href="#" role="button" id="dropdownMenuLink"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    {{ __('All') }}
+                </a>
 
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                @foreach ($stores as $store)
-                    <li wire:click="dropForStores('{{ $store->id }}')"><a class="dropdown-item text-black-50"
-                            href="#">{{ $store->name }}</a></li>
-                @endforeach
-            </ul>
-        </div>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    @foreach ($stores as $store)
+                        <li wire:click="dropForStores('{{ $store->id }}')"><a class="dropdown-item text-black-50"
+                                href="#">{{ $store->name }}</a></li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
 
         <div class="filter-buttons">
             <ul id="filter-btns">
