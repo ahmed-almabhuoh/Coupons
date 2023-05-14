@@ -49,3 +49,13 @@
         {{ __('Already have an account?') }} <a href="{{ route('users.login') }}"> {{ __('Login') }} </a>
     </div>
 </form>
+
+
+@push('scripts')
+    <script>
+        function validateEmail(email) {
+            const regex = /\S+@\S+\.\S+/;
+            return regex.test(email);
+        }
+    </script>
+@endpush

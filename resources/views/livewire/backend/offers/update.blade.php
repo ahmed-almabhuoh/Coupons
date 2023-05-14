@@ -16,7 +16,7 @@
 
     <x-form.select name="status" model="status" label="Offer status" :options="App\Models\Offer::STATUS" />
 
-    <x-form.single-image name="image" model="image" label="Offer image" description="468 x 60 (banner), 728 x 90 (leaderboard banner), 250 x 250 (square) and 120 x 600 (skyscraper)" />
+    <x-form.single-image name="image" model="image" label="Offer image" description="Banner dimensions should be 120 x 400 only" />
 
     <div>
         <x-form.submit text="Update" action="update()" type="button" />

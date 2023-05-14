@@ -15,8 +15,11 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule): void
     {
         // $schedule->command('inspire')->hourly();
-        $schedule->job(new ValidateAllExpiredCoupons)->withoutOverlapping()->dailyAt('12:00');
-        $schedule->job(new ValidateAllExpiredProducts)->withoutOverlapping()->dailyAt('12:00');
+        // $schedule->job(new ValidateAllExpiredCoupons)->withoutOverlapping()->dailyAt('12:00');
+        // $schedule->job(new ValidateAllExpiredProducts)->withoutOverlapping()->dailyAt('12:00');
+
+        $schedule->job(new ValidateAllExpiredCoupons)->withoutOverlapping()->everyMinute();
+        $schedule->job(new ValidateAllExpiredProducts)->withoutOverlapping()->everyMinute();
     }
 
     /**

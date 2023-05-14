@@ -21,10 +21,17 @@ class Register extends Component
 
     public function register()
     {
+        // $data = $this->validate([
+        //     'fullname' => 'required|string|min:3',
+        //     'email' => 'required|email|unique:users,email',
+        //     'password' => ['required', 'string', Password::min(6)->uncompromised()],
+        // ]);
         $data = $this->validate([
             'fullname' => 'required|string|min:3',
-            'email' => 'required|email|unique:users,email',
+            'email' => ['required', 'email', 'unique:users,email', 'regex:/^[^\s@]+@[^\s@]+\.[^\s@]+$/'],
             'password' => ['required', 'string', Password::min(6)->uncompromised()],
+        ], [
+            'password.uncompromised' => __('Please enter a complex password, and use ! or @ or # or any special characters.'),
         ]);
 
         $names = explode(" ", $data['fullname']);

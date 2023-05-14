@@ -22,6 +22,11 @@ class Coupon extends Model
         return $query->where('status', 'active');
     }
 
+    public function scopeDraft($query)
+    {
+        return $query->where('status', 'draft');
+    }
+
     // Relations
     public function category()
     {

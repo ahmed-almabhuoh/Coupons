@@ -17,7 +17,8 @@ class Create extends Component
     public $price;
     public $category_id;
     public $store_id;
-    public $coupon_id;
+    // public $coupon_id;
+    public $coupon_code;
     public $description;
     public $images = [];
     public $showSuccess = false;
@@ -29,6 +30,7 @@ class Create extends Component
     public $cusDate;
     public $action;
     public $specail;
+    public $use_it_as_price;
 
     public function render()
     {
@@ -45,7 +47,8 @@ class Create extends Component
             'price' => 'required|numeric|min:1',
             'category_id' => 'required|integer|exists:categories,id',
             'store_id' => 'required|integer|exists:stores,id',
-            'coupon_id' => 'nullable',
+            // 'coupon_id' => 'nullable',
+            'coupon_code' => 'nullable',
             'images' => 'nullable',
             'description' => 'nullable|min:10|max:150',
             'offer' => 'required|integer|min:0|max:100',
@@ -53,13 +56,14 @@ class Create extends Component
             'cusDate' => 'nullable|date|after_or_equal:today',
             'action' => 'required|string',
             'specail' => 'required|boolean',
+            'use_it_as_price' => 'required|boolean',
         ]);
         $date = Carbon::now();
 
         // $product = $this->product;
         $product = new Product();
         $product->name = $data['name'];
-        $product->original_price = $data['price'];
+        $product->original_price = $data['offer'];
         $product->category_id = $data['category_id'];
         $product->store_id = $data['store_id'];
         $product->action = $data['action'];
@@ -67,21 +71,34 @@ class Create extends Component
         $product->from_date = $data['cusDate'] ?? $date;
         $product->to_date = $date->copy()->addDays($data['duration']);
         $product->specail = $data['specail'];
+        $product->coupon_code = $data['coupon_code'];
 
         // Add the offer by hand
-        if ($data['offer'] != 0) {
-            $product->offer = $data['offer'];
-            $product->price = (($data['offer'] / 100) * $data['price']);
+        if ($this->use_it_as_price) {
+            $product->original_price = $data['offer'];
+            $product->price = $data['offer'];
+            $product->offer = 0;
+        } else {
+            if ($data['offer'] != 0) {
+                $product->offer = $data['offer'];
+                $product->original_price = $data['price'];
+                $product->price = (($data['offer'] / 100) * $data['price']);
+            } else {
+                $product->price = $data['price'];
+                $product->offer = $data['offer'];
+                $product->original_price = $data['price'];
+            }
         }
 
+
         // If you need to connect the price with coupon discount
-        if (is_numeric($data['coupon_id']) && is_numeric($data['coupon_id']) > 0) {
-            $coupon = Coupon::findOrFail($data['coupon_id']);
-            $product->coupon_id = $data['coupon_id'];
-            $product->price = $data['price'] - (($coupon->discount / 100) * $data['price']);
-            $product->offer = $coupon->discount;
-            $product->code = $coupon->code;
-        }
+        // if (is_numeric($data['coupon_id']) && is_numeric($data['coupon_id']) > 0) {
+        //     $coupon = Coupon::findOrFail($data['coupon_id']);
+        //     $product->coupon_id = $data['coupon_id'];
+        //     $product->price = $data['price'] - (($coupon->discount / 100) * $data['price']);
+        //     $product->offer = $coupon->discount;
+        //     $product->code = $coupon->code;
+        // }
 
         $product->description = $data['description'];
         $this->showSuccess = $product->save();

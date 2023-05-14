@@ -42,7 +42,12 @@ class Update extends Component
             'btn_txt' => 'nullable|min:2|max:20',
             'btn_action' => 'nullable|min:2',
             'status' => 'required|string|in:' . implode(",", Offer::STATUS),
-            'image' => 'nullable|image',
+            'image' => 'nullable|image|dimensions:width=400,height=120',
+            // 'image' => [
+            //     'required',
+            //     'image',
+            //     'dimensions:width=400,height=120',
+            // ],
         ]);
 
         // $this->offer->title = $data['title'];

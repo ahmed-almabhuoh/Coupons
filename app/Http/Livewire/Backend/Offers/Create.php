@@ -32,7 +32,12 @@ class Create extends Component
             'btn_txt' => 'nullable|min:2|max:20',
             'btn_action' => 'nullable|min:2',
             'status' => 'required|string|in:' . implode(",", Offer::STATUS),
-            'image' => 'nullable|image',
+            // 'image' => 'nullable|image',
+            'image' => [
+                'required',
+                'image',
+                'dimensions:width=400,height=120',
+            ],
         ]);
 
         $offer = new Offer();

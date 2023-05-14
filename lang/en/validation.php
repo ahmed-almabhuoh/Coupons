@@ -117,7 +117,9 @@ return [
         'mixed' => 'The :attribute field must contain at least one uppercase and one lowercase letter.',
         'numbers' => 'The :attribute field must contain at least one number.',
         'symbols' => 'The :attribute field must contain at least one symbol.',
-        'uncompromised' => 'The given :attribute has appeared in a data leak. Please choose a different :attribute.',
+        // Please enter a complex password, and use ! or @ or # or any special characters.
+        // 'uncompromised' => 'The given :attribute has appeared in a data leak. Please choose a different :attribute.',
+        'uncompromised' => 'Please enter a complex password, and use ! or @ or # or any special characters.',
     ],
     'present' => 'The :attribute field must be present.',
     'prohibited' => 'The :attribute field is prohibited.',

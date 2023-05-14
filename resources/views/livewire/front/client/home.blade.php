@@ -117,9 +117,9 @@
                                                 <p id="coupon_description">A store that specializes in rose bouquets</p>
                                             </div>
                                         </div>
-                                        <div class="button">
+                                        {{-- <div class="button">
                                             <a href="#" id="store_action">{{ __('Visit') }} &rarr;</a>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                     <!--Section #2 -->
                                     <div class="midel-sec d-flex">

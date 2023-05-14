@@ -29,12 +29,19 @@ class ValidateAllExpiredCoupons implements ShouldQueue
     public function handle(): void
     {
         //
-        $coupons = Coupon::active()->where([
-            ['to_date', '<', Carbon::now()]
-        ])->get();
+        $coupons = Coupon::active()->whereDate('to_date', '<=', Carbon::now())->get();
+        $not_coming_coupons = Coupon::draft()
+            ->where('from_date', '<=', Carbon::now())
+            ->where('to_date', '>=', Carbon::now())
+            ->get();
 
         foreach ($coupons as $coupon) {
             $coupon->status = 'draft';
+            $coupon->save();
+        }
+
+        foreach ($not_coming_coupons as $coupon) {
+            $coupon->status = 'active';
             $coupon->save();
         }
     }

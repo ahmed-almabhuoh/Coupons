@@ -23,6 +23,11 @@ class Product extends Model
         return $query->where('status', 'active');
     }
 
+    public function scopeDraft($query)
+    {
+        return $query->where('status', 'draft');
+    }
+
     public function scopeSpecail($query)
     {
         return $query->where('specail', true);

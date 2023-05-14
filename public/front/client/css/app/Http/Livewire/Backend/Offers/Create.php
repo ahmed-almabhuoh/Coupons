@@ -25,11 +25,11 @@ class Create extends Component
     public function store()
     {
         $data = $this->validate([
-            // 'title' => 'nullable|string|min:5|unique:offers,title',
-            // 'btn_txt' => 'nullable|min:2|max:20',
-            'btn_action' => 'required|min:5',
+            'title' => 'required|string|min:5|unique:offers,title',
+            'btn_txt' => 'nullable|min:2|max:20',
+            'btn_action' => 'nullable|min:2',
             'status' => 'required|string|in:' . implode(",", Offer::STATUS),
-            'image' => 'required|image|mimes:jpeg,png|max:2048|dimensions:width=468,height=60|dimensions:width=728,height=90|dimensions:width=250,height=250|dimensions:width=120,height=600',
+            'image' => 'nullable|image',
         ]);
 
         $offer = new Offer();

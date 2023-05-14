@@ -122,7 +122,7 @@
                             @endif
                         </td>
                         <td>
-                            {{ $product->code }}
+                            {{ $product->coupon_code }}
                         </td>
                         <td>
                             @if ($product->action)

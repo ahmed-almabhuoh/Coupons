@@ -29,12 +29,19 @@ class ValidateAllExpiredProducts implements ShouldQueue
     public function handle(): void
     {
         //
-        $products = Product::active()->where([
-            ['to_date', '<', Carbon::now()]
-        ])->get();
+        $products = Product::active()->whereDate('to_date', '<=', Carbon::now())->get();
+        $not_coming_products = Product::draft()
+            ->where('from_date', '<=', Carbon::now())
+            ->where('to_date', '>=', Carbon::now())
+            ->get();
 
         foreach ($products as $product) {
             $product->status = 'draft';
+            $product->save();
+        }
+
+        foreach ($not_coming_products as $product) {
+            $product->status = 'active';
             $product->save();
         }
     }

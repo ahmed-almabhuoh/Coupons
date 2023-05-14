@@ -115,10 +115,10 @@
                                                 <p id="product_description"></p>
                                             </div>
                                         </div>
-                                        <div class="button">
+                                        {{-- <div class="button">
                                             <a href="#" id="product_action" target="_blank">{{ __('Visit') }}
                                                 &rarr;</a>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                     <!--Section #2 -->
                                     <div class="midel-sec offers-card d-flex flex-wrap">
