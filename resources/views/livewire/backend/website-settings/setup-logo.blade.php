@@ -11,7 +11,7 @@
     <x-form.single-image name="image" label="Logo" mode="image" />
 
     <div class="col-lg-6 col-md-12 mb-1 mb-sm-0 py-1">
-        <label for="color" class="form-label">{{__('Primary Color')}}</label>
+        <label for="color" class="form-label">{{ __('Primary Color') }}</label>
         <input type="color" id="color" wire:model="color" class="form-control" style="height: 40px;">
     </div>
 
@@ -27,6 +27,17 @@
         @enderror
     </div>
 
+    <div>
+        <div class="form-check col-lg-6 col-md-12 mb-1 mb-sm-0 py-1">
+            <input class="form-check-input" wire:model="show_store_items" type="checkbox" id="show_store_items">
+            <label class="form-check-label" for="show_store_items"> {{ __('Show stores items.') }} </label>
+        </div>
+        @error('show_store_items')
+            <span style="color: red;">
+                {{ $message }}
+            </span>
+        @enderror
+    </div>
 
     <div>
         <x-form.submit text="Store" action="store()" type="button" />

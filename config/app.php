@@ -196,6 +196,10 @@ return [
         App\Providers\RouteServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
 
+
+        // Custome Service Providers
+        App\Providers\WebSettingsProvider::class,
+
     ],
 
     /*

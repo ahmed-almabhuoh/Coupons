@@ -19,12 +19,14 @@ class SetupLogo extends Component
     public $showSuccess = false;
     protected $replaced_str;
     protected $new_clr;
+    public $show_store_items;
 
     public function mount()
     {
         $site = DB::table('website_settings')->first();
         $this->color = $site->color;
         $this->is_shown = $site->lang_is_shown;
+        $this->show_store_items = $site->show_store_items;
     }
 
     public function render()
@@ -47,6 +49,7 @@ class SetupLogo extends Component
             'image' => 'nullable',
             'is_shown' => 'required|boolean',
             'color' => 'required|string',
+            'show_store_items' => 'required|boolean',
         ]);
         $this->new_clr = $data['color'];
 
@@ -66,6 +69,7 @@ class SetupLogo extends Component
                     'updated_at' => Carbon::now(),
                     'color' => $data['color'],
                     'lang_is_shown' => $data['is_shown'],
+                    'show_store_items' => $data['show_store_items'],
                 ]);
                 $this->showSuccess = true;
             } else {
@@ -74,6 +78,7 @@ class SetupLogo extends Component
                     'color' => $data['color'],
                     'updated_at' => Carbon::now(),
                     'lang_is_shown' => $data['is_shown'],
+                    'show_store_items' => $data['show_store_items'],
                 ]);
                 $this->showSuccess = true;
             }
@@ -82,6 +87,7 @@ class SetupLogo extends Component
                 'updated_at' => Carbon::now(),
                 'color' => $data['color'],
                 'lang_is_shown' => $data['is_shown'],
+                'show_store_items' => $data['show_store_items'],
             ]);
             $this->showSuccess = true;
         }

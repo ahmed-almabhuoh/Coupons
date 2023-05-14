@@ -8,192 +8,191 @@
                 </div>
             </div>
 
-            <div class="row" id="coupons-section">
-                <div class="dropdown">
-                    <a class="btn  dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        {{ __('All Stores') }}
-                    </a>
+            @if ($new_website_settings->show_store_items)
+                <div class="row" id="coupons-section">
+                    <div class="dropdown">
+                        <a class="btn  dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            {{ __('All Stores') }}
+                        </a>
 
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        @foreach ($stores as $store)
-                            <li><a class="dropdown-item text-black-50"
-                                    wire:click="getCouponsFromStore('{{ $store->id }}')"
-                                    href="#coupons-section">{{ $store->name }}</a></li>
-                        @endforeach
-                    </ul>
-                </div>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            @foreach ($stores as $store)
+                                <li><a class="dropdown-item text-black-50"
+                                        wire:click="getCouponsFromStore('{{ $store->id }}')"
+                                        href="#coupons-section">{{ $store->name }}</a></li>
+                            @endforeach
+                        </ul>
+                    </div>
+            @endif
 
-                <div class="filter-buttons">
-                    <ul id="filter-btns">
-                        <li data-target="all" class="{{ $selected_category == 'all' ? 'active' : '' }}"
-                            wire:click="getCouponsFromCategory('all')">All</li>
-                        @foreach ($categories as $category)
-                            <li data-target="Fashion" class="{{ $selected_category == $category->id ? 'active' : '' }}"
-                                wire:click="getCouponsFromCategory('{{ $category->id }}')">
-                                <img class="img-product" src="{{ env('APP_URL') . 'content/' . $category->image }}"
-                                    alt="">
-                                {{ $category->name }}
-                            </li>
-                        @endforeach
-                    </ul>
-                </div>
-            </div>
-
-
-            <div class="row">
-                <!-- ============= Start portfolio =========== -->
-                <div class="portfolio-gallery" id="portfolio-gallery">
-
-                    @if (!count($coupons))
-                        <h1>{{ __('No coupons found yet!') }}</h1>
-                    @endif
-
-                    @foreach ($coupons as $coupon)
-                        <div class="item" data-id="Fashion">
-                            <div class="card inner">
-                                <!-- icon -->
-                                <div class="icon">
-                                    {{-- shareByEmail('${response.data.coupon.store.name}', '${response.data.coupon.code}', '${response.data.coupon.discount}') --}}
-                                    <img src="{{ asset('front/client/imgs/share-icon-card.png') }}" alt="icon"
-                                        onclick="shareByEmail('{{ $coupon->store->name }}', '{{ $coupon->code }}', '{{ $coupon->discount }}')">
-                                    <img src="{{ asset('front/client/imgs/icon-card-multi.png') }}" alt="icon"
-                                        onclick="copyCodeToClipboard('{{ $coupon->code }}', {{ $coupon }})"
-                                        id="another-copying-element">
-                                </div>
-                                <!-- img -->
-                                <div class="img">
-                                    @if (!is_null($coupon->store))
-                                        <img src="{{ env('APP_URL') . 'content/' . $coupon->store->icon }}"
-                                            alt="portfolio" style="width: 50px; height: 50px;">
-                                    @else
-                                        <img src="{{ env('APP_URL') . 'content/coupons/default.png' }}" alt="portfolio"
-                                            style="width: 50px; height: 50px;">
-                                    @endif
-
-                                </div>
-                                <!-- text -->
-                                <div class="text">
-                                    @if (!is_null($coupon->store))
-                                        <span>{{ $coupon->store->name }}</span>
-                                    @else
-                                        <span>{{ __('No Store') }}</span>
-                                    @endif
-                                </div>
-                                <!-- button -->
-                                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
-                                    onclick="getCoupon('{{ $coupon->id }}')">
-                                    <div class="left">
-                                        {{ __('Coupon details') }}
-                                    </div>
-                                    <div class="right">
-                                        {{ $coupon->discount }}%
-                                    </div>
-                                </button>
-                            </div>
-                        </div>
+            <div class="filter-buttons">
+                <ul id="filter-btns">
+                    <li data-target="all" class="{{ $selected_category == 'all' ? 'active' : '' }}"
+                        wire:click="getCouponsFromCategory('all')">All</li>
+                    @foreach ($categories as $category)
+                        <li data-target="Fashion" class="{{ $selected_category == $category->id ? 'active' : '' }}"
+                            wire:click="getCouponsFromCategory('{{ $category->id }}')">
+                            <img class="img-product" src="{{ env('APP_URL') . 'content/' . $category->image }}"
+                                alt="">
+                            {{ $category->name }}
+                        </li>
                     @endforeach
+                </ul>
+            </div>
+        </div>
 
-                    <!-- Modal -->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                        aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h2 class="modal-title m-auto text-black-50 " id="exampleModalLabel">
-                                        {{ __('Coupon details') }}
-                                    </h2>
+
+        <div class="row">
+            <!-- ============= Start portfolio =========== -->
+            <div class="portfolio-gallery" id="portfolio-gallery">
+
+                @if (!count($coupons))
+                    <h1>{{ __('No coupons found yet!') }}</h1>
+                @endif
+
+                @foreach ($coupons as $coupon)
+                    <div class="item" data-id="Fashion">
+                        <div class="card inner">
+                            <!-- icon -->
+                            <div class="icon">
+                                {{-- shareByEmail('${response.data.coupon.store.name}', '${response.data.coupon.code}', '${response.data.coupon.discount}') --}}
+                                <img src="{{ asset('front/client/imgs/share-icon-card.png') }}" alt="icon"
+                                    onclick="shareByEmail('{{ $coupon->store->name }}', '{{ $coupon->code }}', '{{ $coupon->discount }}')">
+                                <img src="{{ asset('front/client/imgs/icon-card-multi.png') }}" alt="icon"
+                                    onclick="copyCodeToClipboard('{{ $coupon->code }}', {{ $coupon }})"
+                                    id="another-copying-element">
+                            </div>
+                            <!-- img -->
+                            <div class="img">
+                                @if (!is_null($coupon->store))
+                                    <img src="{{ env('APP_URL') . 'content/' . $coupon->store->icon }}" alt="portfolio"
+                                        style="width: 50px; height: 50px;">
+                                @else
+                                    <img src="{{ env('APP_URL') . 'content/coupons/default.png' }}" alt="portfolio"
+                                        style="width: 50px; height: 50px;">
+                                @endif
+
+                            </div>
+                            <!-- text -->
+                            <div class="text">
+                                @if (!is_null($coupon->store))
+                                    <span>{{ $coupon->store->name }}</span>
+                                @else
+                                    <span>{{ __('No Store') }}</span>
+                                @endif
+                            </div>
+                            <!-- button -->
+                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                onclick="getCoupon('{{ $coupon->id }}')">
+                                <div class="left">
+                                    {{ __('Coupon details') }}
                                 </div>
+                                <div class="right">
+                                    {{ $coupon->discount }}%
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                @endforeach
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h2 class="modal-title m-auto text-black-50 " id="exampleModalLabel">
+                                    {{ __('Coupon details') }}
+                                </h2>
+                            </div>
 
 
-                                <div class="modal-body ">
-                                    <div class="first-sec d-flex justify-content-between">
-                                        <!--Section #1 -->
-                                        <div class="content d-flex align-items-center justify-content-center">
-                                            <img class="icon-model website-logo" src="" id="coupon_store_image"
-                                                url="{{ env('APP_URL') . 'content/' }}" alt="">
-                                            <div class="text-des ml-3">
-                                                <strong id="coupon_store_name">Floward</strong>
-                                                <p id="coupon_description">A store that specializes in rose bouquets</p>
-                                            </div>
+                            <div class="modal-body ">
+                                <div class="first-sec d-flex justify-content-between">
+                                    <!--Section #1 -->
+                                    <div class="content d-flex align-items-center justify-content-center">
+                                        <img class="icon-model website-logo" src="" id="coupon_store_image"
+                                            url="{{ env('APP_URL') . 'content/' }}" alt="">
+                                        <div class="text-des ml-3">
+                                            <strong id="coupon_store_name">Floward</strong>
+                                            <p id="coupon_description">A store that specializes in rose bouquets</p>
                                         </div>
-                                        {{-- <div class="button">
+                                    </div>
+                                    {{-- <div class="button">
                                             <a href="#" id="store_action">{{ __('Visit') }} &rarr;</a>
                                         </div> --}}
+                                </div>
+                                <!--Section #2 -->
+                                <div class="midel-sec d-flex">
+                                    <div class="first-dev">
+                                        <span>{{ __('Discount') }}: <strong id="coupon_discount"></strong></span>
                                     </div>
-                                    <!--Section #2 -->
-                                    <div class="midel-sec d-flex">
-                                        <div class="first-dev">
-                                            <span>{{ __('Discount') }}: <strong id="coupon_discount"></strong></span>
-                                        </div>
-                                        <div class="first-dev">
-                                            <span>{{ __('Last use') }}: <strong id="coupon_last_use">a day
-                                                    ago</strong></span>
-                                        </div>
-                                        <div class="first-dev">
-                                            <span>{{ __('Category') }}: <strong
-                                                    id="coupon_category_name"></strong></span>
-                                        </div>
+                                    <div class="first-dev">
+                                        <span>{{ __('Last use') }}: <strong id="coupon_last_use">a day
+                                                ago</strong></span>
+                                    </div>
+                                    <div class="first-dev">
+                                        <span>{{ __('Category') }}: <strong id="coupon_category_name"></strong></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="icon-container">
+                                <div class="icon-box" id="shopping_coupon_action">
+                                    <img src="{{ asset('front/client/imgs/cart.png') }}" alt="" data-src="">
+                                    <div>
+                                        <p> {{ __('shopping') }} </p>
                                     </div>
                                 </div>
 
-                                <div class="icon-container">
-                                    <div class="icon-box" id="shopping_coupon_action">
-                                        <img src="{{ asset('front/client/imgs/cart.png') }}" alt=""
-                                            data-src="">
-                                        <div>
-                                            <p> {{ __('shopping') }} </p>
-                                        </div>
-                                    </div>
-
-                                    <div class="icon-box">
-                                        <img src="{{ asset('front/client/imgs/Heart, Favorite.png') }}" alt=""
-                                            id="favorite_icon"
-                                            data-src="{{ asset('front/client/imgs/heart-selceted.png') }}">
-                                        <div>
-                                            <p> {{ __('favourite') }} </p>
-                                        </div>
-                                    </div>
-                                    <div class="icon-box">
-                                        <img id="coupon_activation"
-                                            src="{{ asset('front/client/imgs/thumbs-up-like-square.png') }}"
-                                            alt=""
-                                            data-src="{{ asset('front/client/imgs/lik-selceted.png') }}">
-                                        <div>
-                                            <p> {{ __('active') }} </p>
-                                        </div>
-                                    </div>
-                                    <div class="icon-box">
-                                        <img src="{{ asset('front/client/imgs/dislike.png') }}" alt=""
-                                            id="coupon_inactivation"
-                                            data-src="{{ asset('front/client/imgs/dis-selceted.png') }}">
-                                        <div>
-                                            <p>{{ __('inactive') }}</p>
-                                        </div>
+                                <div class="icon-box">
+                                    <img src="{{ asset('front/client/imgs/Heart, Favorite.png') }}" alt=""
+                                        id="favorite_icon"
+                                        data-src="{{ asset('front/client/imgs/heart-selceted.png') }}">
+                                    <div>
+                                        <p> {{ __('favourite') }} </p>
                                     </div>
                                 </div>
-
-
-
-                                <div class="modal-footer d-flex">
-                                    <span id="share_element"><img
-                                            src="{{ asset('front/client/imgs/share-icon-copuon.png') }}"
-                                            alt=""> {{ __('Share') }}
-                                    </span>
-                                    <a type="button" class="copy-button btn btn-secondary" id="copyButton">
-                                        {{ __('Copy Code') }}
-                                        <img src="{{ asset('front/client/imgs/copy-icon.png') }}" alt="">
-                                    </a>
+                                <div class="icon-box">
+                                    <img id="coupon_activation"
+                                        src="{{ asset('front/client/imgs/thumbs-up-like-square.png') }}"
+                                        alt="" data-src="{{ asset('front/client/imgs/lik-selceted.png') }}">
+                                    <div>
+                                        <p> {{ __('active') }} </p>
+                                    </div>
                                 </div>
+                                <div class="icon-box">
+                                    <img src="{{ asset('front/client/imgs/dislike.png') }}" alt=""
+                                        id="coupon_inactivation"
+                                        data-src="{{ asset('front/client/imgs/dis-selceted.png') }}">
+                                    <div>
+                                        <p>{{ __('inactive') }}</p>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <div class="modal-footer d-flex">
+                                <span id="share_element"><img
+                                        src="{{ asset('front/client/imgs/share-icon-copuon.png') }}" alt="">
+                                    {{ __('Share') }}
+                                </span>
+                                <a type="button" class="copy-button btn btn-secondary" id="copyButton">
+                                    {{ __('Copy Code') }}
+                                    <img src="{{ asset('front/client/imgs/copy-icon.png') }}" alt="">
+                                </a>
                             </div>
                         </div>
                     </div>
-
                 </div>
-                <!-- ============= End portfolio =========== -->
-            </div>
 
+            </div>
+            <!-- ============= End portfolio =========== -->
         </div>
+
+</div>
 </div>
 
 

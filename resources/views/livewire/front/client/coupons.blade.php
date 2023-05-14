@@ -8,20 +8,22 @@
             </div>
             <div class="row">
 
-                <div class="dropdown">
-                    <a class="btn  dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        {{ __('All Stores') }}
-                    </a>
+                @if ($new_website_settings->show_store_items)
+                    <div class="dropdown">
+                        <a class="btn  dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            {{ __('All Stores') }}
+                        </a>
 
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        @foreach ($stores as $store)
-                            <li><a class="dropdown-item text-black-50"
-                                    wire:click="getCouponsDependOnStore('{{ $store->id }}')"
-                                    href="#">{{ $store->name }}</a></li>
-                        @endforeach
-                    </ul>
-                </div>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            @foreach ($stores as $store)
+                                <li><a class="dropdown-item text-black-50"
+                                        wire:click="getCouponsDependOnStore('{{ $store->id }}')"
+                                        href="#">{{ $store->name }}</a></li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
 
                 <div class="filter-buttons">
                     <ul id="filter-btns">
