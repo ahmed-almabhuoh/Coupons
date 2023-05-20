@@ -152,7 +152,7 @@
                             data-i18n="List">{{ __('List') }}</span></a>
                 </li>
             @endif
-            @if (auth()->user()->can('view-coupon'))
+            @if (auth()->user()->can('add-coupon'))
                 <li><a class="d-flex align-items-center" href="{{ route('coupons.create') }}"><i
                             data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Add">
                             {{ __('Add') }} </span></a>
