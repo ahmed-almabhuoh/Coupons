@@ -94,6 +94,9 @@ Route::prefix('/')->group(function () {
     Route::get('fqs', [ClientController::class, 'getFqsPage'])->name('pages.fqs');
     Route::get('/offers', [ClientController::class, 'getOfferPage'])->name('pages.offers');
     Route::get('/', [ClientController::class, 'getHomePage'])->name('pages.home');
+    // Route::get('/', function () {
+    //     dd('Here');
+    // })->name('pages.home');
     // Route::get('/articals/{blog_id}', [ClientController::class, 'getArticalsPage'])->name('pages.articals');
     // Route::get('/', [ClientController::class, 'getHomePage'])->name('pages.home');
     Route::get('/get-product/{product_id}', [ClientController::class, 'getProduct'])->name('get.specific.product');

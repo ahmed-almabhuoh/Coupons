@@ -123,11 +123,21 @@ class ClientController extends Controller
     // Get home page
     public function getHomePage()
     {
+        $products = Product::specail()->get();
+        foreach ($products as $product) {
+            $img = DB::table('product_images')->where('product_id', $product->id)->first();
+            if (!is_null($img))
+                $product->setAttribute('image', $img->image);
+            else
+                $product->setAttribute('image', env('APP_URL') . 'content/products/default.jpg');
+        }
+
         return response()->view('frontend.client.home', [
             'offers' => Offer::active()->get(),
             'coupons' => Coupon::active()->get(),
             'categories' => Category::active()->get(),
             'stores' => Store::active()->get(),
+            'products' => $products,
         ]);
     }
 
