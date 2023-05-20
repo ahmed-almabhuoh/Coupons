@@ -125,7 +125,14 @@
                                         <div class="card inner special-offers">
                                             <!-- icon -->
                                             <div class="img-top">
-                                                <img src="{{ env('APP_URL') . 'content/' . $product->image }}"
+                                                @if ($product->image)
+                                                    <img src="{{ env('APP_URL') . 'content/' . $product->image }}"
+                                                        class="card-img-top" alt="...">
+                                                @else
+                                                    <img src="{{ env('APP_URL') . 'content/products/default.jpg' }}"
+                                                        class="card-img-top" alt="...">
+                                                @endif
+                                                <img src="{{ env('APP_URL') . 'content/' . $product->image ?? 'default.jpg' }}"
                                                     class="card-img-top" alt="...">
                                             </div>
                                             <!-- img -->

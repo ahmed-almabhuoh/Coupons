@@ -129,7 +129,7 @@ class ClientController extends Controller
             if (!is_null($img))
                 $product->setAttribute('image', $img->image);
             else
-                $product->setAttribute('image', env('APP_URL') . 'content/products/default.jpg');
+                $product->setAttribute('image', null);
         }
 
         return response()->view('frontend.client.home', [
