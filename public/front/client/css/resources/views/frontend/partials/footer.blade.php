@@ -7,7 +7,7 @@
                     </h5>
                     <ul class="links list-unstyled lh-lg d-flex justify-content-center gap-3 flex-wrap">
                         <li><a class="text-light" href="{{ route('pages.home') }}">{{ __('Home') }}</a></li>
-                        <li><a class="text-white-50" href="{{ route('pages.coupons') }}"> {{ __('Coupons') }} </a></li>
+                        {{-- <li><a class="text-white-50" href="{{ route('pages.coupons') }}"> {{ __('Coupons') }} </a></li> --}}
                         <li><a class="text-white-50" href="{{ route('pages.about') }}"> {{ __('About') }} </a></li>
                         <li><a class="text-white-50" href="{{ route('pages.fqs') }}"> {{ __('Common Questions') }} </a>
                         </li>

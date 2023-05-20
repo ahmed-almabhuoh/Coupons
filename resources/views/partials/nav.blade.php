@@ -244,7 +244,7 @@
     </li>
 @endif
 
-@if (auth()->user()->can('view-blogs') ||
+{{-- @if (auth()->user()->can('view-blogs') ||
         auth()->user()->can('create-blog'))
     <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="file-text"></i><span
                 class="menu-title text-truncate" data-i18n="Invoice">{{ __('Blogs') }}</span></a>
@@ -263,9 +263,9 @@
             @endif
         </ul>
     </li>
-@endif
+@endif --}}
 
-@if (auth()->user()->can('view-articles') ||
+{{-- @if (auth()->user()->can('view-articles') ||
         auth()->user()->can('create-article'))
     <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="book-open"></i><span
                 class="menu-title text-truncate" data-i18n="Invoice">{{ __('Articals') }}</span></a>
@@ -284,7 +284,7 @@
             @endif
         </ul>
     </li>
-@endif
+@endif --}}
 
 @if (auth()->user()->can('manage-website'))
     <li class=" nav-item"><a class="d-flex align-items-center" href="{{ route('logo.setup') }}">

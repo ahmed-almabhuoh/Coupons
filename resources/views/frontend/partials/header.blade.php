@@ -3,10 +3,10 @@
         <a class="nav-link p-2 p-lg-3 @if (Route::currentRouteName() == 'pages.home') active @endif" aria-current="page"
             href="{{ route('pages.home') }}">{{ __('Home') }}</a>
     </li>
-    <li class="nav-item">
+    {{-- <li class="nav-item">
         <a class="nav-link p-2 p-lg-3  @if (Route::currentRouteName() == 'pages.coupons') active @endif"
             href="{{ route('pages.coupons') }}">{{ __('Coupons') }}</a>
-    </li>
+    </li> --}}
     <li class="nav-item">
         <a class="nav-link p-2 p-lg-3 @if (Route::currentRouteName() == 'pages.about') active @endif"
             href="{{ route('pages.about') }}">{{ __('About') }}</a>

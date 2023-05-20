@@ -53,8 +53,8 @@ Route::prefix('cpanel')->middleware('auth:admin')->group(function () {
     Route::resource('products', ProductController::class);
     Route::resource('aqs', AqsController::class);
     Route::resource('offers', OfferController::class);
-    Route::resource('blogs', BlogController::class);
-    Route::resource('articals', ArticalController::class);
+    // Route::resource('blogs', BlogController::class);
+    // Route::resource('articals', ArticalController::class);
 
     // Roles Authorization Routes
     Route::get('roles', [AuthenticationController::class, 'getRoles'])->name('roles.management');
@@ -93,9 +93,9 @@ Route::prefix('/')->group(function () {
     // Route::get('blogs', [ClientController::class, 'getBlogsPage'])->name('pages.blogs');
     Route::get('fqs', [ClientController::class, 'getFqsPage'])->name('pages.fqs');
     Route::get('/offers', [ClientController::class, 'getOfferPage'])->name('pages.offers');
-    Route::get('/coupons', [ClientController::class, 'getCouponsPage'])->name('pages.coupons');
-    Route::get('/articals/{blog_id}', [ClientController::class, 'getArticalsPage'])->name('pages.articals');
     Route::get('/', [ClientController::class, 'getHomePage'])->name('pages.home');
+    // Route::get('/articals/{blog_id}', [ClientController::class, 'getArticalsPage'])->name('pages.articals');
+    // Route::get('/', [ClientController::class, 'getHomePage'])->name('pages.home');
     Route::get('/get-product/{product_id}', [ClientController::class, 'getProduct'])->name('get.specific.product');
     Route::get('/get-coupon/{coupons_id}', [ClientController::class, 'getCoupon'])->name('get.specific.coupon');
 
