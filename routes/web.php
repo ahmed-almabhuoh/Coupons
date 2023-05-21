@@ -17,6 +17,7 @@ use App\Http\Controllers\front\ClientController;
 use App\Http\Controllers\front\PagesController;
 use App\Http\Controllers\OfferController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SerialController;
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\UserController;
 use App\Http\Livewire\Backend\Roles\Create;
@@ -55,6 +56,7 @@ Route::prefix('cpanel')->middleware('auth:admin')->group(function () {
     Route::resource('products', ProductController::class);
     Route::resource('aqs', AqsController::class);
     Route::resource('offers', OfferController::class);
+    Route::resource('serials', SerialController::class);
     // Route::resource('blogs', BlogController::class);
     // Route::resource('articals', ArticalController::class);
 
@@ -145,3 +147,7 @@ Route::prefix('/')->middleware(['auth:client'])->group(function () {
     Route::get('change-password', [PagesController::class, 'getChangePassword'])->name('users.change.password');
     Route::get('account', [PagesController::class, 'getAccount'])->name('users.account');
 });
+
+Route::get('license', [SerialController::class, 'getLicensePage'])->name('license.page');
+Route::post('license', [SerialController::class, 'submitLicense'])->name('license.submit');
+Route::get('download-release/{token}', [SerialController::class, 'downloadRelease'])->name('download.release');

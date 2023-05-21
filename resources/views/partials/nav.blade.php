@@ -265,6 +265,27 @@
     </li>
 @endif
 
+@if (auth()->user()->can('view-serials') ||
+        auth()->user()->can('create-serial'))
+    <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="tag"></i><span
+                class="menu-title text-truncate" data-i18n="Invoice">{{ __('Licenses') }}</span></a>
+        <ul class="menu-content">
+            @if (auth()->user()->can('view-serials'))
+                <li><a class="d-flex align-items-center" href="{{ route('serials.index') }}"><i
+                            data-feather="circle"></i><span class="menu-item text-truncate"
+                            data-i18n="List">{{ __('List') }}</span></a>
+                </li>
+            @endif
+            @if (auth()->user()->can('create-serial'))
+                <li><a class="d-flex align-items-center" href="{{ route('serials.create') }}"><i
+                            data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Add">
+                            {{ __('Add') }} </span></a>
+                </li>
+            @endif
+        </ul>
+    </li>
+@endif
+
 {{-- @if (auth()->user()->can('view-blogs') ||
     auth()->user()->can('create-blog'))
     <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="file-text"></i><span

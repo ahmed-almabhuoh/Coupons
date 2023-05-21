@@ -92,6 +92,12 @@ class DatabaseSeeder extends Seeder
             'delete-article' => 'حذف مقال',
             'view-articles' => 'عرض المقالات',
 
+            // Serials
+            'create-serial' => 'إنشاء رخصة',
+            'edit-serial' => 'تعديل رخصة',
+            'delete-serial' => 'حذف رخصة',
+            'view-serials' => 'عرض الرخص',
+
             // Website management
             'manage-website' => 'إدارة الموقع',
 
@@ -171,6 +177,12 @@ class DatabaseSeeder extends Seeder
             'edit-article',
             'delete-article',
             'view-articles',
+
+            // Serials
+            'create-serial',
+            'edit-serial',
+            'delete-serial',
+            'view-serials',
 
             // Website management
             'manage-website',
