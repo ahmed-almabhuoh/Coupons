@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Country;
 use App\Models\Store;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
@@ -30,7 +31,9 @@ class StoreController extends Controller
         if (!auth()->user()->can('create-store')) {
             abort(403);
         }
-        return response()->view('backend.stores.store');
+        return response()->view('backend.stores.store', [
+            'countries' => Country::active()->get(),
+        ]);
     }
 
     /**
@@ -60,6 +63,7 @@ class StoreController extends Controller
         //
         return response()->view('backend.stores.edit', [
             'store' => Store::findOrFail(Crypt::decrypt($id)),
+            'countries' => Country::active()->get(),
         ]);
     }
 

@@ -16,6 +16,8 @@
 
     <x-form.single-image name="icon" label="Store icon (optional)" />
 
+    <x-form.select name="country_id" label="Store Country" :options="$countries" />
+
     <x-form.textarea name="description" label="Description" placeholder="Enter the store description here ...." />
 
     <div>

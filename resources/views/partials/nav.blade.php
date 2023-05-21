@@ -119,6 +119,27 @@
     </li>
 @endif
 
+@if (auth()->user()->can('view-countries') ||
+        auth()->user()->can('create-country'))
+    <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="globe"></i><span
+                class="menu-title text-truncate" data-i18n="Invoice">{{ __('Countries') }}</span></a>
+        <ul class="menu-content">
+            @if (auth()->user()->can('view-countries'))
+                <li><a class="d-flex align-items-center" href="{{ route('countries.index') }}"><i
+                            data-feather="circle"></i><span class="menu-item text-truncate"
+                            data-i18n="List">{{ __('List') }}</span></a>
+                </li>
+            @endif
+            @if (auth()->user()->can('create-country'))
+                <li><a class="d-flex align-items-center" href="{{ route('countries.create') }}"><i
+                            data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Add">
+                            {{ __('Add') }} </span></a>
+                </li>
+            @endif
+        </ul>
+    </li>
+@endif
+
 @if (auth()->user()->can('view-stores') ||
         auth()->user()->can('create-store'))
     <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i
@@ -152,7 +173,7 @@
                             data-i18n="List">{{ __('List') }}</span></a>
                 </li>
             @endif
-            @if (auth()->user()->can('add-coupon'))
+            @if (auth()->user()->can('create-coupon'))
                 <li><a class="d-flex align-items-center" href="{{ route('coupons.create') }}"><i
                             data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Add">
                             {{ __('Add') }} </span></a>
@@ -245,7 +266,7 @@
 @endif
 
 {{-- @if (auth()->user()->can('view-blogs') ||
-        auth()->user()->can('create-blog'))
+    auth()->user()->can('create-blog'))
     <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="file-text"></i><span
                 class="menu-title text-truncate" data-i18n="Invoice">{{ __('Blogs') }}</span></a>
         <ul class="menu-content">
@@ -266,7 +287,7 @@
 @endif --}}
 
 {{-- @if (auth()->user()->can('view-articles') ||
-        auth()->user()->can('create-article'))
+    auth()->user()->can('create-article'))
     <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="book-open"></i><span
                 class="menu-title text-truncate" data-i18n="Invoice">{{ __('Articals') }}</span></a>
         <ul class="menu-content">

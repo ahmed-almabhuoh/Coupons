@@ -16,6 +16,8 @@ class Update extends Component
     public $action;
     public $description;
     public $store;
+    public $countries;
+    public $country_id;
     public $showSuccess = false;
 
     public function mount($store)
@@ -25,6 +27,7 @@ class Update extends Component
         $this->status = $this->store->status;
         $this->action = $this->store->action;
         $this->description = $this->store->description;
+        $this->country_id = $this->store->country_id;
     }
 
     public function render()
@@ -44,12 +47,14 @@ class Update extends Component
             'status' => 'required|string|in:' . implode(",", Store::STATUS),
             'action' => 'required|string|min:4',
             'description' => 'nullable|min:10|max:100',
+            'country_id' => 'nullable|integer|exists:countries,id',
             'icon' => 'nullable',
         ]);
 
         $this->store->name = $data['name'];
         $this->store->action = $data['action'];
         $this->store->status = $data['status'];
+        $this->store->country_id = $data['country_id'];
         $this->store->description = $data['description'];
         if ($data['icon']) {
             $path = $data['icon']->store('stores', [

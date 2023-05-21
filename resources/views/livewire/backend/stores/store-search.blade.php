@@ -41,6 +41,9 @@
                         {{ __('Store') }}</th>
                     <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
                         style="width: 101.266px;" aria-label="Store: activate to sort column ascending">
+                        {{ __('Country') }}</th>
+                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
+                        style="width: 101.266px;" aria-label="Store: activate to sort column ascending">
                         {{ __('Coupons') }}</th>
                     <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
                         style="width: 101.266px;" aria-label="Store: activate to sort column ascending">
@@ -76,6 +79,15 @@
                         </td>
                         <td>{{ $store->name }}</td>
                         <td>
+                            @if ($store->country && $store->country->img)
+                                <span class="avatar"><img class="round"
+                                        src="{{ env('APP_URL') . 'content/' . $store->country->img }}" alt="avatar"
+                                        height="20" width="20">
+                                </span>
+                            @endif
+                            {{ $store->country->name }}
+                        </td>
+                        <td>
                             @if ($store->coupons_count != 0)
                                 <a href="#">
                                     {{ $store->coupons_count . 'CPs' }}
@@ -98,8 +110,8 @@
                                     <a href="{{ route('stores.edit', Crypt::encrypt($store->id)) }}"
                                         class="btn btn-icon btn-info waves-effect waves-float waves-light">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
-                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                            stroke-linecap="round" stroke-linejoin="round"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                                             class="feather feather-inbox">
                                             {{-- <polyline points="22 12 16 12 14 15 10 15 8 12 2 12"></polyline> --}}
                                             <path

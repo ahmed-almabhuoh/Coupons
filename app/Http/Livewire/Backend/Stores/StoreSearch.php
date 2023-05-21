@@ -18,7 +18,7 @@ class StoreSearch extends Component
         }
         $this->stores = Store::where(function ($query) {
             $query->where('name', 'like', "%" . $this->searchTerm . "%");
-        })->withCount('coupons')->paginate($this->paginate);
+        })->withCount('coupons')->with('country')->paginate($this->paginate);
 
         return view('livewire.backend.stores.store-search', [
             'stores' => $this->stores,

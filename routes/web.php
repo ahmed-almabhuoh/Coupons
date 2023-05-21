@@ -10,6 +10,7 @@ use App\Http\Controllers\backend\DashboardController;
 use App\Http\Controllers\backend\WebsiteSettings;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CountryController;
 use App\Http\Controllers\CouponController;
 use App\Http\Controllers\front\AuthenticationController as FrontAuthenticationController;
 use App\Http\Controllers\front\ClientController;
@@ -48,6 +49,7 @@ Route::prefix('cpanel')->middleware('auth:admin')->group(function () {
     Route::resource('admins', AdminController::class);
     Route::resource('users', UserController::class);
     Route::resource('categories', CategoryController::class);
+    Route::resource('countries', CountryController::class);
     Route::resource('stores', StoreController::class);
     Route::resource('coupons', CouponController::class);
     Route::resource('products', ProductController::class);

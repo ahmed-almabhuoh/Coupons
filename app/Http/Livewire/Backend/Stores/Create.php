@@ -15,6 +15,8 @@ class Create extends Component
     public $icon;
     public $action;
     public $description;
+    public $countries;
+    public $country_id;
     public $showSuccess = false;
 
 
@@ -32,6 +34,7 @@ class Create extends Component
             'name' => 'required|string|min:2|max:25|unique:stores,name',
             'status' => 'required|string|in:' . implode(",", Store::STATUS),
             'action' => 'required|string|min:4',
+            'country_id' => 'nullable|integer|exists:countries,id',
             'description' => 'nullable|min:10|max:100',
             'icon' => 'nullable',
         ]);
@@ -40,6 +43,7 @@ class Create extends Component
         $store->name = $data['name'];
         $store->action = $data['action'];
         $store->status = $data['status'];
+        $store->country_id = $data['country_id'];
         $store->description = $data['description'];
         if ($data['icon']) {
             $path = $data['icon']->store('stores', [
@@ -65,5 +69,6 @@ class Create extends Component
         $this->icon = '';
         $this->action = '';
         $this->description = '';
+        $this->country_id = '';
     }
 }

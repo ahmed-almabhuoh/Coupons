@@ -6,6 +6,7 @@ namespace Database\Seeders;
 
 use App\Models\Admin;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
@@ -42,6 +43,12 @@ class DatabaseSeeder extends Seeder
             'edit-category' => 'تعديل فئة',
             'delete-category' => 'حذف فئة',
             'view-categories' => 'عرض الفئات',
+
+            // Countries
+            'create-country' => 'إنشاء دولة',
+            'edit-country' => 'تعديل دولة',
+            'delete-country' => 'حذف دولة',
+            'view-countries' => 'عرض الدول',
 
             // Store
             'create-store' => 'إنشاء متجر',
@@ -118,6 +125,12 @@ class DatabaseSeeder extends Seeder
             'delete-category',
             'view-categories',
 
+            // Countries
+            'create-country',
+            'edit-country',
+            'delete-country',
+            'view-countries',
+
             // Store
             'create-store',
             'edit-store',
@@ -173,6 +186,7 @@ class DatabaseSeeder extends Seeder
             'contact-us'
         ];
 
+
         foreach ($permissions as $name => $name_ar) {
             Permission::create(['name' => $name, 'name_ar' => $name_ar, 'guard_name' => 'admin']);
         }
@@ -186,5 +200,10 @@ class DatabaseSeeder extends Seeder
         $admin = Admin::create(['fname' => 'Coupons', 'lname' => 'PS', 'email' => 'coupons@auto.com.ps', 'phone' => '+9725670776531', 'image' => 'admins/O6wAe8jPxHMBMATiNwFGjxR4t9xGjSQ00G9LXSQf.jpg', 'password' => '$2y$10$U/7Tlc/oCtBPfXXLwh7VcOXtHvV4AnYS8ccFBjwrxGyPYaoL/xq.K']);
 
         $admin->assignRole($adminRole);
+
+        DB::table('website_settings')->insert([
+            'logo' => 'website-settings/eGSk6F5dRD3gdcF6Ex40UHYO8RnjG7BklLLWbKVh.png',
+            'color' => '#7585ff',
+        ]);
     }
 }
