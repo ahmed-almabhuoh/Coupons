@@ -137,8 +137,9 @@ button:focus:not(:focus-visible) {
   padding: 25px 20px;
   flex-direction: column;
   align-items: self-start;
-  left: 26px;
-  top: 35px;
+  left: 15px;
+  top: 38px;
+  width: 145px;
 }
 .link ul.dropdown-menu li:not(:first-child) {
   margin-top: 50px;
@@ -154,13 +155,15 @@ button:focus:not(:focus-visible) {
   position: absolute;
 }
 .link ul.dropdown-menu li {
+  display: flex;
+  align-items: center;
   text-align: right;
   transition: 0.3s ease;
 }
 .link ul.dropdown-menu li a {
   color: black;
   text-decoration: none;
-  padding-right: 5px;
+  padding-right: 8px;
   font-size: 14px;
 }
 .link ul.dropdown-menu li:hover,
@@ -215,7 +218,7 @@ button:focus:not(:focus-visible) {
   box-shadow: none !important;
   background: transparent !important;
   outline: none !important;
-  min-width: 160px;
+  min-width: 170px;
 }
 .drop-country .dropdown-toggle::after {
   position: absolute;
@@ -354,6 +357,7 @@ img.flowerd {
 
 .accordion-button {
   background-color: #f9f9f9 !important;
+  text-align: right !important;
 }
 .accordion-button:not(.collapsed) {
   color: var(--primary-color) !important;
@@ -485,10 +489,7 @@ img.flowerd {
 
 /* =====(Start Copunes page)====== */
 /* ============Start Slider ============= */
-.slide-container {
-  margin: 0 30px;
-  overflow: hidden;
-}
+
 .card {
   background: #fff;
   border-radius: 8px;
@@ -501,26 +502,12 @@ img.flowerd {
   height: 100%;
   border-radius: 8px 8px 0 0;
 }
-.card .profile-details {
-  display: flex;
-  align-items: center;
-  column-gap: 12px;
-  padding: 15px;
-}
-.card .profile-details img {
-  height: 40px;
-  width: 40px;
-  border-radius: 50%;
-}
+
 .profile-details .name {
   font-size: 15px;
   font-weight: 500;
 }
-.profile-details .job {
-  font-size: 12px;
-  font-weight: 500;
-  color: #4d4d4d;
-}
+
 /* ============End Slider ============= */
 
 @media screen and (max-width: 768px) {
@@ -921,7 +908,7 @@ img.flowerd {
 
 /* ================================ Start New Offers ================================== */
 .main-section {
-  direction: ltr;
+  /* direction: ltr; */
   display: flex;
   /* padding-top: 40px; */
   padding-bottom: 150px;

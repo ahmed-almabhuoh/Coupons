@@ -5,22 +5,24 @@
         <div class="card-wrapper swiper-wrapper">
 
             @foreach ($products as $product)
-                <div class="card swiper-slide">
-                    <div class="image-box">
-                        @if ($product->image)
-                            <img src="{{ env('APP_URL') . 'content/' . $product->image }}" class="card-img-top"
-                                alt="...">
-                        @else
-                            <img src="{{ env('APP_URL') . 'content/products/default.jpg' }}}"
-                                class="card-img-top" alt="...">
-                        @endif
-                    </div>
+                <div class="swiper-slide">
+                    <div class="card-offers">
+                        <div class="image-box">
+                            @if ($product->image)
+                                <img src="{{ env('APP_URL') . 'content/' . $product->image }}" class="card-img-top"
+                                    alt="...">
+                            @else
+                                <img src="{{ env('APP_URL') . 'content/products/default.jpg' }}}" class="card-img-top"
+                                    alt="...">
+                            @endif
+                        </div>
 
-                    <div class="profile-details">
-                        <img src="{{ env('APP_URL') . 'content/' . $product->store->icon }}" alt="" />
-                        <div class="name-job">
-                            <h3 class="name">{{ $product->store->name }}</h3>
-                            <h4 class="job">{{ $product->store->description }}</h4>
+                        <div class="profile-details">
+                            <img src="{{ env('APP_URL') . 'content/' . $product->store->icon }}" alt="" />
+                            <div class="name-job">
+                                <h3 class="name">{{ $product->store->name }}</h3>
+                                <h4 class="job">{{ $product->store->description }}</h4>
+                            </div>
                         </div>
                     </div>
                 </div>
