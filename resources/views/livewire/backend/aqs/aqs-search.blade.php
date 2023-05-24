@@ -65,7 +65,7 @@
                             {{ $aq->answer }}
                         </td>
                         <td>
-                            <span class="{{ $aq->status_class }}">{{ ucfirst($aq->status) }}</span>
+                            <span class="{{ $aq->status_class }}">{{ __(ucfirst($aq->status)) }}</span>
                         </td>
                         @if (auth()->user()->can('delete-A&Q') ||
                                 auth()->user()->can('edit-A&Q'))

@@ -17,6 +17,8 @@ class Create extends Component
     public $price;
     public $category_id;
     public $store_id;
+    public $country_id;
+    public $countries;
     // public $coupon_id;
     public $coupon_code;
     public $description;
@@ -43,13 +45,14 @@ class Create extends Component
             abort(403);
         }
         $data = $this->validate([
-            'name' => 'required|string|min:2|unique:products,name',
+            'name' => 'required|string|min:2',
             'price' => 'required|numeric|min:1',
             'category_id' => 'required|integer|exists:categories,id',
             'store_id' => 'required|integer|exists:stores,id',
+            'country_id' => 'required|integer|exists:countries,id',
             // 'coupon_id' => 'nullable',
             'coupon_code' => 'nullable',
-            'images' => 'nullable',
+            'images' => 'required',
             'description' => 'nullable|min:10|max:150',
             'offer' => 'required|integer|min:0|max:100',
             'duration' => 'required|min:0',
@@ -65,6 +68,7 @@ class Create extends Component
         $product->name = $data['name'];
         $product->original_price = $data['offer'];
         $product->category_id = $data['category_id'];
+        $product->country_id = $data['country_id'];
         $product->store_id = $data['store_id'];
         $product->action = $data['action'];
         $product->duration = $data['duration'] ?? 0;
@@ -125,8 +129,9 @@ class Create extends Component
     {
         $this->name = '';
         $this->price = '';
-        $this->coupon_id = '';
+        // $this->coupon_id = '';
         $this->category_id = '';
+        $this->country_id = '';
         $this->store_id = '';
         $this->description = '';
         $this->offer = '';

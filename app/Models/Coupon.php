@@ -4,11 +4,21 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Cookie;
 
 class Coupon extends Model
 {
     use HasFactory;
     const STATUS = ['active', 'draft'];
+
+    protected static function booted()
+    {
+        static::addGlobalScope('country_coupons', function (Builder $builder) {
+            // Define your global scope conditions here
+            $builder->where('country_id', Cookie::get('new_selected_country', 1));
+        });
+    }
 
     // Get attributes
     public function getStatusClassAttribute()
@@ -46,5 +56,10 @@ class Coupon extends Model
     public function favorites()
     {
         return $this->hasMany(Favorite::class, 'coupon_id', 'id');
+    }
+
+    public function country()
+    {
+        return $this->belongsTo(Country::class, 'country_id', 'id');
     }
 }

@@ -35,7 +35,8 @@
                         <h4 class="card-title">{{ __('Update') . ' ' . $coupon->code }}</h4>
                     </div>
                     <div class="card-body">
-                        <livewire:backend.coupons.update :coupon="$coupon" :categories="$categories" :stores="$stores" />
+                        <livewire:backend.coupons.update :coupon="$coupon" :categories="$categories" :stores="$stores"
+                            :countries="$countries" />
                     </div>
                 </div>
             </div>

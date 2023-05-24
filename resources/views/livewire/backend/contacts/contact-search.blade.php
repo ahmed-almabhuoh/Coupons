@@ -62,7 +62,7 @@
                         </td>
                         <td>
                             <span
-                                class="badge badge-glow @if ($contact->status == 'pending') bg-warning @elseif('readed') bg-secondary @else bg-success @endif">{{ ucfirst($contact->status) }}</span>
+                                class="badge badge-glow @if ($contact->status == 'pending') bg-warning @elseif('readed') bg-secondary @else bg-success @endif">{{ __(ucfirst($contact->status) . '') }}</span>
                         </td>
                         <td>
                             <span>{{ Carbon\Carbon::parse($contact->created_at)->diffForHumans() }}</span>

@@ -18,6 +18,8 @@ class Update extends Component
     public $code;
     public $category_id;
     public $store_id;
+    public $countries;
+    public $country_id;
     public $coupon_id;
     public $images;
     public $showSuccess = false;
@@ -38,6 +40,7 @@ class Update extends Component
         $this->product = $product;
         $this->name = $this->product->name;
         $this->price = $this->product->original_price;
+        $this->country_id = $this->product->country_id;
         $this->code = $this->product->code;
         $this->offer = $this->product->offer == 0 ? $this->product->price : $this->product->offer;
         $this->store_id = $this->product->store_id;
@@ -50,6 +53,8 @@ class Update extends Component
         $this->action = $this->product->action;
         $this->specail = $this->product->specail;
         $this->coupon_code = $this->product->coupon_code;
+
+        $this->use_it_as_price = false;
     }
 
     public function render()
@@ -65,11 +70,12 @@ class Update extends Component
             abort(403);
         }
         $data = $this->validate([
-            'name' => 'required|string|min:2|unique:products,name,' . $this->product->id,
+            'name' => 'required|string|min:2',
             'price' => 'required|numeric|min:1',
             'category_id' => 'required|integer|exists:categories,id',
             'store_id' => 'required|integer|exists:stores,id',
-            // 'coupon_id' => 'nullable',
+            'country_id' => 'required|integer|exists:countries,id',
+            // // 'coupon_id' => 'nullable',
             'coupon_code' => 'nullable',
             'images' => 'nullable',
             'description' => 'nullable|min:10|max:150',
@@ -88,6 +94,7 @@ class Update extends Component
         $this->product->category_id = $data['category_id'];
         $this->product->action = $data['action'];
         $this->product->store_id = $data['store_id'];
+        $this->product->country_id = $data['country_id'];
         $this->product->duration = $data['duration'] ?? 0;
         $this->product->from_date = $data['cusDate'] ?? $date;
         $this->product->to_date = $date->copy()->addDays($data['duration']);

@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Country;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\Session;
 use Symfony\Component\HttpFoundation\Response;
 
 class CountryController extends Controller
@@ -108,5 +110,15 @@ class CountryController extends Controller
                 'text' =>  __('Failed to delete the country!'),
             ], Response::HTTP_BAD_REQUEST);
         }
+    }
+
+    public function updateSelectedCountry($country_id)
+    {
+        // Store the selected country in a cookie
+        Cookie::queue('new_selected_country', $country_id . '', 10080);
+
+        return [
+            'country' => Cookie::get('new_selected_country'),
+        ];
     }
 }

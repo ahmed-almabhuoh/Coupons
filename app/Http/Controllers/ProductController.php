@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Country;
 use App\Models\Coupon;
 use App\Models\Product;
 use App\Models\Store;
@@ -38,6 +39,7 @@ class ProductController extends Controller
             'categories' => Category::active()->get(),
             'stores' => Store::active()->get(),
             'coupons' => Coupon::active()->get(),
+            'countries' => Country::active()->get(),
         ]);
     }
 
@@ -77,6 +79,7 @@ class ProductController extends Controller
             'stores' => Store::active()->get(),
             'product' => Product::findOrFail(Crypt::decrypt($id)),
             'images' => DB::table('product_images')->where('product_id', Crypt::decrypt($id))->get(),
+            'countries' => Country::active()->get(),
         ]);
     }
 

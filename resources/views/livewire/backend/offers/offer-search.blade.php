@@ -36,9 +36,9 @@
                     <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
                         style="width: 101.734px;" aria-label="Role: activate to sort column ascending">
                         {{ __('Image') }}</th>
-                    {{-- <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
+                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
                         style="width: 101.734px;" aria-label="Role: activate to sort column ascending">
-                        {{ __('Title') }}</th> --}}
+                        {{ __('Country') }}</th>
                     <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
                         style="width: 101.266px;" aria-label="Coupon: activate to sort column ascending">
                         {{ __('Action') }}</th>
@@ -68,14 +68,19 @@
                                 {{ __('No image') }}
                             @endif
                         </td>
-                        {{-- <td>
-                            {{ $offer->title }}
-                        </td> --}}
                         <td>
-                            @if ($offer->btn_txt)
-                                <a href="{{ $offer->btn_action }}" target="_blank"
-                                    class="btn btn-relief-info">{{ $offer->btn_txt }}</a>
+                            @if ($offer->country)
+                                <a
+                                    href="{{ route('countries.edit', Crypt::encrypt($offer->country->id)) }}">{{ $offer->country->name }}</a>
+                            @else
+                                {{ __('No Country') }}
                             @endif
+                        </td>
+                        <td>
+                            {{-- @if ($offer->btn_txt) --}}
+                            <a href="{{ $offer->btn_action }}" target="_blank"
+                                class="btn btn-relief-info">{{__('Go !!')}}</a>
+                            {{-- @endif --}}
                         </td>
                         @if (auth()->user()->can('delete-offer') ||
                                 auth()->user()->can('edit-offer'))

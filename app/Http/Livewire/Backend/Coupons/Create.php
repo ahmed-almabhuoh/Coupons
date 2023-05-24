@@ -16,6 +16,8 @@ class Create extends Component
     public $code;
     public $category_id;
     public $store_id;
+    public $country_id;
+    public $countries;
     public $showSuccess = false;
     public $categories;
     public $stores;
@@ -39,6 +41,7 @@ class Create extends Component
             'status' => 'required|string|in:' . implode(",", Coupon::STATUS),
             'discount' => 'required|numeric|min:1|max:100',
             'category_id' => 'required|integer|exists:categories,id',
+            'country_id' => 'required|integer|exists:countries,id',
             'store_id' => 'required|integer|exists:stores,id',
             'description' => 'nullable|min:10|max:150',
             'duration' => 'required|integer|min:0',
@@ -52,6 +55,7 @@ class Create extends Component
         $coupon->status = $data['status'];
         $coupon->category_id = $data['category_id'];
         $coupon->description = $data['description'];
+        $coupon->country_id = $data['country_id'];
         $coupon->store_id = $data['store_id'];
         $coupon->duration = $data['duration'];
         $coupon->url = $data['url'];
@@ -77,5 +81,6 @@ class Create extends Component
         $this->description = '';
         $this->duration = '';
         $this->url = '';
+        $this->country_id = '';
     }
 }

@@ -11,7 +11,7 @@
     <meta name="keywords"
         content="admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="PIXINVENT">
-    <title>{{__('Coupons - Control Panel - Login')}}</title>
+    <title>{{ __('Coupons - Control Panel - Login') }}</title>
     <link rel="apple-touch-icon" href="{{ asset('panel/app-assets/images/ico/apple-icon-120.png') }}">
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('panel/app-assets/images/ico/favicon.ico') }}">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600"
@@ -47,6 +47,17 @@
 
     <link rel="stylesheet" type="text/css"
         href="{{ asset('panel/app-assets/css/plugins/extensions/ext-component-toastr.css') }}">
+
+        {{-- Google Fonts --}}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif !important;
+        }
+    </style>
 
 </head>
 <!-- END: Head-->
@@ -131,7 +142,7 @@
                                             <label class="form-label" for="login-password"> {{ __('Password') }}
                                             </label>
                                             <a href="{{ route('manage.admins.forgot.password') }}">
-                                                <small>{{__('Forgot Password?')}}</small>
+                                                <small>{{ __('Forgot Password?') }}</small>
                                             </a>
                                         </div>
                                         <div class="input-group input-group-merge form-password-toggle">

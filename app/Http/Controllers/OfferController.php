@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Country;
 use App\Models\Offer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
@@ -30,7 +31,9 @@ class OfferController extends Controller
         if (!auth()->user()->can('create-offer')) {
             abort(403);
         }
-        return response()->view('backend.offers.store');
+        return response()->view('backend.offers.store', [
+            'countries' => Country::active()->get(),
+        ]);
     }
 
     /**
@@ -59,6 +62,7 @@ class OfferController extends Controller
         }
         return response()->view('backend.offers.edit', [
             'offer' => Offer::findOrFail(Crypt::decrypt($id)),
+            'countries' => Country::active()->get(),
         ]);
     }
 

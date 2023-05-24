@@ -67,6 +67,10 @@
                     <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1"
                         colspan="1" style="width: 125.906px;"
                         aria-label="Status: activate to sort column ascending">
+                        {{ __('Country') }} </th>
+                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1"
+                        colspan="1" style="width: 125.906px;"
+                        aria-label="Status: activate to sort column ascending">
                         {{ __('Store') }} </th>
                     <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1"
                         colspan="1" style="width: 125.906px;"
@@ -134,6 +138,15 @@
                         <td>
                             <a
                                 href="{{ route('categories.edit', Crypt::encrypt($product->category->id)) }}">{{ $product->category->name }}</a>
+                        </td>
+                        <td>
+                            @if ($product->country)
+                                <a
+                                    href="{{ route('countries.edit', Crypt::encrypt($product->country->id)) }}">{{ $product->country->name }}</a>
+                            @else
+                                {{ __('No Country') }}
+                            @endif
+
                         </td>
                         <td>
                             <a

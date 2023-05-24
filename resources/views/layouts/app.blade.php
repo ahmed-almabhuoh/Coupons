@@ -211,7 +211,7 @@
                                 </g>
                             </svg>
                         </span>
-                        <h3 class="brand-text">{{ env('APP_NAME') }}</h3>
+                        <h3 class="brand-text">{{ __(env('APP_NAME')) }}</h3>
                     </a></li>
                 <li class="nav-item nav-toggle"><a class="nav-link modern-nav-toggle pe-0"
                         data-bs-toggle="collapse"><i class="d-block d-xl-none text-primary toggle-icon font-medium-4"

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Country;
 use App\Models\Coupon;
 use App\Models\Store;
 use Illuminate\Http\Request;
@@ -35,6 +36,7 @@ class CouponController extends Controller
         return response()->view('backend.coupons.store', [
             'categories' => Category::active()->get(),
             'stores' => Store::active()->get(),
+            'countries' => Country::active()->get(),
         ]);
     }
 
@@ -67,6 +69,7 @@ class CouponController extends Controller
             'coupon' => Coupon::findOrFail(Crypt::decrypt($id)),
             'categories' => Category::active()->get(),
             'stores' => Store::active()->get(),
+            'countries' => Country::active()->get(),
         ]);
     }
 

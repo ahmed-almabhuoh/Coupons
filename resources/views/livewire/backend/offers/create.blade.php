@@ -16,6 +16,8 @@
 
     <x-form.select name="status" model="status" label="Offer status" :options="App\Models\Offer::STATUS" />
 
+    <x-form.select name="country_id" model="country_id" label="Product Country" :options="$countries" />
+
     <x-form.single-image name="image" model="image" label="Offer image" description="Banner dimensions should be 120 x 400 only" />
 
     <div>

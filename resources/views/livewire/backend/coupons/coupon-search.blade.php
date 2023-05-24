@@ -50,6 +50,9 @@
                         {{ __('Category') }} </th>
                     <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
                         style="width: 125.906px;" aria-label="Status: activate to sort column ascending">
+                        {{ __('Country') }} </th>
+                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
+                        style="width: 125.906px;" aria-label="Status: activate to sort column ascending">
                         {{ __('Store') }} </th>
                     <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
                         style="width: 101.266px;" aria-label="Coupon: activate to sort column ascending">
@@ -95,6 +98,14 @@
                             @if ($coupon->category)
                                 <a
                                     href="{{ route('categories.edit', Crypt::encrypt($coupon->category->id)) }}">{{ $coupon->category->name }}</a>
+                            @endif
+                        </td>
+                        <td>
+                            @if ($coupon->country)
+                                <a
+                                    href="{{ route('countries.edit', Crypt::encrypt($coupon->country->id)) }}">{{ $coupon->country->name }}</a>
+                            @else
+                                {{ __('No Country') }}
                             @endif
                         </td>
                         <td>

@@ -18,6 +18,21 @@ class Country extends Model
         return $this->hasMany(Store::class, 'country_id', 'id');
     }
 
+    public function products()
+    {
+        return $this->hasMany(Product::class, 'country_id', 'id');
+    }
+
+    public function offers()
+    {
+        return $this->hasMany(Offer::class, 'country_id', 'id');
+    }
+
+    public function coupons()
+    {
+        return $this->hasMany(Coupon::class, 'country_id', 'id');
+    }
+
     // Scopes
     public function scopeActive($query)
     {

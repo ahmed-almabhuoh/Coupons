@@ -37,7 +37,7 @@
                         <h4 class="card-title">{{ __('Create a new coupon') }}</h4>
                     </div>
                     <div class="card-body">
-                        <livewire:backend.coupons.create :categories="$categories" :stores="$stores" />
+                        <livewire:backend.coupons.create :categories="$categories" :stores="$stores" :countries="$countries" />
                     </div>
                 </div>
             </div>

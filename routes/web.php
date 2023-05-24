@@ -92,21 +92,29 @@ Route::prefix('cpanel')->group(function () {
 });
 
 Route::prefix('/')->group(function () {
-    Route::get('about', [ClientController::class, 'getAboutPage'])->name('pages.about');
-    // Route::get('blogs', [ClientController::class, 'getBlogsPage'])->middleware(['auth:client'])->name('pages.blogs');
-    // Route::get('blogs', [ClientController::class, 'getBlogsPage'])->name('pages.blogs');
-    Route::get('fqs', [ClientController::class, 'getFqsPage'])->name('pages.fqs');
-    Route::get('/offers', [ClientController::class, 'getOfferPage'])->name('pages.offers');
-    Route::get('/', [ClientController::class, 'getHomePage'])->name('pages.home');
-    // Route::get('/', function () {
-    //     dd('Here');
-    // })->name('pages.home');
-    // Route::get('/articals/{blog_id}', [ClientController::class, 'getArticalsPage'])->name('pages.articals');
+    // Route::get('about', [ClientController::class, 'getAboutPage'])->name('pages.about');
+    // // Route::get('blogs', [ClientController::class, 'getBlogsPage'])->middleware(['auth:client'])->name('pages.blogs');
+    // // Route::get('blogs', [ClientController::class, 'getBlogsPage'])->name('pages.blogs');
+    // Route::get('fqs', [ClientController::class, 'getFqsPage'])->name('pages.fqs');
+    // Route::get('/offers', [ClientController::class, 'getOfferPage'])->name('pages.offers');
     // Route::get('/', [ClientController::class, 'getHomePage'])->name('pages.home');
+    // // Route::get('/', function () {
+    // //     dd('Here');
+    // // })->name('pages.home');
+    // // Route::get('/articals/{blog_id}', [ClientController::class, 'getArticalsPage'])->name('pages.articals');
+    // // Route::get('/', [ClientController::class, 'getHomePage'])->name('pages.home');
+
+
+
+    // Client V1
     Route::get('/get-product/{product_id}', [ClientController::class, 'getProduct'])->name('get.specific.product');
     Route::get('/get-coupon/{coupons_id}', [ClientController::class, 'getCoupon'])->name('get.specific.coupon');
-
     Route::post('contact', [ClientController::class, 'recieveContactRequest'])->middleware('throttle:3,60')->name('send.contact');
+
+    Route::get('/',  [ClientController::class, 'getHomePage'])->name('pages.home');
+    Route::get('about', [ClientController::class, 'getAboutPage'])->name('pages.about');
+    Route::get('fqs', [ClientController::class, 'getFqsPage'])->name('pages.fqs');
+    Route::get('/offers', [ClientController::class, 'getOfferPage'])->name('pages.offers');
 });
 
 
@@ -151,3 +159,4 @@ Route::prefix('/')->middleware(['auth:client'])->group(function () {
 Route::get('license', [SerialController::class, 'getLicensePage'])->name('license.page');
 Route::post('license', [SerialController::class, 'submitLicense'])->name('license.submit');
 Route::get('download-release/{token}', [SerialController::class, 'downloadRelease'])->name('download.release');
+Route::get('/update-selected-country/{id}', [CountryController::class, 'updateSelectedCountry'])->name('update-selected-country');

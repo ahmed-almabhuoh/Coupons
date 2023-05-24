@@ -1,5 +1,32 @@
+// ==================================================================================
+/* Start Drop Country */
+document.addEventListener("DOMContentLoaded", function () {
+  const dropdownItems = document.querySelectorAll(".dropdown-item");
+
+  dropdownItems.forEach(function (item) {
+    item.addEventListener("click", function (event) {
+      event.preventDefault();
+
+      const selectedItem = document.querySelector(".selected-item");
+      const selectedText = selectedItem.querySelector(".selected-item-text");
+      const selectedIcon = selectedItem.querySelector(".selected-item-icon");
+      const dropdownText = item.querySelector(".dropdown-item-text");
+      const dropdownIcon = item.querySelector(".dropdown-item-icon");
+
+      selectedText.innerText = dropdownText.innerText;
+      selectedIcon.src = dropdownIcon.src;
+
+      dropdownItems.forEach(function (item) {
+        item.classList.remove("selected");
+      });
+
+      item.classList.add("selected");
+    });
+  });
+});
+
+// ==================================================================================
 // Button in popup
-// Get all the icon boxes
 const iconBoxes = document.querySelectorAll(".icon-box");
 
 // Loop through each icon box and add a click event listener
@@ -16,6 +43,7 @@ iconBoxes.forEach((iconBox) => {
   });
 });
 
+// ==================================================================================
 // gallery item filter
 
 const filterButtons = document.querySelector("#filter-btns").children;
@@ -40,9 +68,38 @@ for (let i = 0; i < filterButtons.length; i++) {
     }
   });
 }
+
+// ==================================================================================
 // POPUP
 $(document).ready(function () {
   $("#myButton").click(function () {
     $(".popover").toggle();
   });
 });
+
+const gallery = document.querySelector(".portfolio-gallery");
+
+gallery.addEventListener("mousedown", () => {
+  gallery.classList.add("dragging");
+});
+
+gallery.addEventListener("mouseup", () => {
+  gallery.classList.remove("dragging");
+});
+
+// ==================================================================================
+// copy-copon
+function copyCode() {
+  var copyButton = document.getElementById("copyButton");
+  copyButton.innerHTML = "Code has copied";
+
+  copyButton.classList.add("animated-class");
+
+  setTimeout(function () {
+    copyButton.innerHTML = `Copy Code`;
+
+    copyButton.classList.remove("animated-class");
+  }, 2000); // بعد 2 ثانية
+}
+
+// ==================================================================================

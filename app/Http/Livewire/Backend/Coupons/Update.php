@@ -16,6 +16,8 @@ class Update extends Component
     public $code;
     public $category_id;
     public $store_id;
+    public $country_id;
+    public $countries;
     public $showSuccess = false;
     public $coupon;
     public $stores;
@@ -37,6 +39,7 @@ class Update extends Component
         $this->cusDate = $this->coupon->from_date;
         $this->duration = $this->coupon->duration;
         $this->url = $this->coupon->url;
+        $this->country_id = $this->coupon->country_id;
     }
 
     public function render()
@@ -48,7 +51,7 @@ class Update extends Component
 
     public function update()
     {
-        if (!auth()->user()->can('update-coupon')) {
+        if (!auth()->user()->can('edit-coupon')) {
             abort(403);
         }
         $data = $this->validate([
@@ -56,6 +59,7 @@ class Update extends Component
             'status' => 'required|string|in:' . implode(",", Coupon::STATUS),
             'discount' => 'required|numeric|min:1|max:100',
             'category_id' => 'required|integer|exists:categories,id',
+            'country_id' => 'required|integer|exists:countries,id',
             'store_id' => 'required|integer|exists:stores,id',
             'description' => 'nullable|min:10|max:150',
             'duration' => 'required|integer|min:0',
@@ -70,6 +74,7 @@ class Update extends Component
         $this->coupon->category_id = $data['category_id'];
         $this->coupon->store_id = $data['store_id'];
         $this->coupon->description = $data['description'];
+        $this->coupon->country_id = $data['country_id'];
         $this->coupon->duration = $data['duration'];
         $this->coupon->url = $data['url'];
         $this->coupon->from_date = $data['cusDate'] ?? $date;

@@ -22,7 +22,7 @@ class ClientController extends Controller
     //
     public function getAboutPage()
     {
-        return response()->view('frontend.client.about');
+        return response()->view('frontend.client-v1.pages.about');
     }
 
     public function getBlogsPage()
@@ -36,7 +36,7 @@ class ClientController extends Controller
 
     public function getFqsPage()
     {
-        return response()->view('frontend.client.fqs', [
+        return response()->view('frontend.client-v1.pages.contact', [
             'fqs' => Aqs::active()->get(),
             'logo' => DB::table('website_settings')->orderByDesc('created_at')->first()->logo,
         ]);
@@ -72,9 +72,11 @@ class ClientController extends Controller
                 $product->setAttribute('image', $image_path->image);
         }
 
-        return response()->view('frontend.client.offers', [
+        return response()->view('frontend.client-v1.pages.offers', [
             'offers' => Offer::active()->get(),
             'products' => $products,
+            'categories' => Category::active()->get(),
+            'stores' => Store::active()->get(),
         ]);
     }
 
@@ -132,7 +134,7 @@ class ClientController extends Controller
                 $product->setAttribute('image', null);
         }
 
-        return response()->view('frontend.client.home', [
+        return response()->view('frontend.client-v1.pages.home', [
             'offers' => Offer::active()->get(),
             'coupons' => Coupon::active()->get(),
             'categories' => Category::active()->get(),

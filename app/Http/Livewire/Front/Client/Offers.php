@@ -12,7 +12,7 @@ class Offers extends Component
 {
     public $products;
     public $allStores;
-    public $selected_store;
+    public $selected_store = 'all';
     public $categories;
     public $selected_category;
     public $newSelectedCategory = 'all';
@@ -66,5 +66,17 @@ class Offers extends Component
         $this->product_discount = $product->offer;
         $this->product_original_price = $product->original_price;
         $this->product_final_price = $product->price;
+    }
+
+    public function getProductFromCategory($selected_category = 'all')
+    {
+        if ($selected_category == 'all') {
+            $this->products = Product::active()->get();
+            $this->selected_category = 'all';
+        } else {
+            $cat = Category::where('id', $selected_category)->first();
+            $this->products = $cat->products;
+            $this->selected_category = $cat->id;
+        }
     }
 }

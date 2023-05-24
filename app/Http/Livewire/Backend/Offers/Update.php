@@ -14,6 +14,8 @@ class Update extends Component
     public $btn_txt;
     public $btn_action;
     public $image;
+    public $country_id;
+    public $countries;
     public $showSuccess = false;
     public $status;
     public $offer;
@@ -25,6 +27,7 @@ class Update extends Component
         $this->btn_txt = $this->offer->btn_txt;
         $this->btn_action = $this->offer->btn_action;
         $this->status = $this->offer->status;
+        $this->country_id = $this->offer->country_id;
     }
 
     public function render()
@@ -41,6 +44,7 @@ class Update extends Component
             // 'title' => 'required|string|min:5|unique:offers,title,' . $this->offer->id,
             'btn_txt' => 'nullable|min:2|max:20',
             'btn_action' => 'nullable|min:2',
+            'country_id' => 'required|integer|exists:countries,id',
             'status' => 'required|string|in:' . implode(",", Offer::STATUS),
             'image' => 'nullable|image|dimensions:width=400,height=120',
             // 'image' => [
@@ -54,6 +58,7 @@ class Update extends Component
         $this->offer->btn_action = $data['btn_action'];
         $this->offer->btn_txt = $data['btn_txt'];
         $this->offer->status = $data['status'];
+        $this->offer->country_id = $data['country_id'];
         // $offer->image = ;
         // $path = 'offers/default.jpg';
         if ($data['image']) {

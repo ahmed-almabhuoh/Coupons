@@ -22,6 +22,8 @@
 
     <x-form.select name="store" model="store_id" label="Product Store" :options="$stores" />
 
+    <x-form.select name="country_id" model="country_id" label="Coupon Country" :options="$countries" />
+
     {{-- <x-form.select name="coupon" model="coupon_id" label="Product Coupon (Optional)" :options="$coupons" /> --}}
 
     <x-form.input name="coupon_code" model="coupon_code" type="text" label="Product Code (optional)"
@@ -35,7 +37,8 @@
 
     <div>
         <x-form.input name="offer" type="number" label="Price/Offer" placeholder="Enter the product offer here ...."
-            min="0" max="100" />
+            min="0" max="100"
+            desc="If you check (Make it as price?) put the price, otherwise put the offer you need to apply on the product." />
 
         <div>
             <div class="form-check">

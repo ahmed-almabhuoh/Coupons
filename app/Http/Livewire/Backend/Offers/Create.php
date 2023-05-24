@@ -14,6 +14,8 @@ class Create extends Component
     public $btn_txt;
     public $btn_action;
     public $image;
+    public $country_id;
+    public $countries;
     public $showSuccess = false;
     public $status;
 
@@ -31,6 +33,7 @@ class Create extends Component
             // 'title' => 'required|string|min:5|unique:offers,title',
             'btn_txt' => 'nullable|min:2|max:20',
             'btn_action' => 'nullable|min:2',
+            'country_id' => 'required|integer|exists:countries,id',
             'status' => 'required|string|in:' . implode(",", Offer::STATUS),
             // 'image' => 'nullable|image',
             'image' => [
@@ -45,6 +48,7 @@ class Create extends Component
         $offer->btn_action = $data['btn_action'];
         $offer->btn_txt = $data['btn_txt'];
         $offer->status = $data['status'];
+        $offer->country_id = $data['country_id'];
         // $offer->image = ;
         $path = 'offers/default.jpg';
         if ($data['image']) {
@@ -69,5 +73,6 @@ class Create extends Component
         $this->btn_action = '';
         $this->image = '';
         $this->status = '';
+        $this->country_id = '';
     }
 }

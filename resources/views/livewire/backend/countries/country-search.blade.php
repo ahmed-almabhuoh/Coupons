@@ -132,7 +132,7 @@
             </tbody>
         </table>
         <div class="d-flex justify-content-between mx-2 row mb-1">
-            {{ $countries->links() }}
+            {{-- {{ $countries->links() }} --}}
         </div>
     </div>
 </div>

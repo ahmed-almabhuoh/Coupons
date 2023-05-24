@@ -18,6 +18,8 @@
 
     <x-form.select name="status" model="status" label="Coupon status" :options="App\Models\Coupon::STATUS" />
 
+    <x-form.select name="country_id" model="country_id" label="Coupon Country" :options="$countries" />
+
     <x-form.select name="category" model="category_id" label="Coupon Category" :options="$categories" />
 
     <x-form.select name="store" model="store_id" label="Coupon Store" :options="$stores" />
