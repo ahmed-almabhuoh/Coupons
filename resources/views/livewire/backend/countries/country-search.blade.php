@@ -59,7 +59,6 @@
                             {{ __('No countries found yet ... !') }} </td>
                     </tr>
                 @endif
-                {{-- {{dd($countries)}} --}}
                 @foreach ($countries as $country)
                     <tr>
                         <td>

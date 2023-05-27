@@ -1,12 +1,12 @@
 /* $$$$$$$ CREATED WITH ❤ BY FARES $$$$$$$ */
 /* Start Global Rules */
 :root {
-  --primary-color: #f05555;
+  --primary-color: #2ed6d3;
   --white-color: #fefefe;
   --link-color: #979797;
   --background-text-color: rgba(240, 85, 85, 0.2);
   --box-color: #f9f9f9;
-  --footer-color: #f05555;
+  --footer-color: #2ed6d3;
   --background-page-color: #fefefe;
   --black-color: #000000;
 }
@@ -316,6 +316,10 @@ img.flowerd {
   max-width: 100%;
 }
 
+.carousel-indicators button {
+  display: none;
+}
+
 .carousel-item .image-container img {
   width: 100%;
   max-height: 740px;
@@ -621,7 +625,8 @@ img.flowerd {
 
 .midel-sec {
   padding: 23px 0px;
-  justify-content: space-around;
+  justify-content: center;
+  gap: 20px;
 }
 .midel-sec::before {
   content: "";
@@ -658,7 +663,7 @@ img.flowerd {
 
 .midel-sec .first-dev {
   background: #ffffff;
-  padding: 7px 7px;
+  padding: 7px 25px;
   border: 1px solid rgba(151, 151, 151, 0.1);
   border-radius: 8px;
 }
@@ -936,6 +941,7 @@ a.p-link {
 }
 
 .p-i {
+  direction: ltr;
   background-color: white;
   border-radius: 0.25em;
   box-sizing: border-box;
@@ -1775,6 +1781,7 @@ footer .links a {
   }
   .filter-buttons ul li {
     font-size: 14px;
+    padding: 0px 15px;
   }
   /* End Filter product */
 

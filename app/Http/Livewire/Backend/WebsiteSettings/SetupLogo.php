@@ -46,7 +46,7 @@ class SetupLogo extends Component
         $this->replaced_str = $site->color;
 
         $data = $this->validate([
-            'image' => 'nullable',
+            'image' => 'nullable|dimensions:min_width=250,min_height=50,max_width=400,max_height=100',
             'is_shown' => 'required|boolean',
             'color' => 'required|string',
             'show_store_items' => 'required|boolean',
@@ -108,6 +108,12 @@ class SetupLogo extends Component
 
         $file_css_pages = file_get_contents(public_path('front/client/css/master-rtl.css'));
         file_put_contents(public_path('front/client/css/master-rtl.css'), str_replace($this->replaced_str, $this->new_clr, $file_css_pages));
+
+        $file_css_pages = file_get_contents(public_path('front/client/css/style.css'));
+        file_put_contents(public_path('front/client/css/style.css'), str_replace($this->replaced_str, $this->new_clr, $file_css_pages));
+
+        $file_css_pages = file_get_contents(public_path('front/client/css/style-rtl.css'));
+        file_put_contents(public_path('front/client/css/style-rtl.css'), str_replace($this->replaced_str, $this->new_clr, $file_css_pages));
 
         $file_css_pages = file_get_contents(public_path('front/authorization/css/master.css'));
         file_put_contents(public_path('front/authorization/css/master.css'), str_replace($this->replaced_str, $this->new_clr, $file_css_pages));

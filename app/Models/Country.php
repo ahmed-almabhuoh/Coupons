@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 
 class Country extends Model
 {
@@ -11,6 +12,14 @@ class Country extends Model
 
     // Status
     const STATUS = ['active', 'draft'];
+
+    protected static function booted()
+    {
+        static::addGlobalScope('country_coupons', function (Builder $builder) {
+            // Define your global scope conditions here
+            $builder->orWhere('status', '=', 'draft');
+        });
+    }
 
     // Relations
     public function stores()

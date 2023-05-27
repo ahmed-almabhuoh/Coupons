@@ -13,7 +13,8 @@ class Offer extends Model
 
     const STATUS = ['active', 'in-active'];
 
-    public function scopeActive ($query) {
+    public function scopeActive($query)
+    {
         return $query->where('status', 'active');
     }
 
@@ -21,7 +22,8 @@ class Offer extends Model
     {
         static::addGlobalScope('country_offers', function (Builder $builder) {
             // Define your global scope conditions here
-            $builder->where('country_id', Cookie::get('new_selected_country', 1));
+            if (!auth('admin')->check())
+                $builder->where('country_id', Cookie::get('new_selected_country', 1));
         });
     }
 

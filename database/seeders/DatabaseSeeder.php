@@ -81,16 +81,16 @@ class DatabaseSeeder extends Seeder
             'view-offers' => 'عرض العروض',
 
             // Blogs
-            'create-blog' => 'إنشاء مدونة',
-            'edit-blog' => 'تعديل مدونة',
-            'delete-blog' => 'حذف مدونة',
-            'view-blogs' => 'عرض المدونات',
+            // 'create-blog' => 'إنشاء مدونة',
+            // 'edit-blog' => 'تعديل مدونة',
+            // 'delete-blog' => 'حذف مدونة',
+            // 'view-blogs' => 'عرض المدونات',
 
-            // Articles
-            'create-article' => 'إنشاء مقال',
-            'edit-article' => 'تعديل مقال',
-            'delete-article' => 'حذف مقال',
-            'view-articles' => 'عرض المقالات',
+            // // Articles
+            // 'create-article' => 'إنشاء مقال',
+            // 'edit-article' => 'تعديل مقال',
+            // 'delete-article' => 'حذف مقال',
+            // 'view-articles' => 'عرض المقالات',
 
             // Serials
             'create-serial' => 'إنشاء رخصة',
@@ -167,16 +167,16 @@ class DatabaseSeeder extends Seeder
             'view-offers',
 
             // Blogs
-            'create-blog',
-            'edit-blog',
-            'delete-blog',
-            'view-blogs',
+            // 'create-blog',
+            // 'edit-blog',
+            // 'delete-blog',
+            // 'view-blogs',
 
-            // Articles
-            'create-article',
-            'edit-article',
-            'delete-article',
-            'view-articles',
+            // // Articles
+            // 'create-article',
+            // 'edit-article',
+            // 'delete-article',
+            // 'view-articles',
 
             // Serials
             'create-serial',

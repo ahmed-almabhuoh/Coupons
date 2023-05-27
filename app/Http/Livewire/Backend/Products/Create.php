@@ -54,7 +54,7 @@ class Create extends Component
             'coupon_code' => 'nullable',
             'images' => 'required',
             'description' => 'nullable|min:10|max:150',
-            'offer' => 'required|integer|min:0|max:100',
+            'offer' => 'required|integer|min:0',
             'duration' => 'required|min:0',
             'cusDate' => 'nullable|date|after_or_equal:today',
             'action' => 'required|string',

@@ -16,9 +16,10 @@ class CountrySearch extends Component
         if (!auth()->user()->can('view-countries')) {
             abort(403);
         }
-        $this->countries = Country::where(function ($query) {
-            $query->where('name', 'like', "%" . $this->searchTerm . "%");
-        })->withCount('stores')->paginate($this->paginate);
+        $this->countries = Country::where([
+            ['name', 'LIKE', '%' . $this->searchTerm . '%'],
+            ['status', '=', 'draft']
+        ])->withCount('stores')->paginate($this->paginate);
 
         return view('livewire.backend.countries.country-search', [
             'countries' => $this->countries,

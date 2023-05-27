@@ -136,8 +136,12 @@
                             @endif
                         </td>
                         <td>
-                            <a
-                                href="{{ route('categories.edit', Crypt::encrypt($product->category->id)) }}">{{ $product->category->name }}</a>
+                            @if ($product->category)
+                                <a
+                                    href="{{ route('categories.edit', Crypt::encrypt($product->category->id)) }}">{{ $product->category->name }}</a>
+                            @else
+                                {{ __('No Category') }}
+                            @endif
                         </td>
                         <td>
                             @if ($product->country)

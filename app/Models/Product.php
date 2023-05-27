@@ -17,7 +17,8 @@ class Product extends Model
     {
         static::addGlobalScope('country_products', function (Builder $builder) {
             // Define your global scope conditions here
-            $builder->where('country_id', Cookie::get('new_selected_country', 1));
+            if (!auth('admin')->check())
+                $builder->where('country_id', Cookie::get('new_selected_country', 1));
         });
     }
 

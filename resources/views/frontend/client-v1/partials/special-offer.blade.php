@@ -5,7 +5,7 @@
         <div class="card-wrapper swiper-wrapper">
 
             @foreach ($products as $product)
-                <div class="swiper-slide">
+                <div class="swiper-slide super-offer-product" onclick="navToSuperOffer('{{ $product->action }}')">
                     <div class="card-offers">
                         <div class="image-box">
                             @if ($product->image)
@@ -34,3 +34,24 @@
     <div class="swiper-button-prev swiper-navBtn"></div>
     <div class="swiper-pagination"></div>
 </div>
+
+
+@push('scripts')
+    <script>
+        // var superOfferElements = document.querySelector('#super-offer-product');
+        // superOffer.style.cursor = 'pointer';
+        var superOfferElements = document.querySelectorAll('.super-offer-product');
+
+        superOfferElements.forEach(function(element) {
+            element.style.cursor = 'pointer';
+        });
+
+        // function navToSuperOffer(url) {
+        //     window.location.href = url;
+        // }
+
+        function navToSuperOffer(url) {
+            window.open(url, '_blank');
+        }
+    </script>
+@endpush

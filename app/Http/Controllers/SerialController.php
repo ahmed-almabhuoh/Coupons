@@ -162,7 +162,7 @@ class SerialController extends Controller
 
         // Compare the created_at value with the calculated time
         if ($minutesDifference <= 3) {
-            return redirect(env('APP_URL') . 'content/Coupons - Release.zip');
+            return redirect(env('APP_URL') . 'content/aitXPBWY2gWId2YjmI6ZLPwo6dgsT54CEbLMXuOy.zip');
         } else {
             return redirect()->route('license.page');
         }
