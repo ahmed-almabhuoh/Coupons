@@ -1,14 +1,25 @@
 <div class="row">
     <section class="portfolio" id="Portfolio">
-        <div class="container">
+        {{-- <div class="container"> --}}
 
-            @include('frontend/client-v1/partials/coupons', [
-                'selected_category' => $selected_category,
-                'categories' => $categories,
-                'coupons' => $coupons,
-            ])
-
+        {{-- <!-- Start new button -->
+        <div class="show-btn">
+            <div class=" new-btn d-flex justify-content-center ">
+                <a class=" btn rounded-pill main-btn" href="#" onclick="">Copunes</a>
+                <a class="active btn rounded-pill main-btn" href="#" onclick="">Offers</a>
+            </div>
         </div>
+        <!-- End new button --> --}}
+
+        @include('frontend/client-v1/partials/mobile-swiper')
+
+        @include('frontend/client-v1/partials/coupons', [
+            'selected_category' => $selected_category,
+            'categories' => $categories,
+            'coupons' => $coupons,
+        ])
+
+        {{-- </div> --}}
 </div>
 
 

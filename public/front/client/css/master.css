@@ -1,12 +1,12 @@
 /* $$$$$$$ CREATED WITH ❤ BY FARES $$$$$$$ */
 /* Start Global Rules */
 :root {
-  --primary-color: #2ed6d3;
+  --primary-color: #f05555;
   --white-color: #fefefe;
   --link-color: #979797;
   --background-text-color: rgba(240, 85, 85, 0.2);
   --box-color: #f9f9f9;
-  --footer-color: #2ed6d3;
+  --footer-color: #f05555;
   --background-page-color: #fefefe;
   --black-color: #000000;
 }
@@ -507,13 +507,42 @@ img.flowerd {
 
 @media screen and (max-width: 768px) {
   .p-i-w {
-    min-width: 335px !important;
+    /* min-width: 335px !important; */
+    min-width: 355px !important;
   }
 }
 
 .portfolio-gallery .card.special-offers {
   background-color: transparent;
 }
+
+/* ========= Start new button ============== */
+.show-btn {
+  display: none;
+}
+.new-btn {
+  border: 2px solid var(--primary-color);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.new-btn a {
+  width: 270px;
+  padding: 6px 12px;
+  border: none !important;
+  background-color: var(--primary-color);
+  border-radius: 0px !important;
+}
+.new-btn a:hover:not(.active) {
+  background-color: var(--primary-color) !important;
+  color: var(--white-color) !important;
+  opacity: 0.8;
+}
+.new-btn a.active {
+  background-color: transparent !important;
+  color: var(--primary-color);
+}
+/* ========= End new button ============== */
+
 .portfolio-gallery .item .inner.special-offers {
   position: relative;
   box-shadow: -1px 11px 13px -22px rgba(66, 68, 90, 1);
@@ -569,6 +598,7 @@ img.flowerd {
   font-size: 14px;
   font-weight: 400;
   color: var(--link-color);
+  max-width: 230px;
 }
 .content::after {
   /* content: ""; */
@@ -618,9 +648,12 @@ img.flowerd {
   padding: 23px 0px;
   justify-content: center;
   gap: 20px;
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+  border-color: rgba(151, 151, 151, 0.1);
 }
 .midel-sec::before {
-  content: "";
+  /* content: ""; */
   width: 100%;
   height: 1px;
   position: absolute;
@@ -628,7 +661,7 @@ img.flowerd {
   background: rgba(151, 151, 151, 0.1);
 }
 .midel-sec::after {
-  content: "";
+  /* content: ""; */
   width: 100%;
   height: 1px;
   position: absolute;
@@ -906,24 +939,18 @@ img.flowerd {
 /* ================================ Start New Offers ================================== */
 .main-section {
   display: flex;
-  /* padding-top: 40px; */
   padding-bottom: 150px;
-  /* background-color: #eee; */
 }
 .cards {
   display: flex;
-  /* justify-content: center; */
-  /* gap: 20px; */
   flex-wrap: wrap;
   padding: 0 20px;
 }
 .p-i-w {
   display: inline-block;
   min-width: 350px;
-  /* padding: 0 0 1em; */
   position: relative;
   vertical-align: top;
-  /* width: 50%; */
 }
 a.p-link {
   cursor: pointer;
@@ -935,7 +962,8 @@ a.p-link {
   border-radius: 0.25em;
   box-sizing: border-box;
   display: table;
-  min-height: 182px;
+  /* min-height: 182px; */
+  min-height: 162px;
   padding: 1em;
   width: 100%;
   border: 1px solid #eee;
@@ -1284,6 +1312,7 @@ img {
 .filter-buttons {
   flex: 0 0 100%;
   max-width: 100%;
+  margin-top: 5px;
   margin-bottom: 10px;
 }
 .filter-buttons ul {
@@ -1299,7 +1328,8 @@ img {
 .filter-buttons ul li {
   color: var(--link-color);
   font-size: 16px;
-  display: inline-block;
+  display: flex !important;
+  justify-content: center;
   padding: 0px 10px;
   cursor: pointer;
   padding-bottom: 0px;
@@ -1310,7 +1340,7 @@ img {
 .filter-buttons ul li.active {
   background-color: var(--primary-color);
   color: white;
-  padding: 5px 8px;
+  padding: 6px 16px;
   border-radius: 6px;
 }
 .filter-buttons ul li:hover:not(.active) {
@@ -1424,6 +1454,8 @@ a.dropdown-item {
   cursor: pointer;
 }
 .item {
+  display: flex;
+  justify-content: center;
   flex: 0 0 33.33%;
   /* max-width: 33.33%; */
   position: relative;
@@ -1678,9 +1710,16 @@ footer .links a {
     color: white !important;
   }
   /* End Drop down country */
+
+  .main-section .cards {
+    justify-content: center;
+  }
 }
 
 @media (max-width: 767px) {
+  .show-btn {
+    display: block;
+  }
   .portfolio .dropdown-toggle {
     top: -130px;
     left: 50%;
@@ -1692,13 +1731,13 @@ footer .links a {
     /* right: 30%; */
   }
   .portfolio .portfolio-gallery {
-    padding-bottom: 280px;
+    padding-bottom: 200px;
   }
   .item {
     flex: 0 0 100%;
     max-width: 100%;
     position: relative;
-    padding: 4px;
+    padding: 4px 0px;
   }
   .common-question {
     position: relative;
@@ -1711,6 +1750,7 @@ footer .links a {
     padding-top: 0px !important;
   }
   .main-section .form {
+    padding-top: 20px;
     margin-bottom: 50px;
     text-align: center;
   }
@@ -1749,7 +1789,7 @@ footer .links a {
     align-items: center;
     overflow: scroll;
     margin-bottom: -8px;
-    padding: 10px 10px;
+    padding: 10px 0px;
   }
   .filter-buttons ul li {
     font-size: 14px;
@@ -1761,6 +1801,7 @@ footer .links a {
   .portfolio-gallery .card {
     height: 80px;
   }
+
   .portfolio-gallery .card:hover {
     box-shadow: 0px 1px 15px -3px rgba(0, 0, 0, 0.1);
   }
@@ -1780,10 +1821,6 @@ footer .links a {
     top: 50%;
     transform: translateY(-50%);
   }
-  /* .portfolio .portfolio-gallery .item .img img {
-    width: 30px !important;
-    height: 30px !important;
-  } */
 
   .portfolio .inner .text {
     top: 50%;
@@ -1797,7 +1834,7 @@ footer .links a {
     justify-content: center;
     padding: 5px;
     width: fit-content;
-    right: 10px;
+    right: 25px;
     left: unset;
     top: 50%;
     transform: translateY(-50%);
@@ -1865,11 +1902,11 @@ footer .links a {
   /* ======================================================================== */
   .cards {
     gap: 10px;
-    padding: 0px 0px 140px 0px;
+    padding: 0px 0px 100px 0px;
   }
   /* End Special offers */
   .first-dev > span {
-    font-size: 12px;
+    font-size: 13px;
   }
   .img.edite {
     width: 50px !important;
@@ -1879,6 +1916,8 @@ footer .links a {
     width: 50px;
     height: 50px;
   }
+
+  /* End Card swiper */
 }
 @media (min-width: 767px) {
   .main-section.common {
@@ -1928,15 +1967,17 @@ footer .links a {
     margin: 10px 0;
   }
   .footer .links ul.links {
+    flex-wrap: nowrap !important;
+    flex-direction: row;
+    gap: 10px !important;
     padding-bottom: 20px;
-    gap: 5px !important;
   }
 }
 
 @media (max-width: 600px) {
-  .main-section .form {
+  /* .main-section .form {
     margin-bottom: 180px;
-  }
+  } */
   .about-img {
     display: none;
   }

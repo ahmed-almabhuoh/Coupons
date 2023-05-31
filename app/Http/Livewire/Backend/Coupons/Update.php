@@ -68,9 +68,12 @@ class Update extends Component
         ]);
         $date = Carbon::now();
 
+        $selectedDate = Carbon::parse($data['cusDate']);
+        $currentDate = Carbon::now();
+
         $this->coupon->code = $data['code'];
         $this->coupon->discount = $data['discount'];
-        $this->coupon->status = $data['status'];
+        $this->coupon->status = $selectedDate->greaterThan($currentDate) ? 'draft' :  $data['status'];
         $this->coupon->category_id = $data['category_id'];
         $this->coupon->store_id = $data['store_id'];
         $this->coupon->description = $data['description'];

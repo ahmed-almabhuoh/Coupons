@@ -1,18 +1,19 @@
 :root {
-  --primary-color: #2ed6d3;
+  --primary-color: #f05555;
   --white-color: #fefefe;
   --link-color: #979797;
   --background-text-color: rgba(240, 85, 85, 0.2);
   --box-color: #f9f9f9;
-  --footer-color: #2ed6d3;
+  --footer-color: #f05555;
   --background-page-color: #fefefe;
   --black-color: #000000;
 }
 .slide-container {
-  margin: 0 30px;
+  /* margin: 0 30px; */
   overflow: hidden;
   /* direction: ltr; */
 }
+
 .card-offers {
   background: #fff;
   border-radius: 20px;
@@ -33,7 +34,7 @@
   display: flex;
   align-items: center;
   column-gap: 12px;
-  padding: 15px;
+  padding: 20px;
 }
 .card-offers .profile-details img {
   height: 40px;
@@ -43,16 +44,18 @@
 .profile-details .name {
   font-size: 15px;
   font-weight: 500;
+  margin-bottom: 0px;
 }
 .profile-details .job {
   font-size: 12px;
   font-weight: 500;
   color: #4d4d4d;
+  margin-bottom: 0px;
 }
 
 .swiper {
-  padding: 0px 0px 50px 0px !important;
-  margin-bottom: 25px;
+  padding: 0px 8px 50px 8px !important;
+  /* margin-bottom: 25px; */
 }
 
 .swiper-navBtn {
@@ -65,7 +68,7 @@
 }
 
 .swiper h2 {
-  margin: 0px 35px 20px 35px;
+  margin: 0px 0px 20px 0px;
   font-weight: 700;
   border-left: 4px solid var(--primary-color);
   padding: 0 10px;
@@ -91,6 +94,7 @@
 @media screen and (max-width: 768px) {
   .swiper {
     padding: 0px !important;
+    margin-bottom: 25px;
   }
   .swiper-navBtn {
     display: none !important;
@@ -101,17 +105,33 @@
   .swiper-pagination {
     display: none;
   }
-  /* .card.swiper-slide {
-    width: 230px !important;
-    margin-right: 10px !important;
+
+  /* .slide-container {
+    margin: 0 0px 0px 30px;
   } */
+  .swiper-slide {
+    width: unset !important;
+    margin-right: 15px !important;
+  }
+
   .swiper h2 {
     margin: 0px 20px 10px 20px;
     font-size: 22px;
     border: none;
     padding: 0px 10px;
   }
-  .card .image-box {
-    height: 160px;
+
+  .card-offers {
+    width: 260px !important;
+  }
+  .image-box {
+    height: 100px;
+  }
+  .profile-details {
+    padding: 8px;
+  }
+  .card-offers .profile-details img {
+    height: 30px;
+    width: 30px;
   }
 }

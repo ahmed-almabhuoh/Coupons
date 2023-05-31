@@ -49,10 +49,13 @@ class Create extends Component
             'url' => 'nullable',
         ]);
 
+        $selectedDate = Carbon::parse($data['cusDate']);
+        $currentDate = Carbon::now();
+
         $coupon = new Coupon();
         $coupon->code = $data['code'];
         $coupon->discount = $data['discount'];
-        $coupon->status = $data['status'];
+        $coupon->status = $selectedDate->greaterThan($currentDate) ? 'draft' :  $data['status'];
         $coupon->category_id = $data['category_id'];
         $coupon->description = $data['description'];
         $coupon->country_id = $data['country_id'];

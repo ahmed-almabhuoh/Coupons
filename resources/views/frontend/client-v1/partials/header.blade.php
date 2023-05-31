@@ -44,6 +44,11 @@
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 
+                    @php
+                        $countries = DB::table('countries')
+                            ->where('status', 'active')
+                            ->get();
+                    @endphp
                     @foreach ($countries as $country)
                         <li onclick="changeCountry('{{ $country->id }}')">
                             <a class="dropdown-item" href="#">

@@ -23,10 +23,10 @@
                                 text-white-50 @endif"
                                     href="{{ route('pages.fqs') }}">{{ __('Common Questions') }}</a>
                             </li>
-                            <li><a
-                                    class="@if (Route::currentRouteName() == 'pages.offers') text-light
+                            <li><a class="@if (Route::currentRouteName() == 'pages.offers') text-light
                                 @else
-                                text-white-50 @endif">{{ __('Offers') }}</a>
+                                text-white-50 @endif"
+                                    href="{{ route('pages.offers') }}">{{ __('Offers') }}</a>
                             </li>
                         </ul>
                     </div>

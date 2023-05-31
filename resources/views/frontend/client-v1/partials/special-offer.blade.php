@@ -1,4 +1,4 @@
-<div class="container swiper">
+<div class="swiper">
     <h2 class="new-sec-title">{{ __('Strong Offers') }}</h2>
     <div class="slide-container">
 

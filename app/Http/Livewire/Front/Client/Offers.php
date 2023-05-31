@@ -29,6 +29,7 @@ class Offers extends Component
     {
         $this->allStores = Store::active()->get();
         $this->categories = Category::active()->get();
+        $this->selected_category = 'all';
     }
 
     public function render()
