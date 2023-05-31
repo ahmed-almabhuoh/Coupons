@@ -17,7 +17,7 @@ class Country extends Model
     {
         static::addGlobalScope('country_coupons', function (Builder $builder) {
             // Define your global scope conditions here
-            $builder->orWhere('status', '=', 'draft')->orWhere('status', '=', 'active');
+            $builder->orWhere('status', '=', 'draft');
         });
     }
 

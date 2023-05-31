@@ -37,14 +37,15 @@ class WebSettingsProvider extends ServiceProvider
         // dd(Cookie::get('new_selected_country'), 'Here');
 
         // Fetch Countries
-        // $countries = DB::table('countries')->where('status', 'active')->get();
+        $countries = Country::active()->get();
+        // dd($countries);
 
         // Share the value with all views
-        View::composer('*', function ($view) use ($website_settings) {
+        View::composer('*', function ($view) use ($website_settings, $countries) {
             // $view->with('new_website_settings', $website_settings);
             $view->with([
                 'new_website_settings' => $website_settings,
-                // 'countries' => $countries,
+                'countries' => $countries,
             ]);
         });
     }

@@ -33,7 +33,10 @@
                 @php
                     // dd(\Illuminate\Support\Facades\Cookie::get('new_selected_country', 1));
                     $selectedCountry = \App\Models\Country::where('id', \Illuminate\Support\Facades\Cookie::get('new_selected_country', 1))->first();
+
+                    
                 @endphp
+
                 <button class="btn btn-secondary bg-transparent dropdown-toggle" type="button" id="dropdownMenuButton"
                     data-bs-toggle="dropdown" aria-expanded="false">
                     <span class="selected-item">
@@ -44,11 +47,11 @@
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 
-                    @php
+                    {{-- @php
                         $countries = DB::table('countries')
                             ->where('status', 'active')
                             ->get();
-                    @endphp
+                    @endphp --}}
                     @foreach ($countries as $country)
                         <li onclick="changeCountry('{{ $country->id }}')">
                             <a class="dropdown-item" href="#">
