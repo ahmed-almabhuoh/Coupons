@@ -1,4 +1,4 @@
-<div id="CarouselSlider" class="carousel carousel-dark slide" data-bs-ride="carousel">
+<div id="CarouselSlider" class="carousel carousel-dark slide" data-bs-ride="carousel" data-bs-wrap="true">
     <div class="carousel-indicators">
         <button type="button" data-bs-target="#CarouselSlider" data-bs-slide-to="0" class="active" aria-current="true"
             aria-label="Slide 1"></button>
@@ -8,12 +8,14 @@
     <div class="carousel-inner">
         @foreach ($offers as $key => $offer)
             <div class="carousel-item {{ $key == 0 ? 'active' : '' }}" data-bs-interval="10000">
-                <img src="{{ env('APP_URL') . 'content/' . $offer->image }}" class="d-block w-100" alt="Carousel One">
+                <a href="{{ $offer->btn_action }}" target="_blank">
+                    <img src="{{ env('APP_URL') . 'content/' . $offer->image }}" class="d-block w-100"
+                        alt="Carousel One">
+                </a>
             </div>
         @endforeach
-
-
     </div>
+
     <button class="carousel-control-prev" type="button" data-bs-target="#CarouselSlider" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="visually-hidden">{{ __('Previous') }}</span>

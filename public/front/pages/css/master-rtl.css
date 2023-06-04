@@ -1,12 +1,12 @@
 :root {
-  --primary-color: #a8d2ff;
+  --primary-color: #f05555;
   --white-color: #fefefe;
   --link-color: #979797;
   --background-text-color: rgba(240, 85, 85, 0.2);
   --background-icon: #f7f7f7;
   --background-page-color: #fefefe;
   --box-color: #f9f9f9;
-  --footer-color: #a8d2ff;
+  --footer-color: #f05555;
   --black-color: #000000;
 }
 body {
@@ -59,8 +59,7 @@ navbar.logo {
 /* ========= Start link ===========*/
 .link ul.dropdown-menu {
   width: 160px;
-  /* height: 160px; */
-  border-radius: 16px;
+  border-radius: 8px;
   background-color: #f9f9f9;
   padding: 30px 25px;
   flex-direction: column;
@@ -161,7 +160,7 @@ navbar.logo {
 sidebar.sidebar > div {
   width: 30vh;
   height: 78.4vh;
-  margin-left: -10px;
+  margin-right: -10px;
 }
 sidebar {
   position: relative;
@@ -181,7 +180,7 @@ sidebar .active::after {
   height: 28px;
   background-color: var(--primary-color);
   position: absolute;
-  left: -10px;
+  left: 0px;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
 }
@@ -263,6 +262,10 @@ input#Phone.form-control {
 .header-text {
   padding: 60px 60px 0px;
 }
+.header-text.fav {
+  padding: 60px 0px 0px 0px;
+}
+
 .header-text p {
   color: var(--link-color);
   max-width: 600px;
@@ -305,6 +308,7 @@ input#Phone.form-control {
 /* Switch */
 .form-switch {
   position: relative;
+  margin-bottom: 5px !important;
 }
 .form-check-label {
   position: absolute;
@@ -320,8 +324,8 @@ input#Phone.form-control {
   width: 2.5em !important;
   height: 20px;
   position: absolute;
-  right: 92px;
-  top: 55%;
+  right: 80px;
+  top: 50%;
 }
 .form-check-input[type="checkbox"]:checked {
   background-color: var(--primary-color);
@@ -336,19 +340,21 @@ input#Phone.form-control {
 /* ===== End Form ===== */
 
 /* ============== (Start Page Favorite) ============== */
+.new-class {
+  margin-right: 60px;
+}
 .card-tabel {
   position: relative;
 }
 .card-tabel table.table {
-  position: absolute;
-  top: 20%;
-  right: 8%;
+  /* position: absolute;
+  right: 8%; */
   background-color: #f9f9f9;
   width: 618px;
-  border-radius: 16px;
+  border-radius: 8px;
 }
 .table-responsive {
-  overflow: scroll;
+  overflow-x: auto !important;
 }
 .paginator ul {
   list-style: none;
@@ -356,14 +362,21 @@ input#Phone.form-control {
   justify-content: flex-start;
   align-items: center;
   position: absolute;
-  bottom: 28%;
-  right: 23px;
+  bottom: unset;
+  right: -35px;
+  font-weight: 600;
+  transition: 0.3s ease;
 }
 .paginator ul li {
-  padding: 0 10px;
+  padding: 1px 8px;
+  margin: 5px;
+  border: 1px solid #eee;
+  border-radius: 50%;
+  cursor: pointer;
 }
 .paginator ul li:hover {
   color: var(--primary-color);
+  transition: 0.3s ease;
 }
 /* === start Tabel === */
 table.table .dropdown button {
@@ -438,6 +451,10 @@ tr {
   background-color: var(--primary-color) !important;
 }
 .footer .links ul.links {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  gap: 10px !important;
   list-style: none;
   padding: 0;
   margin-bottom: 0 !important;
@@ -463,10 +480,9 @@ tr {
   }
 }
 @media (max-width: 1400px) {
-  .row {
+  /* .row {
     width: 100%;
-    /* padding-top: 0px !important; */
-  }
+  } */
   .col-md-6 {
     width: 100%;
   }
@@ -512,15 +528,22 @@ tr {
     color: var(--black-color);
   }
   .table-responsive {
-    overflow-x: scroll !important;
-    width: 90%;
+    overflow-x: auto;
   }
 }
+
+@media (min-width: 993px) {
+  .footer {
+    position: absolute;
+    bottom: 0px;
+  }
+}
+
 @media (max-width: 992px) {
   sidebar.sidebar > div {
     width: 25vh;
     height: 88vh;
-    margin-left: -10px;
+    margin-right: -10px;
   }
 
   .sections .card-wrapper {
@@ -528,9 +551,9 @@ tr {
     display: flex;
     padding-top: 0px;
     position: absolute;
-    right: 50%;
+    right: 57%;
     top: 10%;
-    transform: translate(-50%);
+    transform: translate(50%);
     flex-direction: column;
     align-items: center;
     margin-top: 90px;
@@ -558,7 +581,7 @@ tr {
     text-align: center;
   }
   .header-text {
-    padding: 60px 30px 0px;
+    padding: 60px 0px;
   }
 
   .card-tabel table.table {
@@ -573,7 +596,7 @@ tr {
   sidebar.sidebar > div {
     width: 15vh;
     height: 88vh;
-    margin-left: 0px;
+    margin-right: 0px;
   }
 }
 
@@ -586,26 +609,49 @@ tr {
     flex-direction: column;
   }
   .card-wrapper .form-control {
-    width: 300px;
+    width: 260px;
   }
 
   sidebar.sidebar > div {
-    width: 8vh;
+    width: 6vh;
     height: 88vh;
+    padding-right: 0px !important;
   }
   sidebar .nav {
-    padding-left: 0px;
+    padding-right: 0px;
+  }
+
+  .new-class {
+    overflow: hidden;
+    max-width: 290px;
+    margin: 0 auto;
   }
   .header-text {
     text-align: center;
+    padding: 60px 15px 20px 15px;
   }
   .header-text p {
     color: var(--link-color);
     max-width: 600px;
     font-size: 12px;
   }
-  .table-responsive {
-    overflow-x: scroll !important;
+
+  .custom-file-upload {
+    width: 90px;
+    height: 90px;
+    margin-top: 30px;
+  }
+
+  .header-text h3 {
+    font-size: 18px;
+    font-weight: 600;
+  }
+  .form-group {
+    margin-top: 14px;
+  }
+
+  label {
+    font-size: 14px;
   }
 
   footer .container {
@@ -629,12 +675,4 @@ tr {
   }
 }
 
-@media screen and (max-width: 600px) {
-  .links {
-    flex-direction: column;
-  }
-  .links a {
-    margin: 10px 0;
-  }
-}
 /* ================= End Responsive ================ */

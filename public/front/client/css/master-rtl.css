@@ -507,6 +507,23 @@ img.flowerd {
   height: 100%;
   border-radius: 8px 8px 0 0;
 }
+/* ========== Start padgination ========= */
+.paginator-div {
+  margin: 0 auto;
+}
+.pagination {
+  padding: 0px !important;
+  margin-top: 10px;
+}
+.page-link {
+  color: var(--primary-color) !important;
+}
+.page-item.active .page-link {
+  background-color: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+  color: white !important;
+}
+/* ========== Start padgination ========= */
 
 .profile-details .name {
   font-size: 15px;
