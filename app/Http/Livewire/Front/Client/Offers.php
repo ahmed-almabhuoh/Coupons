@@ -96,7 +96,7 @@ class Offers extends Component
             $this->products = Product::active()->paginate(9);
             $this->selected_category = 'all';
         } else {
-            $cat = Category::where('id', $selected_category)->paginate(9);
+            $cat = Category::where('id', $selected_category)->with('products')->first();
             $this->products = $cat->products;
             $this->selected_category = $cat->id;
         }
