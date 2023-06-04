@@ -29,7 +29,8 @@
                 <div class="cards" id="portfolio-gallery">
 
                     @foreach ($products as $product)
-                        <div class="item" data-id="Fashion">
+                        <div class="item" data-id="Fashion" onclick="goToProduct('{{ $product->action }}')"
+                            style="cursor: pointer;">
                             <div class="p-i-w" data-label="Loose-fitting oxford shirt with front buttons"
                                 data-co="" data-disc="40" data-pr="120.00" data-r="9999"
                                 data-st="61a5b82332665843d5f6e510">
@@ -80,7 +81,7 @@
 
 
                                         <div class="p-b-w">
-                                            <div class="p-b-s1">
+                                            <div class="p-b-s1" onclick="goToProduct('{{ $product->store->action }}')">
                                                 <img class="p-b-logo lz"
                                                     src="{{ env('APP_URL') . 'content/' . $product->store->icon }}"
                                                     width="200" height="100" loading="lazy">
@@ -155,5 +156,13 @@
             // Call the function to share the product on WhatsApp
             shareProductOnWhatsApp(product);
         });
+    </script>
+
+    <script>
+        function goToProduct(url) {
+            // window.location.href = url;
+            var win = window.open(url, '_blank');
+            win.focus();
+        }
     </script>
 @endpush
