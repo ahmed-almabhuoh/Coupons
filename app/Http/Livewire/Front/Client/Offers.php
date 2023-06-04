@@ -90,13 +90,13 @@ class Offers extends Component
 
     public function getProductFromCategory($selected_category = 'all')
     {
-        $this->resetPage();
+        // $this->resetPage();
 
         if ($selected_category == 'all') {
             $this->products = Product::active()->paginate(9);
             $this->selected_category = 'all';
         } else {
-            $cat = Category::where('id', $selected_category)->with('products')->first();
+            $cat = Category::where('id', $selected_category)->first();
             $this->products = $cat->products;
             $this->selected_category = $cat->id;
         }
