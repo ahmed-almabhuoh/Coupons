@@ -83,7 +83,7 @@ class CountryController extends Controller
         }
         $country = Country::findOrFail(Crypt::decrypt($id));
 
-        if (count($country->stores)) {
+        if (count($country->stores) || count($country->products) || count($country->coupons) || count($country->offers)) {
             return response()->json([
                 'header' => __('Failed!'),
                 'body' => __('Failed to delete the country!'),

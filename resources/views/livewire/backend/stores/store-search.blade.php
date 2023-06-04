@@ -85,7 +85,11 @@
                                         height="20" width="20">
                                 </span>
                             @endif
-                            {{ $store->country->name }}
+                            @if (!is_null($store->country))
+                                {{ $store->country->name }}
+                            @else
+                                {{ __('No country') }}
+                            @endif
                         </td>
                         <td>
                             @if ($store->coupons_count != 0)

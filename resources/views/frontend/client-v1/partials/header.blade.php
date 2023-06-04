@@ -33,8 +33,9 @@
                 @php
                     // dd(\Illuminate\Support\Facades\Cookie::get('new_selected_country', 1));
                     $selectedCountry = \App\Models\Country::where('id', \Illuminate\Support\Facades\Cookie::get('new_selected_country', 1))->first();
-
-                    
+                    if (is_null($selectedCountry)) {
+                        $selectedCountry = \App\Models\Country::active()->first();
+                    }
                 @endphp
 
                 <button class="btn btn-secondary bg-transparent dropdown-toggle" type="button" id="dropdownMenuButton"

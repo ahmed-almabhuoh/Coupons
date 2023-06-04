@@ -304,7 +304,7 @@ button:focus:not(:focus-visible) {
 .carousel {
   width: 90%;
   border-radius: 10px;
-  margin: 80px auto;
+  margin: 50px auto 25px;
   overflow: hidden;
 }
 img.flowerd {
@@ -378,6 +378,7 @@ img.flowerd {
   padding: 0rem 1.25rem 1rem !important;
   background-color: #f9f9f9 !important;
   font-size: 14px;
+  word-wrap: break-word;
 }
 .accordion-item:not(:first-of-type) {
   border-top: 1px solid rgba(0, 0, 0, 0.125) !important;
@@ -508,7 +509,7 @@ img.flowerd {
 @media screen and (max-width: 768px) {
   .p-i-w {
     /* min-width: 335px !important; */
-    min-width: 355px !important;
+    min-width: 340px !important;
   }
 }
 
@@ -520,26 +521,26 @@ img.flowerd {
 .show-btn {
   display: none;
 }
-.new-btn {
+/* .new-btn {
   border: 2px solid var(--primary-color);
   border-radius: 8px;
   overflow: hidden;
-}
+} */
 .new-btn a {
-  width: 270px;
+  width: 120px;
+  margin: 0 10px;
   padding: 6px 12px;
-  border: none !important;
+  /* border: none !important; */
   background-color: var(--primary-color);
-  border-radius: 0px !important;
+  border-radius: 6px !important;
 }
-.new-btn a:hover:not(.active) {
-  background-color: var(--primary-color) !important;
-  color: var(--white-color) !important;
-  opacity: 0.8;
+.new-btn a:not(.active) {
+  background-color: transparent !important;
+  color: var(--primary-color) !important;
 }
 .new-btn a.active {
-  background-color: transparent !important;
-  color: var(--primary-color);
+  background-color: var(--primary-color) !important;
+  color: var(--white-color) !important;
 }
 /* ========= End new button ============== */
 
@@ -595,6 +596,7 @@ img.flowerd {
   color: #282828;
 }
 .content .text-des p {
+  padding-top: 5px;
   font-size: 14px;
   font-weight: 400;
   color: var(--link-color);
@@ -755,6 +757,7 @@ img.flowerd {
 }
 .modal-footer span {
   display: flex;
+  align-items: center;
   gap: 5px;
   font-weight: 500;
   font-size: 16px;
@@ -766,6 +769,7 @@ img.flowerd {
   color: var(--primary-color);
   transition: 0.3s ease;
 }
+
 .animated-class {
   opacity: 0;
   animation: fade-in 0.5s forwards;
@@ -941,6 +945,9 @@ img.flowerd {
   display: flex;
   padding-bottom: 150px;
 }
+.main-section .cards {
+  justify-content: center;
+}
 .cards {
   display: flex;
   flex-wrap: wrap;
@@ -948,7 +955,8 @@ img.flowerd {
 }
 .p-i-w {
   display: inline-block;
-  min-width: 350px;
+  /* min-width: 350px; */
+  min-width: 380px;
   position: relative;
   vertical-align: top;
 }
@@ -968,12 +976,11 @@ a.p-link {
   width: 100%;
   border: 1px solid #eee;
   border-radius: 15px;
-  transition: 0.3 ease;
+  transition: 0.3s ease;
 }
 .p-i:hover {
-  box-shadow: -1px -1px 9px 0px rgb(0 0 0 / 10%);
-
-  transition: 0.3 ease;
+  box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+  transition: 0.3 all ease;
 }
 .ar .p-s1 {
   padding-left: 1em;
@@ -1439,11 +1446,12 @@ a.dropdown-item {
   color: #282828;
 }
 .portfolio .inner .text p {
+  display: none;
   margin-bottom: 0px;
   margin-top: -8px;
+  padding-top: 5px;
   font-size: 12px;
   color: var(--link-color);
-  display: none;
 }
 .portfolio .inner .icon {
   padding: 20px;
@@ -1453,9 +1461,11 @@ a.dropdown-item {
   height: 24px;
   cursor: pointer;
 }
-.item {
+.cards .item {
   display: flex;
   justify-content: center;
+}
+.item {
   flex: 0 0 33.33%;
   /* max-width: 33.33%; */
   position: relative;
@@ -1676,7 +1686,7 @@ footer .links a {
     padding: 8px;
   }
   .carousel {
-    margin: 20px auto;
+    margin: 15px auto;
   }
   .main-section {
     padding-top: 0px;
@@ -1720,6 +1730,8 @@ footer .links a {
   .show-btn {
     display: block;
   }
+  /* .main-section {
+  } */
   .portfolio .dropdown-toggle {
     top: -130px;
     left: 50%;
@@ -1901,7 +1913,7 @@ footer .links a {
 
   /* ======================================================================== */
   .cards {
-    gap: 10px;
+    /* gap: 10px; */
     padding: 0px 0px 100px 0px;
   }
   /* End Special offers */
@@ -1918,6 +1930,11 @@ footer .links a {
   }
 
   /* End Card swiper */
+
+  #modal_share_element {
+    width: 20px !important;
+    height: 20px !important;
+  }
 }
 @media (min-width: 767px) {
   .main-section.common {
@@ -1926,7 +1943,9 @@ footer .links a {
 }
 @media only screen and (max-width: 767px) {
   .carousel {
-    margin: 20px auto;
+    /* new edite */
+    width: 94%;
+    margin: 15px auto;
   }
   .carousel-caption {
     display: flex;

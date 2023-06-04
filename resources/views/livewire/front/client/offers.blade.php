@@ -1,9 +1,9 @@
 <div>
     <div class="container">
         <!-- Start Section title -->
-        <div class="main-title fw-bold fs-2 d-flex justify-content-center text-center mb-3  ">
+        {{-- <div class="main-title fw-bold fs-2 d-flex justify-content-center text-center mb-3  ">
             <h2 class="position-absolute ">{{ __('Offers') }}</h2>
-        </div>
+        </div> --}}
         <!-- End Section title -->
 
         @include('frontend/client-v1/partials/mobile-swiper')

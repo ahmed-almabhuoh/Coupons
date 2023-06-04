@@ -11,6 +11,7 @@
         </div>
         <!-- End new button --> --}}
 
+
         @include('frontend/client-v1/partials/mobile-swiper')
 
         @include('frontend/client-v1/partials/coupons', [

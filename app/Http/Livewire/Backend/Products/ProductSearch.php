@@ -21,6 +21,8 @@ class ProductSearch extends Component
                 ->orWhere('offer', 'like', "%" . $this->searchTerm . "%")
                 ->orWhere('price', 'like', "%" . $this->searchTerm . "%")
                 ->orWhere('code', 'like', "%" . $this->searchTerm . "%");
+        })->orWhereHas('country', function ($query) {
+            $query->where('name', 'like', "%" . $this->searchTerm . "%");
         })->paginate($this->paginate);
 
         return view('livewire.backend.products.product-search', [

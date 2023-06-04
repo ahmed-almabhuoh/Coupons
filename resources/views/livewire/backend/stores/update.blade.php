@@ -25,7 +25,7 @@
 
     <x-form.select name="country_id" label="Store Country" :options="$countries" />
 
-    <x-form.textarea name="description" label="Description" placeholder="Enter the store description here ...." />
+    {{-- <x-form.textarea name="description" label="Description" placeholder="Enter the store description here ...." /> --}}
 
     <div>
         <x-form.submit text="Store" action="update()" type="button" />

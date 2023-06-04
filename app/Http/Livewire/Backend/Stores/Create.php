@@ -31,7 +31,7 @@ class Create extends Component
             abort(403);
         }
         $data = $this->validate([
-            'name' => 'required|string|min:2|max:25|unique:stores,name',
+            'name' => 'required|string|min:2|max:25',
             'status' => 'required|string|in:' . implode(",", Store::STATUS),
             'action' => 'required|string|min:4',
             'country_id' => 'nullable|integer|exists:countries,id',

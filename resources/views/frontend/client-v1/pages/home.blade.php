@@ -23,6 +23,7 @@
             ])
             <!--===== End special-offers ====-->
 
+            
             <livewire:front.client.home :coupons="$coupons" :stores="$stores" :categories="$categories" />
         </div>
         </section>

@@ -134,9 +134,11 @@ class ClientController extends Controller
                 $product->setAttribute('image', null);
         }
 
+        // dd('Here');
+
         return response()->view('frontend.client-v1.pages.home', [
             'offers' => Offer::active()->get(),
-            'coupons' => Coupon::active()->get(),
+            'coupons' => Coupon::active()->paginate(1),
             'categories' => Category::active()->get(),
             'stores' => Store::active()->get(),
             'products' => $products,

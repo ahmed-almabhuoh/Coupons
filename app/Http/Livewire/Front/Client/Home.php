@@ -6,37 +6,60 @@ use App\Models\Coupon;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Home extends Component
 {
+    use WithPagination;
+
+    // Add this property if you want to use Bootstrap
+    protected $paginationTheme = 'bootstrap';
+
     public $stores;
     public $categories;
-    public $coupons;
+    protected $coupons;
     public $selected_category = 'all';
 
     public function render()
     {
-        return view('livewire.front.client.home');
+        return view('livewire.front.client.home', [
+            'coupons' => $this->getCoupons(),
+        ]);
     }
+
+    public function getCoupons()
+    {
+        if ($this->selected_category == 'all') {
+            return Coupon::active()->paginate(9);
+        } else {
+            return Coupon::active()->whereHas('category', function ($query) {
+                $query->where('id', $this->selected_category);
+            })->paginate(9);
+        }
+    }
+
 
     // Get coupons from store
     public function getCouponsFromStore($selectedStore)
     {
+        $this->resetPage();
+
         $this->coupons = Coupon::active()->whereHas('store', function ($query) use ($selectedStore) {
             $query->where('id', $selectedStore);
-        })->get();
+        })->paginate(9);
     }
 
     // Get coupons from store
     public function getCouponsFromCategory($selectedCategory)
     {
         $this->selected_category = $selectedCategory;
+        $this->resetPage();
         if ($selectedCategory == 'all') {
-            $this->coupons = Coupon::active()->get();
+            $this->coupons = Coupon::active()->paginate(9);
         } else {
             $this->coupons = Coupon::active()->whereHas('category', function ($query) use ($selectedCategory) {
                 $query->where('id', $selectedCategory);
-            })->get();
+            })->paginate(9);
         }
     }
 

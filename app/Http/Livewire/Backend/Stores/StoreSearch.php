@@ -16,6 +16,7 @@ class StoreSearch extends Component
         if (!auth()->user()->can('view-stores')) {
             abort(403);
         }
+
         $this->stores = Store::where(function ($query) {
             $query->where('name', 'like', "%" . $this->searchTerm . "%");
         })->withCount('coupons')->with('country')->paginate($this->paginate);

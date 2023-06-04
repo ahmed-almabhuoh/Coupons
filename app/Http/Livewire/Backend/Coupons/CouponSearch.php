@@ -26,6 +26,8 @@ class CouponSearch extends Component
                 ->orWhereHas('store', function ($query) {
                     $query->where('name', 'like', "%" . $this->searchTerm . "%");
                 });
+        })->orWhereHas('country', function ($query) {
+            $query->where('name', 'like', "%" . $this->searchTerm . "%");
         })->paginate($this->paginate);
 
         return view('livewire.backend.coupons.coupon-search', [

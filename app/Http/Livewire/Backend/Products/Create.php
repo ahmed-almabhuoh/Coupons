@@ -52,7 +52,7 @@ class Create extends Component
             'country_id' => 'required|integer|exists:countries,id',
             // 'coupon_id' => 'nullable',
             'coupon_code' => 'nullable',
-            'images' => 'required',
+            'images' => 'required|image',
             'description' => 'nullable|min:10|max:150',
             'offer' => 'required|integer|min:0',
             'duration' => 'required|min:0',
@@ -77,11 +77,15 @@ class Create extends Component
         $product->specail = $data['specail'];
         $product->coupon_code = $data['coupon_code'];
 
+
+
         // Add the offer by hand
         if ($this->use_it_as_price) {
             $product->original_price = $data['offer'];
             $product->price = $data['offer'];
             $product->offer = 0;
+
+
         } else {
             if ($data['offer'] != 0) {
                 $product->offer = $data['offer'];
@@ -93,6 +97,8 @@ class Create extends Component
                 $product->original_price = $data['price'];
             }
         }
+
+
 
 
         // If you need to connect the price with coupon discount
@@ -107,6 +113,8 @@ class Create extends Component
         $product->description = $data['description'];
         $this->showSuccess = $product->save();
 
+
+
         foreach ($data['images'] as $image) {
             $path = $image->store('products', [
                 'disk' => 'content_managment',
@@ -117,6 +125,8 @@ class Create extends Component
                 'product_id' => $product->id,
             ]);
         }
+
+
 
         if ($this->showSuccess) {
             $this->resetModels();

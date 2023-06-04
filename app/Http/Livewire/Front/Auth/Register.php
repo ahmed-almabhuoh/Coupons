@@ -31,7 +31,7 @@ class Register extends Component
             'email' => ['required', 'email', 'unique:users,email', 'regex:/^[^\s@]+@[^\s@]+\.[^\s@]+$/'],
             'password' => ['required', 'string', Password::min(6)->uncompromised()],
         ], [
-            'password.uncompromised' => __('Please enter a complex password, and use ! or @ or # or any special characters.'),
+            'password.uncompromised' => __('Please, use a complex password!'),
         ]);
 
         $names = explode(" ", $data['fullname']);

@@ -119,7 +119,7 @@ return [
         'symbols' => 'يجب أن يحتوي حقل :attribute على رمز واحد على الأقل.',
         // Please enter a complex password, and use ! or @ or # or any special characters.
         // 'uncompromised' => 'تم الكشف عن تسريب بيانات يتضمن :attribute المدخل. يرجى تحديد قيمة مختلفة تحتوي على أرقام وحروف ورموز خاصة لـ :attribute.',
-        'uncompromised' => 'تم الكشف عن تسريب بيانات يرجى ادخال كلمة مرور معقدة، واستخدم ! أو @ أو # أو أي رموز خاصة.',
+        'uncompromised' => 'فضلاً استخدم كلمة مرور معقدة!',
     ],
     'present' => 'يجب توفر حقل :attribute.',
     'prohibited' => 'حقل :attribute محظور.',
