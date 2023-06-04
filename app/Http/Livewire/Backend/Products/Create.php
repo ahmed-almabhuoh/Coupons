@@ -52,7 +52,7 @@ class Create extends Component
             'country_id' => 'required|integer|exists:countries,id',
             // 'coupon_id' => 'nullable',
             'coupon_code' => 'nullable',
-            'images' => 'required|image',
+            'images' => 'required',
             'description' => 'nullable|min:10|max:150',
             'offer' => 'required|integer|min:0',
             'duration' => 'required|min:0',

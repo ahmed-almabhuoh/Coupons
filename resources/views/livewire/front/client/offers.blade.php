@@ -40,7 +40,7 @@
                                             @if ($product->offer != 0)
                                                 <div>{{ $product->offer }}% {{ __('discount') }} </div>
                                             @else
-                                                <div>{{ $product->price }} {{ __('RS') }} </div>
+                                                <div>{{ $product->original_price }} {{ __('RS') }} </div>
                                             @endif
                                         </div>
                                         <div class="p-img lz">
@@ -63,23 +63,27 @@
 
                                         <div class="p-pr-w">
                                             <div class="p-pr1">
-                                                <div class="p-cur">R.H.</div> {{ $product->price }}
+                                                <div class="p-cur">{{ __('R.H.') }}</div>
+                                                @if ($product->offer)
+                                                    {{ $product->original_price - $product->price }}
+                                                @else
+                                                    {{ $product->price }}
+                                                @endif
                                             </div>
-                                            <div class="p-pr2">
-                                                <div class="p-cur">R.H.</div> {{ $product->original_price }}
-                                            </div>
+                                            @if ($product->offer)
+                                                <div class="p-pr2">
+                                                    <div class="p-cur"> {{ __('R.H.') }} </div>
+                                                    {{ $product->original_price }}
+                                                </div>
+                                            @endif
                                         </div>
 
 
                                         <div class="p-b-w">
                                             <div class="p-b-s1">
                                                 <img class="p-b-logo lz"
-                                                    src="https://cdn.almowafir.com/files/w200_ae.jpg"
-                                                    data-src="https://cdn.almowafir.com/files/w200_ae.jpg"
-                                                    data-srcset="https://cdn.almowafir.com/files/w100_ae.jpg 100w, https://cdn.almowafir.com/files/w200_ae.jpg 200w"
-                                                    data-sizes="92px" alt="61a5b82332665843d5f6e510" width="200"
-                                                    height="100" loading="lazy"
-                                                    srcset="https://cdn.almowafir.com/files/w100_ae.jpg 100w, https://cdn.almowafir.com/files/w200_ae.jpg 200w">
+                                                    src="{{ env('APP_URL') . 'content/' . $product->store->icon }}"
+                                                    width="200" height="100" loading="lazy">
                                             </div>
                                             <div class="p-b-s2">
                                             </div>
