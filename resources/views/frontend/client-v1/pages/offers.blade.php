@@ -12,7 +12,7 @@
         'offers' => $offers,
     ])
 
-    <livewire:front.client.offers :categories="$categories" :stores="$stores" :products="$products" />
+    <livewire:front.client.offers :categories="$categories" :stores="$stores"  />
 
 @endsection
 
